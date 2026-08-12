@@ -1,0 +1,128 @@
+:host {
+  display: block;
+}
+
+/* ---- Timeline: horizontal row ----------------------------------------- */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.timeline__step {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s var(--ease-out),
+    transform 0.55s var(--ease-out);
+  transition-delay: calc(var(--step-i) * 130ms);
+}
+
+.is-revealed .timeline__step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Rail: node + horizontal connector --------------------------------- */
+.timeline__rail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.timeline__node {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-cream);
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.15);
+  position: relative;
+  z-index: 1;
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.timeline__step:hover .timeline__node {
+  background: var(--color-gold);
+  box-shadow: 0 0 0 5px rgba(200, 155, 60, 0.18);
+}
+
+/* Line stretches from node to the right edge, hidden on last step */
+.timeline__connector {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 155, 60, 0.55) 0%,
+    rgba(200, 155, 60, 0.15) 100%
+  );
+  margin-left: 0.4rem;
+}
+
+/* ---- Step content ------------------------------------------------------ */
+.timeline__body {
+  padding-right: clamp(1rem, 3vw, 2rem);
+}
+
+.timeline__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.4rem;
+  opacity: 0.85;
+}
+
+.timeline__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  font-weight: 500;
+  color: var(--color-navy);
+  line-height: 1.15;
+}
+
+.timeline__text {
+  margin-top: 0.55rem;
+  font-size: 0.92rem;
+  line-height: 1.72;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Reduced motion ---------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .timeline__step {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- Responsive: 2-col tablet, 1-col mobile ---------------------------- */
+@media (max-width: 860px) {
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+  }
+
+  /* On the 2-col layout the connector only makes sense on odd items */
+  .timeline__step:nth-child(even) .timeline__connector {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline__connector {
+    display: none;
+  }
+}

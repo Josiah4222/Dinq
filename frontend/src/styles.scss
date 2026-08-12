@@ -1,0 +1,584 @@
+/* =============================================================================
+   Dinq Advisory Group — Global Styles / Design System
+   Single source of truth for tokens, base resets, typography, shared UI pieces
+   and reveal/animation primitives. All theming flows from CSS custom properties.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. Design tokens
+----------------------------------------------------------------------------- */
+:root {
+  /* Brand palette (as specified) */
+  --color-navy: #0B1E3B;        /* primary background, headline color */
+  --color-gold: #C89B3C;        /* accent, labels, CTA buttons */
+  --color-cream: #F4EFE2;       /* light section backgrounds, card/table headers */
+
+  /* Extended neutrals derived from the palette */
+  --color-navy-deep: #071427;   /* darker navy for bands/footer */
+  --color-navy-soft: #12305C;   /* hover tints on navy */
+  --color-ink: #101828;         /* body text on light backgrounds */
+  --color-ink-muted: #5A6474;   /* secondary text on light backgrounds */
+  --color-cream-light: #FAF7EF; /* lighter cream for card surfaces */
+  --color-mist: #E9E2D0;        /* borders/hairlines on cream */
+  --color-white: #FFFFFF;
+
+  /* Overlays for photography legibility */
+  --overlay-strong: rgba(7, 20, 39, 0.82);
+  --overlay-med: rgba(7, 20, 39, 0.62);
+  --overlay-soft: rgba(7, 20, 39, 0.42);
+
+  /* Functional */
+  --color-focus: #E5C77A;       /* focus ring (gold, light enough to read) */
+  --color-error: #C25B4E;       /* form validation */
+  --color-success: #3E7C59;     /* form success state */
+
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Layout */
+  --max-width: 1180px;
+  --container-pad: clamp(1.25rem, 5vw, 2.5rem);
+  --section-pad: clamp(4.5rem, 9vw, 7.5rem);
+  --nav-height: 76px;
+
+  /* Radius, shadows, motion */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 2px rgba(11, 30, 59, 0.08), 0 2px 6px rgba(11, 30, 59, 0.05);
+  --shadow-md: 0 6px 18px rgba(11, 30, 59, 0.10), 0 2px 6px rgba(11, 30, 59, 0.06);
+  --shadow-lg: 0 18px 42px rgba(11, 30, 59, 0.18), 0 6px 14px rgba(11, 30, 59, 0.10);
+  --shadow-gold: 0 10px 26px rgba(200, 155, 60, 0.28);
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 200ms ease-out;
+  --transition-med: 420ms var(--ease-out);
+
+  /* Scroll-reveal defaults */
+  --reveal-distance: 26px;
+}
+
+/* -----------------------------------------------------------------------------
+   2. Reset & base
+----------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-navy);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* Sections receive top offset so anchor scrolls clear the fixed nav.
+   Targets any scrollable anchor (component host elements carry the section ids). */
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + 8px);
+}
+
+/* -----------------------------------------------------------------------------
+   3. Accessibility — visible keyboard focus everywhere
+----------------------------------------------------------------------------- */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Respect users who prefer reduced motion: collapse animations/transitions */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   4. Layout primitives
+----------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+.section--tint {
+  background: var(--color-cream);
+}
+
+.section--dark {
+  background: var(--color-navy);
+  color: var(--color-cream);
+}
+
+/* Small gold eyebrow label above a headline */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* Centered section header block */
+.section-head {
+  max-width: 46rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head--center .eyebrow::after {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.section-title {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 4.6vw, 3.15rem);
+  letter-spacing: 0.005em;
+}
+
+.section-lead {
+  margin-top: 1.25rem;
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+.section--dark .section-lead {
+  color: rgba(244, 239, 226, 0.78);
+}
+
+/* -----------------------------------------------------------------------------
+   5. Buttons & links
+----------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.9rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.btn--gold {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.btn--gold:hover,
+.btn--gold:focus-visible {
+  background: #d6a84e;
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: rgba(244, 239, 226, 0.55);
+  color: var(--color-cream);
+}
+
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  border-color: var(--color-cream);
+  background: rgba(244, 239, 226, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn--nav {
+  padding: 0.62rem 1.35rem;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 0.85rem;
+}
+
+.btn--nav:hover,
+.btn--nav:focus-visible {
+  background: #d6a84e;
+  box-shadow: var(--shadow-gold);
+}
+
+/* Inline text link used for legal/placeholder links */
+.text-link {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition-fast);
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: #d6a84e;
+}
+
+/* -----------------------------------------------------------------------------
+   6. Shared form styles (used by every form in the app)
+----------------------------------------------------------------------------- */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field + .form-field {
+  margin-top: 1.15rem;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-navy-soft);
+}
+
+.form-label .req {
+  color: var(--color-gold);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(11, 30, 59, 0.18);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  color: var(--color-navy);
+  font-size: 0.97rem;
+  line-height: 1.5;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(11, 30, 59, 0.42);
+}
+
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+  border-color: rgba(11, 30, 59, 0.34);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.18);
+  outline: none;
+}
+
+.form-input.ng-touched.ng-invalid,
+.form-select.ng-touched.ng-invalid,
+.form-textarea.ng-touched.ng-invalid {
+  border-color: var(--color-error);
+}
+
+.form-input.ng-touched.ng-invalid:focus,
+.form-select.ng-touched.ng-invalid:focus,
+.form-textarea.ng-touched.ng-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(194, 91, 78, 0.15);
+}
+
+/* Select with custom chevron (native listbox stays accessible) */
+.form-select {
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"%3E%3Cpath d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="%230B1E3B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  padding-right: 2.6rem;
+}
+
+.form-textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+/* Inline validation message */
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--color-error);
+}
+
+.form-error::before {
+  content: '!';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--color-error);
+  color: var(--color-white);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+/* Fieldset-style row of choice chips (checkboxes) */
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.choice-chip {
+  position: relative;
+}
+
+.choice-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-chip label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid rgba(11, 30, 59, 0.22);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.choice-chip label::before {
+  content: '';
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 1.5px solid rgba(11, 30, 59, 0.4);
+  border-radius: 3px;
+  background: var(--color-white);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.choice-chip input:focus-visible + label {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.choice-chip input:checked + label {
+  border-color: var(--color-gold);
+  background: rgba(200, 155, 60, 0.12);
+  color: var(--color-navy);
+}
+
+.choice-chip input:checked + label::before {
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+  box-shadow: inset 0 0 0 2px var(--color-white);
+}
+
+.choice-chip.is-invalid label {
+  border-color: var(--color-error);
+}
+
+/* Single consent checkbox row */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+
+.consent input {
+  margin-top: 0.2rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+  accent-color: var(--color-gold);
+  cursor: pointer;
+}
+
+.consent.is-invalid {
+  color: var(--color-error);
+}
+
+/* Submit row keeps buttons aligned with fields */
+.form-actions {
+  margin-top: 1.75rem;
+}
+
+/* -----------------------------------------------------------------------------
+   7. Scroll-reveal primitive (paired with the appReveal directive)
+   Host gets `reveal` (hidden) -> `is-revealed` (visible) via IntersectionObserver
+----------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variant: fade in without vertical travel */
+.reveal.reveal--fade {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   8. Shared animation keyframes (used by hero + component-level animations)
+----------------------------------------------------------------------------- */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pop-check {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

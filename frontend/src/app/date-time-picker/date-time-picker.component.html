@@ -1,0 +1,16 @@
+<div class="dtp form-field">
+  <label class="form-label" [for]="id">
+    {{ label }}@if (required) {<span class="req"> *</span>}
+  </label>
+  <input
+    class="form-input dtp__input"
+    type="datetime-local"
+    [id]="id"
+    [value]="value"
+    [disabled]="disabled"
+    [required]="required"
+    (input)="onInput($event)"
+    (blur)="markTouched()"
+  />
+  <p class="dtp__hint">Choose a date and time that suits you; we will confirm shortly.</p>
+</div>

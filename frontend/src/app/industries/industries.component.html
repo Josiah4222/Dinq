@@ -1,0 +1,21 @@
+<section class="industries section section--tint reveal--fade" appReveal aria-labelledby="industries-title">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <h2 id="industries-title" class="section-title">Industries</h2>
+    </header>
+
+    <div class="industries__grid">
+      @for (industry of industries; track industry.title; let i = $index) {
+        <article class="industry" [style.--card-i]="i">
+          <img class="industry__img" [src]="industry.image" [alt]="industry.alt" loading="lazy" decoding="async" />
+          <div class="industry__overlay" aria-hidden="true"></div>
+          <div class="industry__body">
+            <span class="industry__index" aria-hidden="true">{{ industry.index }}</span>
+            <h3 class="industry__title">{{ industry.title }}</h3>
+            <p class="industry__text">{{ industry.text }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

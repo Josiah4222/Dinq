@@ -1,0 +1,49 @@
+<header class="nav" [class.is-scrolled]="scrolled()" [class.is-open]="menuOpen()">
+  <div class="container nav__inner">
+    <a href="#home" appScrollTo="top" class="nav__brand" aria-label="Dinq Advisory Group — back to top">
+      <app-brand-logo size="sm" />
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      @for (link of links; track link.id) {
+        <a
+          class="nav__link"
+          [class.is-active]="activeId() === link.id"
+          [href]="'#' + link.id"
+          [appScrollTo]="link.id"
+          (click)="selectLink()"
+        >{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="nav__cta">
+      <a href="#contact" appScrollTo="contact" class="btn btn--nav" (click)="selectLink()">Book a Consultation</a>
+    </div>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-menu"
+      aria-label="Toggle menu"
+      (click)="toggleMenu()"
+    >
+      <span class="nav__burger" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="nav__drawer" [class.is-open]="menuOpen()">
+    <nav class="nav__drawer-links" aria-label="Primary mobile">
+      @for (link of links; track link.id) {
+        <a
+          class="nav__drawer-link"
+          [href]="'#' + link.id"
+          [appScrollTo]="link.id"
+          (click)="selectLink()"
+        >{{ link.label }}</a>
+      }
+      <a href="#contact" appScrollTo="contact" class="btn btn--gold nav__drawer-cta" (click)="selectLink()">Book a Consultation</a>
+    </nav>
+  </div>
+</header>

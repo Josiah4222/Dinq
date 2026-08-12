@@ -1,0 +1,27 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo--sm {
+  width: 118px;
+}
+
+.logo--lg {
+  width: 230px;
+}
+
+@media (max-width: 640px) {
+  .logo,
+  .logo--lg {
+    width: 150px;
+  }
+}

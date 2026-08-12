@@ -1,0 +1,211 @@
+:host {
+  display: block;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* ---- Left: direct contact column --------------------------------------- */
+.contact__aside {
+  padding-top: 0.5rem;
+}
+
+.contact__channels {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-mist);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.contact__channel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.1rem 1.35rem;
+  background: var(--color-cream-light);
+  border-bottom: 1px solid var(--color-mist);
+  transition: background-color var(--transition-fast);
+}
+
+.contact__channel:last-child {
+  border-bottom: none;
+}
+
+.contact__channel:hover {
+  background: var(--color-cream);
+}
+
+.contact__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.contact__value {
+  font-size: 0.99rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  transition: color var(--transition-fast);
+}
+
+.contact__value:hover,
+.contact__value:focus-visible {
+  color: #5a3c0a;
+}
+
+/* ---- Right: tabbed form card ------------------------------------------- */
+.contact__card {
+  background: var(--color-white);
+  border: 1px solid rgba(11, 30, 59, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.contact__tabs {
+  display: flex;
+  background: var(--color-cream-light);
+  border-bottom: 1px solid var(--color-mist);
+}
+
+.contact__tab {
+  flex: 1;
+  padding: 1.1rem 1rem;
+  border: 0;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: rgba(11, 30, 59, 0.48);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.contact__tab:hover,
+.contact__tab:focus-visible {
+  color: var(--color-navy);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.contact__tab.is-active {
+  color: var(--color-navy);
+  border-bottom-color: var(--color-gold);
+  background: var(--color-white);
+}
+
+.contact__panels {
+  display: grid;
+}
+
+.contact__panel {
+  grid-area: 1 / 1;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  opacity: 0;
+  transform: translateX(12px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), visibility 0s linear 0.3s;
+}
+
+.contact__panel.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+/* Fieldset reset so the areas group matches other fields */
+.contact__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact__fieldset legend {
+  padding: 0;
+}
+
+/* ---- Success state ------------------------------------------------------ */
+.success {
+  text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 1rem;
+}
+
+.success__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-gold);
+  animation: pop-check 0.5s var(--ease-out) both;
+}
+
+.success__title {
+  margin-top: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+.success__text {
+  margin: 0.75rem auto 0;
+  max-width: 24rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+}
+
+.success .btn {
+  margin-top: 1.75rem;
+  border-color: rgba(11, 30, 59, 0.3);
+  color: var(--color-navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact__panel,
+  .contact__panel.is-active {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    visibility: visible;
+  }
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__channels {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact__aside {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__tab {
+    font-size: 0.82rem;
+    padding: 0.95rem 0.5rem;
+  }
+}
