@@ -1,0 +1,41 @@
+<div class="newsletter">
+  @if (subscribed) {
+    <div class="newsletter__success" role="status">
+      <span class="newsletter__check" aria-hidden="true">&#10003;</span>
+      <p class="newsletter__success-title">
+        {{ alreadySubscribed() ? "You're already subscribed." : "You're subscribed." }}
+      </p>
+      <p class="newsletter__success-text">
+        {{ alreadySubscribed() ? "No need to sign up twice — we'll keep sending you insights." : "Look out for our next insight in your inbox." }}
+      </p>
+    </div>
+  } @else {
+    <p class="newsletter__heading">Insights Newsletter</p>
+    <p class="newsletter__text">
+      Market insight, regulatory updates, and investment fundamentals for
+      international investors and the Ethiopian diaspora.
+    </p>
+    <form class="newsletter__form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      @if (serverError(); as message) {
+        <p class="form-error" role="alert">{{ message }}</p>
+      }
+      <div class="form-field">
+        <label class="form-label" for="newsletter-email">Email <span class="req">*</span></label>
+        <input
+          id="newsletter-email"
+          class="form-input"
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        @if (fieldError('email', form.controls.email); as message) {
+          <p class="form-error" role="alert">{{ message }}</p>
+        }
+      </div>
+      <button type="submit" class="btn btn--gold newsletter__submit" [disabled]="sending()">
+        {{ sending() ? 'Subscribing…' : 'Subscribe' }}
+      </button>
+    </form>
+  }
+</div>

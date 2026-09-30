@@ -1,0 +1,243 @@
+<main id="main">
+  <!-- ================================ Hero ================================ -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero__media" role="presentation">
+      <img
+        [src]="heroImage() | imageSrc"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="hero__img"
+      />
+      <div class="hero__overlay" aria-hidden="true"></div>
+    </div>
+
+    <svg class="hero__routes" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C89B3C" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#C89B3C" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <path d="M 180 620 Q 480 300 640 430 T 1040 220" fill="none" stroke="rgba(200,155,60,0.28)" stroke-width="1.2" stroke-dasharray="2 8" stroke-linecap="round"/>
+      <circle cx="180" cy="620" r="4" fill="#C89B3C"/>
+      <circle cx="640" cy="430" r="4" fill="#C89B3C"/>
+      <circle cx="1040" cy="220" r="4" fill="#C89B3C"/>
+      <circle cx="640" cy="430" r="90" fill="url(#glowGold)"/>
+    </svg>
+
+    <span class="grain" aria-hidden="true"></span>
+    <span class="hero__orb hero__orb--gold" aria-hidden="true"></span>
+    <span class="hero__orb hero__orb--navy" aria-hidden="true"></span>
+
+    <div class="container hero__content">
+      <h1 id="hero-title" class="hero__title anim-rise" style="--rise-delay: 0ms">
+        {{ heroTitle() }}<br />
+        <span class="hero__title-accent">{{ heroTitleAccent() }}</span>
+      </h1>
+
+      <p class="hero__subhead anim-rise" style="--rise-delay: 120ms">
+        {{ heroSubhead() }}
+      </p>
+
+      <p class="hero__proof anim-rise" style="--rise-delay: 180ms">
+        {{ heroProof() }}
+      </p>
+
+      <div class="hero__actions anim-rise" style="--rise-delay: 240ms">
+        <a routerLink="/contact" class="btn btn--gold">{{ heroCtaPrimary() }}</a>
+        <a href="#solutions" appScrollTo="solutions" class="btn btn--ghost">{{ heroCtaSecondary() }}</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-cue anim-rise" style="--rise-delay: 400ms" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ============================ What Dinq Does ============================ -->
+  <section class="why section section--tint" id="why" appReveal aria-labelledby="why-title">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">{{ whyEyebrow() }}</p>
+        <h2 id="why-title" class="section-title">{{ whyTitle() }}</h2>
+      </header>
+      <div class="why__copy">
+        <p class="why__text">
+          {{ whyBody1() }}
+        </p>
+        <p class="why__text">
+          {{ whyBody2() }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= Who We Help ============================= -->
+  <section class="partners section section--dark" appReveal aria-labelledby="partners-title">
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+
+      <header class="section-head">
+        <p class="eyebrow">{{ partnersEyebrow() }}</p>
+        <h2 id="partners-title" class="section-title">{{ partnersTitle() }}</h2>
+      </header>
+
+      <div class="partners__grid">
+        @for (partner of partners(); track partner.title) {
+          <article class="partner">
+            <span class="partner__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path [attr.d]="partner.icon"/>
+              </svg>
+            </span>
+            <h3 class="partner__title">{{ partner.title }}</h3>
+            <p class="partner__text">{{ partner.text }}</p>
+          </article>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================== Solutions ============================== -->
+  <section class="solutions section" id="solutions" appReveal aria-labelledby="solutions-title">
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+
+      <header class="section-head">
+        <p class="eyebrow">{{ solutionsEyebrow() }}</p>
+        <h2 id="solutions-title" class="section-title">{{ solutionsTitle() }}</h2>
+      </header>
+
+      <ol class="solutions__list">
+        @for (solution of solutions(); track solution.title; let i = $index) {
+          <li class="solutions__item" [style.--item-i]="i">
+            <a class="solutions__link" [routerLink]="['/solutions', solution.slug]">
+              <span class="solutions__num" aria-hidden="true">0{{ i + 1 }}</span>
+              <div class="solutions__body">
+                <h3 class="solutions__title">{{ solution.title }}</h3>
+                <p class="solutions__text">{{ solution.text }}</p>
+              </div>
+              <span class="solutions__arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+        }
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- ============================= How We Work ============================= -->
+  <section class="how section section--tint" id="how" appReveal aria-label="How We Work">
+    <div class="container">
+
+      <header class="section-head">
+        <p class="eyebrow">{{ stepsEyebrow() }}</p>
+      </header>
+
+      <ol class="timeline" aria-label="Our four-step process">
+        @for (step of steps(); track step.title; let i = $index; let last = $last) {
+          <li class="timeline__step" [style.--step-i]="i">
+            <div class="timeline__rail" aria-hidden="true">
+              <span class="timeline__node"></span>
+              @if (!last) {
+                <span class="timeline__connector"></span>
+              }
+            </div>
+            <div class="timeline__body">
+              <p class="timeline__label" aria-hidden="true">0{{ i + 1 }}</p>
+              <h3 class="timeline__title">{{ step.title }}</h3>
+              <p class="timeline__text">{{ step.text }}</p>
+            </div>
+          </li>
+        }
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- ============================= Our Approach ============================ -->
+  <section class="approach section" id="approach" appReveal aria-labelledby="approach-title">
+    <div class="container">
+
+      <header class="section-head">
+        <p class="eyebrow">{{ approachEyebrow() }}</p>
+        <h2 id="approach-title" class="section-title">{{ approachTitle() }}</h2>
+      </header>
+
+      <p class="approach__intro">
+        {{ approachIntro() }}
+      </p>
+
+      <ul class="approach__list">
+        @for (item of approachItems(); track $index) {
+          <li class="approach__item">{{ item }}</li>
+        }
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ============================== Industries ============================= -->
+  <app-industries-section
+    [sectionId]="'industries'"
+    [title]="industriesTitle()"
+    [core]="coreIndustries()"
+    [sectors]="additionalSectors()"
+  />
+
+  <!-- ========================= Cross-Border Expertise ====================== -->
+  <section class="cross-border" appReveal aria-labelledby="cross-border-title">
+    <div class="container cross-border__inner">
+      <header class="section-head">
+        <p class="eyebrow">{{ crossBorderEyebrow() }}</p>
+      </header>
+      <p class="cross-border__line">
+        {{ crossBorderBody() }}
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ Kairos Alliance ========================== -->
+  <section class="kairos" id="kairos" appReveal aria-labelledby="kairos-title">
+    <div class="kairos__media" role="presentation">
+      <img class="kairos__img" [src]="kairosImage() | imageSrc" alt="" loading="lazy" decoding="async" />
+      <div class="kairos__overlay" aria-hidden="true"></div>
+    </div>
+
+    <svg class="kairos__pattern" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M -50 550 Q 300 380 600 480 T 1250 350" fill="none" stroke="rgba(200,155,60,0.14)" stroke-width="1" stroke-dasharray="2 9"/>
+      <path d="M -50 300 Q 350 480 700 260 T 1250 150" fill="none" stroke="rgba(200,155,60,0.09)" stroke-width="1" stroke-dasharray="2 9"/>
+    </svg>
+
+    <span class="grain" aria-hidden="true"></span>
+
+    <div class="container kairos__content">
+      <div class="kairos__inner">
+        <div class="kairos__lockup">
+          <img
+            class="kairos__logo"
+            [src]="kairosLogo() | imageSrc"
+            alt="Kairos Law"
+            width="1814"
+            height="486"
+          />
+        </div>
+
+        <h2 id="kairos-title" class="kairos__title">{{ kairosTitle() }}</h2>
+
+        <p class="kairos__paragraph">
+          {{ kairosBody1() }}
+        </p>
+        <p class="kairos__paragraph">
+          {{ kairosBody2() }}
+        </p>
+      </div>
+    </div>
+  </section>
+</main>

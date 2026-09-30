@@ -1,0 +1,186 @@
+<main id="main" class="sp">
+
+  <!-- ================================ Hero ================================ -->
+  <section class="sp-hero">
+    <div class="sp-hero__media" role="presentation">
+      <img
+        [src]="heroImage() | imageSrc"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="sp-hero__img"
+      />
+      <div class="sp-hero__overlay" aria-hidden="true"></div>
+    </div>
+    <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M -50 420 Q 300 200 620 300 T 1250 140" fill="none" stroke="rgba(200,155,60,0.22)" stroke-width="1.1" stroke-dasharray="2 8" stroke-linecap="round"/>
+      <circle cx="620" cy="300" r="4" fill="#C89B3C"/>
+    </svg>
+    <span class="sp-hero__orb" aria-hidden="true"></span>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container sp-hero__inner">
+      <p class="eyebrow">{{ heroEyebrow() }}</p>
+      <h1 class="sp-hero__title">{{ heroTitle() }}</h1>
+    </div>
+  </section>
+
+  <!-- =========================== Section 1: Who We Are ==================== -->
+  <section id="who-we-are" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <div class="sp-prose">
+        <header class="sp-head">
+          <p class="eyebrow">{{ whoWeAreEyebrow() }}</p>
+          <h2 class="sp-title">{{ whoWeAreHeading() }}</h2>
+        </header>
+        @for (p of whoWeAreParagraphs(); track p) {
+          <p class="sp-prose__text">{{ p }}</p>
+        }
+        <p class="about-tagline">{{ whoWeAreTagline() }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= Section 2: Vision, Mission, Purpose & Values =========== -->
+  <section id="vision-mission" class="sp-section sp-section--vm" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+      <div class="vm-grid">
+        <div class="vm-card vm-card--dark">
+          <p class="eyebrow vm-card__eyebrow">{{ visionEyebrow() }}</p>
+          <p class="vm-card__statement">{{ visionText() }}</p>
+        </div>
+        <div class="vm-card vm-card--light">
+          <p class="eyebrow vm-card__eyebrow">{{ missionEyebrow() }}</p>
+          <p class="vm-card__statement vm-card__statement--ink">{{ missionText() }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="purpose" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <div class="sp-statement">
+        <p class="eyebrow sp-statement__eyebrow">{{ purposeEyebrow() }}</p>
+        <h2 class="sp-title sp-statement__title">{{ purposeHeading() }}</h2>
+        @for (p of purposeParagraphs(); track p) {
+          <p class="sp-statement__text sp-statement__text--ink">{{ p }}</p>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="values" class="sp-section sp-section--light" appReveal>
+    <div class="container">
+      <header class="sp-head">
+        <p class="eyebrow">{{ valuesEyebrow() }}</p>
+        <h2 class="sp-title">{{ valuesHeading() }}</h2>
+      </header>
+      <ul class="sp-values">
+        @for (v of valueItems(); track v.title; let i = $index) {
+          <li class="sp-value">
+            <span class="sp-value__num" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+            <h3 class="sp-value__title">{{ v.title }}</h3>
+            <p class="sp-value__text">{{ v.text }}</p>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====================== Section 3: How We Work ======================== -->
+  <section id="how-we-work" class="sp-section about-how" appReveal aria-label="How We Work">
+    <div class="container">
+      <header class="sp-head">
+        <p class="eyebrow">{{ stepsEyebrow() }}</p>
+        <h2 class="sp-title">{{ stepsHeading() }}</h2>
+      </header>
+
+      <ol class="about-timeline" aria-label="Our four-step process">
+        @for (step of stepItems(); track step.title; let i = $index; let last = $last) {
+          <li class="about-timeline__step" [style.--step-i]="i">
+            <div class="about-timeline__rail" aria-hidden="true">
+              <span class="about-timeline__node"></span>
+              @if (!last) {
+                <span class="about-timeline__connector"></span>
+              }
+            </div>
+            <div class="about-timeline__body">
+              <p class="about-timeline__label" aria-hidden="true">0{{ i + 1 }}</p>
+              <h3 class="about-timeline__title">{{ step.title }}</h3>
+              <p class="about-timeline__text">{{ step.text }}</p>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ==================== Section 4: Our Approach ========================= -->
+  <section id="our-approach" class="sp-section sp-section--dark about-approach" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+      <header class="sp-head">
+        <p class="eyebrow">{{ approachEyebrow() }}</p>
+        <h2 class="sp-title sp-section--dark-title">{{ approachHeading() }}</h2>
+      </header>
+
+      @for (p of approachIntro(); track p) {
+        <p class="about-approach__intro">{{ p }}</p>
+      }
+
+      <ul class="about-approach__pillars" aria-label="Our approach pillars">
+        @for (pillar of approachPillars(); track pillar.title) {
+          <li class="about-approach__pillar">
+            <h3 class="about-approach__pillar-title">{{ pillar.title }}</h3>
+            <p class="about-approach__pillar-text">{{ pillar.text }}</p>
+          </li>
+        }
+      </ul>
+
+      <div class="about-approach__cta">
+        <a routerLink="/contact" class="btn btn--gold">{{ approachCta() }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== Section 5a: Kairos Alliance ====================== -->
+  <section id="alliance" class="sp-section sp-section--vm" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+      <div class="about-alliance">
+        <div class="about-alliance__lockup">
+          <img [src]="allianceLogo() | imageSrc" alt="Kairos Law" class="about-alliance__logo" />
+          <span class="about-alliance__label">{{ allianceLabel() }}</span>
+        </div>
+        <header class="sp-head">
+          <p class="eyebrow">{{ allianceEyebrow() }}</p>
+          <h2 class="sp-title sp-section--dark-title">{{ allianceHeading() }}</h2>
+        </header>
+        @for (p of allianceParagraphs(); track p) {
+          <p class="about-alliance__text">{{ p }}</p>
+        }
+        <div class="about-alliance__benefits">
+          <h3 class="about-alliance__benefits-heading">{{ allianceBenefitsHeading() }}</h3>
+          <ul class="about-alliance__list" aria-label="Client benefits">
+            @for (benefit of allianceBenefits(); track benefit) {
+              <li class="about-alliance__item">{{ benefit }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== Section 5b: Why "Dinq"? ========================= -->
+  <section id="why-dinq" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <div class="sp-statement">
+        <span class="sp-statement__glyph" aria-hidden="true">{{ whyDinqAmharic() }}</span>
+        <p class="eyebrow sp-statement__eyebrow">{{ whyDinqEyebrow() }}</p>
+        <p class="sp-statement__text sp-statement__text--ink" style="max-width:52ch;">{{ whyDinqText() }}</p>
+        <p class="about-dinq-footnote">{{ whyDinqFootnote() }}</p>
+      </div>
+    </div>
+  </section>
+
+</main>

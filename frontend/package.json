@@ -6,7 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "verify:cms": "npm run verify:cms:merge && npm run verify:cms:keys",
+    "verify:cms:merge": "node tools/verify-cms-merge.mjs",
+    "verify:cms:keys": "node tools/verify-cms-keys.mjs",
+    "verify:topics": "node tools/verify-inquiry-topics.mjs",
+    "verify:images": "node tools/verify-image-paths.mjs"
   },
   "private": true,
   "dependencies": {

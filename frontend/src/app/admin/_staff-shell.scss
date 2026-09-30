@@ -1,0 +1,289 @@
+/* Staff shell — the two-column frame and the dark navigation rail.
+   Owned by AdminShellComponent. Both the inbox and the page-content screens sit
+   inside `.staff__main`, so the rail is written once here rather than copied
+   into each screen. */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--color-white);
+}
+
+.staff {
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.staff__main {
+  min-width: 0;
+  padding: clamp(2rem, 4vw, 3.25rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 6vw, 4.5rem);
+}
+
+/* ---- Rail ----------------------------------------------------------------- */
+.rail {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1.5rem 1rem 1.25rem;
+  color: var(--color-cream);
+  background: var(--color-navy-deep);
+}
+
+.rail__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0 0.6rem 1.5rem;
+}
+
+.rail__mark {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+}
+
+.rail__sub {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.rail__label {
+  padding: 0 0.6rem 0.6rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 226, 0.5);
+}
+
+/* The rail groups the three submission types under one heading and page
+   content under another. This is the second heading, so it needs its own top
+   gap to separate the two groups -- otherwise the only break between them is
+   the label's own padding, which is too little to read as a new group. */
+.rail__label--spaced {
+  margin-top: 1.1rem;
+}
+
+.rail__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+/* Rail entries are anchors to the staff screens, so they carry the button reset
+   and inherit nothing they should not. The right-hand flex slot is left to the
+   count badge so the labels stay in a column however wide the numbers get. */
+.rail__link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  color: rgba(244, 239, 226, 0.78);
+  background: transparent;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.rail__link:hover {
+  color: var(--color-cream);
+  background: rgba(244, 239, 226, 0.07);
+}
+
+.rail__link.is-active {
+  color: var(--color-white);
+  background: rgba(244, 239, 226, 0.12);
+  border-left-color: var(--color-gold);
+}
+
+.rail__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--color-gold);
+}
+
+.rail__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* "Contact & Consultation" is wider than the label column, so it wraps to
+     two lines. A tightened line-height keeps that readable and stops the
+     wrapped item from looking twice as tall as the one-word labels beside it. */
+  line-height: 1.25;
+}
+
+.rail__count {
+  flex: 0 0 auto;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-cream);
+  background: rgba(244, 239, 226, 0.14);
+  border-radius: 2rem;
+}
+
+.rail__link.is-active .rail__count {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+}
+
+/* Account block pinned to the bottom of the rail. */
+.rail__foot {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(244, 239, 226, 0.16);
+}
+
+.rail__user {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0 0.35rem 0.85rem;
+}
+
+.rail__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  flex: 0 0 auto;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-navy-deep);
+  background: var(--color-gold);
+  border-radius: 50%;
+}
+
+.rail__identity {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.rail__name {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--color-white);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail__role {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 226, 0.55);
+}
+
+.rail__signout {
+  width: 100%;
+  padding: 0.55rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  background: transparent;
+  border: 1px solid rgba(244, 239, 226, 0.28);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.rail__signout:hover:not(:disabled) {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+}
+
+.rail__signout:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Below the two-column threshold the rail becomes a top bar with a scrollable
+   nav, so it stays reachable on a phone without squeezing the list beside it. */
+@media (max-width: 860px) {
+  .staff {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .rail__brand {
+    padding: 0;
+    flex: 0 0 auto;
+  }
+
+  .rail__label {
+    display: none;
+  }
+
+  .rail__nav {
+    flex-direction: row;
+    gap: 0.35rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+  }
+
+  .rail__link {
+    flex: 0 0 auto;
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+    padding: 0.5rem 0.55rem;
+    white-space: nowrap;
+  }
+
+  .rail__link.is-active {
+    border-bottom-color: var(--color-gold);
+  }
+
+  .rail__foot {
+    margin-top: 0;
+    padding-top: 0;
+    margin-left: auto;
+    border-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+  }
+
+  .rail__user {
+    display: none;
+  }
+
+  .rail__signout {
+    width: auto;
+    white-space: nowrap;
+  }
+}

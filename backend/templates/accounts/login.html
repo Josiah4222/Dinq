@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in · {{ site_name|default:"Dinq" }}{% endblock %}
+
+{% block content %}
+<main class="auth">
+  <div class="auth__glow auth__glow--a" aria-hidden="true"></div>
+  <div class="auth__glow auth__glow--b" aria-hidden="true"></div>
+
+  <div class="auth__card">
+    <div class="auth__head">
+      <span class="auth__mark">
+        <span class="auth__mark-name">Dinq</span>
+        <span class="auth__mark-sub">Advisory Group</span>
+      </span>
+      <h1 class="auth__title">Staff sign in</h1>
+      <p class="auth__lede">Access to the staff area is limited to authorised personnel.</p>
+    </div>
+
+    <form class="auth__form" method="post" novalidate>
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="auth__alert" role="alert">
+          <ul>
+            {% for error in form.non_field_errors %}<li>{{ error }}</li>{% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <div class="auth__field">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        <input
+          type="text"
+          name="{{ form.username.name }}"
+          id="{{ form.username.id_for_label }}"
+          value="{{ form.username.value|default:'' }}"
+          autocomplete="username"
+          autofocus
+          required
+          {% if form.username.errors %}aria-invalid="true" aria-describedby="{{ form.username.id_for_label }}-error"{% endif %}>
+        {% if form.username.errors %}
+          <p class="auth__field-error" id="{{ form.username.id_for_label }}-error">
+            {% for error in form.username.errors %}{{ error }}{% endfor %}
+          </p>
+        {% endif %}
+      </div>
+
+      <div class="auth__field">
+        <label for="{{ form.password.id_for_label }}">Password</label>
+        <input
+          type="password"
+          name="{{ form.password.name }}"
+          id="{{ form.password.id_for_label }}"
+          autocomplete="current-password"
+          required
+          {% if form.password.errors %}aria-invalid="true" aria-describedby="{{ form.password.id_for_label }}-error"{% endif %}>
+        {% if form.password.errors %}
+          <p class="auth__field-error" id="{{ form.password.id_for_label }}-error">
+            {% for error in form.password.errors %}{{ error }}{% endfor %}
+          </p>
+        {% endif %}
+      </div>
+
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <button type="submit" class="auth__submit">Sign in</button>
+
+      <p class="auth__foot">
+        Trouble signing in? <a href="mailto:admin@dinq.com">Contact the administrator</a>.
+      </p>
+    </form>
+  </div>
+</main>
+{% endblock %}

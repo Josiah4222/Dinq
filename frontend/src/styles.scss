@@ -14,13 +14,19 @@
   --color-cream: #F4EFE2;       /* light section backgrounds, card/table headers */
 
   /* Extended neutrals derived from the palette */
-  --color-navy-deep: #071427;   /* darker navy for bands/footer */
-  --color-navy-soft: #12305C;   /* hover tints on navy */
-  --color-ink: #101828;         /* body text on light backgrounds */
-  --color-ink-muted: #5A6474;   /* secondary text on light backgrounds */
-  --color-cream-light: #FAF7EF; /* lighter cream for card surfaces */
-  --color-mist: #E9E2D0;        /* borders/hairlines on cream */
+  --color-navy-deep: color-mix(in srgb, #0B1E3B 85%, black);
+  --color-navy-soft: color-mix(in srgb, #0B1E3B 75%, #C89B3C 15%);
+  --color-ink: color-mix(in srgb, #0B1E3B 90%, black);
+  --color-ink-muted: color-mix(in srgb, #0B1E3B 55%, #F4EFE2);
+  --color-cream-light: color-mix(in srgb, #F4EFE2 92%, white);
+  --color-mist: color-mix(in srgb, #F4EFE2 88%, #C89B3C 5%);
   --color-white: #FFFFFF;
+
+  /* Gold variants */
+  --color-gold-light: color-mix(in srgb, #C89B3C 80%, white);
+  --color-gold-muted: color-mix(in srgb, #C89B3C 60%, white);
+  --color-gold-dark: color-mix(in srgb, #C89B3C 65%, black);
+  --color-gold-deep: color-mix(in srgb, #C89B3C 50%, black);
 
   /* Overlays for photography legibility */
   --overlay-strong: rgba(7, 20, 39, 0.82);
@@ -28,7 +34,7 @@
   --overlay-soft: rgba(7, 20, 39, 0.42);
 
   /* Functional */
-  --color-focus: #E5C77A;       /* focus ring (gold, light enough to read) */
+  --color-focus: color-mix(in srgb, #C89B3C 75%, white);
   --color-error: #C25B4E;       /* form validation */
   --color-success: #3E7C59;     /* form success state */
 
@@ -46,11 +52,11 @@
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  --shadow-sm: 0 1px 2px rgba(11, 30, 59, 0.08), 0 2px 6px rgba(11, 30, 59, 0.05);
-  --shadow-md: 0 6px 18px rgba(11, 30, 59, 0.10), 0 2px 6px rgba(11, 30, 59, 0.06);
-  --shadow-lg: 0 18px 42px rgba(11, 30, 59, 0.18), 0 6px 14px rgba(11, 30, 59, 0.10);
-  --shadow-gold: 0 10px 26px rgba(200, 155, 60, 0.28);
-  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --shadow-sm: 0 2px 14px rgba(11, 30, 59, 0.06);
+  --shadow-md: 0 6px 18px rgba(11, 30, 59, 0.10);
+  --shadow-lg: 0 24px 60px rgba(11, 30, 59, 0.14);
+  --shadow-gold: 0 10px 30px rgba(200, 155, 60, 0.35);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --transition-fast: 200ms ease-out;
   --transition-med: 420ms var(--ease-out);
@@ -125,9 +131,18 @@ input, select, textarea {
 }
 
 /* Sections receive top offset so anchor scrolls clear the fixed nav.
-   Targets any scrollable anchor (component host elements carry the section ids). */
+   Targets any scrollable anchor (component host elements carry the section ids).
+   The 8px is breathing room so the heading is not flush against the bar. */
 [id] {
   scroll-margin-top: calc(var(--nav-height) + 8px);
+}
+
+/* Pages with a sticky in-page nav (/why-ethiopia) stack a second bar directly
+   under the navbar, so an anchor scroll has to clear that as well or the
+   section's heading lands behind it. The bar's own height is the variable, so
+   it stays correct if the padding or font size changes. */
+:has(> .sp-anchor) [id] {
+  scroll-margin-top: calc(var(--nav-height) + var(--sp-anchor-height) + 8px);
 }
 
 /* -----------------------------------------------------------------------------
@@ -202,6 +217,49 @@ input, select, textarea {
   opacity: 0.6;
 }
 
+/* -----------------------------------------------------------------------------
+ * Shared pill / tag
+ *
+ * Promoted from the leadership component's `.lead-row__pill` so other
+ * components can reuse the exact same treatment. Values are unchanged; the
+ * anchor rules below are additive so a pill can be a link without any
+ * component-specific styling.
+ * ------------------------------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.8rem;
+  border-radius: 2rem;
+  background: var(--color-cream);
+  border: 1px solid rgba(200, 155, 60, 0.22);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
+}
+
+.pill:hover {
+  background: rgba(200, 155, 60, 0.14);
+  border-color: rgba(200, 155, 60, 0.45);
+  color: var(--color-gold-dark);
+}
+
+/* Pills used as links: kill the default underline and keep the hover above. */
+a.pill {
+  text-decoration: none;
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* Centered section header block */
 .section-head {
   max-width: 46rem;
@@ -248,11 +306,12 @@ input, select, textarea {
   gap: 0.6rem;
   padding: 0.95rem 1.9rem;
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: 3px;
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   line-height: 1.2;
   text-align: center;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
@@ -263,15 +322,15 @@ input, select, textarea {
 }
 
 .btn--gold {
-  background: var(--color-gold);
-  color: var(--color-navy);
+  background: linear-gradient(120deg, var(--color-gold-light), #C89B3C 60%, var(--color-gold-muted));
+  color: var(--color-navy-deep);
+  box-shadow: 0 14px 34px rgba(200, 155, 60, 0.32);
 }
 
 .btn--gold:hover,
 .btn--gold:focus-visible {
-  background: #d6a84e;
-  box-shadow: var(--shadow-gold);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px rgba(200, 155, 60, 0.4);
 }
 
 .btn--ghost {
@@ -288,16 +347,17 @@ input, select, textarea {
 }
 
 .btn--nav {
-  padding: 0.62rem 1.35rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.72rem;
   background: var(--color-gold);
   color: var(--color-navy);
-  font-size: 0.85rem;
 }
 
 .btn--nav:hover,
 .btn--nav:focus-visible {
-  background: #d6a84e;
+  background: var(--color-gold-light);
   box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
 }
 
 /* Inline text link used for legal/placeholder links */
@@ -311,7 +371,7 @@ input, select, textarea {
 
 .text-link:hover,
 .text-link:focus-visible {
-  color: #d6a84e;
+  color: var(--color-gold-light);
 }
 
 /* -----------------------------------------------------------------------------
@@ -420,6 +480,38 @@ input, select, textarea {
   background: var(--color-error);
   color: var(--color-white);
   font-size: 0.68rem;
+  font-weight: 700;
+}
+
+/* Request-level failure banner, shown above the fields when a submit did not
+   reach the server or was rejected outright (not tied to one field). */
+.form-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-error);
+  background: #faf0ee;
+  border: 1px solid rgba(194, 91, 78, 0.35);
+  border-radius: 2px;
+}
+
+.form-banner::before {
+  content: '!';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+  border-radius: 50%;
+  background: var(--color-error);
+  color: var(--color-white);
+  font-size: 0.72rem;
   font-weight: 700;
 }
 

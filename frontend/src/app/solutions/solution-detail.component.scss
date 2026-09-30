@@ -1,0 +1,477 @@
+:host {
+  display: block;
+}
+
+/* ============================== Hero band =============================== */
+.sol-detail__hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 90% at 15% 0%, rgba(200, 155, 60, 0.14) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-cream-light) 0%, var(--color-cream) 100%);
+  padding-block: clamp(4.5rem, 9vw, 7rem) clamp(3rem, 6vw, 4.5rem);
+}
+
+.sol-detail__hero--image {
+  overflow: hidden;
+  background: var(--color-navy-deep);
+  padding-block: 0;
+  min-height: clamp(22rem, 50vw, 34rem);
+  display: flex;
+  align-items: flex-end;
+}
+
+.sol-detail__hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(0.85) contrast(1.04);
+  z-index: 0;
+}
+
+.sol-detail__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(7, 20, 39, 0.88) 0%,
+      rgba(7, 20, 39, 0.7) 35%,
+      rgba(11, 30, 59, 0.65) 60%,
+      rgba(7, 20, 39, 0.92) 100%
+    );
+  z-index: 1;
+}
+
+.sol-detail__hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.sol-detail__hero--image .sol-detail__hero-inner {
+  padding-block: clamp(5rem, 10vw, 8rem) clamp(3rem, 7vw, 5rem);
+}
+
+.sol-detail__hero--image .sol-detail__back {
+  color: rgba(244, 239, 226, 0.7);
+}
+
+.sol-detail__hero--image .sol-detail__back:hover {
+  color: var(--color-gold);
+}
+
+.sol-detail__hero--image .sol-detail__title {
+  color: var(--color-cream);
+}
+
+.sol-detail__hero--image .sol-detail__summary {
+  color: rgba(244, 239, 226, 0.9);
+}
+
+.sol-detail__hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sol-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  transition: color var(--transition-fast);
+}
+
+.sol-detail__back:hover,
+.sol-detail__back:focus-visible {
+  color: var(--color-gold);
+}
+
+.sol-detail__title {
+  margin-top: 1.1rem;
+  font-size: clamp(2.3rem, 5.5vw, 3.7rem);
+  line-height: 1.05;
+  color: var(--color-navy);
+  max-width: 18ch;
+}
+
+/* Optional subheading under the page title. Same family as the tagline
+   (display face, italic, gold) but a step larger, since it reads as a
+   subheading rather than a trailing flourish. */
+.sol-detail__headline {
+  margin-top: 1.15rem;
+  max-width: 30ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.1vw, 1.55rem);
+  line-height: 1.4;
+  color: var(--color-gold-deep);
+}
+
+.sol-detail__hero--image .sol-detail__headline {
+  color: var(--color-gold);
+}
+
+.sol-detail__summary {
+  margin-top: 1.5rem;
+  max-width: 52ch;
+  font-size: clamp(1.02rem, 1.7vw, 1.18rem);
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+.sol-detail__tagline {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--color-gold-deep);
+}
+
+.sol-detail__hero--image .sol-detail__tagline {
+  color: var(--color-gold);
+}
+
+/* ============================ The Opportunity ============================ */
+.sol-detail__opportunity {
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.sol-detail__opportunity-form {
+  min-width: 0;
+}
+
+/* PAM only: lead form on the left, The Opportunity on the right.
+   Entered via min-width so the paired state only exists at a size that has
+   been measured. The form column is the wider of the two (5.5fr) because its
+   two-up field pairs need ~250px each before the uppercase labels wrap. */
+@media (min-width: 1200px) {
+  .sol-detail__opportunity--paired .sol-detail__opportunity-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 5.5fr) minmax(0, 4fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    /* start, not center: the form card is ~840px tall and the statement ~160px,
+       so centering opened a void above AND below the text. Top-aligning leaves
+       the empty space in one place at the bottom, where it reads as ordinary
+       section slack rather than a hole. */
+    align-items: start;
+  }
+
+  /* A 26px display face in a ~440px column runs to far too many lines, so the
+     statement is scaled down in the paired context only. */
+  .sol-detail__opportunity--paired .sol-detail__statement {
+    max-width: 34ch;
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    line-height: 1.6;
+  }
+}
+
+.sol-detail__statement {
+  margin-top: 1.35rem;
+  max-width: 54ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-navy);
+}
+
+/* =========================== Common Challenges =========================== */
+.sol-detail__challenges-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.sol-detail__section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  line-height: 1.1;
+  color: var(--color-navy);
+}
+
+.sol-detail__challenge-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Editorial numbered stack: numeral in the margin, hairline rule between
+   items, no card framing. */
+.sol-detail__challenge {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  align-items: start;
+  padding-block: clamp(1.4rem, 2.6vw, 1.85rem);
+  border-top: 1px solid rgba(11, 30, 59, 0.13);
+}
+
+.sol-detail__challenge:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.sol-detail__challenge:last-child {
+  padding-bottom: 0;
+}
+
+.sol-detail__challenge-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-gold);
+  letter-spacing: 0.01em;
+}
+
+.sol-detail__challenge-text {
+  font-size: clamp(1.02rem, 1.55vw, 1.16rem);
+  line-height: 1.68;
+  color: var(--color-ink);
+}
+
+/* ========================= Approach + Delivery =========================== */
+.sol-detail__approach-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.sol-detail__approach-text {
+  margin-top: 1.5rem;
+  max-width: 44ch;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-ink-muted);
+}
+
+.sol-detail__delivery {
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--color-mist);
+}
+
+.sol-detail__delivery-title {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.5rem;
+}
+
+.sol-detail__delivery-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.sol-detail__delivery-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--color-mist);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+.sol-detail__delivery-item:last-child {
+  border-bottom: none;
+}
+
+.sol-detail__delivery-num {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--color-gold);
+  letter-spacing: 0.06em;
+}
+
+/* Optional closing paragraph, sits under the services list in the same
+   column. Matched to the approach text so the two columns balance. */
+.sol-detail__closing {
+  margin-top: 1.75rem;
+  max-width: 44ch;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-ink-muted);
+}
+
+/* ============================ How We Deliver (4-step) ===================== */
+.sol-detail__steps {
+  background: linear-gradient(180deg, var(--color-cream-light) 0%, var(--color-cream) 100%);
+}
+
+/* Reduced from the shared 2.5rem section-title: this headline repeats the
+   four words the timeline below already spells out, so it reads as a caption
+   to the timeline rather than a second hero line. */
+.sol-detail__steps .sol-detail__section-title {
+  margin-top: 0.9rem;
+  max-width: 24ch;
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+}
+
+.sol-detail__steps app-how-we-work {
+  display: block;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* ============================ Private Client & Family Office =============== */
+.sol-detail__private-client {
+  background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream-light) 100%);
+}
+
+.sol-detail__private-client .sol-detail__section-title {
+  margin-top: 0.9rem;
+  max-width: 26ch;
+}
+
+.sol-detail__private-client-text {
+  margin-top: 1.4rem;
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.85;
+  color: var(--color-ink-muted);
+}
+
+/* ============================== Why Dinq ================================= */
+.sol-detail__why {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(200, 155, 60, 0.1) 0%, transparent 48%),
+    linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+}
+
+.sol-detail__why-quote {
+  margin-top: 1.75rem;
+  max-width: 30ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-cream);
+}
+
+/* ================================= FAQ =================================== */
+.sol-detail__faq-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* ============================ Related solutions ========================== */
+.sol-detail__related {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.sol-detail__related-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.sol-detail__related-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid rgba(11, 30, 59, 0.1);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  transition: border-color var(--transition-med), box-shadow var(--transition-med), transform var(--transition-med);
+}
+
+.sol-detail__related-card:hover,
+.sol-detail__related-card:focus-visible {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.sol-detail__related-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.3;
+  color: var(--color-navy);
+}
+
+.sol-detail__related-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 30, 59, 0.15);
+  color: var(--color-gold);
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.sol-detail__related-card:hover .sol-detail__related-arrow,
+.sol-detail__related-card:focus-visible .sol-detail__related-arrow {
+  color: var(--color-navy);
+  border-color: var(--color-gold);
+  background: var(--color-gold);
+}
+
+/* ================================= CTA =================================== */
+.sol-detail__cta {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.sol-detail__cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.sol-detail__cta-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--color-navy);
+}
+
+.sol-detail__cta-text {
+  max-width: 46ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Responsive ----------------------------------------------------------- */
+@media (max-width: 820px) {
+  .sol-detail__challenges-inner,
+  .sol-detail__approach-grid,
+  .sol-detail__faq-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-detail__hero--image {
+    min-height: clamp(18rem, 40vw, 26rem);
+  }
+
+  .sol-detail__delivery {
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sol-detail__related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sol-detail__challenge {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+}

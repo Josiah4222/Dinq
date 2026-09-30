@@ -1,35 +1,39 @@
-import { Component } from '@angular/core';
-import { SiteNavComponent } from './site-nav/site-nav.component';
-import { HeroComponent } from './hero/hero.component';
-import { WhyDinqComponent } from './why-dinq/why-dinq.component';
-import { HowWeWorkComponent } from './how-we-work/how-we-work.component';
-import { SolutionsComponent } from './solutions/solutions.component';
-import { IndustriesComponent } from './industries/industries.component';
-import { KairosAllianceComponent } from './kairos-alliance/kairos-alliance.component';
-import { ClosingStatementComponent } from './closing-statement/closing-statement.component';
-import { ContactSectionComponent } from './contact-section/contact-section.component';
+import { Component, computed, inject, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
+import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 
+/** Routes that get the staff chrome instead of the public site chrome. */
+const STAFF_PATHS = ['/admin', '/login'];
+
 /**
- * Root component — the single-page experience. Each section is its own
- * component stacked here in reading order; the ids on the host elements are the
- * anchor targets used by the nav and CTA scroll links.
+ * Root component — the app shell.
+ *
+ * The public navbar and footer wrap the routed page content for the whole
+ * marketing site. The staff area is deliberately excluded: those pages carry
+ * their own header, sidebar and sign-out, and the public nav would be dead
+ * weight there (and a stray way out of a staff screen).
  */
 @Component({
   selector: 'app-root',
-  imports: [
-    SiteNavComponent,
-    HeroComponent,
-    WhyDinqComponent,
-    HowWeWorkComponent,
-    SolutionsComponent,
-    IndustriesComponent,
-    KairosAllianceComponent,
-    ClosingStatementComponent,
-    ContactSectionComponent,
-    FooterComponent,
-  ],
+  imports: [NavbarComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  private readonly router = inject(Router);
+
+  private readonly currentUrl = signal(this.router.url);
+
+  /** True on /admin and /login, where the public chrome is suppressed. */
+  readonly isStaffArea = computed(() =>
+    STAFF_PATHS.some(path => this.currentUrl() === path || this.currentUrl().startsWith(`${path}/`)),
+  );
+
+  constructor() {
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe(event => this.currentUrl.set(event.urlAfterRedirects));
+  }
+}

@@ -1,0 +1,209 @@
+:host {
+  display: block;
+}
+
+.contact__title {
+  margin-top: 1.5rem;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-navy);
+}
+
+.contact__intro {
+  margin-top: 1rem;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* ---- Left: direct contact column --------------------------------------- */
+.contact__aside {
+  padding-top: 0.5rem;
+}
+
+.contact__channels {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-mist);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.contact__channel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.1rem 1.35rem;
+  background: var(--color-cream-light);
+  border-bottom: 1px solid var(--color-mist);
+  transition: background-color var(--transition-fast);
+}
+
+.contact__channel:last-child {
+  border-bottom: none;
+}
+
+.contact__channel:hover {
+  background: var(--color-cream);
+}
+
+.contact__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/*
+ * Office group heading. Sits on white against the cream channel rows and takes
+ * the navy rather than the gold of a field label, so it reads as the parent of
+ * the phone and address beneath it instead of as one more detail.
+ */
+.contact__office {
+  padding: 0.8rem 1.35rem 0.6rem;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-mist);
+  border-top: 1px solid var(--color-mist);
+}
+
+.contact__office-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+}
+
+.contact__value {
+  font-size: 0.99rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  transition: color var(--transition-fast);
+}
+
+.contact__value:hover,
+.contact__value:focus-visible {
+  color: var(--color-gold-deep);
+}
+
+/* ---- Right: unified form card ------------------------------------------- */
+.contact__card {
+  background: var(--color-white);
+  border: 1px solid rgba(11, 30, 59, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.contact__form {
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+/* ---- Two-column field grid ---------------------------------------------- */
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.3rem 1.5rem;
+  align-items: start;
+}
+
+/* Full-width fields span both columns */
+.field--full {
+  grid-column: 1 / -1;
+}
+
+/* Neutralize the global `.form-field + .form-field` vertical margin inside
+   the grid (spacing is handled by grid gap instead). */
+.field-grid > * {
+  margin-top: 0;
+}
+
+/* Fieldset reset so the areas group matches other fields */
+.contact__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact__fieldset legend {
+  padding: 0;
+}
+
+/* ---- Success state ------------------------------------------------------ */
+.success {
+  text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 1rem;
+}
+
+.success__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-gold);
+  animation: pop-check 0.5s var(--ease-out) both;
+}
+
+.success__title {
+  margin-top: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+.success__text {
+  margin: 0.75rem auto 0;
+  max-width: 24rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+}
+
+.success .btn {
+  margin-top: 1.75rem;
+  border-color: rgba(11, 30, 59, 0.3);
+  color: var(--color-navy);
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__channels {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact__aside {
+    grid-template-columns: 1fr;
+  }
+}

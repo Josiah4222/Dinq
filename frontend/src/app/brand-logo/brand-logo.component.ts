@@ -12,5 +12,7 @@ import { Component, Input } from '@angular/core';
 })
 export class BrandLogoComponent {
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
-  readonly src = 'dinq_gold_premium.png';
+  // Root-absolute. A relative value is resolved by the browser against the
+  // current URL, so on any route below the homepage this 404s.
+  readonly src = '/dinq_gold_premium.png';
 }

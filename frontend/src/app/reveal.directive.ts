@@ -38,6 +38,10 @@ export class RevealDirective implements OnInit {
       return;
     }
 
+    // `threshold` is a *ratio of the host's own area*, so a section taller than
+    // the viewport can never reach even a small threshold and would stay at
+    // opacity 0 forever. Fire as soon as any part of the host crosses into the
+    // top of the viewport instead, which behaves the same for any height.
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
@@ -47,8 +51,8 @@ export class RevealDirective implements OnInit {
         }
       }
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -8% 0px',
+      threshold: 0,
+      rootMargin: '0px 0px -12% 0px',
     });
 
     observer.observe(host);

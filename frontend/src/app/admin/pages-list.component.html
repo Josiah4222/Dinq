@@ -1,0 +1,78 @@
+<app-admin-shell>
+  <header class="staff__head">
+    <p class="eyebrow">Staff area</p>
+    <h1 class="staff__title">Page content</h1>
+    <p class="staff__lede">
+      Every page on the site, grouped by section. Open a page to read and change
+      its text, headings, and images.
+    </p>
+  </header>
+
+  @if (loadError()) {
+    <p class="pages__error" role="alert">{{ loadError() }}</p>
+  }
+
+  @if (!loadError()) {
+    <div class="pages__bar">
+      <p class="pages__count">
+        <strong>{{ readyCount() }}</strong> of <strong>{{ total() }}</strong> pages editable
+        @if (pendingCount() > 0) {
+          <span class="pages__pending">· {{ pendingCount() }} not yet migrated</span>
+        }
+      </p>
+      <button type="button" class="pages__reload" (click)="ngOnInit()" [disabled]="loading()">
+        {{ loading() ? 'Loading…' : 'Reload' }}
+      </button>
+    </div>
+  }
+
+  @if (loading()) {
+    <p class="pages__empty">Loading pages…</p>
+  } @else {
+    @for (group of groups(); track group.category) {
+      <section class="group" [attr.aria-labelledby]="'group-' + group.category">
+        <div class="group__head">
+          <h2 class="group__title" [id]="'group-' + group.category">{{ group.category }}</h2>
+          <span class="group__count">{{ group.pages.length }}</span>
+        </div>
+
+        <ul class="cards">
+          @for (page of group.pages; track page.slug) {
+            <li class="card" [class.card--pending]="!page.hasContent">
+              <a class="card__link" [routerLink]="['/admin/pages', page.slug]">
+                <span class="card__top">
+                  <span class="card__route">{{ routeLabel(page.route) }}</span>
+                  @if (page.hasContent) {
+                    <span class="card__badge card__badge--ready">
+                      {{ page.blockCount }} {{ page.blockCount === 1 ? 'field' : 'fields' }}
+                    </span>
+                  } @else {
+                    <span class="card__badge card__badge--pending">Not yet migrated</span>
+                  }
+                </span>
+                <span class="card__title">{{ page.title }}</span>
+                <span class="card__cta">
+                  @if (page.hasContent) {
+                    Edit content
+                  } @else {
+                    View &amp; edit
+                  }
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </a>
+            </li>
+          }
+        </ul>
+      </section>
+    } @empty {
+      <p class="pages__empty">No pages found. Run <code>manage.py seed_cms</code> to load the inventory.</p>
+    }
+  }
+</app-admin-shell>

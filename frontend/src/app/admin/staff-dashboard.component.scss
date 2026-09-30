@@ -1,0 +1,9 @@
+﻿/* The inbox screen: the staff header and the entry list. The shell and the rail
+   come from AdminShellComponent; the header rules are shared with the
+   page-content screens, and so is the list's own top margin.
+
+   The submission types used to be a tab bar between the header and the list.
+   They are rail links now, so there is nothing between the header's lede and
+   the list,    and the shared margin is what separates them. */
+@use 'staff-head';
+@use 'staff-inbox';

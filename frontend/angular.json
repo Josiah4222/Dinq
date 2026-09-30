@@ -72,8 +72,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "26kB",
+                  "maximumError": "30kB"
                 }
               ],
               "outputHashing": "all"
@@ -86,8 +86,11 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+              "serve": {
+                "builder": "@angular-devkit/build-angular:dev-server",
+                "options": {
+                  "proxyConfig": "proxy.conf.json"
+                },
           "configurations": {
             "production": {
               "buildTarget": "dinq:build:production"

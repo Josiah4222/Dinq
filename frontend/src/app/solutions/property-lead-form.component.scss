@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+/* Width comes from the wrapping section (.sol-detail__lead-inner, 720px) so the
+   card is centred by its container rather than by its own margin. */
+.property-lead {
+  width: 100%;
+}
+
+.property-lead__card {
+  background: var(--color-white);
+  border: 1px solid rgba(11, 30, 59, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.property-lead__form {
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.property-lead__head {
+  margin-bottom: 1.5rem;
+}
+
+/* Two-up rows for the short fields. The global `.form-field + .form-field`
+   margin is neutralised inside a row so the grid gap is the only rhythm —
+   without this the second cell of each pair gets a stray 1.15rem offset. */
+.property-lead__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+.property-lead__row + .property-lead__row,
+.property-lead__row + .form-field,
+.form-field + .property-lead__row {
+  margin-top: 1.15rem;
+}
+
+.property-lead__row .form-field + .form-field {
+  margin-top: 0;
+}
+
+/* The two-up rows hold at the 720px card width (cells land around 305px), so
+   they stay paired on every desktop width and only stack on small screens. */
+@media (max-width: 600px) {
+  .property-lead__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.property-lead__title {
+  margin-top: 0.9rem;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.1;
+  color: var(--color-navy);
+}
+
+.property-lead__lead {
+  margin-top: 0.75rem;
+  max-width: 40ch;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Success state ------------------------------------------------------ */
+.success {
+  text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 1rem;
+}
+
+.success__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-gold);
+  animation: pop-check 0.5s var(--ease-out) both;
+}
+
+.success__title {
+  margin-top: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+.success__text {
+  margin: 0.75rem auto 0;
+  max-width: 24rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+}
+
+.success .btn {
+  margin-top: 1.75rem;
+  border-color: rgba(11, 30, 59, 0.3);
+  color: var(--color-navy);
+}

@@ -1,0 +1,24 @@
+/* The page header every staff screen opens with: a small eyebrow, a display
+   title, and a lede. Lives in its own partial because the markup sits in each
+   screen's own template, and Angular's scoped styles only reach a component's
+   own elements. */
+.staff__head {
+  max-width: 70ch;
+}
+
+.staff__title {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.008em;
+  color: var(--color-navy);
+}
+
+.staff__lede {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}

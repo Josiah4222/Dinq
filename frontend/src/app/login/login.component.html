@@ -1,0 +1,70 @@
+<main class="auth">
+  <div class="auth__glow auth__glow--a" aria-hidden="true"></div>
+  <div class="auth__glow auth__glow--b" aria-hidden="true"></div>
+
+  <div class="auth__card">
+    <div class="auth__head">
+      <app-brand-logo size="lg" />
+      <h1 class="auth__title">Staff sign in</h1>
+      <p class="auth__lede">Access to the staff area is limited to authorised personnel.</p>
+    </div>
+
+    @if (errorMessage(); as message) {
+      <p class="auth__alert" role="alert">{{ message }}</p>
+    }
+
+    <form class="auth__form" (ngSubmit)="submit()" novalidate>
+      <div class="auth__field">
+        <label for="login-username">Username</label>
+        <input
+          id="login-username"
+          name="username"
+          type="text"
+          autocomplete="username"
+          autocapitalize="none"
+          spellcheck="false"
+          required
+          [ngModel]="username()"
+          (ngModelChange)="username.set($event)"
+          [class.auth__input--invalid]="usernameInvalid()"
+          [attr.aria-invalid]="usernameInvalid()"
+        />
+      </div>
+
+      <div class="auth__field">
+        <div class="auth__label-row">
+          <label for="login-password">Password</label>
+          <button
+            type="button"
+            class="auth__reveal"
+            (click)="togglePassword()"
+            [attr.aria-pressed]="showPassword()"
+          >
+            {{ showPassword() ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        <input
+          id="login-password"
+          name="password"
+          [type]="showPassword() ? 'text' : 'password'"
+          autocomplete="current-password"
+          required
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+          [class.auth__input--invalid]="passwordInvalid()"
+          [attr.aria-invalid]="passwordInvalid()"
+        />
+      </div>
+
+      <button type="submit" class="auth__submit" [disabled]="submitting()">
+        {{ submitting() ? 'Signing in…' : 'Sign in' }}
+      </button>
+
+      <p class="auth__foot">
+        Trouble signing in? <a href="mailto:admin@dinq.com">Contact the administrator</a>.
+      </p>
+    </form>
+  </div>
+
+  <p class="auth__legal">© {{ year }} Dinq Advisory Group</p>
+</main>

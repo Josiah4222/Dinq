@@ -1,0 +1,101 @@
+@if (detail(); as d) {
+  <main id="main" class="ind-detail">
+    <!-- ============================ Hero band ============================= -->
+    <section class="ind-detail__hero" [class.ind-detail__hero--image]="d.heroImage">
+      @if (d.heroImage) {
+        <img [src]="d.heroImage | imageSrc" [alt]="d.title" class="ind-detail__hero-bg" loading="eager" />
+        <div class="ind-detail__hero-overlay"></div>
+      }
+      <div class="container ind-detail__hero-inner">
+        <div class="ind-detail__hero-content">
+          <p class="eyebrow">Industries</p>
+          <h1 class="ind-detail__title">{{ d.title }}</h1>
+          <p class="ind-detail__summary">{{ d.summary }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== Opportunity ============================== -->
+    <section class="ind-detail__opportunity section" appReveal>
+      <div class="container">
+        @if (d.lede) {
+          <p class="ind-detail__lede">{{ d.lede }}</p>
+        }
+        <p class="eyebrow">Opportunity</p>
+        <p class="ind-detail__statement">{{ d.opportunity }}</p>
+      </div>
+    </section>
+
+    <!-- ====================== Typical Client Needs ========================= -->
+    <section class="ind-detail__needs section section--tint" appReveal>
+      <div class="container ind-detail__needs-inner">
+        <div>
+          <p class="eyebrow">Client Needs</p>
+          <h2 class="ind-detail__section-title">Typical Client Needs</h2>
+        </div>
+        <ul class="ind-detail__need-list">
+          @for (need of d.clientNeeds; track need) {
+            <li class="ind-detail__need">
+              <span class="ind-detail__need-mark" aria-hidden="true"></span>
+              {{ need }}
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- =================== How Dinq Supports the Sector ==================== -->
+    <section class="ind-detail__support section section--tint" appReveal>
+      <div class="container ind-detail__support-inner">
+        <div>
+          <h2 class="ind-detail__section-title">How Dinq Supports the Sector</h2>
+        </div>
+        @if (d.supportCopy) {
+          <p class="ind-detail__support-prose">{{ d.supportCopy }}</p>
+        } @else {
+          <ul class="ind-detail__support-list">
+            @for (item of d.support; track item; let i = $index) {
+              <li class="ind-detail__support-item">
+                <span class="ind-detail__support-num" aria-hidden="true">0{{ i + 1 }}</span>
+                <span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </section>
+
+    <!-- ========================= Related Solutions ========================== -->
+    @if (d.relatedSolutions?.length) {
+      <section class="ind-detail__related section" appReveal>
+        <div class="container">
+          <h2 class="ind-detail__section-title">Related Solutions</h2>
+          <div class="ind-detail__related-grid">
+            @for (solution of d.relatedSolutions; track solution.slug) {
+              <a class="ind-detail__related-card" [routerLink]="['/solutions', solution.slug]">
+                <span class="ind-detail__related-title">{{ solution.title }}</span>
+                <span class="ind-detail__related-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </span>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- ============================== CTA ================================== -->
+    <section class="ind-detail__cta section" appReveal>
+      <div class="container ind-detail__cta-inner">
+        <h2 class="ind-detail__cta-title">Let's discuss your goals</h2>
+        <p class="ind-detail__cta-text">
+          Every engagement starts with a conversation. Tell us where you're headed, and we'll
+          map the steps to get there.
+        </p>
+        <a class="btn btn--gold" routerLink="/contact">{{ d.ctaLabel || 'Discuss an Opportunity' }}</a>
+      </div>
+    </section>
+  </main>
+}

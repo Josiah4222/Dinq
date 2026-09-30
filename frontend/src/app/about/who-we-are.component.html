@@ -1,0 +1,120 @@
+<main id="main" class="sp">
+
+  <!-- ================================ Hero ================================ -->
+  <section class="sp-hero">
+    <div class="sp-hero__media" role="presentation">
+      <img
+        [src]="heroImage() | imageSrc"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="sp-hero__img"
+      />
+      <div class="sp-hero__overlay" aria-hidden="true"></div>
+    </div>
+    <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M -50 420 Q 300 200 620 300 T 1250 140" fill="none" stroke="rgba(200,155,60,0.22)" stroke-width="1.1" stroke-dasharray="2 8" stroke-linecap="round"/>
+      <circle cx="620" cy="300" r="4" fill="#C89B3C"/>
+    </svg>
+    <span class="sp-hero__orb" aria-hidden="true"></span>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container sp-hero__inner">
+      <p class="eyebrow">{{ heroEyebrow() }}</p>
+      <h1 class="sp-hero__title">{{ heroTitle() }}</h1>
+    </div>
+  </section>
+
+  <!-- =========================== Who We Are ================================ -->
+  <section id="who-we-are" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <div class="sp-prose">
+        <header class="sp-head">
+          <p class="eyebrow">{{ whoWeAreEyebrow() }}</p>
+          <h2 class="sp-title">{{ whoWeAreHeading() }}</h2>
+        </header>
+        @for (p of whoWeAreParagraphs(); track p) {
+          <p class="sp-prose__text">{{ p }}</p>
+        }
+        <p class="about-tagline">{{ whoWeAreTagline() }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Vision, Mission & Purpose ====================== -->
+  <section id="vision-mission" class="sp-section sp-section--vm" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+      <div class="vm-grid">
+        <div class="vm-card vm-card--dark">
+          <p class="eyebrow vm-card__eyebrow">{{ visionEyebrow() }}</p>
+          <p class="vm-card__statement">{{ visionText() }}</p>
+        </div>
+        <div class="vm-card vm-card--light">
+          <p class="eyebrow vm-card__eyebrow">{{ missionEyebrow() }}</p>
+          <p class="vm-card__statement vm-card__statement--ink">{{ missionText() }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="purpose" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <div class="sp-statement">
+        <p class="eyebrow sp-statement__eyebrow">{{ purposeEyebrow() }}</p>
+        <h2 class="sp-title sp-statement__title">{{ purposeHeading() }}</h2>
+        @for (p of purposeParagraphs(); track p) {
+          <p class="sp-statement__text sp-statement__text--ink">{{ p }}</p>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== Values ================================ -->
+  <section id="values" class="sp-section sp-section--light" appReveal>
+    <div class="container">
+      <header class="sp-head">
+        <p class="eyebrow">{{ valuesEyebrow() }}</p>
+        <h2 class="sp-title">{{ valuesHeading() }}</h2>
+      </header>
+      <ul class="sp-values">
+        @for (v of valueItems(); track v.title; let i = $index) {
+          <li class="sp-value">
+            <span class="sp-value__num" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+            <h3 class="sp-value__title">{{ v.title }}</h3>
+            <p class="sp-value__text">{{ v.text }}</p>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ How We Work ============================== -->
+  <section id="how-we-work" class="sp-section how-we-work" appReveal aria-label="How We Work">
+    <div class="container">
+      <header class="sp-head">
+        <p class="eyebrow">{{ howWeWorkEyebrow() }}</p>
+        <h2 class="sp-title">{{ howWeWorkHeading() }}</h2>
+      </header>
+      @for (p of howWeWorkParagraphs(); track p) {
+        <p class="sp-prose__text">{{ p }}</p>
+      }
+      <app-how-we-work mode="full" />
+      <div class="how-we-work__cta">
+        <a routerLink="/contact" class="btn btn--gold">{{ ctaText() }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ Why "Dinq"? ============================== -->
+  <section id="why-dinq" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <div class="why-dinq">
+        <span class="why-dinq__glyph" aria-hidden="true">{{ whyDinqAmharic() }}</span>
+        <p class="eyebrow why-dinq__eyebrow">{{ whyDinqEyebrow() }}</p>
+        <p class="why-dinq__text">{{ whyDinqText() }}</p>
+        <p class="why-dinq__footnote">{{ whyDinqFootnote() }}</p>
+      </div>
+    </div>
+  </section>
+
+</main>

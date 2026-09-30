@@ -1,0 +1,152 @@
+<main id="main">
+  <section class="quick quick--page" id="quick-inquiry" aria-labelledby="quick-title">
+    <div class="container">
+      <div class="quick__inner">
+        <!-- Left: what this is -->
+        <div class="quick__intro">
+          <p class="eyebrow">Quick Inquiry</p>
+          <h1 class="quick__title" id="quick-title">Tell us what you need.</h1>
+          <p class="quick__lede">
+            A short form is enough to start the conversation &mdash; we'll put you in touch
+            with the right person for your situation.
+          </p>
+        </div>
+
+        @if (quickSubmitted) {
+          <!-- Right, after a send: the confirmation, in the card's place. -->
+          <div class="quick__success" id="quick-success" #quickSuccess role="status" tabindex="-1">
+            <span class="success-check" aria-hidden="true">&#10003;</span>
+            <h2 class="success-title">Inquiry received.</h2>
+            <p class="success-text">
+              Thank you{{ quickSuccessName() ? ', ' + quickSuccessName() : '' }}. An advisor will be
+              in touch shortly to follow up on your inquiry.
+            </p>
+            @if (quickReference(); as ref) {
+              <p class="success-text">Your reference is <strong>{{ ref }}</strong>.</p>
+            }
+            <button type="button" class="btn btn--ghost quick__success-back" (click)="reset()">Send another inquiry</button>
+          </div>
+        } @else {
+          <!--
+            The form is the card: it carries the white surface and doubles as the
+            two-column grid the fields sit in, so the submit button stays a direct
+            child of the card.
+          -->
+          <form class="quick__card" [formGroup]="quickForm" (ngSubmit)="onSubmit()" novalidate>
+            @if (serverError(); as message) {
+              <p class="form-banner" role="alert">{{ message }}</p>
+            }
+
+            <div class="form-field quick__field--full">
+              <label class="form-label" for="quick-name">Name <span class="req">*</span></label>
+              <input
+                #quickName
+                id="quick-name"
+                class="form-input"
+                type="text"
+                formControlName="name"
+                autocomplete="name"
+                placeholder="Your name"
+              />
+              @if (quickAttempted && fieldError('name', quickForm.controls.name)) {
+                <p class="form-error" role="alert">{{ fieldError('name', quickForm.controls.name) }}</p>
+              }
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="quick-phone">Phone</label>
+              <input
+                #quickPhone
+                id="quick-phone"
+                class="form-input"
+                type="tel"
+                formControlName="phone"
+                autocomplete="tel"
+                placeholder="+1 236 555 0100"
+              />
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="quick-email">Email</label>
+              <input
+                #quickEmail
+                id="quick-email"
+                class="form-input"
+                type="email"
+                formControlName="email"
+                autocomplete="email"
+                placeholder="you@company.com"
+              />
+            </div>
+
+            <!--
+              The server reports the "no way to reply" rule against the phone field,
+              so it is read under the pair rather than only surfacing in the banner.
+            -->
+            @if (quickAttempted && fieldError('phone', quickForm.controls.phone)) {
+              <p class="form-error" role="alert">{{ fieldError('phone', quickForm.controls.phone) }}</p>
+            } @else if (quickAttempted && fieldError('email', quickForm.controls.email)) {
+              <p class="form-error" role="alert">{{ fieldError('email', quickForm.controls.email) }}</p>
+            } @else if (showContactPrompt()) {
+              <p class="form-error" role="alert">
+                Please add a phone number or an email address so we can reply.
+              </p>
+            }
+
+            <p class="quick__hint">
+              Give us at least one way to reach you <span class="req">*</span>
+            </p>
+
+            <h2 class="quick__topic-head">
+              What is this about?
+              @if (selectedCount(); as count) {
+                <span class="quick__topics-count">&mdash; {{ count }} selected</span>
+              }
+            </h2>
+
+            <div class="quick__groups">
+              @for (group of groups; track group) {
+                <div>
+                  <p class="quick__group-label">{{ groupLabels[group] }}</p>
+                  @for (topic of topics(); track topic.id) {
+                    @if (topic.group === group) {
+                      <label class="quick__opt" [for]="'quick-topic-' + topic.id">
+                        <input
+                          [id]="'quick-topic-' + topic.id"
+                          type="checkbox"
+                          [checked]="isSelected(topic.id)"
+                          (change)="toggleTopic(topic.id, $event)"
+                        />
+                        <span class="quick__opt-text">{{ topic.label }}</span>
+                      </label>
+                    }
+                  }
+                </div>
+              }
+            </div>
+
+            <label
+              class="consent"
+              [class.is-invalid]="quickForm.controls.consent.touched && quickForm.controls.consent.invalid"
+            >
+              <input type="checkbox" formControlName="consent" />
+              <span>
+                I agree that Dinq may use the information I provide to respond to my inquiry, in line
+                with the <a class="text-link" routerLink="/privacy-policy">Privacy Policy</a>.
+              </span>
+            </label>
+            @if (fieldError('consent', quickForm.controls.consent)) {
+              <p class="form-error" role="alert">{{ fieldError('consent', quickForm.controls.consent) }}</p>
+            }
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn--gold" [disabled]="sending()">
+                {{ sending() ? 'Sending…' : 'Send inquiry' }}
+              </button>
+            </div>
+          </form>
+        }
+      </div>
+    </div>
+  </section>
+</main>

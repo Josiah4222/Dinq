@@ -1,0 +1,3277 @@
+{
+  "about": {
+    "blocks": {
+      "alliance.benefits": {
+        "data": [
+          "A coordinated strategy across commercial and legal workstreams.",
+          "Fewer disconnected handoffs between advisors.",
+          "Clearer implementation sequencing and stakeholder coordination.",
+          "Access to legal support when a mandate requires it.",
+          "A single client-centred approach focused on practical execution."
+        ],
+        "kind": "list",
+        "label": "Kairos Alliance — benefits",
+        "order": 76
+      },
+      "alliance.benefitsHeading": {
+        "kind": "text",
+        "label": "Kairos Alliance — benefits heading",
+        "order": 75,
+        "value": "What This Means for Clients"
+      },
+      "alliance.eyebrow": {
+        "kind": "text",
+        "label": "Kairos Alliance — eyebrow",
+        "order": 72,
+        "value": "Strategic Alliance"
+      },
+      "alliance.heading": {
+        "kind": "text",
+        "label": "Kairos Alliance — heading",
+        "order": 73,
+        "value": "An Integrated Client Experience"
+      },
+      "alliance.label": {
+        "kind": "text",
+        "label": "Kairos Alliance — label",
+        "order": 71,
+        "value": "Strategic Legal Partner"
+      },
+      "alliance.logo": {
+        "kind": "image",
+        "label": "Kairos Alliance — logo",
+        "order": 70,
+        "value": "/media/KAIROS_Logo_White_transparent.png"
+      },
+      "alliance.paragraphs": {
+        "data": [
+          "Cross-border business and investment mandates frequently involve both commercial decisions and regulated legal work. Through Dinq's strategic collaboration with Kairos Law, clients can receive coordinated advisory, implementation, and legal support without having to manage disconnected workstreams themselves.",
+          "Dinq remains the advisory and execution lead. Kairos Law provides Ethiopian legal services where required and within its professional mandate. The two teams coordinate around the client's objectives, while maintaining the appropriate professional roles and responsibilities."
+        ],
+        "kind": "list",
+        "label": "Kairos Alliance — paragraphs",
+        "order": 74
+      },
+      "approach.cta": {
+        "kind": "text",
+        "label": "Our Approach — button",
+        "order": 64,
+        "value": "Speak With Dinq"
+      },
+      "approach.eyebrow": {
+        "kind": "text",
+        "label": "Our Approach — eyebrow",
+        "order": 60,
+        "value": "Our Approach"
+      },
+      "approach.heading": {
+        "kind": "text",
+        "label": "Our Approach — heading",
+        "order": 61,
+        "value": "One Relationship. From Strategy to Execution."
+      },
+      "approach.intro": {
+        "data": [
+          "Entering a new market, investing from abroad, or managing assets remotely can require lawyers, consultants, government contacts, technical specialists, property managers, and local representatives. When these parties operate independently, the client is left to coordinate the process.",
+          "Dinq is designed to solve that problem. We act as the central advisory and implementation relationship — helping clients understand the opportunity, make informed decisions, coordinate the right expertise, execute locally, and remain informed over time."
+        ],
+        "kind": "list",
+        "label": "Our Approach — intro",
+        "order": 62
+      },
+      "approach.pillars": {
+        "data": [
+          {
+            "key": "international-perspective-local-execution",
+            "text": "We understand the expectations of international clients while working within the commercial and institutional realities of Ethiopia.",
+            "title": "International Perspective + Local Execution"
+          },
+          {
+            "key": "advice-implementation",
+            "text": "We do not treat a strategy document as the end of the engagement. Where appropriate, we help turn the strategy into action.",
+            "title": "Advice + Implementation"
+          },
+          {
+            "key": "local-presence-accountability",
+            "text": "Clients who cannot be on the ground need more than informal assistance. Dinq provides structured coordination, communication, and reporting.",
+            "title": "Local Presence + Professional Accountability"
+          },
+          {
+            "key": "integrated-professional-support",
+            "text": "When legal or specialized professional work is required, Dinq coordinates the relevant expertise rather than leaving the client to assemble the team alone.",
+            "title": "Integrated Professional Support"
+          },
+          {
+            "key": "long-term-stewardship",
+            "text": "Our work can continue after market entry, acquisition, or project launch through ongoing advisory, asset oversight, reporting, and local representation.",
+            "title": "Long-Term Stewardship"
+          }
+        ],
+        "kind": "list",
+        "label": "Our Approach — pillars",
+        "order": 63
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "About Dinq Advisory Group"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — background image",
+        "order": 2,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Connecting Opportunity Across Borders."
+      },
+      "mission.eyebrow": {
+        "kind": "text",
+        "label": "Mission — eyebrow",
+        "order": 22,
+        "value": "Our Mission"
+      },
+      "mission.text": {
+        "kind": "textarea",
+        "label": "Mission — statement",
+        "order": 23,
+        "value": "To simplify investing, doing business, and managing assets in Ethiopia by providing integrated strategic advisory, implementation support, and coordinated professional solutions through one trusted relationship."
+      },
+      "purpose.eyebrow": {
+        "kind": "text",
+        "label": "Purpose — eyebrow",
+        "order": 30,
+        "value": "Our Purpose"
+      },
+      "purpose.heading": {
+        "kind": "text",
+        "label": "Purpose — heading",
+        "order": 31,
+        "value": "To bridge the gap between international opportunity and successful local execution."
+      },
+      "purpose.paragraphs": {
+        "data": [
+          "Many organizations have strong ideas. Many investors have capital. Many members of the diaspora want to invest, contribute, or protect what they have built. The challenge is often execution: finding a trusted team that understands both international expectations and the realities of operating locally.",
+          "Dinq exists to bridge that gap."
+        ],
+        "kind": "list",
+        "label": "Purpose — paragraphs",
+        "order": 32
+      },
+      "steps.eyebrow": {
+        "kind": "text",
+        "label": "How We Work — eyebrow",
+        "order": 50,
+        "value": "How We Work"
+      },
+      "steps.heading": {
+        "kind": "text",
+        "label": "How We Work — heading",
+        "order": 51,
+        "value": "A complete journey, not a one-off engagement"
+      },
+      "steps.items": {
+        "data": [
+          {
+            "key": "assess",
+            "text": "We understand objectives, identify opportunities, evaluate risks, and define a practical roadmap.",
+            "title": "Assess"
+          },
+          {
+            "key": "advise",
+            "text": "We develop commercially sound strategies supported by local market insight and coordinated legal guidance where required.",
+            "title": "Advise"
+          },
+          {
+            "key": "implement",
+            "text": "We coordinate stakeholders, engage authorities, manage projects, and support transactions and execution.",
+            "title": "Implement"
+          },
+          {
+            "key": "support",
+            "text": "We remain engaged through ongoing advisory, reporting, governance support, property and asset management, and trusted local representation.",
+            "title": "Support"
+          }
+        ],
+        "kind": "list",
+        "label": "How We Work — steps",
+        "order": 52
+      },
+      "values.eyebrow": {
+        "kind": "text",
+        "label": "Our Values — eyebrow",
+        "order": 40,
+        "value": "Our Values"
+      },
+      "values.heading": {
+        "kind": "text",
+        "label": "Our Values — heading",
+        "order": 41,
+        "value": "What guides every engagement"
+      },
+      "values.items": {
+        "data": [
+          {
+            "key": "integrity",
+            "text": "We build trust through transparency, professionalism, and ethical decision-making.",
+            "title": "Integrity"
+          },
+          {
+            "key": "partnership",
+            "text": "We succeed when our clients succeed.",
+            "title": "Partnership"
+          },
+          {
+            "key": "excellence",
+            "text": "We pursue exceptional outcomes through disciplined execution and attention to detail.",
+            "title": "Excellence"
+          },
+          {
+            "key": "collaboration",
+            "text": "The best solutions come from combining expertise across disciplines.",
+            "title": "Collaboration"
+          },
+          {
+            "key": "practicality",
+            "text": "Advice only creates value when it can be successfully implemented.",
+            "title": "Practicality"
+          },
+          {
+            "key": "stewardship",
+            "text": "We approach each client's business, investment, and assets with care, accountability, and a long-term perspective.",
+            "title": "Stewardship"
+          }
+        ],
+        "kind": "list",
+        "label": "Our Values — values",
+        "order": 42
+      },
+      "vision.eyebrow": {
+        "kind": "text",
+        "label": "Vision — eyebrow",
+        "order": 20,
+        "value": "Our Vision"
+      },
+      "vision.text": {
+        "kind": "textarea",
+        "label": "Vision — statement",
+        "order": 21,
+        "value": "To become a leading cross-border advisory firm connecting international capital, expertise, and opportunity with Ethiopia and the broader East African region through trusted relationships, practical execution, and long-term value creation."
+      },
+      "whoWeAre.eyebrow": {
+        "kind": "text",
+        "label": "Who We Are — eyebrow",
+        "order": 10,
+        "value": "Who We Are"
+      },
+      "whoWeAre.heading": {
+        "kind": "text",
+        "label": "Who We Are — heading",
+        "order": 11,
+        "value": "An integrated cross-border advisory firm"
+      },
+      "whoWeAre.paragraphs": {
+        "data": [
+          "Dinq Advisory Group is an integrated cross-border advisory firm helping international businesses, investors, institutions, and members of the Ethiopian diaspora successfully invest, establish, operate, and manage their interests in Ethiopia.",
+          "Unlike traditional consulting firms that stop at strategy, or professional service providers that address only one part of a mandate, Dinq supports the complete journey — from opportunity assessment and strategic planning to implementation, coordination, local representation, and ongoing asset stewardship.",
+          "Working in strategic collaboration with Kairos Law where legal services are required, Dinq combines commercial advisory, local execution, and coordinated professional support into one integrated client experience. Our clients gain more than advice: they gain a trusted partner on the ground."
+        ],
+        "kind": "list",
+        "label": "Who We Are — paragraphs",
+        "order": 12
+      },
+      "whoWeAre.tagline": {
+        "kind": "text",
+        "label": "Who We Are — tagline",
+        "order": 13,
+        "value": "Connecting Opportunity Across Borders."
+      },
+      "whyDinq.amharic": {
+        "kind": "text",
+        "label": "Why Dinq — Amharic word",
+        "order": 80,
+        "value": "ድንቅ"
+      },
+      "whyDinq.eyebrow": {
+        "kind": "text",
+        "label": "Why Dinq — eyebrow",
+        "order": 81,
+        "value": "Why “Dinq”?"
+      },
+      "whyDinq.footerNote": {
+        "kind": "text",
+        "label": "Why Dinq — footnote",
+        "order": 83,
+        "value": "Dinq (ድንቅ) is Amharic for extraordinary or remarkable — the standard we bring to every engagement."
+      },
+      "whyDinq.text": {
+        "kind": "textarea",
+        "label": "Why Dinq — paragraph",
+        "order": 82,
+        "value": "The name Dinq comes from the Amharic word ድንቅ, meaning extraordinary, remarkable, or a marvel. It reflects our commitment to exceptional outcomes while honoring our deep connection to Ethiopia. For us, “Dinq” is not simply a name; it represents the standard we aim to bring to every engagement through sound judgment, trusted execution, and enduring partnerships."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "contact": {
+    "blocks": {
+      "details.addressLabel": {
+        "kind": "text",
+        "label": "Contact details — address label",
+        "order": 14,
+        "value": "Address"
+      },
+      "details.addressLine1": {
+        "kind": "text",
+        "label": "Contact details — address line 1",
+        "order": 15,
+        "value": "40 Wynford Drive, Suite 208,"
+      },
+      "details.addressLine2": {
+        "kind": "text",
+        "label": "Contact details — address line 2",
+        "order": 16,
+        "value": "Toronto, ON, Canada M3C 1J5"
+      },
+      "details.canadaLabel": {
+        "kind": "text",
+        "label": "Contact details — Canada office name",
+        "order": 17,
+        "value": "Canada"
+      },
+      "details.email": {
+        "kind": "text",
+        "label": "Contact details — email address",
+        "order": 11,
+        "value": "info@dinqadvisory.com"
+      },
+      "details.emailLabel": {
+        "kind": "text",
+        "label": "Contact details — email label",
+        "order": 10,
+        "value": "Email"
+      },
+      "details.ethiopiaAddress": {
+        "kind": "text",
+        "label": "Contact details — Ethiopia address",
+        "order": 20,
+        "value": "Addis Ababa, Ethiopia"
+      },
+      "details.ethiopiaLabel": {
+        "kind": "text",
+        "label": "Contact details — Ethiopia office name",
+        "order": 18,
+        "value": "Ethiopia"
+      },
+      "details.ethiopiaPhone": {
+        "kind": "text",
+        "label": "Contact details — Ethiopia phone number",
+        "order": 19,
+        "value": "+251 952 064 444"
+      },
+      "details.phone": {
+        "kind": "text",
+        "label": "Contact details — phone number",
+        "order": 13,
+        "value": "416-899-7000"
+      },
+      "details.phoneLabel": {
+        "kind": "text",
+        "label": "Contact details — phone label",
+        "order": 12,
+        "value": "Phone"
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Get in Touch"
+      },
+      "hero.intro": {
+        "kind": "textarea",
+        "label": "Hero — intro",
+        "order": 2,
+        "value": "Whether you are evaluating an investment, entering the Ethiopian market, managing property from abroad, or coordinating a complex institutional mandate, Dinq can help you define the next practical step."
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Let’s Discuss What You’re Building, Investing In, or Managing in Ethiopia."
+      },
+      "success.reference": {
+        "kind": "text",
+        "label": "Confirmation — reference line",
+        "order": 31,
+        "value": "Your reference is"
+      },
+      "success.resetCta": {
+        "kind": "text",
+        "label": "Confirmation — button",
+        "order": 32,
+        "value": "Send another message"
+      },
+      "success.title": {
+        "kind": "text",
+        "label": "Confirmation — heading",
+        "order": 30,
+        "value": "Request received."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "home": {
+    "blocks": {
+      "approach.eyebrow": {
+        "kind": "text",
+        "label": "Our Approach — eyebrow",
+        "order": 50,
+        "value": "Our Approach"
+      },
+      "approach.intro": {
+        "kind": "textarea",
+        "label": "Our Approach — intro",
+        "order": 52,
+        "value": "Advice is only valuable when it can be implemented. Dinq is built around the full client journey: understanding the opportunity, developing the strategy, coordinating the people and institutions required to execute it, and remaining engaged after the initial transaction."
+      },
+      "approach.items": {
+        "data": [
+          "One trusted relationship across strategy, execution, local representation, and ongoing support.",
+          "International perspective combined with practical Ethiopian market knowledge.",
+          "Execution-focused support rather than strategy alone.",
+          "Professional accountability and structured reporting for clients who are not always on the ground.",
+          "Coordinated legal support through Kairos Law where regulated legal services are required.",
+          "Long-term stewardship of investments, projects, property, and other client interests."
+        ],
+        "kind": "list",
+        "label": "Our Approach — points",
+        "order": 53
+      },
+      "approach.title": {
+        "kind": "text",
+        "label": "Our Approach — heading",
+        "order": 51,
+        "value": "How Dinq works with clients"
+      },
+      "crossBorder.body": {
+        "kind": "textarea",
+        "label": "Cross-Border Expertise — paragraph",
+        "order": 61,
+        "value": "With a presence in Canada and Ethiopia and relationships across key international markets, Dinq connects global clients with opportunities, expertise, and execution capabilities in Ethiopia. We are particularly positioned to support clients and diaspora communities across Canada, the United States, the United Kingdom, Europe, and the Middle East — including existing relationships originating through Kairos Law — and we support clients and property owners wherever in the world they are based."
+      },
+      "crossBorder.eyebrow": {
+        "kind": "text",
+        "label": "Cross-Border Expertise — eyebrow",
+        "order": 60,
+        "value": "Cross-Border Expertise"
+      },
+      "hero.ctaPrimary": {
+        "kind": "text",
+        "label": "Hero — primary button",
+        "order": 4,
+        "value": "Book a Consultation"
+      },
+      "hero.ctaSecondary": {
+        "kind": "text",
+        "label": "Hero — secondary button",
+        "order": 5,
+        "value": "Explore Our Solutions"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — background image",
+        "order": 6,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.proof": {
+        "kind": "textarea",
+        "label": "Hero — supporting paragraph",
+        "order": 3,
+        "value": "Whether entering a new market, establishing a business, managing investments, or safeguarding family assets, Dinq provides integrated advisory, implementation support, coordinated legal services, and long-term stewardship through one trusted relationship."
+      },
+      "hero.subhead": {
+        "kind": "textarea",
+        "label": "Hero — subheading",
+        "order": 2,
+        "value": "Helping international businesses, investors, institutions, and members of the Ethiopian diaspora establish, grow, manage, and protect their interests in Ethiopia."
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title (first line)",
+        "order": 0,
+        "value": "Global Perspective."
+      },
+      "hero.titleAccent": {
+        "kind": "text",
+        "label": "Hero — title (accent line)",
+        "order": 1,
+        "value": "Local Execution."
+      },
+      "industries.core": {
+        "data": [
+          {
+            "alt": "Modern high-rise building in Addis Ababa",
+            "image": "/media/assets/images/industries-realestate.jpg",
+            "index": "01",
+            "link": "/industries/real-estate",
+            "text": "Commercial, residential, development, and property-management opportunities for diaspora and international investors.",
+            "title": "Real Estate"
+          },
+          {
+            "alt": "Industrial facility with pipes and machinery",
+            "image": "/media/assets/images/industries-manufacturing.jpg",
+            "index": "02",
+            "link": "/industries/manufacturing",
+            "text": "Market entry, industrial-park and site strategy, investment structuring, stakeholder coordination, and operational implementation.",
+            "title": "Manufacturing"
+          },
+          {
+            "alt": "Aerial view of heavy mining equipment on an open site",
+            "image": "/media/assets/images/industries-mining.jpg",
+            "index": "03",
+            "link": "/industries/mining",
+            "text": "Market-entry, concession and project strategy, stakeholder engagement, regulatory coordination, and implementation support for specialized mandates.",
+            "title": "Mining"
+          }
+        ],
+        "kind": "list",
+        "label": "Industries — core cards",
+        "order": 1
+      },
+      "industries.sectors": {
+        "data": [
+          {
+            "link": "/industries/infrastructure",
+            "text": "Advisory and implementation support for developers, investors, and institutions delivering transport, utilities, and public-facing infrastructure projects.",
+            "title": "Infrastructure"
+          },
+          {
+            "link": "/industries/energy",
+            "text": "Market-entry, stakeholder, and regulatory-navigation support for renewable and conventional energy investment.",
+            "title": "Energy"
+          },
+          {
+            "link": "/industries/agribusiness",
+            "text": "Investment structuring, partnership, processing, and export-operation support for agricultural and agribusiness opportunities.",
+            "title": "Agribusiness"
+          },
+          {
+            "link": "/industries/technology-digital-business",
+            "text": "Entry strategy and regulatory-navigation support for technology companies and digital platforms.",
+            "title": "Technology & Digital Business"
+          },
+          {
+            "link": "/industries/healthcare",
+            "text": "Advisory for investors and operators establishing healthcare facilities, services, distribution, or supply chains.",
+            "title": "Healthcare"
+          },
+          {
+            "link": "/industries/hospitality-tourism",
+            "text": "Market-entry and development support for hotel, tourism, and hospitality investments.",
+            "title": "Hospitality & Tourism"
+          },
+          {
+            "link": "/industries/financial-services",
+            "text": "Regulatory, structuring, market-entry, and stakeholder support for banks, insurers, investors, and other financial-services entrants.",
+            "title": "Financial Services"
+          }
+        ],
+        "kind": "list",
+        "label": "Industries — additional sectors",
+        "order": 2
+      },
+      "industries.title": {
+        "kind": "text",
+        "label": "Industries — section title",
+        "order": 0,
+        "value": "Core Industries"
+      },
+      "kairos.body1": {
+        "kind": "textarea",
+        "label": "Kairos Alliance — paragraph 1",
+        "order": 71,
+        "value": "Through our strategic collaboration with Kairos Law, clients benefit from coordinated business advisory, implementation support, and legal services where required. Dinq leads the advisory and execution relationship; Kairos Law provides regulated Ethiopian legal services within its areas of practice."
+      },
+      "kairos.body2": {
+        "kind": "textarea",
+        "label": "Kairos Alliance — paragraph 2",
+        "order": 72,
+        "value": "The result is a coordinated client experience rather than a collection of disconnected advisors."
+      },
+      "kairos.image": {
+        "kind": "image",
+        "label": "Kairos Alliance — background image",
+        "order": 73,
+        "value": "/media/assets/images/kairos-alliance.jpg"
+      },
+      "kairos.logo": {
+        "kind": "image",
+        "label": "Kairos Alliance — logo",
+        "order": 74,
+        "value": "/media/KAIROS_Logo_White_transparent.png"
+      },
+      "kairos.title": {
+        "kind": "text",
+        "label": "Kairos Alliance — heading",
+        "order": 70,
+        "value": "An Integrated Client Experience"
+      },
+      "partners.eyebrow": {
+        "kind": "text",
+        "label": "Who We Help — eyebrow",
+        "order": 20,
+        "value": "Partnership"
+      },
+      "partners.items": {
+        "data": [
+          {
+            "icon": "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-16.5c-1.5 0-3 .6-4.1 1.6M16.1 6.1A8.96 8.96 0 0 1 12 4.5M3.3 9h17.4M3.3 15h17.4M4.9 12.9c2.7 1.2 5.7 1.8 7.1 1.8s4.4-.6 7.1-1.8",
+            "text": "Multinationals and mid-market companies entering or expanding operations in Ethiopia.",
+            "title": "International Businesses & Investors"
+          },
+          {
+            "icon": "M2 20V8l5-4 5 4v12M12 20V4l5 4v12M2 20h20M7 12h0M12 12h0M17 12h0",
+            "text": "Institutional and private capital seeking structured, well-governed exposure to Ethiopian opportunities.",
+            "title": "Private Equity & Family Offices"
+          },
+          {
+            "icon": "M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 10v-2a3.5 3.5 0 0 0-2.5-3.3M3 21v-2a3.5 3.5 0 0 1 2.5-3.3",
+            "text": "Ethiopians abroad investing, relocating, establishing businesses, or protecting family and property interests back home.",
+            "title": "Ethiopian Diaspora"
+          },
+          {
+            "icon": "M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6",
+            "text": "Public-sector bodies and agencies delivering investment, infrastructure, and development programs.",
+            "title": "Governments & Development Institutions"
+          },
+          {
+            "icon": "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10ZM2 12h20M12 2c2.8 3.1 4.3 7 4.3 10s-1.5 6.9-4.3 10c-2.8-3.1-4.3-7-4.3-10s1.5-6.9 4.3-10Z",
+            "text": "International organizations coordinating programs, partnerships, and operations on the ground.",
+            "title": "NGOs & Multilateral Organizations"
+          },
+          {
+            "icon": "M2 7h20M2 17h20M6 7v10M10 7v10M14 7v10M18 7v10M2 12h20",
+            "text": "Banks, lenders, and investors requiring local due diligence, structuring, transaction, or implementation support.",
+            "title": "Financial Institutions"
+          }
+        ],
+        "kind": "list",
+        "label": "Who We Help — cards",
+        "order": 22
+      },
+      "partners.title": {
+        "kind": "text",
+        "label": "Who We Help — heading",
+        "order": 21,
+        "value": "Who We Help"
+      },
+      "solutions.eyebrow": {
+        "kind": "text",
+        "label": "Our Solutions — eyebrow",
+        "order": 30,
+        "value": "Our Solutions"
+      },
+      "solutions.items": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "text": "Helping international businesses, investors, and entrepreneurs assess opportunities, enter the Ethiopian market, establish operations, navigate stakeholders and regulations, and move from strategy into implementation.",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "diaspora-advisory",
+            "text": "A trusted local point of coordination for diaspora clients managing investments, businesses, real estate, family assets, inheritance and succession matters, relocation, and other interests in Ethiopia.",
+            "title": "Diaspora Advisory"
+          },
+          {
+            "slug": "property-asset-management",
+            "text": "Professional oversight of property and related physical assets in Ethiopia — from tenant and rent administration to inspections, maintenance, leasing, vendor coordination, improvements, reporting, and local representation.",
+            "title": "Property & Asset Management"
+          },
+          {
+            "slug": "government-institutional-advisory",
+            "text": "Supporting businesses, NGOs, development organizations, public institutions, and other stakeholders with government coordination, stakeholder engagement, institutional advisory, investment facilitation, and implementation.",
+            "title": "Government & Institutional Advisory"
+          },
+          {
+            "slug": "workforce-organizational-advisory",
+            "text": "Helping businesses and institutions align organizational structure, workforce capabilities, talent, performance systems, leadership, and HR operations with business strategy and growth.",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Our Solutions — list",
+        "order": 32
+      },
+      "solutions.title": {
+        "kind": "text",
+        "label": "Our Solutions — heading",
+        "order": 31,
+        "value": "How we serve our clients"
+      },
+      "steps.eyebrow": {
+        "kind": "text",
+        "label": "How We Work — eyebrow",
+        "order": 40,
+        "value": "How We Work"
+      },
+      "steps.items": {
+        "data": [
+          {
+            "text": "We begin by understanding your objectives, identifying opportunities, evaluating risks, and defining a practical roadmap.",
+            "title": "Assess"
+          },
+          {
+            "text": "We develop commercially sound strategies supported by local market insight and coordinated legal guidance where required.",
+            "title": "Advise"
+          },
+          {
+            "text": "We help execute the strategy by coordinating stakeholders, engaging with government authorities, managing projects, and supporting transactions.",
+            "title": "Implement"
+          },
+          {
+            "text": "Our relationship continues through ongoing advisory, property and asset management, reporting, governance support, and trusted local representation.",
+            "title": "Support"
+          }
+        ],
+        "kind": "list",
+        "label": "How We Work — steps",
+        "order": 41
+      },
+      "why.body1": {
+        "kind": "textarea",
+        "label": "What Dinq Does — paragraph 1",
+        "order": 12,
+        "value": "Dinq bridges the gap between international opportunity and successful local execution. We combine strategic advisory with practical implementation, trusted local representation, and ongoing support so clients can move from an idea or investment decision to a well-managed outcome."
+      },
+      "why.body2": {
+        "kind": "textarea",
+        "label": "What Dinq Does — paragraph 2",
+        "order": 13,
+        "value": "Instead of asking clients to coordinate multiple advisors, Dinq provides one integrated relationship across commercial strategy, stakeholder engagement, project coordination, property and asset oversight, and coordinated professional services."
+      },
+      "why.eyebrow": {
+        "kind": "text",
+        "label": "What Dinq Does — eyebrow",
+        "order": 10,
+        "value": "What Dinq Does"
+      },
+      "why.title": {
+        "kind": "text",
+        "label": "What Dinq Does — heading",
+        "order": 11,
+        "value": "One relationship, not a patchwork of advisors."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-agribusiness": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Opportunity and market assessment",
+          "Investment, partnership, and land coordination",
+          "Processing and operational planning",
+          "Regulatory and export coordination"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1746623691157-c4c7a3bad0c4?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports investors, producers, processors, and exporters pursuing agribusiness opportunities in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Agribusiness opportunities span production, processing, value addition, distribution, and export. Execution may depend on land access, partnerships, supply chains, processing capacity, regulatory requirements, and export channels."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "property-asset-management",
+            "title": "Property & Asset Management"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Connecting agricultural opportunity with commercial execution."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "We help clients evaluate opportunities, establish the right local structure, coordinate partners and stakeholders, and move the operational, property, and regulatory workstreams toward implementation."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Agribusiness"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-energy": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Market and investment assessment",
+          "Licensing, permitting, and land coordination",
+          "Government and utility engagement",
+          "Project implementation coordination"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1756913455227-fb3b85575fca?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports investors, developers, and businesses evaluating renewable and conventional energy opportunities in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Energy investment can involve licensing, land, infrastructure, utilities, financing, government institutions, and local stakeholders. Understanding how these elements connect is essential to moving an opportunity toward implementation."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "government-institutional-advisory",
+            "title": "Government & Institutional Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Navigate the commercial, regulatory, and institutional path to energy investment."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "We help clients assess the opportunity, navigate the institutional environment, and coordinate the local workstreams required to advance a project. Specialist legal, financial, engineering, or environmental advisors can be brought in where needed."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Energy"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-financial-services": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Market and regulatory assessment",
+          "Entry and establishment strategy",
+          "Licensing and institutional engagement",
+          "Workforce and operational planning"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1761233138981-50a88922c852?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports financial institutions and financial-services businesses evaluating opportunities in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Financial services operate within a specialized regulatory and institutional environment. Entrants must understand licensing and establishment requirements alongside capital, operational, workforce, and commercial considerations."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "government-institutional-advisory",
+            "title": "Government & Institutional Advisory"
+          },
+          {
+            "slug": "workforce-organizational-advisory",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Local insight for a highly regulated market."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "We help clients understand the market and institutional environment, coordinate establishment requirements, engage relevant stakeholders, and manage local implementation. Specialized legal, financial, or regulatory advice is coordinated where required."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Financial Services"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-healthcare": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Business establishment and licensing",
+          "EFDA and sector-specific regulatory approvals",
+          "Premises and facility establishment",
+          "Workforce and operational readiness"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1764885449332-7eb941d53b7e?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports investors, healthcare operators, and businesses establishing healthcare facilities, services, and related operations in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Healthcare establishment can require corporate setup, business licensing, sector-specific approvals, suitable premises, professional requirements, and operational readiness. Depending on the activity, this may include requirements involving the Ethiopian Food and Drug Authority (EFDA) and other authorities."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "property-asset-management",
+            "title": "Property & Asset Management"
+          },
+          {
+            "slug": "workforce-organizational-advisory",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "From establishment and regulatory approval to operational readiness."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "Dinq coordinates the establishment process from incorporation and licensing through premises, regulatory approvals, and operational setup — bringing together legal, technical, property, and workforce support as required."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Healthcare"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-hospitality-tourism": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Market and site assessment",
+          "Investment and development strategy",
+          "Licensing, property, and vendor coordination",
+          "Workforce and operational planning"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1551016043-06ec2173531b?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports investors, developers, and operators pursuing hotel, tourism, and hospitality opportunities in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Hospitality investment brings together real estate, development, licensing, operations, workforce, local partnerships, and guest-facing commercial considerations."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "property-asset-management",
+            "title": "Property & Asset Management"
+          },
+          {
+            "slug": "workforce-organizational-advisory",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Supporting hospitality investment from site selection to operation."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "We help clients evaluate opportunities, assess sites, coordinate establishment requirements, and maintain local oversight as projects move from development toward operation."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Hospitality & Tourism"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-infrastructure": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Project and market assessment",
+          "Government and stakeholder engagement",
+          "Public-private project coordination",
+          "Technical, financing, and permitting workstreams"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1758470476440-024d3833b17e?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports developers, investors, contractors, and institutions pursuing infrastructure opportunities in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Infrastructure projects bring together commercial, regulatory, financial, technical, and government considerations. Transport, utilities, urban development, and other major projects often require coordinated local execution across multiple stakeholders and authorities."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "government-institutional-advisory",
+            "title": "Government & Institutional Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "From project opportunity to coordinated local execution."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "We map key stakeholders, coordinate government engagement, and keep local workstreams moving — bringing in legal, financial, and technical specialists where needed."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Infrastructure"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-manufacturing": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Market and investment assessment",
+          "Industrial-park, site, and location evaluation",
+          "Investment and entity-structure coordination",
+          "Government and stakeholder engagement",
+          "Import/export and operational planning coordination",
+          "Workforce planning and recruitment support",
+          "Implementation oversight"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 4
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "/media/assets/images/industries-manufacturing.jpg"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 3,
+        "value": "Manufacturing investment requires alignment across market opportunity, investment structure, site selection, industrial infrastructure, import/export considerations, incentives, workforce, and operational execution."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "workforce-organizational-advisory",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 6
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Dinq supports manufacturers and investors evaluating, establishing, or expanding operations in Ethiopia through market-entry, location, stakeholder, workforce, and implementation advisory."
+      },
+      "support": {
+        "data": [
+          "Market-entry strategy and investment roadmap",
+          "Site and industrial-park assessment coordination",
+          "Investment incentive and regulatory-navigation support",
+          "Stakeholder and government engagement",
+          "Project and implementation coordination",
+          "Workforce & Organizational Advisory",
+          "Ongoing local representation and reporting"
+        ],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 5
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Manufacturing"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-mining": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Initial market and opportunity assessment",
+          "Stakeholder and institutional mapping",
+          "Project and investment structuring coordination",
+          "Licensing and regulatory-workstream coordination with appropriate specialists",
+          "Technical, legal, and commercial advisor coordination",
+          "Implementation and local representation"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 4
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "/media/assets/images/industries-mining.jpg"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 3,
+        "value": "Mining opportunities can involve long development timelines, multiple public and private stakeholders, technical due diligence, licensing and concession processes, community considerations, and substantial capital commitments."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "government-institutional-advisory",
+            "title": "Government & Institutional Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 6
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Dinq supports specialized mining and natural-resource mandates requiring market-entry strategy, stakeholder coordination, project structuring, and local implementation support."
+      },
+      "support": {
+        "data": [
+          "Market-entry and project strategy",
+          "Stakeholder and government engagement support",
+          "Concession and project-process coordination",
+          "Specialist-advisor coordination",
+          "Implementation roadmap and workstream management",
+          "Local follow-up, monitoring, and reporting"
+        ],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 5
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Mining"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-real-estate": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Opportunity and property assessment",
+          "Acquisition and transaction coordination",
+          "Development and construction oversight",
+          "Local partner, broker, vendor, and professional coordination",
+          "Property management after acquisition",
+          "Family and diaspora asset stewardship"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 4
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "/media/assets/images/industries-realestate.jpg"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 3,
+        "value": "Real estate sits at the intersection of investment, development, family wealth, and operating infrastructure. Clients may be acquiring residential or commercial property, evaluating development opportunities, securing premises for a business, monitoring construction, or managing assets from abroad."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "property-asset-management",
+            "title": "Property & Asset Management"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 6
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Dinq advises diaspora clients, investors, developers, businesses, and institutions on real estate opportunities and asset stewardship in Ethiopia."
+      },
+      "support": {
+        "data": [
+          "Real estate investment and acquisition advisory",
+          "Commercial and residential transaction coordination",
+          "Development-project and construction monitoring",
+          "Property and asset management",
+          "Tenant, maintenance, and vendor coordination",
+          "Due diligence and professional-advisor coordination",
+          "Local representation and periodic reporting"
+        ],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 5
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Real Estate"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "industry-technology-digital-business": {
+    "blocks": {
+      "clientNeeds": {
+        "data": [
+          "Market-entry and opportunity assessment",
+          "Business establishment and licensing",
+          "Digital-sector regulatory considerations",
+          "Local partnerships and workforce setup"
+        ],
+        "kind": "list",
+        "label": "Typical Client Needs",
+        "order": 5
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1200&q=80"
+      },
+      "lede": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 3,
+        "value": "Dinq supports technology companies, digital platforms, and technology-enabled businesses evaluating or establishing operations in Ethiopia."
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "Opportunity",
+        "order": 4,
+        "value": "Technology businesses entering Ethiopia must consider commercial opportunity alongside establishment, licensing, local partnerships, data and platform requirements, and workforce needs."
+      },
+      "relatedSolutions": {
+        "data": [
+          {
+            "slug": "international-business-investment-advisory",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "slug": "workforce-organizational-advisory",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Related Solutions",
+        "order": 8
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Helping technology businesses establish and operate in an evolving market."
+      },
+      "support": {
+        "data": [],
+        "kind": "list",
+        "label": "How Dinq Supports the Sector — points",
+        "order": 6
+      },
+      "supportCopy": {
+        "kind": "textarea",
+        "label": "How Dinq Supports the Sector — prose",
+        "order": 7,
+        "value": "We help technology businesses plan market entry, establish local operations, coordinate regulatory requirements, and build the partnerships and workforce needed to operate."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Technology & Digital Business"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "insight-5-mistakes-foreign-investors-making-entering-ethiopia": {
+    "blocks": {
+      "author": {
+        "kind": "text",
+        "label": "Author",
+        "order": 1,
+        "value": "Dinq Advisory Group"
+      },
+      "body": {
+        "data": [
+          "Entering a new market is as much about what you avoid as what you do. In our work with international investors in Ethiopia, a handful of mistakes recur often enough to be predictable.",
+          "First, underestimating lead time. Registration, licensing, and operational setup almost always take longer than first estimates, so planning for the real timeline protects budgets and investor confidence.",
+          "Second, skipping local due diligence. Assumptions that work in home markets — about land, counterparties, and regulatory practice — need to be re-validated on the ground in Ethiopia.",
+          "Third, ignoring the sequencing of approvals. Some permits must precede others, and getting the order wrong can delay an entire project by months.",
+          "Fourth, treating compliance as an afterthought. Tax, reporting, and corporate obligations accumulate quickly; addressing them early avoids penalties and distractions later.",
+          "Fifth, working without a coordinated local partner. Fragmented advice across multiple disconnected advisors creates exactly the kind of risk that a single integrated relationship is designed to prevent.",
+          "The pattern behind these mistakes is consistent: distance amplifies small errors. A structured entry plan, coordinated through one trusted partner, is the most reliable countermeasure."
+        ],
+        "kind": "list",
+        "label": "Body paragraphs",
+        "order": 6
+      },
+      "category": {
+        "kind": "text",
+        "label": "Category",
+        "order": 3,
+        "value": "Investor Guide"
+      },
+      "date": {
+        "kind": "text",
+        "label": "Date",
+        "order": 2,
+        "value": "2026-07-01"
+      },
+      "featuredImage": {
+        "kind": "image",
+        "label": "Featured image",
+        "order": 4,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Summary",
+        "order": 5,
+        "value": "Common pitfalls we see when international investors enter the Ethiopian market — and how to avoid them."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "5 Mistakes Foreign Investors Make Entering Ethiopia"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "insight-a-diaspora-guide-to-investing-back-home": {
+    "blocks": {
+      "author": {
+        "kind": "text",
+        "label": "Author",
+        "order": 1,
+        "value": "Dinq Advisory Group"
+      },
+      "body": {
+        "data": [
+          "For Ethiopians abroad, investing back home is as much an emotional decision as a financial one. Done well, it creates family security and lasting value; done hastily, it can create friction and regret.",
+          "The first decision is structural: whether to invest as a non-resident directly, through a local entity, or in partnership with family already in Ethiopia. Each option has different implications for ownership, tax, and management.",
+          "Land and property deserve special care. Understanding lease structures, title verification, and the due-diligence that should precede any acquisition will protect the investment from disputes later.",
+          "Repatriation matters too. Returns need to flow home again, so the tax treatment of dividends and proceeds, and the practical mechanics of moving money, should be settled before capital is committed.",
+          "Finally, stewardship. Many diaspora investors cannot be physically present, which makes trusted local management the difference between an asset that is protected and one that slowly erodes.",
+          "A coordinated approach — combining commercial advisory with legal support — gives diaspora families a single relationship that covers investment, operation, and long-term protection of what matters most."
+        ],
+        "kind": "list",
+        "label": "Body paragraphs",
+        "order": 6
+      },
+      "category": {
+        "kind": "text",
+        "label": "Category",
+        "order": 3,
+        "value": "Diaspora"
+      },
+      "date": {
+        "kind": "text",
+        "label": "Date",
+        "order": 2,
+        "value": "2026-06-12"
+      },
+      "featuredImage": {
+        "kind": "image",
+        "label": "Featured image",
+        "order": 4,
+        "value": "/media/assets/images/industries-realestate.jpg"
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Summary",
+        "order": 5,
+        "value": "Practical guidance for Ethiopians abroad investing, relocating, or protecting family assets back home."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "A Diaspora Guide to Investing Back Home"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "insight-manufacturing-opportunities-in-ethiopia": {
+    "blocks": {
+      "author": {
+        "kind": "text",
+        "label": "Author",
+        "order": 1,
+        "value": "Dinq Advisory Group"
+      },
+      "body": {
+        "data": [
+          "Ethiopia’s manufacturing sector sits at the centre of its industrial strategy, anchored by a network of industrial parks and a policy framework designed to attract export-oriented production.",
+          "Industrial parks offer investors built infrastructure and streamlined administration, including utility connections, customs services, and incentives administered through a single point of contact.",
+          "Sector focus areas include textiles and apparel, leather and footwear, agro-processing, and a growing set of light-manufacturing and assembly industries. Export orientation is a recurring theme in incentive eligibility.",
+          "The practical questions investors face are familiar: land allocation within parks, workforce availability and training, logistics to ports, and the sequencing of construction and commissioning against incentive timelines.",
+          "Import/export structuring matters as much as factory operations. Duty regimes, raw-material import rules, and the documentation required to stay compliant all shape the unit economics of a manufacturing investment.",
+          "For manufacturers, the winning approach is to plan the operational chain — from incentive application through construction to first export — as one integrated programme, coordinated by a partner who understands the whole picture."
+        ],
+        "kind": "list",
+        "label": "Body paragraphs",
+        "order": 6
+      },
+      "category": {
+        "kind": "text",
+        "label": "Category",
+        "order": 3,
+        "value": "Sector Guide"
+      },
+      "date": {
+        "kind": "text",
+        "label": "Date",
+        "order": 2,
+        "value": "2026-05-20"
+      },
+      "featuredImage": {
+        "kind": "image",
+        "label": "Featured image",
+        "order": 4,
+        "value": "/media/assets/images/industries-manufacturing.jpg"
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Summary",
+        "order": 5,
+        "value": "What foreign manufacturers need to know about industrial parks, incentives, and operating in Ethiopia."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Manufacturing Opportunities in Ethiopia: What Investors Should Know"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "insights": {
+    "blocks": {
+      "articles": {
+        "data": [
+          {
+            "author": "Dinq Advisory Group",
+            "body": [
+              "Entering a new market is as much about what you avoid as what you do. In our work with international investors in Ethiopia, a handful of mistakes recur often enough to be predictable.",
+              "First, underestimating lead time. Registration, licensing, and operational setup almost always take longer than first estimates, so planning for the real timeline protects budgets and investor confidence.",
+              "Second, skipping local due diligence. Assumptions that work in home markets — about land, counterparties, and regulatory practice — need to be re-validated on the ground in Ethiopia.",
+              "Third, ignoring the sequencing of approvals. Some permits must precede others, and getting the order wrong can delay an entire project by months.",
+              "Fourth, treating compliance as an afterthought. Tax, reporting, and corporate obligations accumulate quickly; addressing them early avoids penalties and distractions later.",
+              "Fifth, working without a coordinated local partner. Fragmented advice across multiple disconnected advisors creates exactly the kind of risk that a single integrated relationship is designed to prevent.",
+              "The pattern behind these mistakes is consistent: distance amplifies small errors. A structured entry plan, coordinated through one trusted partner, is the most reliable countermeasure."
+            ],
+            "category": "Investor Guide",
+            "date": "2026-07-01",
+            "featuredImage": "/media/assets/images/hero-addis.jpg",
+            "relatedSlugs": [
+              "a-diaspora-guide-to-investing-back-home"
+            ],
+            "slug": "5-mistakes-foreign-investors-making-entering-ethiopia",
+            "summary": "Common pitfalls we see when international investors enter the Ethiopian market — and how to avoid them.",
+            "title": "5 Mistakes Foreign Investors Make Entering Ethiopia"
+          },
+          {
+            "author": "Dinq Advisory Group",
+            "body": [
+              "For Ethiopians abroad, investing back home is as much an emotional decision as a financial one. Done well, it creates family security and lasting value; done hastily, it can create friction and regret.",
+              "The first decision is structural: whether to invest as a non-resident directly, through a local entity, or in partnership with family already in Ethiopia. Each option has different implications for ownership, tax, and management.",
+              "Land and property deserve special care. Understanding lease structures, title verification, and the due-diligence that should precede any acquisition will protect the investment from disputes later.",
+              "Repatriation matters too. Returns need to flow home again, so the tax treatment of dividends and proceeds, and the practical mechanics of moving money, should be settled before capital is committed.",
+              "Finally, stewardship. Many diaspora investors cannot be physically present, which makes trusted local management the difference between an asset that is protected and one that slowly erodes.",
+              "A coordinated approach — combining commercial advisory with legal support — gives diaspora families a single relationship that covers investment, operation, and long-term protection of what matters most."
+            ],
+            "category": "Diaspora",
+            "date": "2026-06-12",
+            "featuredImage": "/media/assets/images/industries-realestate.jpg",
+            "relatedSlugs": [
+              "5-mistakes-foreign-investors-making-entering-ethiopia"
+            ],
+            "slug": "a-diaspora-guide-to-investing-back-home",
+            "summary": "Practical guidance for Ethiopians abroad investing, relocating, or protecting family assets back home.",
+            "title": "A Diaspora Guide to Investing Back Home"
+          },
+          {
+            "author": "Dinq Advisory Group",
+            "body": [
+              "Ethiopia’s manufacturing sector sits at the centre of its industrial strategy, anchored by a network of industrial parks and a policy framework designed to attract export-oriented production.",
+              "Industrial parks offer investors built infrastructure and streamlined administration, including utility connections, customs services, and incentives administered through a single point of contact.",
+              "Sector focus areas include textiles and apparel, leather and footwear, agro-processing, and a growing set of light-manufacturing and assembly industries. Export orientation is a recurring theme in incentive eligibility.",
+              "The practical questions investors face are familiar: land allocation within parks, workforce availability and training, logistics to ports, and the sequencing of construction and commissioning against incentive timelines.",
+              "Import/export structuring matters as much as factory operations. Duty regimes, raw-material import rules, and the documentation required to stay compliant all shape the unit economics of a manufacturing investment.",
+              "For manufacturers, the winning approach is to plan the operational chain — from incentive application through construction to first export — as one integrated programme, coordinated by a partner who understands the whole picture."
+            ],
+            "category": "Sector Guide",
+            "date": "2026-05-20",
+            "featuredImage": "/media/assets/images/industries-manufacturing.jpg",
+            "relatedSlugs": [
+              "a-diaspora-guide-to-investing-back-home"
+            ],
+            "slug": "manufacturing-opportunities-in-ethiopia",
+            "summary": "What foreign manufacturers need to know about industrial parks, incentives, and operating in Ethiopia.",
+            "title": "Manufacturing Opportunities in Ethiopia: What Investors Should Know"
+          }
+        ],
+        "kind": "list",
+        "label": "Article cards",
+        "order": 0
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Insights"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Market insight, grounded in practice"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "kairos-law-alliance": {
+    "blocks": {
+      "alliance.benefits": {
+        "data": [
+          "A coordinated strategy across commercial and legal workstreams.",
+          "Fewer disconnected handoffs between advisors.",
+          "Clearer implementation sequencing and stakeholder coordination.",
+          "Access to legal support when a mandate requires it.",
+          "A single client-centred approach focused on practical execution."
+        ],
+        "kind": "list",
+        "label": "Kairos Alliance — benefits",
+        "order": 16
+      },
+      "alliance.benefitsHeading": {
+        "kind": "text",
+        "label": "Kairos Alliance — benefits heading",
+        "order": 15,
+        "value": "What This Means for Clients"
+      },
+      "alliance.eyebrow": {
+        "kind": "text",
+        "label": "Kairos Alliance — eyebrow",
+        "order": 12,
+        "value": "Strategic Alliance"
+      },
+      "alliance.heading": {
+        "kind": "text",
+        "label": "Kairos Alliance — heading",
+        "order": 13,
+        "value": "An Integrated Client Experience"
+      },
+      "alliance.label": {
+        "kind": "text",
+        "label": "Kairos Alliance — label",
+        "order": 11,
+        "value": "Strategic Legal Partner"
+      },
+      "alliance.logo": {
+        "kind": "image",
+        "label": "Kairos Alliance — logo",
+        "order": 10,
+        "value": "/media/KAIROS_Logo_White_transparent.png"
+      },
+      "alliance.paragraphs": {
+        "data": [
+          "Cross-border business and investment mandates frequently involve both commercial decisions and regulated legal work. Through Dinq's strategic collaboration with Kairos Law, clients can receive coordinated advisory, implementation, and legal support without having to manage disconnected workstreams themselves.",
+          "Dinq remains the advisory and execution lead. Kairos Law provides Ethiopian legal services where required and within its professional mandate. The two teams coordinate around the client's objectives, while maintaining the appropriate professional roles and responsibilities."
+        ],
+        "kind": "list",
+        "label": "Kairos Alliance — paragraphs",
+        "order": 14
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "About Dinq Advisory Group"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — background image",
+        "order": 2,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Strategic Alliance with Kairos Law"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "leadership": {
+    "blocks": {
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Our Team"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — background image",
+        "order": 2,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Leadership"
+      },
+      "intro.eyebrow": {
+        "kind": "text",
+        "label": "Overview — eyebrow",
+        "order": 10,
+        "value": "Introduction"
+      },
+      "intro.heading": {
+        "kind": "text",
+        "label": "Overview — heading",
+        "order": 11,
+        "value": "International perspective. Ethiopian expertise. Practical execution."
+      },
+      "intro.paragraphs": {
+        "data": [
+          "Dinq's leadership brings together cross-border business and investment experience with deep expertise in Ethiopia's legal, regulatory, tax, institutional, and workforce environment. Our multidisciplinary approach reflects how complex investments and business decisions actually work: commercial strategy, regulation, people, institutions, and implementation are interconnected.",
+          "Together, our leadership team helps clients assess opportunities, navigate complexity, establish the right structures, and move from strategy to execution."
+        ],
+        "kind": "list",
+        "label": "Overview — paragraphs",
+        "order": 12
+      },
+      "leadership.members": {
+        "data": [
+          {
+            "bio": "Abel Giratta is the Founder and Managing Director of Dinq Advisory Group, where he leads the firm's cross-border strategy, international business and investment advisory, and growth initiatives. He also serves as Partner & Head of Real Estate and International Advisory at Kairos Law Firm in Addis Ababa, giving him a direct operating role across both the international and Ethiopian sides of Dinq's advisory model.\n\nA Canadian lawyer, entrepreneur, and strategic advisor, Abel brings more than a decade of experience spanning law, real estate, business advisory, and entrepreneurship, complemented by earlier experience in financial services and firsthand field experience in Canada's oil and gas drilling industry across Alberta, Saskatchewan, and Northern Canada. His career has given him experience on both sides of the advisory relationship—as a professional advising clients and as an entrepreneur building and operating businesses.\n\nCalled to the Ontario Bar in 2015, Abel later founded Giratta Law Professional Corporation, building and operating a multidisciplinary legal practice serving individuals, entrepreneurs, businesses, and investors across real estate, corporate and commercial, immigration, and cross-border matters. Beyond legal practice, building the firm gave him direct experience in business development, client acquisition, operations, team management, and strategic decision-making—experience that now informs his approach to advising businesses and investors through Dinq.\n\nThrough Dinq, Abel brings these experiences together to help international businesses, investors, institutions, and members of the Ethiopian diaspora establish, invest, operate, and manage interests in Ethiopia. His work spans market-entry strategy, business establishment, investment and real estate advisory, strategic partnerships, stakeholder coordination, and the execution of complex cross-border mandates.\n\nDividing his time between Canada and Ethiopia, Abel brings an understanding of international professional and commercial expectations together with an increasingly deep knowledge of Ethiopia's business environment and the realities of local execution. His role at Dinq is to bridge those environments—helping clients move from opportunity and strategy to implementation and long-term value.",
+            "email": "eyosia@gmail.com",
+            "focus": "Cross-Border Strategy\nInternational Business & Investment\nMarket Entry & Implementation\nReal Estate & Asset Advisory\nStrategic Partnerships\nDiaspora Advisory",
+            "image": "/media/assets/images/Abel.jpg",
+            "key": "abel-giratta",
+            "linkedin": "",
+            "name": "Abel Giratta",
+            "org": "Dinq Advisory Group · Kairos Law",
+            "role": "Founder & Managing Director"
+          },
+          {
+            "bio": "Habtamu Bazezew is a senior Ethiopian legal practitioner, entrepreneur, and strategic advisor with more than 17 years of experience advising businesses, institutions, NGOs, and individuals on complex legal, regulatory, employment, and commercial matters.\n\nHe is the founder of the legal practice that evolved into Kairos Law Firm, where he now serves as Managing Partner. Over nearly two decades of independent practice, Habtamu has developed substantial experience in employment and labour matters, commercial disputes and litigation, NGO and institutional advisory, construction and infrastructure matters, and regulatory compliance. His work includes advising employers and organizations on workplace disputes, employment risk, organizational policies and compliance, as well as representing clients in significant commercial disputes and litigation.\n\nA significant part of Habtamu's practice has involved advising international and local NGOs and institutions operating in Ethiopia, including establishment and registration, regulatory compliance, employment, governance, and ongoing operational legal requirements. This work has given him extensive experience navigating Ethiopia's legal and institutional environment and engaging with government bodies, regulators, businesses, and other stakeholders.\n\nAt Dinq, Habtamu brings this legal and institutional perspective to investment, market-entry, organizational, and institutional mandates. He contributes particularly to Dinq's International Business & Investment, Workforce & Organizational, and Government & Institutional Advisory practices, helping clients integrate legal and regulatory considerations into broader commercial and implementation strategies.\n\nHabtamu also serves as the strategic bridge between Dinq and Kairos Law. Where regulated Ethiopian legal services are required, they are provided separately through Kairos, allowing clients to benefit from coordinated advisory, implementation, and legal support while maintaining the appropriate distinction between Dinq's advisory role and legal representation.",
+            "email": "",
+            "focus": "Legal Strategy\nEmployment & Labour\nNGO & Institutional Advisory\nCommercial Disputes & Litigation\nRegulatory Matters\nConstruction & Infrastructure",
+            "image": "/media/assets/images/habtamu.jpg",
+            "key": "habtamu-bazezew",
+            "linkedin": "",
+            "name": "Habtamu Bazezew",
+            "org": "Managing Partner, Kairos Law Firm",
+            "role": "Partner & Legal Strategy Advisor"
+          },
+          {
+            "bio": "Ida Edo is a senior human resources and organizational advisory professional with more than 10 years of experience helping organizations strengthen their workforce, talent practices, and people operations. Her experience spans workforce planning, talent management, recruitment, employee relations, performance management, organizational change, and HR operations.\n\nHer career includes roles with Shopify, the University of Toronto, Tata, and Aon Hewitt. At Shopify, Ida partnered with leaders and HR teams on talent and performance management, employee engagement, leadership development, organizational change, workforce planning, and operational improvement. At the University of Toronto, she advised approximately 40 client groups on recruitment and workforce planning and supported the implementation of HR systems.\n\nAt Dinq, Ida leads the Workforce & Organizational Advisory practice, helping businesses and institutions align their people, organizational structures, and workforce capabilities with broader business strategy. She works with organizations entering, expanding, restructuring, or strengthening operations in Ethiopia, with a focus on building the organizational capacity and people systems required for effective execution and sustainable growth.\n\nIda is a Certified Human Resources Professional and has completed the HRPA Employment Law examination.",
+            "email": "",
+            "focus": "Workforce Strategy\nOrganizational Effectiveness\nTalent Management\nHR Transformation\nPerformance & Leadership Development",
+            "image": "/media/uploads/2026/09/forget-what-i-said-generate-it-by-ur-self-30c83d1172b17ef1.jpg",
+            "key": "ida-edo",
+            "linkedin": "",
+            "name": "Ida Edo",
+            "org": "Workforce & Organizational Advisory",
+            "role": "Director, Workforce & Organizational Advisory"
+          },
+          {
+            "bio": "Kalkidan Hailemariam is a senior legal and regulatory advisor with extensive experience across Ethiopia's tax, customs, regulatory, and public-sector environment. Her career spans senior roles within the Ethiopian Revenues and Customs Authority, the Federal Attorney General's Office, and leading private-sector organizations.\n\nAt the Ethiopian Revenues and Customs Authority, Kalkidan advised on tax law, handled tax disputes, and held responsibilities in customs enforcement. This experience gave her firsthand insight into how Ethiopia's tax and customs framework is interpreted, administered, and enforced—an institutional perspective that complements her subsequent work advising businesses and organizations.\n\nHer broader experience across government and the private sector enables her to approach regulatory matters from both institutional and commercial perspectives. She brings particular expertise in taxation, customs, regulatory compliance, dispute management, and engagement with government institutions.\n\nAt Dinq, Kalkidan supports international businesses, investors, and institutions navigating the tax, customs, and regulatory dimensions of entering and operating in Ethiopia. She contributes particularly to market-entry and investment mandates where understanding regulatory requirements, institutional processes, and potential compliance risks is critical to successful execution.",
+            "email": "",
+            "focus": "Tax & Customs\nRegulatory Advisory\nTax Disputes\nInvestment & Market Entry\nGovernment & Institutional Engagement",
+            "image": "/media/assets/images/Kalkidan H.jpg",
+            "key": "kalkidan-hailemariam",
+            "linkedin": "",
+            "name": "Kalkidan Hailemariam",
+            "org": "Dinq Advisory Group",
+            "role": "Senior Advisor, Tax, Customs & Regulatory Affairs"
+          }
+        ],
+        "kind": "list",
+        "label": "Leadership — biographies",
+        "order": 30
+      },
+      "network.eyebrow": {
+        "kind": "text",
+        "label": "Our Network — eyebrow",
+        "order": 40,
+        "value": "Our Network"
+      },
+      "network.heading": {
+        "kind": "text",
+        "label": "Our Network — heading",
+        "order": 41,
+        "value": "Coordinated expertise, through one relationship."
+      },
+      "network.paragraphs": {
+        "data": [
+          "No single discipline can address every aspect of a complex investment or cross-border mandate. Dinq coordinates legal, financial, technical, sector, and operational expertise according to the needs of each engagement. This allows clients to work through a central advisory relationship while drawing on specialized support when required."
+        ],
+        "kind": "list",
+        "label": "Our Network — paragraphs",
+        "order": 42
+      },
+      "team.collapseLabel": {
+        "kind": "text",
+        "label": "Team — expanded biography button",
+        "order": 26,
+        "value": "Show less"
+      },
+      "team.expandLabel": {
+        "kind": "text",
+        "label": "Team — collapsed biography button",
+        "order": 25,
+        "value": "View full bio"
+      },
+      "team.eyebrow": {
+        "kind": "text",
+        "label": "Team — eyebrow",
+        "order": 20,
+        "value": "The Team"
+      },
+      "team.focusLabel": {
+        "kind": "text",
+        "label": "Team — focus label",
+        "order": 24,
+        "value": "Areas of Focus"
+      },
+      "team.heading": {
+        "kind": "text",
+        "label": "Team — heading",
+        "order": 21,
+        "value": "Meet the leadership"
+      },
+      "team.meta": {
+        "kind": "text",
+        "label": "Team — directory note",
+        "order": 22,
+        "value": "Leadership Directory"
+      },
+      "team.plateLabel": {
+        "kind": "text",
+        "label": "Team — practice plate label",
+        "order": 23,
+        "value": "Practice"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "our-approach": {
+    "blocks": {
+      "approach.cta": {
+        "kind": "text",
+        "label": "Our Approach — button",
+        "order": 14,
+        "value": "Speak With Dinq"
+      },
+      "approach.eyebrow": {
+        "kind": "text",
+        "label": "Our Approach — eyebrow",
+        "order": 10,
+        "value": "Our Approach"
+      },
+      "approach.heading": {
+        "kind": "text",
+        "label": "Our Approach — heading",
+        "order": 11,
+        "value": "One Relationship. From Strategy to Execution."
+      },
+      "approach.intro": {
+        "data": [
+          "Entering a new market, investing from abroad, or managing assets remotely can require lawyers, consultants, government contacts, technical specialists, property managers, and local representatives. When these parties operate independently, the client is left to coordinate the process.",
+          "Dinq is designed to solve that problem. We act as the central advisory and implementation relationship — helping clients understand the opportunity, make informed decisions, coordinate the right expertise, execute locally, and remain informed over time."
+        ],
+        "kind": "list",
+        "label": "Our Approach — intro",
+        "order": 12
+      },
+      "approach.pillars": {
+        "data": [
+          {
+            "key": "international-perspective-local-execution",
+            "text": "We understand the expectations of international clients while working within the commercial and institutional realities of Ethiopia.",
+            "title": "International Perspective + Local Execution"
+          },
+          {
+            "key": "advice-implementation",
+            "text": "We do not treat a strategy document as the end of the engagement. Where appropriate, we help turn the strategy into action.",
+            "title": "Advice + Implementation"
+          },
+          {
+            "key": "local-presence-accountability",
+            "text": "Clients who cannot be on the ground need more than informal assistance. Dinq provides structured coordination, communication, and reporting.",
+            "title": "Local Presence + Professional Accountability"
+          },
+          {
+            "key": "integrated-professional-support",
+            "text": "When legal or specialized professional work is required, Dinq coordinates the relevant expertise rather than leaving the client to assemble the team alone.",
+            "title": "Integrated Professional Support"
+          },
+          {
+            "key": "long-term-stewardship",
+            "text": "Our work can continue after market entry, acquisition, or project launch through ongoing advisory, asset oversight, reporting, and local representation.",
+            "title": "Long-Term Stewardship"
+          }
+        ],
+        "kind": "list",
+        "label": "Our Approach — pillars",
+        "order": 13
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "About Dinq Advisory Group"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — background image",
+        "order": 2,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Our Approach"
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "privacy-policy": {
+    "blocks": {
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Legal"
+      },
+      "hero.lead": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 2,
+        "value": "How Dinq Advisory Group collects, uses, and protects your information. This is placeholder legal copy for design purposes and must be reviewed by counsel before launch."
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Privacy Policy"
+      },
+      "sections.contact.eyebrow": {
+        "kind": "text",
+        "label": "contact — eyebrow",
+        "order": 18,
+        "value": "Your Rights"
+      },
+      "sections.contact.heading": {
+        "kind": "text",
+        "label": "contact — heading",
+        "order": 19,
+        "value": "Access & Data Requests"
+      },
+      "sections.contact.paragraphs": {
+        "data": [
+          "You may request access to, correction of, or deletion of your personal information, or ask questions about this policy, by contacting us using the details provided on the Contact page.",
+          "We aim to respond to all legitimate data requests within a reasonable time and in accordance with applicable law."
+        ],
+        "kind": "list",
+        "label": "contact — paragraphs",
+        "order": 20
+      },
+      "sections.cookies.eyebrow": {
+        "kind": "text",
+        "label": "cookies — eyebrow",
+        "order": 12,
+        "value": "Cookies"
+      },
+      "sections.cookies.heading": {
+        "kind": "text",
+        "label": "cookies — heading",
+        "order": 13,
+        "value": "Cookies & Analytics"
+      },
+      "sections.cookies.paragraphs": {
+        "data": [
+          "This website uses cookies and similar technologies to remember preferences and to understand site usage through analytics services. You can control cookies through your browser settings.",
+          "Third-party analytics and booking/scheduling tools may set cookies or process data on our behalf. This section will be completed to list each service and its processing details."
+        ],
+        "kind": "list",
+        "label": "cookies — paragraphs",
+        "order": 14
+      },
+      "sections.how-we-use-it.eyebrow": {
+        "kind": "text",
+        "label": "how-we-use-it — eyebrow",
+        "order": 9,
+        "value": "Use"
+      },
+      "sections.how-we-use-it.heading": {
+        "kind": "text",
+        "label": "how-we-use-it — heading",
+        "order": 10,
+        "value": "How We Use Your Information"
+      },
+      "sections.how-we-use-it.paragraphs": {
+        "data": [
+          "We use the information you provide to respond to your inquiries, schedule consultations, deliver services, and manage our relationship with you.",
+          "We use technical data to maintain, secure, and improve the website and to understand how visitors engage with our content. We do not sell your personal information."
+        ],
+        "kind": "list",
+        "label": "how-we-use-it — paragraphs",
+        "order": 11
+      },
+      "sections.overview.eyebrow": {
+        "kind": "text",
+        "label": "overview — eyebrow",
+        "order": 3,
+        "value": "Overview"
+      },
+      "sections.overview.heading": {
+        "kind": "text",
+        "label": "overview — heading",
+        "order": 4,
+        "value": "Overview"
+      },
+      "sections.overview.paragraphs": {
+        "data": [
+          "This Privacy Policy describes how Dinq Advisory Group (\"Dinq\", \"we\", \"us\") collects, uses, discloses, and protects personal information we receive through this website, including information you provide through our consultation booking and contact forms.",
+          "By using this website you acknowledge that you have read and understood this policy. Where we require consent for a particular use, it will be requested explicitly before collection."
+        ],
+        "kind": "list",
+        "label": "overview — paragraphs",
+        "order": 5
+      },
+      "sections.third-parties.eyebrow": {
+        "kind": "text",
+        "label": "third-parties — eyebrow",
+        "order": 15,
+        "value": "Third Parties"
+      },
+      "sections.third-parties.heading": {
+        "kind": "text",
+        "label": "third-parties — heading",
+        "order": 16,
+        "value": "Third-Party Services"
+      },
+      "sections.third-parties.paragraphs": {
+        "data": [
+          "We use third-party service providers for website analytics and for the booking/scheduling tool that powers consultation scheduling. These providers process limited data solely to provide those services.",
+          "We may also disclose information where required by law or to protect our rights, safety, or property."
+        ],
+        "kind": "list",
+        "label": "third-parties — paragraphs",
+        "order": 17
+      },
+      "sections.what-we-collect.eyebrow": {
+        "kind": "text",
+        "label": "what-we-collect — eyebrow",
+        "order": 6,
+        "value": "Collection"
+      },
+      "sections.what-we-collect.heading": {
+        "kind": "text",
+        "label": "what-we-collect — heading",
+        "order": 7,
+        "value": "What We Collect"
+      },
+      "sections.what-we-collect.paragraphs": {
+        "data": [
+          "We collect information you choose to provide, such as your name, email address, phone number, country, and the details of your inquiry when you complete our booking or contact forms.",
+          "We may also collect limited technical data automatically, including browser type, device type, IP address, pages visited, and timestamps, to operate and improve the site."
+        ],
+        "kind": "list",
+        "label": "what-we-collect — paragraphs",
+        "order": 8
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "representative-matters": {
+    "blocks": {
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Our Work"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 3,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.lead": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 2,
+        "value": "Anonymized engagements delivered by Dinq and its strategic alliance with Kairos Law. Each entry is intentionally client-anonymized — this page stands in for testimonials while the public track record grows."
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Representative Matters"
+      },
+      "sections.matters.eyebrow": {
+        "kind": "text",
+        "label": "matters — eyebrow",
+        "order": 4,
+        "value": "Selected Engagements"
+      },
+      "sections.matters.heading": {
+        "kind": "text",
+        "label": "matters — heading",
+        "order": 5,
+        "value": "Selected Engagements"
+      },
+      "sections.matters.items": {
+        "data": [
+          {
+            "key": "0",
+            "role": "Supported market-entry planning, local coordination, stakeholder engagement, and implementation workstreams, including coordination with relevant professional advisors.",
+            "situation": "An international investor required support assessing and establishing operations in Ethiopia.",
+            "title": "Cross-Border Market Entry — International Investor"
+          },
+          {
+            "key": "1",
+            "role": "Coordinated corporate-structuring workstreams, stakeholder engagement, and implementation support, with legal matters handled by appropriate counsel.",
+            "situation": "A cross-border business required a coordinated path from structuring decisions to local establishment and regulatory engagement.",
+            "title": "Corporate Establishment & Regulatory Coordination"
+          },
+          {
+            "key": "2",
+            "role": "Supported transaction coordination, local follow-up, and planning for longer-term property and asset management.",
+            "situation": "A diaspora family required local support in connection with property acquisition and the ongoing management of family assets.",
+            "title": "Diaspora Property Acquisition & Stewardship"
+          },
+          {
+            "key": "3",
+            "role": "Coordinated implementation activities, follow-up, and reporting across the relevant workstreams.",
+            "situation": "An investment project required local implementation support and reliable reporting to stakeholders who were not continuously present in Ethiopia.",
+            "title": "Investment Project Implementation & Reporting"
+          },
+          {
+            "key": "4",
+            "role": "Coordinated the advisory and implementation relationship while working with Kairos Law on legal workstreams requiring regulated legal services.",
+            "situation": "A client mandate required commercial, operational, and legal support across multiple issues.",
+            "title": "Integrated Advisory + Legal Coordination"
+          }
+        ],
+        "kind": "list",
+        "label": "matters — items",
+        "order": 7
+      },
+      "sections.matters.text": {
+        "kind": "text",
+        "label": "matters — text",
+        "order": 6,
+        "value": "Representative matters are anonymized and limited to engagements Dinq can substantiate. Outcomes are only added where they can be verified; client names, values, and outcomes are not published unless specifically approved."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "solution-diaspora-advisory": {
+    "blocks": {
+      "approach": {
+        "kind": "textarea",
+        "label": "Our Approach",
+        "order": 6,
+        "value": "Dinq becomes the client's professional point of coordination in Ethiopia. We define the objective, identify risks, establish clear responsibilities and reporting, coordinate required specialists, and keep the client informed throughout execution."
+      },
+      "challenges": {
+        "data": [
+          "Managing important matters from Canada, the United States, the United Kingdom, Europe, or the Middle East.",
+          "Relying on relatives or informal contacts for transactions requiring professional oversight.",
+          "Difficulty verifying property, business, or investment information.",
+          "Coordinating multiple professionals and government offices remotely.",
+          "Monitoring construction, tenants, maintenance, or investments from abroad.",
+          "Handling family, inheritance, or property issues that require local coordination."
+        ],
+        "kind": "list",
+        "label": "Common Challenges",
+        "order": 5
+      },
+      "delivery": {
+        "data": [
+          "Investment and business-establishment advisory.",
+          "Property acquisition and transaction coordination.",
+          "Property and asset management.",
+          "Tenant, maintenance, and vendor coordination.",
+          "Construction and renovation monitoring.",
+          "Local due diligence and document-verification coordination.",
+          "Family property and estate-related coordination, with legal matters referred to appropriate counsel.",
+          "Trusted local representation and stakeholder follow-up.",
+          "Periodic reporting, photographs, updates, and issue escalation.",
+          "Relocation and re-establishment coordination where appropriate."
+        ],
+        "kind": "list",
+        "label": "How Dinq can help",
+        "order": 7
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 3,
+        "value": "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "The Opportunity",
+        "order": 4,
+        "value": "For diaspora clients, the challenge is often not willingness to invest or engage with Ethiopia; it is distance, fragmented information, informal processes, and the difficulty of finding a reliable professional team that can represent their interests on the ground."
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Helping Ethiopians abroad invest, relocate, establish businesses, manage family interests, and navigate matters in Ethiopia through trusted local representation."
+      },
+      "tagline": {
+        "kind": "text",
+        "label": "Hero — tagline",
+        "order": 2,
+        "value": "Connecting Opportunity Across Borders."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Diaspora Advisory"
+      },
+      "whyDinq": {
+        "kind": "textarea",
+        "label": "Why Dinq",
+        "order": 8,
+        "value": "For diaspora clients, Dinq offers something fundamentally different from informal help: structured professional oversight. Our role is to be a reliable set of eyes and ears on the ground while the client retains visibility and control."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "solution-government-institutional-advisory": {
+    "blocks": {
+      "approach": {
+        "kind": "textarea",
+        "label": "Our Approach",
+        "order": 5,
+        "value": "Dinq works as a coordinating advisory layer: clarifying objectives, mapping stakeholders, establishing an implementation roadmap, supporting engagement, and maintaining follow-through across workstreams."
+      },
+      "challenges": {
+        "data": [
+          "Fragmented stakeholder interests and decision-making structures.",
+          "Need for local institutional knowledge and relationship management.",
+          "Coordination between international and Ethiopian teams.",
+          "Project implementation across legal, commercial, technical, and operational workstreams.",
+          "Need for reliable local follow-up, reporting, and issue escalation."
+        ],
+        "kind": "list",
+        "label": "Common Challenges",
+        "order": 4
+      },
+      "delivery": {
+        "data": [
+          "Strategic and project advisory.",
+          "Stakeholder mapping and engagement support.",
+          "Public-private coordination.",
+          "Institutional and government liaison support.",
+          "Program and project implementation coordination.",
+          "Local partner and service-provider coordination.",
+          "Meeting, workstream, and action-item management.",
+          "Research and briefing support.",
+          "Implementation monitoring and reporting.",
+          "Coordination of legal and specialized professional support where required."
+        ],
+        "kind": "list",
+        "label": "How Dinq can help",
+        "order": 6
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "The Opportunity",
+        "order": 3,
+        "value": "Complex institutional mandates often involve multiple stakeholders, regulatory bodies, private-sector partners, technical experts, and implementation teams. The challenge is aligning these parties around a clear strategy and maintaining momentum from concept through delivery."
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Strategic advisory, stakeholder engagement, program coordination, and implementation support for governments, development agencies, NGOs, and institutional investors."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Government & Institutional Advisory"
+      },
+      "whyDinq": {
+        "kind": "textarea",
+        "label": "Why Dinq",
+        "order": 7,
+        "value": "Our value lies in connecting strategy, relationships, and execution. We help international and local stakeholders work through one coordinated implementation framework."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "solution-international-business-investment-advisory": {
+    "blocks": {
+      "approach": {
+        "kind": "textarea",
+        "label": "Our Approach",
+        "order": 6,
+        "value": "We begin with the commercial objective, not a predetermined structure. Dinq assesses the opportunity and execution environment, develops a practical roadmap, coordinates the required stakeholders and professional disciplines, and remains involved as the strategy moves into implementation."
+      },
+      "challenges": {
+        "data": [
+          "Limited reliable market intelligence or fragmented information.",
+          "Uncertainty about market-entry structures, local partners, and implementation sequence.",
+          "Navigating government institutions, permits, incentives, and stakeholder relationships.",
+          "Coordinating legal, financial, technical, and operational advisors.",
+          "Managing a project from abroad without reliable local oversight."
+        ],
+        "kind": "list",
+        "label": "Common Challenges",
+        "order": 5
+      },
+      "delivery": {
+        "data": [
+          "Market-entry and investment strategy.",
+          "Opportunity assessment and commercial due diligence coordination.",
+          "Investment and corporate-structure planning with coordinated legal support where required.",
+          "Local partner and stakeholder identification and coordination.",
+          "Government and institutional engagement support.",
+          "Site, industrial-park, and location assessment coordination.",
+          "Investment incentive and regulatory-navigation support.",
+          "Transaction and project coordination.",
+          "Implementation planning and local representation.",
+          "Ongoing advisory, monitoring, and reporting."
+        ],
+        "kind": "list",
+        "label": "How Dinq can help",
+        "order": 7
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 3,
+        "value": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "The Opportunity",
+        "order": 4,
+        "value": "Ethiopia can offer significant opportunities, but successful entry requires more than identifying a promising sector. Investors must understand the market, choose an appropriate structure, assess local partners and locations, navigate institutions, coordinate professional advisors, and manage implementation."
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Helping organizations assess opportunities, enter the Ethiopian market, structure investments, coordinate stakeholders, and execute with confidence."
+      },
+      "tagline": {
+        "kind": "text",
+        "label": "Hero — tagline",
+        "order": 2,
+        "value": "Connecting Opportunity Across Borders."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "International Business & Investment Advisory"
+      },
+      "whyDinq": {
+        "kind": "textarea",
+        "label": "Why Dinq",
+        "order": 8,
+        "value": "Dinq combines international client expectations with local execution capability. The value is not simply knowing what should be done, but helping coordinate how it gets done."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "solution-property-asset-management": {
+    "blocks": {
+      "approach": {
+        "kind": "textarea",
+        "label": "Our Approach",
+        "order": 6,
+        "value": "We act as your on-the-ground representative — inspecting properties, coordinating tenants and vendors, overseeing construction, and reporting back with full transparency."
+      },
+      "challenges": {
+        "data": [
+          "Distance and limited visibility into the condition of the property.",
+          "Tenant communication, rent monitoring, and issue resolution.",
+          "Maintenance, repair, and vendor management.",
+          "Renovation or construction work that requires local monitoring.",
+          "Lack of reliable documentation and periodic reporting.",
+          "Family or inherited assets with unclear management responsibilities."
+        ],
+        "kind": "list",
+        "label": "Common Challenges",
+        "order": 5
+      },
+      "closing": {
+        "kind": "textarea",
+        "label": "Services list — closing paragraph",
+        "order": 9,
+        "value": "Where a property matter intersects with investment, corporate structuring, succession, tax, or legal requirements, Dinq coordinates the appropriate professionals while remaining the client's central point of oversight."
+      },
+      "ctaLabel": {
+        "kind": "text",
+        "label": "CTA — button label",
+        "order": 12,
+        "value": "Discuss Your Property or Assets"
+      },
+      "delivery": {
+        "data": [
+          "Tenant communication and management",
+          "Rent administration and financial reporting",
+          "Property inspections and condition reporting",
+          "Maintenance, repair, and vendor coordination",
+          "Leasing, renewals, move-outs, and tenant onboarding",
+          "Renovation and improvement oversight",
+          "Construction and project monitoring",
+          "Ongoing asset monitoring and local representation",
+          "Coordination of legal, tax, succession, or other professional support where required"
+        ],
+        "kind": "list",
+        "label": "How Dinq can help",
+        "order": 7
+      },
+      "deliveryHeading": {
+        "kind": "text",
+        "label": "Services list — heading",
+        "order": 8,
+        "value": "Services May Include"
+      },
+      "faq": {
+        "data": [
+          {
+            "a": "Clients receive monthly reports covering property condition, tenant status, income, and expenses, with additional updates whenever something requires your attention.",
+            "q": "How often will I receive updates on my property?"
+          },
+          {
+            "a": "We manage the issue directly — from formal notices through to resolution, in coordination with legal counsel where necessary — and keep you informed at every step.",
+            "q": "What happens if a tenant stops paying or causes damage?"
+          },
+          {
+            "a": "Yes. Our reporting and communication are designed for clients who are not physically present in Ethiopia, with regular check-ins by phone, email, or video call.",
+            "q": "Can I manage everything remotely from abroad?"
+          },
+          {
+            "a": "Fees are structured around the scope of work — routine management, active renovation oversight, or full asset stewardship — and are discussed transparently before engagement begins.",
+            "q": "What are your management fees, and what do they cover?"
+          },
+          {
+            "a": "Yes. We coordinate contractors, monitor progress and budget, and report on milestones so you have full visibility into any renovation or build.",
+            "q": "Do you handle renovations or construction oversight?"
+          },
+          {
+            "a": "We support the sale process end-to-end, including coordinating with brokers, buyers, and appropriate professionals through to closing.",
+            "q": "What happens if I want to sell the property later?"
+          }
+        ],
+        "kind": "list",
+        "label": "FAQ",
+        "order": 11
+      },
+      "headline": {
+        "kind": "text",
+        "label": "Hero — headline",
+        "order": 2,
+        "value": "Professional oversight. Trusted local execution."
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 3,
+        "value": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "The Opportunity",
+        "order": 4,
+        "value": "Owning property or business assets in Ethiopia while living or operating abroad creates real value — and real distance. Clients need a partner who treats their assets with the same care they would themselves."
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Dinq provides ongoing property and asset management for clients who need reliable professional oversight in Ethiopia, particularly owners living abroad. We act as a trusted local point of coordination — protecting, maintaining, and managing property interests while keeping clients informed wherever they are."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Property & Asset Management"
+      },
+      "whyDinq": {
+        "kind": "textarea",
+        "label": "Why Dinq",
+        "order": 10,
+        "value": "Property management is not simply about collecting rent or arranging repairs. Dinq's model emphasizes stewardship, documentation, accountability, and communication — particularly for owners who are outside Ethiopia."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "solution-workforce-organizational-advisory": {
+    "blocks": {
+      "approach": {
+        "kind": "textarea",
+        "label": "Our Approach",
+        "order": 5,
+        "value": "Dinq begins with the business strategy and translates it into the organization, workforce, leadership, and people systems required for execution. We integrate workforce considerations into market entry, expansion, restructuring, and institutional mandates rather than treating HR as a stand-alone administrative exercise."
+      },
+      "challenges": {
+        "data": [
+          "Building a local team during market entry or expansion.",
+          "Unclear organizational structures, roles, or accountability.",
+          "Workforce planning for new projects or facilities.",
+          "Recruitment and talent-identification needs.",
+          "HR processes that do not support operational goals.",
+          "Need for practical, sector-relevant workforce and operational training."
+        ],
+        "kind": "list",
+        "label": "Common Challenges",
+        "order": 4
+      },
+      "delivery": {
+        "data": [
+          "Organization & Workforce Strategy — workforce planning, organizational design, operating models, role and accountability design, restructuring, and change management.",
+          "Talent & Leadership — talent strategy, executive and specialized recruitment support, succession planning, leadership development, performance management, and employee engagement.",
+          "HR Transformation & Operations — HR operating models, process improvement, HR systems implementation support, policies, people analytics, and HR service delivery.",
+          "Employment & Workplace Advisory — employee relations, workplace policies, performance and disciplinary process support, employment-risk coordination, and coordinated Ethiopian employment-law advice through Kairos Law where regulated legal advice is required.",
+          "Leadership, management, and workforce capability development.",
+          "Coordination of specialized third-party training providers where sector-specific or technical training is required.",
+          "Cross-border workforce integration and implementation support for market-entry, expansion, restructuring, and institutional mandates.",
+          "Workforce implementation, monitoring, and reporting aligned with the broader Dinq engagement."
+        ],
+        "kind": "list",
+        "label": "How Dinq can help",
+        "order": 6
+      },
+      "heroImage": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+      },
+      "opportunity": {
+        "kind": "textarea",
+        "label": "The Opportunity",
+        "order": 3,
+        "value": "Market entry, expansion, restructuring, and project delivery all depend on having the right organization and workforce. Businesses may need to build teams quickly, redesign roles, establish practical HR systems, or develop sector-specific operational capability."
+      },
+      "summary": {
+        "kind": "textarea",
+        "label": "Hero — summary",
+        "order": 1,
+        "value": "Organization and workforce strategy, talent and leadership, HR transformation, change, and employment-risk coordination aligned with business and implementation needs."
+      },
+      "title": {
+        "kind": "text",
+        "label": "Title",
+        "order": 0,
+        "value": "Workforce & Organizational Advisory"
+      },
+      "whyDinq": {
+        "kind": "textarea",
+        "label": "Why Dinq",
+        "order": 7,
+        "value": "Workforce strategy is part of execution. Dinq combines senior organizational and talent-management capability with its broader investment and implementation platform. Through strategic collaboration with Kairos Law, clients can also coordinate Ethiopian employment-law and workplace legal matters where regulated legal services are required. This creates a connected path from business strategy to organization design, workforce implementation, employment-risk management, and ongoing support."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "solutions": {
+    "blocks": {
+      "cards": {
+        "data": [
+          {
+            "index": "01",
+            "slug": "international-business-investment-advisory",
+            "text": "Helping international businesses, investors, and entrepreneurs assess opportunities, enter the Ethiopian market, establish operations, navigate stakeholders and regulations, and move from strategy into implementation.",
+            "title": "International Business & Investment Advisory"
+          },
+          {
+            "index": "02",
+            "slug": "diaspora-advisory",
+            "text": "A trusted local point of coordination for diaspora clients managing investments, businesses, real estate, family assets, inheritance and succession matters, relocation, and other interests in Ethiopia.",
+            "title": "Diaspora Advisory"
+          },
+          {
+            "index": "03",
+            "slug": "property-asset-management",
+            "text": "Professional oversight of property and related physical assets in Ethiopia — from tenant and rent administration to inspections, maintenance, leasing, vendor coordination, improvements, reporting, and local representation.",
+            "title": "Property & Asset Management"
+          },
+          {
+            "index": "04",
+            "slug": "government-institutional-advisory",
+            "text": "Supporting businesses, NGOs, development organizations, public institutions, and other stakeholders with government coordination, stakeholder engagement, institutional advisory, investment facilitation, and implementation.",
+            "title": "Government & Institutional Advisory"
+          },
+          {
+            "index": "05",
+            "slug": "workforce-organizational-advisory",
+            "text": "Helping businesses and institutions align organizational structure, workforce capabilities, talent, performance systems, leadership, and HR operations with business strategy and growth.",
+            "title": "Workforce & Organizational Advisory"
+          }
+        ],
+        "kind": "list",
+        "label": "Solution cards",
+        "order": 0
+      },
+      "cards.eyebrow": {
+        "kind": "text",
+        "label": "Solution list — eyebrow",
+        "order": 3,
+        "value": "What we do"
+      },
+      "cards.title": {
+        "kind": "text",
+        "label": "Solution list — title",
+        "order": 4,
+        "value": "Five practice areas"
+      },
+      "cta.text": {
+        "kind": "textarea",
+        "label": "CTA — text",
+        "order": 6,
+        "value": "Every engagement starts with a conversation. Tell us where you're headed, and we'll map the path together."
+      },
+      "cta.title": {
+        "kind": "text",
+        "label": "CTA — title",
+        "order": 5,
+        "value": "Not sure which solution fits?"
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Solutions"
+      },
+      "hero.intro": {
+        "kind": "textarea",
+        "label": "Hero — introduction",
+        "order": 2,
+        "value": "Dinq Advisory Group helps businesses, investors, institutions, and members of the Ethiopian diaspora navigate opportunities and manage interests in Ethiopia. We go beyond recommendations — helping clients assess opportunities, make informed decisions, coordinate the right professionals and stakeholders, and follow through on implementation."
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Advisory built around what it takes to get things done."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "terms-of-use": {
+    "blocks": {
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Legal"
+      },
+      "hero.lead": {
+        "kind": "textarea",
+        "label": "Hero — lead paragraph",
+        "order": 2,
+        "value": "The terms governing your use of this website. This is placeholder legal copy for design purposes and must be reviewed by counsel before launch."
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Terms of Use"
+      },
+      "sections.acceptance.eyebrow": {
+        "kind": "text",
+        "label": "acceptance — eyebrow",
+        "order": 3,
+        "value": "Agreement"
+      },
+      "sections.acceptance.heading": {
+        "kind": "text",
+        "label": "acceptance — heading",
+        "order": 4,
+        "value": "Acceptance of Terms"
+      },
+      "sections.acceptance.paragraphs": {
+        "data": [
+          "By accessing or using this website, you agree to be bound by these Terms of Use and all applicable laws and regulations. If you do not agree, please do not use the website.",
+          "Dinq reserves the right to revise these terms at any time. Continued use of the website after changes are posted constitutes acceptance of the revised terms."
+        ],
+        "kind": "list",
+        "label": "acceptance — paragraphs",
+        "order": 5
+      },
+      "sections.contact.eyebrow": {
+        "kind": "text",
+        "label": "contact — eyebrow",
+        "order": 15,
+        "value": "Contact"
+      },
+      "sections.contact.heading": {
+        "kind": "text",
+        "label": "contact — heading",
+        "order": 16,
+        "value": "Contact"
+      },
+      "sections.contact.paragraphs": {
+        "data": [
+          "If you have questions about these Terms of Use, please contact us using the details provided on the Contact page."
+        ],
+        "kind": "list",
+        "label": "contact — paragraphs",
+        "order": 17
+      },
+      "sections.content.eyebrow": {
+        "kind": "text",
+        "label": "content — eyebrow",
+        "order": 6,
+        "value": "Content"
+      },
+      "sections.content.heading": {
+        "kind": "text",
+        "label": "content — heading",
+        "order": 7,
+        "value": "Content & Disclaimer"
+      },
+      "sections.content.paragraphs": {
+        "data": [
+          "The content on this website is provided for general informational purposes only and does not constitute legal, financial, or professional advice. You should consult qualified professionals before acting on any information found here.",
+          "While we aim to keep information accurate and current, we make no warranties as to its completeness, accuracy, or fitness for a particular purpose."
+        ],
+        "kind": "list",
+        "label": "content — paragraphs",
+        "order": 8
+      },
+      "sections.liability.eyebrow": {
+        "kind": "text",
+        "label": "liability — eyebrow",
+        "order": 12,
+        "value": "Liability"
+      },
+      "sections.liability.heading": {
+        "kind": "text",
+        "label": "liability — heading",
+        "order": 13,
+        "value": "Limitation of Liability"
+      },
+      "sections.liability.paragraphs": {
+        "data": [
+          "To the fullest extent permitted by law, Dinq shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of, or inability to use, this website.",
+          "You are responsible for any decisions you make based on content found on this website."
+        ],
+        "kind": "list",
+        "label": "liability — paragraphs",
+        "order": 14
+      },
+      "sections.use.eyebrow": {
+        "kind": "text",
+        "label": "use — eyebrow",
+        "order": 9,
+        "value": "Use"
+      },
+      "sections.use.heading": {
+        "kind": "text",
+        "label": "use — heading",
+        "order": 10,
+        "value": "Permitted Use"
+      },
+      "sections.use.paragraphs": {
+        "data": [
+          "You may use this website for lawful purposes only. You agree not to misuse the website, attempt to gain unauthorized access to its systems, or interfere with its operation.",
+          "All intellectual property on this website, including text, graphics, and logos, is owned by Dinq or its licensors and may not be reproduced without permission."
+        ],
+        "kind": "list",
+        "label": "use — paragraphs",
+        "order": 11
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "who-we-are": {
+    "blocks": {
+      "cta.text": {
+        "kind": "text",
+        "label": "How We Work — button",
+        "order": 53,
+        "value": "Speak With Dinq"
+      },
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "About Dinq Advisory Group"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — background image",
+        "order": 2,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Who We Are"
+      },
+      "howWeWork.eyebrow": {
+        "kind": "text",
+        "label": "How We Work — eyebrow",
+        "order": 50,
+        "value": "How We Work"
+      },
+      "howWeWork.heading": {
+        "kind": "text",
+        "label": "How We Work — heading",
+        "order": 51,
+        "value": "A complete journey, not a one-off engagement"
+      },
+      "howWeWork.paragraphs": {
+        "data": [
+          "Dinq is designed around the full arc of a cross-border engagement. We do not hand off after the strategy — we remain engaged to help clients execute locally, stay informed, and protect what they have built. Every engagement follows the same four-step journey, from first assessment through long-term stewardship."
+        ],
+        "kind": "list",
+        "label": "How We Work — paragraphs",
+        "order": 52
+      },
+      "mission.eyebrow": {
+        "kind": "text",
+        "label": "Mission — eyebrow",
+        "order": 22,
+        "value": "Our Mission"
+      },
+      "mission.text": {
+        "kind": "textarea",
+        "label": "Mission — statement",
+        "order": 23,
+        "value": "To simplify investing, doing business, and managing assets in Ethiopia by providing integrated strategic advisory, implementation support, and coordinated professional solutions through one trusted relationship."
+      },
+      "purpose.eyebrow": {
+        "kind": "text",
+        "label": "Purpose — eyebrow",
+        "order": 30,
+        "value": "Our Purpose"
+      },
+      "purpose.heading": {
+        "kind": "text",
+        "label": "Purpose — heading",
+        "order": 31,
+        "value": "To bridge the gap between international opportunity and successful local execution."
+      },
+      "purpose.paragraphs": {
+        "data": [
+          "Many organizations have strong ideas. Many investors have capital. Many members of the diaspora want to invest, contribute, or protect what they have built. The challenge is often execution: finding a trusted team that understands both international expectations and the realities of operating locally.",
+          "Dinq exists to bridge that gap."
+        ],
+        "kind": "list",
+        "label": "Purpose — paragraphs",
+        "order": 32
+      },
+      "values.eyebrow": {
+        "kind": "text",
+        "label": "Our Values — eyebrow",
+        "order": 40,
+        "value": "Our Values"
+      },
+      "values.heading": {
+        "kind": "text",
+        "label": "Our Values — heading",
+        "order": 41,
+        "value": "What guides every engagement"
+      },
+      "values.items": {
+        "data": [
+          {
+            "key": "integrity",
+            "text": "We build trust through transparency, professionalism, and ethical decision-making.",
+            "title": "Integrity"
+          },
+          {
+            "key": "partnership",
+            "text": "We succeed when our clients succeed.",
+            "title": "Partnership"
+          },
+          {
+            "key": "excellence",
+            "text": "We pursue exceptional outcomes through disciplined execution and attention to detail.",
+            "title": "Excellence"
+          },
+          {
+            "key": "collaboration",
+            "text": "The best solutions come from combining expertise across disciplines.",
+            "title": "Collaboration"
+          },
+          {
+            "key": "practicality",
+            "text": "Advice only creates value when it can be successfully implemented.",
+            "title": "Practicality"
+          },
+          {
+            "key": "stewardship",
+            "text": "We approach each client's business, investment, and assets with care, accountability, and a long-term perspective.",
+            "title": "Stewardship"
+          }
+        ],
+        "kind": "list",
+        "label": "Our Values — values",
+        "order": 42
+      },
+      "vision.eyebrow": {
+        "kind": "text",
+        "label": "Vision — eyebrow",
+        "order": 20,
+        "value": "Our Vision"
+      },
+      "vision.text": {
+        "kind": "textarea",
+        "label": "Vision — statement",
+        "order": 21,
+        "value": "To become a leading cross-border advisory firm connecting international capital, expertise, and opportunity with Ethiopia and the broader East African region through trusted relationships, practical execution, and long-term value creation."
+      },
+      "whoWeAre.eyebrow": {
+        "kind": "text",
+        "label": "Who We Are — eyebrow",
+        "order": 10,
+        "value": "Who We Are"
+      },
+      "whoWeAre.heading": {
+        "kind": "text",
+        "label": "Who We Are — heading",
+        "order": 11,
+        "value": "An integrated cross-border advisory firm"
+      },
+      "whoWeAre.paragraphs": {
+        "data": [
+          "Dinq Advisory Group is an integrated cross-border advisory firm helping international businesses, investors, institutions, and members of the Ethiopian diaspora successfully invest, establish, operate, and manage their interests in Ethiopia.",
+          "Unlike traditional consulting firms that stop at strategy, or professional service providers that address only one part of a mandate, Dinq supports the complete journey — from opportunity assessment and strategic planning to implementation, coordination, local representation, and ongoing asset stewardship.",
+          "Working in strategic collaboration with Kairos Law where legal services are required, Dinq combines commercial advisory, local execution, and coordinated professional support into one integrated client experience. Our clients gain more than advice: they gain a trusted partner on the ground."
+        ],
+        "kind": "list",
+        "label": "Who We Are — paragraphs",
+        "order": 12
+      },
+      "whoWeAre.tagline": {
+        "kind": "text",
+        "label": "Who We Are — tagline",
+        "order": 13,
+        "value": "Connecting Opportunity Across Borders."
+      },
+      "whyDinq.amharic": {
+        "kind": "text",
+        "label": "Why Dinq — Amharic word",
+        "order": 60,
+        "value": "ድንቅ"
+      },
+      "whyDinq.eyebrow": {
+        "kind": "text",
+        "label": "Why Dinq — eyebrow",
+        "order": 61,
+        "value": "Why “Dinq”?"
+      },
+      "whyDinq.footerNote": {
+        "kind": "text",
+        "label": "Why Dinq — footnote",
+        "order": 63,
+        "value": "Dinq (ድንቅ) is Amharic for extraordinary or remarkable — the standard we bring to every engagement."
+      },
+      "whyDinq.text": {
+        "kind": "textarea",
+        "label": "Why Dinq — paragraph",
+        "order": 62,
+        "value": "The name Dinq comes from the Amharic word ድንቅ, meaning extraordinary, remarkable, or a marvel. It reflects our commitment to exceptional outcomes while honoring our deep connection to Ethiopia. For us, “Dinq” is not simply a name; it represents the standard we aim to bring to every engagement through sound judgment, trusted execution, and enduring partnerships."
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "why-ethiopia": {
+    "blocks": {
+      "hero.eyebrow": {
+        "kind": "text",
+        "label": "Hero — eyebrow",
+        "order": 0,
+        "value": "Why Ethiopia"
+      },
+      "hero.image": {
+        "kind": "image",
+        "label": "Hero — image",
+        "order": 2,
+        "value": "/media/assets/images/hero-addis.jpg"
+      },
+      "hero.title": {
+        "kind": "text",
+        "label": "Hero — title",
+        "order": 1,
+        "value": "Why Ethiopia"
+      },
+      "sections.diaspora-guide.heading": {
+        "kind": "text",
+        "label": "diaspora-guide — heading",
+        "order": 15,
+        "value": "Diaspora Investment Guide"
+      },
+      "sections.diaspora-guide.paragraphs": {
+        "data": [
+          "Ethiopians abroad play a distinctive role in the country's economy through remittances, investment, and knowledge transfer. The diaspora investment guide addresses the specific questions Ethiopian nationals overseas ask when investing back home.",
+          "Topics include structuring investments as a non-resident, land and property acquisition, business registration, tax treatment of diaspora investors, repatriation of returns, and practical guidance on managing assets from abroad.",
+          "Dinq works extensively with diaspora clients and, through its alliance with Kairos Law, provides the coordinated legal and advisory support needed to protect family interests and build long-term value."
+        ],
+        "kind": "list",
+        "label": "diaspora-guide — paragraphs",
+        "order": 16
+      },
+      "sections.doing-business.heading": {
+        "kind": "text",
+        "label": "doing-business — heading",
+        "order": 7,
+        "value": "Doing Business in Ethiopia"
+      },
+      "sections.doing-business.paragraphs": {
+        "data": [
+          "Establishing a presence in Ethiopia involves registering a business, obtaining the required investment permits, securing a tax identification number, and meeting sector-specific licensing requirements. New investors often need to weigh the choice between branches, local companies, and joint ventures.",
+          "Practical considerations — such as land access, utilities, logistics, workforce availability, and foreign-exchange access — shape how quickly an operation can become operational. Realistic planning around these factors reduces costly delays.",
+          "Dinq helps clients sequence these steps, coordinate with the relevant authorities, and structure operations so the business can scale as it grows.",
+          "Ethiopia's regulatory environment is evolving, with oversight distributed across several authorities — including the Ethiopian Investment Commission, sector ministries, the National Bank of Ethiopia, and the Ethiopian Customs Commission. Understanding which agency governs a given matter, and how requirements interact, is essential to maintaining compliance. Dinq monitors regulatory developments and helps clients interpret how changes affect their operations, licenses, and obligations."
+        ],
+        "kind": "list",
+        "label": "doing-business — paragraphs",
+        "order": 8
+      },
+      "sections.east-africa.heading": {
+        "kind": "text",
+        "label": "east-africa — heading",
+        "order": 17,
+        "value": "Regional Opportunities in East Africa"
+      },
+      "sections.east-africa.paragraphs": {
+        "data": [
+          "Ethiopia's position in the Horn of Africa connects it to a regional economy of hundreds of millions of people. Port access, cross-border trade, and the growing role of regional integration create opportunities for companies that think beyond a single market.",
+          "Investors increasingly view Ethiopia as a hub from which to serve neighbouring markets in manufacturing, logistics, energy, and services. Understanding trade corridors, customs arrangements, and regional demand patterns is essential to capturing these opportunities.",
+          "This section will evolve into guides on regional trade, logistics corridors, and market-entry strategies for East Africa, developed in partnership with regional specialists."
+        ],
+        "kind": "list",
+        "label": "east-africa — paragraphs",
+        "order": 18
+      },
+      "sections.incentives.heading": {
+        "kind": "text",
+        "label": "incentives — heading",
+        "order": 5,
+        "value": "Investment Incentives"
+      },
+      "sections.incentives.paragraphs": {
+        "data": [
+          "Ethiopia offers a range of investment incentives designed to attract capital to priority sectors and regions. These typically include customs duty exemptions on imported capital goods and construction materials, corporate income tax holidays, and loss carry-forward provisions for qualifying investments.",
+          "Incentives are generally administered through the Ethiopian Investment Commission (EIC), with eligibility tied to factors such as sector, investment size, export orientation, and location within industrial parks or regional development zones. Navigating eligibility rules correctly is often the difference between securing and losing a benefit.",
+          "This section will map the main incentive categories, eligibility criteria, and the application process, and explain how Dinq helps clients structure their investments to capture available benefits while remaining compliant."
+        ],
+        "kind": "list",
+        "label": "incentives — paragraphs",
+        "order": 6
+      },
+      "sections.land-property.heading": {
+        "kind": "text",
+        "label": "land-property — heading",
+        "order": 9,
+        "value": "Land & Property Ownership"
+      },
+      "sections.land-property.paragraphs": {
+        "data": [
+          "In Ethiopia, land is owned by the state and the federal government, and is leased to investors on long-term bases for investment purposes. Leases differ by region, use type, and duration, and are granted through a formal allocation process.",
+          "For diaspora and foreign investors, understanding lease structures, due-diligence requirements, and the mechanics of securing and developing land is critical. Property transactions also require careful verification of title, use rights, and existing encumbrances.",
+          "Dinq provides guidance on land acquisition, lease negotiation, property due diligence, and — through Property & Asset Management — the long-term stewardship of assets once acquired."
+        ],
+        "kind": "list",
+        "label": "land-property — paragraphs",
+        "order": 10
+      },
+      "sections.market-entry.heading": {
+        "kind": "text",
+        "label": "market-entry — heading",
+        "order": 13,
+        "value": "Market Entry"
+      },
+      "sections.market-entry.paragraphs": {
+        "data": [
+          "Market entry guides provide step-by-step orientation for investors entering specific sectors: from pre-entry research and market sizing to licensing, site selection, and launch planning. Each guide is tailored to the practical decisions an investor faces.",
+          "Guides cover entry structures, regulatory approvals, incentive eligibility, operational setup, and common pitfalls. They are designed to be practical — not theoretical — reflecting what it actually takes to operate successfully.",
+          "These guides will be published progressively, starting with the sectors where Dinq has the deepest working experience. This page will link to each guide as it is released."
+        ],
+        "kind": "list",
+        "label": "market-entry — paragraphs",
+        "order": 14
+      },
+      "sections.tax-corporate.heading": {
+        "kind": "text",
+        "label": "tax-corporate — heading",
+        "order": 11,
+        "value": "Tax & Corporate Considerations"
+      },
+      "sections.tax-corporate.paragraphs": {
+        "data": [
+          "Corporate tax, VAT, and withholding taxes apply to most business activity in Ethiopia, with rates and exemptions varying by sector, location, and investor status. Income tax obligations apply to employees and to shareholders through dividend withholding.",
+          "Structuring decisions — such as the choice of entity, capital structure, and financing arrangements — have a direct impact on tax exposure and on the ease of repatriating profits and dividends. Transfer pricing rules apply to related-party transactions.",
+          "Dinq coordinates corporate structuring and tax-conscious planning with its legal alliance partner Kairos Law, ensuring that structure, compliance, and reporting are aligned from the start."
+        ],
+        "kind": "list",
+        "label": "tax-corporate — paragraphs",
+        "order": 12
+      },
+      "sections.why-invest.heading": {
+        "kind": "text",
+        "label": "why-invest — heading",
+        "order": 3,
+        "value": "Why Invest in Ethiopia?"
+      },
+      "sections.why-invest.paragraphs": {
+        "data": [
+          "Ethiopia is one of Africa's largest economies by population, offering a large domestic market, a young and growing workforce, and a strategic position in the Horn of Africa. For international investors and members of the diaspora, the country presents opportunities across agriculture, manufacturing, infrastructure, energy, technology, and services.",
+          "Recent reform efforts have opened priority sectors to foreign participation, streamlined business processes, and signalled a stronger commitment to private-sector-led growth. As the policy environment continues to mature, early movers have a chance to establish positions in markets that are still developing.",
+          "Dinq supports investors at each stage of this journey — from initial market assessment and strategy to entry, implementation, and long-term stewardship. Because the fundamentals continue to evolve, working with a local partner who understands both the opportunity and the operating reality on the ground matters."
+        ],
+        "kind": "list",
+        "label": "why-invest — paragraphs",
+        "order": 4
+      }
+    },
+    "kind_of_page": "page"
+  }
+}

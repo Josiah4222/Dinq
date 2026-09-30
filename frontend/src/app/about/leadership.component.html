@@ -1,0 +1,188 @@
+<main id="main" class="sp">
+
+  <!-- ================================ Hero ================================ -->
+  <section class="sp-hero">
+    <div class="sp-hero__media" role="presentation">
+      <img
+        [src]="heroImage() | imageSrc"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="sp-hero__img"
+      />
+      <div class="sp-hero__overlay" aria-hidden="true"></div>
+    </div>
+    <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M -50 420 Q 300 200 620 300 T 1250 140" fill="none" stroke="rgba(200,155,60,0.22)" stroke-width="1.1" stroke-dasharray="2 8" stroke-linecap="round"/>
+      <circle cx="620" cy="300" r="4" fill="#C89B3C"/>
+    </svg>
+    <span class="sp-hero__orb" aria-hidden="true"></span>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container sp-hero__inner">
+      <p class="eyebrow">{{ heroEyebrow() }}</p>
+      <h1 class="sp-hero__title">{{ heroTitle() }}</h1>
+      <nav class="sp-jump" aria-label="On this page">
+        @for (link of jumpLinks; track link.id) {
+          <a class="sp-jump__chip" [href]="'#' + link.id" [appScrollTo]="link.id">{{ link.label }}</a>
+        }
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============================== Overview ============================== -->
+  <section id="overview" class="sp-section sp-section--tint" appReveal>
+    <div class="container">
+      <header class="sp-head sp-head--ruled">
+        <p class="eyebrow">{{ introEyebrow() }}</p>
+        <h2 class="sp-title">{{ introHeading() }}</h2>
+      </header>
+      <div class="sp-prose">
+        @for (p of introParagraphs(); track p) {
+          <p class="sp-prose__text">{{ p }}</p>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== Leadership Bios ========================== -->
+  <section id="leadership" class="sp-section sp-section--light" aria-label="Leadership biographies">
+    <div class="container">
+      <header class="sp-head sp-head--ruled sp-head--split">
+        <div>
+          <p class="eyebrow">{{ teamEyebrow() }}</p>
+          <h2 class="sp-title">{{ teamHeading() }}</h2>
+        </div>
+        <p class="sp-head__meta">{{ teamMeta() }}</p>
+      </header>
+
+      <ol class="lead-list">
+        @for (leader of leaders(); track leader.name; let i = $index) {
+          <li
+            class="lead-row"
+            [class.lead-row--flip]="i % 2 === 1"
+            [style.--row-i]="i"
+          >
+
+            <!-- ---- Portrait column ---- -->
+            <div class="lead-row__portrait">
+              @if (leader.image) {
+                <figure class="lead-row__figure">
+                  <div class="lead-row__frame">
+                    <img
+                      [src]="leader.image | imageSrc"
+                      [alt]="leader.name"
+                      width="560"
+                      height="700"
+                      loading="lazy"
+                      decoding="async"
+                      class="lead-row__img"
+                    />
+                    <span class="lead-row__scrim" aria-hidden="true"></span>
+                  </div>
+                  <figcaption class="lead-row__plate">
+                    <span class="lead-row__plate-label">{{ plateLabel() }}</span>
+                    <span class="lead-row__plate-value">{{ leader.org }}</span>
+                  </figcaption>
+                </figure>
+              } @else {
+                <!-- No portrait: monogram placeholder keeps the layout intact -->
+                <div class="lead-row__figure lead-row__figure--mono">
+                  <span class="lead-row__mono-initial" aria-hidden="true">{{ leader.name.charAt(0) }}</span>
+                  <span class="lead-row__plate-value lead-row__mono-org">{{ leader.org }}</span>
+                </div>
+              }
+
+              <!-- Contact links, set by staff under /admin/pages. Absent until
+                   they are, so no leader is given an empty button. -->
+              @if (linksOf(leader).length) {
+                <div class="lead-row__links">
+                  @for (link of linksOf(leader); track link.kind) {
+                    <a
+                      class="lead-row__link"
+                      [href]="link.href"
+                      [attr.aria-label]="link.label"
+                      [attr.title]="link.label"
+                      [attr.target]="link.kind === 'email' ? null : '_blank'"
+                      rel="noopener noreferrer"
+                    >
+                      @switch (link.kind) {
+                        @case ('linkedin') {
+                          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/>
+                          </svg>
+                        }
+                        @case ('email') {
+                          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+                          </svg>
+                        }
+                      }
+                    </a>
+                  }
+                </div>
+              }
+            </div>
+
+            <!-- ---- Text column ---- -->
+            <div class="lead-row__text">
+              <header class="lead-row__head">
+                <span class="lead-row__role">{{ leader.role }}</span>
+                <h3 class="lead-row__name">{{ leader.name }}</h3>
+              </header>
+
+              <div class="lead-row__bio" [id]="'lead-bio-' + i">
+                <p class="lead-row__para">{{ paragraphsOf(leader)[0] }}</p>
+                @if (isExpanded(leader.name)) {
+                  @for (p of paragraphsOf(leader).slice(1); track p) {
+                    <p class="lead-row__para">{{ p }}</p>
+                  }
+                }
+              </div>
+
+              <button
+                type="button"
+                class="lead-row__toggle"
+                [class.lead-row__toggle--open]="isExpanded(leader.name)"
+                [attr.aria-expanded]="isExpanded(leader.name)"
+                [attr.aria-controls]="'lead-bio-' + i"
+                (click)="toggleBio(leader.name)"
+              >
+                <span>{{ isExpanded(leader.name) ? collapseLabel() : expandLabel() }}</span>
+                <svg viewBox="0 0 16 16" aria-hidden="true" class="lead-row__toggle-icon">
+                  <path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+
+              <div class="lead-row__focus">
+                <p class="lead-row__focus-label">{{ focusLabel() }}</p>
+                <ul class="pill-list">
+                  @for (area of focusOf(leader); track area) {
+                    <li class="pill">{{ area }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================= Our Network ============================ -->
+  <section id="network" class="sp-section sp-section--dark" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+      <header class="sp-head sp-head--ruled">
+        <p class="eyebrow sp-eyebrow--light">{{ networkEyebrow() }}</p>
+        <h2 class="sp-title sp-title--light">{{ networkHeading() }}</h2>
+      </header>
+      <div class="sp-prose">
+        @for (p of networkParagraphs(); track p) {
+          <p class="sp-prose__text sp-prose__text--light">{{ p }}</p>
+        }
+      </div>
+    </div>
+  </section>
+
+</main>

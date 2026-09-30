@@ -1,0 +1,75 @@
+<main id="main" class="ins-index">
+  <!-- ============================ Hero band ============================= -->
+  <section class="ins-index__hero">
+    <div class="container ins-index__hero-inner">
+  <p class="eyebrow">{{ eyebrow() }}</p>
+  <h1 class="ins-index__title">{{ title() }}</h1>
+      <p class="ins-index__intro">
+        Guides, sector notes, and investment fundamentals for international
+        investors and the Ethiopian diaspora.
+      </p>
+    </div>
+  </section>
+
+  <section class="ins-index__body section">
+    <div class="container ins-index__layout">
+      <!-- ======================== Article grid ========================== -->
+      <div class="ins-index__main">
+        @if (showFilter()) {
+          <div class="ins-index__filters" role="group" aria-label="Filter articles by category">
+            <button
+              type="button"
+              class="ins-filter"
+              [class.is-active]="activeCategory() === ''"
+              (click)="setCategory('')"
+            >All</button>
+            @for (category of categories(); track category) {
+              <button
+                type="button"
+                class="ins-filter"
+                [class.is-active]="activeCategory() === category"
+                (click)="setCategory(category)"
+              >{{ category }}</button>
+            }
+          </div>
+        }
+
+        <ol class="ins-index__grid">
+          @for (article of filtered(); track article.slug) {
+            <li class="ins-card" appReveal>
+              <a class="ins-card__link" [routerLink]="['/insights', article.slug]">
+                @if (article.featuredImage) {
+                  <img
+                    class="ins-card__img"
+                    [src]="article.featuredImage | imageSrc"
+                    [alt]="article.title"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                } @else {
+                  <div class="ins-card__img ins-card__img--placeholder" aria-hidden="true">
+                    <span class="ins-card__placeholder-glyph">D</span>
+                  </div>
+                }
+                <span class="ins-card__body">
+                  <span class="ins-card__meta">
+                    <span class="ins-card__category">{{ article.category }}</span>
+                    <span class="ins-card__date">{{ article.date | date: 'MMM d, yyyy' }}</span>
+                  </span>
+                  <span class="ins-card__title">{{ article.title }}</span>
+                  <span class="ins-card__summary">{{ article.summary }}</span>
+                  <span class="ins-card__read">Read article &rarr;</span>
+                </span>
+              </a>
+            </li>
+          }
+        </ol>
+      </div>
+
+      <!-- ================== Newsletter signup sidebar ==================== -->
+      <aside class="ins-index__sidebar">
+        <app-newsletter-form />
+      </aside>
+    </div>
+  </section>
+</main>

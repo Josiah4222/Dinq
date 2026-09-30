@@ -1,0 +1,170 @@
+<header class="nav" [class.is-scrolled]="scrolled()" [class.is-open]="menuOpen()" [class.is-on-light]="onLightHero()">
+  <div class="container nav__inner">
+    <a href="#home" appScrollTo="top" class="nav__brand" aria-label="Dinq Advisory Group — back to top">
+      <app-brand-logo size="sm" />
+    </a>
+
+    <!-- ====================== Desktop nav links ========================= -->
+    <nav class="nav__links" aria-label="Primary">
+      @for (link of links; track link.id) {
+
+        @if (link.children?.length) {
+          <!-- Dropdown trigger -->
+          <div
+            class="nav__item nav__item--dropdown"
+            [class.is-active]="isDropdownActive(link)"
+            [class.is-dismissed]="dismissedDropdown() === link.id"
+            (mouseenter)="clearDismissedDropdown()"
+          >
+            <button
+              class="nav__link nav__link--dropdown"
+              [class.is-active]="isDropdownActive(link)"
+              type="button"
+              [attr.aria-haspopup]="'true'"
+              aria-expanded="false"
+              (focus)="clearDismissedDropdown()"
+            >
+              {{ link.label }}
+              <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <div
+              class="nav__dropdown"
+              [class.nav__dropdown--grouped]="groupsFor(link).length > 1"
+              role="menu"
+              [attr.aria-label]="link.label + ' submenu'"
+            >
+              @for (group of groupsFor(link); track group.label) {
+                <div class="nav__dropdown-col" [attr.role]="group.label ? 'group' : null" [attr.aria-label]="group.label ?? null">
+                  @if (group.label) {
+                    <p class="nav__dropdown-group" aria-hidden="true">{{ group.label }}</p>
+                  }
+                  @for (child of group.items; track child.id) {
+                    @if (child.route) {
+                      <a
+                        class="nav__dropdown-item"
+                        role="menuitem"
+                        [routerLink]="child.route"
+                        [fragment]="child.fragment"
+                        routerLinkActive="is-active"
+                        [routerLinkActiveOptions]="{ exact: child.id === 'about-lead' }"
+                        (click)="onRouteClick(child)"
+                      >{{ child.label }}</a>
+                    } @else {
+                      <span class="nav__dropdown-item nav__dropdown-item--static" role="none">{{ child.label }}</span>
+                    }
+                  }
+                </div>
+              }
+            </div>
+          </div>
+
+        } @else if (link.route) {
+          <!-- Plain routed link -->
+          <a
+            class="nav__link"
+            [routerLink]="link.route"
+            routerLinkActive="is-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="onRouteClick(link)"
+          >{{ link.label }}</a>
+
+        } @else {
+          <!-- Anchor-scroll link -->
+          <a
+            class="nav__link"
+            [class.is-active]="activeId() === link.anchor"
+            [attr.aria-current]="activeId() === link.anchor ? 'true' : null"
+            [href]="'#' + link.anchor"
+            [appScrollTo]="link.anchor!"
+            (click)="selectLink()"
+          >{{ link.label }}</a>
+        }
+
+      }
+    </nav>
+
+    <div class="nav__cta">
+      <a routerLink="/contact" class="btn btn--nav" (click)="selectLink()">Book a Consultation</a>
+    </div>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-menu"
+      aria-label="Toggle menu"
+      (click)="toggleMenu()"
+    >
+      <span class="nav__burger" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- =================== Off-canvas drawer (mobile/tablet) =============== -->
+  <div id="mobile-menu" class="nav__drawer" [class.is-open]="menuOpen()">
+    <nav class="nav__drawer-links" aria-label="Primary mobile">
+      @for (link of links; track link.id) {
+
+        @if (link.children?.length) {
+          <!-- Expandable section in drawer -->
+          <div class="nav__drawer-section" [class.is-expanded]="drawerExpanded() === link.id">
+            <button
+              class="nav__drawer-link nav__drawer-link--parent"
+              type="button"
+              [class.is-active]="isDropdownActive(link)"
+              [attr.aria-expanded]="drawerExpanded() === link.id"
+              (click)="toggleDrawerSection(link.id)"
+            >
+              {{ link.label }}
+              <svg class="nav__drawer-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="nav__drawer-children">
+              <div>
+                @for (child of link.children; track child.id; let i = $index) {
+                  @if (isGroupStart(link.children, i)) {
+                    <p class="nav__drawer-group">{{ child.group }}</p>
+                  }
+                  @if (child.route) {
+                    <a
+                      class="nav__drawer-child"
+                      [routerLink]="child.route"
+                      [fragment]="child.fragment"
+                      routerLinkActive="is-active"
+                      [routerLinkActiveOptions]="{ exact: child.id === 'about-lead' }"
+                      (click)="onRouteClick(child)"
+                    >{{ child.label }}</a>
+                  } @else {
+                    <span class="nav__drawer-child nav__drawer-child--static" role="none">{{ child.label }}</span>
+                  }
+                }
+              </div>
+            </div>
+          </div>
+
+        } @else if (link.route) {
+          <a
+            class="nav__drawer-link"
+            [routerLink]="link.route"
+            routerLinkActive="is-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="onRouteClick(link)"
+          >{{ link.label }}</a>
+
+        } @else {
+          <a
+            class="nav__drawer-link"
+            [href]="'#' + link.anchor"
+            [appScrollTo]="link.anchor!"
+            (click)="selectLink()"
+          >{{ link.label }}</a>
+        }
+
+      }
+      <a routerLink="/contact" class="btn btn--gold nav__drawer-cta" (click)="selectLink()">Book a Consultation</a>
+    </nav>
+  </div>
+</header>

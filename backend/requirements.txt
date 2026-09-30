@@ -1,0 +1,22 @@
+# Runtime dependencies for the Dinq backend.
+#
+# This file did not exist until image uploads were added. The app previously ran
+# against whatever happened to be installed in the ambient environment, which
+# works locally and breaks on a clean machine - so if you are setting this up
+# fresh, install with:
+#
+#     pip install -r requirements.txt
+#
+# Pillow is not optional: image uploads identify files by opening them, so
+# without it the upload endpoint refuses every file with a clear message rather
+# than storing something it could not verify.
+
+Django>=5.0,<7.0
+
+# Staff sessions and the upload endpoints need same-origin requests from the
+# Angular dev server, which runs on a different port.
+django-cors-headers>=4.0
+
+# Opens uploaded images to read their real format and dimensions, so the file is
+# trusted on its contents rather than on the name the browser sent.
+Pillow>=10.0

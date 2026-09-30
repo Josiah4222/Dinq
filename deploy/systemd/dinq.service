@@ -1,0 +1,56 @@
+# Dinq — gunicorn service
+#
+# Runs the Django API on a unix socket or localhost, behind nginx. Runserver is
+# a development server and is explicitly not safe to expose; gunicorn is what
+# actually terminates the request handling.
+#
+# Install to /etc/systemd/system/dinq.service, then:
+#   systemctl daemon-reload
+#   systemctl enable --now dinq
+
+[Unit]
+Description=Dinq Advisory Group API (gunicorn)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+# The virtualenv holds gunicorn and the pinned dependencies. If pip installed
+# into the system Python instead, drop the ExecStart prefix.
+User=dinq
+Group=dinq
+WorkingDirectory=/srv/dinq/backend
+
+EnvironmentFile=/etc/dinq/dinq.env
+Environment=DJANGO_SETTINGS_MODULE=config.settings_prod
+Environment=PYTHONUNBUFFERED=1
+# Keeps the interpreter from writing .pyc files into a possibly read-only tree.
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+# 3 workers is a starting point, not a requirement. Each holds its own SQLite
+# handle, so more workers means more concurrent writers competing for the same
+# file lock. If traffic grows, move to PostgreSQL before raising this number.
+ExecStart=/srv/dinq/venv/bin/gunicorn config.wsgi:application \
+    --bind 127.0.0.1:8000 \
+    --workers 3 \
+    --timeout 60 \
+    --graceful-timeout 30 \
+    --access-logfile - \
+    --error-logfile - \
+    --capture-output
+
+ExecReload=/bin/kill -s HUP $MAINPID
+KillSignal=SIGQUIT
+Restart=on-failure
+RestartSec=5
+
+# A public-facing process should not be able to write anywhere but its own data
+# directories. NoNewPrivileges and the private /tmp are the two that matter most.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/srv/dinq/backend/media /srv/dinq/backend/staticfiles
+
+[Install]
+WantedBy=multi-user.target

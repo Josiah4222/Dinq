@@ -1,0 +1,184 @@
+:host {
+  display: block;
+}
+
+/* ---- Grain overlay ----------------------------------------------------- */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Hero band --------------------------------------------------------- */
+.sp-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-cream);
+  background: var(--color-navy-deep);
+  padding-block: calc(var(--nav-height) + clamp(3.5rem, 8vw, 6.5rem)) clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.sp-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sp-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(0.85) contrast(1.04);
+}
+
+.sp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 20, 39, 0.78) 0%,
+      rgba(7, 20, 39, 0.55) 30%,
+      rgba(7, 20, 39, 0.5) 55%,
+      rgba(7, 20, 39, 0.9) 100%
+    );
+}
+
+.sp-hero__routes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.sp-hero__orb {
+  position: absolute;
+  z-index: 0;
+  width: 36vw;
+  height: 36vw;
+  max-width: 560px;
+  max-height: 560px;
+  border-radius: 50%;
+  filter: blur(90px);
+  top: -10%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.22) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.sp-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  max-width: 44rem;
+}
+
+.sp-hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.3rem, 5.6vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.008em;
+  max-width: 19ch;
+}
+
+/* ---- Sections ---------------------------------------------------------- */
+.sp-section {
+  padding-block: var(--section-pad);
+  position: relative;
+  isolation: isolate;
+}
+
+.sp-section--tint {
+  background: var(--color-cream);
+}
+
+.sp-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.sp-head {
+  max-width: 44rem;
+}
+
+.sp-title {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: 1.14;
+  letter-spacing: -0.008em;
+  color: var(--color-navy);
+}
+
+/* ---- Approach intro ---------------------------------------------------- */
+.approach__intro {
+  margin-top: 1.4rem;
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.85;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Approach pillars -------------------------------------------------- */
+.approach__pillars {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+}
+
+.approach__pillar {
+  padding: 1.9rem 1.7rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-mist);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-med), transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+.approach__pillar:hover {
+  border-color: rgba(200, 155, 60, 0.45);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.approach__pillar-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  line-height: 1.25;
+}
+
+.approach__pillar-title::after {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--color-gold);
+  margin-top: 0.8rem;
+}
+
+.approach__pillar-text {
+  margin-top: 0.8rem;
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: var(--color-ink-muted);
+}
+
+/* ---- CTA --------------------------------------------------------------- */
+.approach__cta {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}

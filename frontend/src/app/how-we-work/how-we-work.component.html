@@ -1,27 +1,21 @@
-<section class="how section section--tint" appReveal aria-label="How We Work">
-  <div class="container">
-
-    <header class="section-head">
-      <p class="eyebrow">How We Work</p>
-    </header>
-
-    <ol class="timeline" aria-label="Our four-step process">
-      @for (step of steps; track step.title; let i = $index; let last = $last) {
-        <li class="timeline__step" [style.--step-i]="i">
-          <div class="timeline__rail" aria-hidden="true">
-            <span class="timeline__node"></span>
-            @if (!last) {
-              <span class="timeline__connector"></span>
-            }
-          </div>
-          <div class="timeline__body">
-            <p class="timeline__label" aria-hidden="true">0{{ i + 1 }}</p>
-            <h3 class="timeline__title">{{ step.title }}</h3>
-            <p class="timeline__text">{{ step.text }}</p>
-          </div>
-        </li>
-      }
-    </ol>
-
-  </div>
-</section>
+<ol
+  class="hww-timeline"
+  [class.hww-timeline--full]="mode() === 'full'"
+  aria-label="Our four-step process"
+>
+  @for (step of steps; track step.title; let i = $index; let last = $last) {
+    <li class="hww-timeline__step" [style.--step-i]="i">
+      <div class="hww-timeline__rail" aria-hidden="true">
+        <span class="hww-timeline__node"></span>
+        @if (!last) {
+          <span class="hww-timeline__connector"></span>
+        }
+      </div>
+      <div class="hww-timeline__body">
+        <p class="hww-timeline__label" aria-hidden="true">0{{ i + 1 }}</p>
+        <h3 class="hww-timeline__title">{{ step.title }}</h3>
+        <p class="hww-timeline__text">{{ step.text }}</p>
+      </div>
+    </li>
+  }
+</ol>

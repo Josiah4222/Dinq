@@ -1,67 +1,84 @@
 <footer class="footer" id="footer">
-  <div class="container footer__grid">
-    <!-- Brand -->
-    <div class="footer__brand">
-      <app-brand-logo size="lg" />
-      <p class="footer__tagline">Global Perspective. Local Execution.</p>
-      <p class="footer__blurb">
-        Cross-border advisory helping international businesses, investors,
-        institutions, and the Ethiopian diaspora establish, grow, manage, and
-        protect their interests in Ethiopia.
-      </p>
+  <div class="container">
+    <div class="footer__top">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <div class="footer__mark">DINQ <em>Advisory Group</em></div>
+        <p class="footer__tag">Global Perspective. Local Execution.</p>
+        <p class="footer__desc">
+          Cross-border advisory, implementation support, and trusted local
+          representation for businesses, investors, institutions, and the
+          Ethiopian diaspora.
+        </p>
+        <p class="footer__etymology">
+          Dinq (ድንቅ) is Amharic for extraordinary or remarkable &mdash; the standard
+          we bring to every engagement.
+        </p>
+      </div>
+
+      <!-- Link columns -->
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4 class="footer__heading">Company</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" routerLink="/about">About</a></li>
+            <li><a class="footer__link" routerLink="/about/leadership">Leadership</a></li>
+            <li><a class="footer__link" routerLink="/solutions">Solutions</a></li>
+            <li><a class="footer__link" routerLink="/" fragment="industries">Industries</a></li>
+            <li><a class="footer__link" routerLink="/why-ethiopia">Why Ethiopia</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Resources</h4>
+          <ul class="footer__list">
+            <li><a class="footer__link" routerLink="/insights">Insights</a></li>
+            <li><a class="footer__link" routerLink="/contact">Contact</a></li>
+            <li><a class="footer__link" routerLink="/quick-inquiry">Quick Inquiry</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Contact</h4>
+          <ul class="footer__list">
+            <li><span class="footer__link footer__link--static">dinqadvisory.com</span></li>
+            <li>
+              <a class="footer__link" href="mailto:info&#64;dinqadvisory.com">info&#64;dinqadvisory.com</a>
+            </li>
+          </ul>
+          <ul class="footer__list">
+            <li>
+              <a class="footer__link" href="tel:+14168997000">+1 416 899 7000</a>
+            </li>
+            <li>
+              <span class="footer__link footer__link--static">
+                40 Wynford Drive, Suite 208,<br />
+                Toronto, Ontario, Canada M3C 1J5
+              </span>
+            </li>
+          </ul>
+          <!-- The Ethiopian office, named so its number and address cannot be
+               read as Canada's. Kept to two lines: the footer already runs long,
+               and this is the part a diaspora client is looking for. -->
+          <ul class="footer__list footer__list--office">
+            <li class="footer__office-name">Ethiopia</li>
+            <li>
+              <a class="footer__link" href="tel:+251952064444">+251 952 064 444</a>
+            </li>
+            <li>
+              <span class="footer__link footer__link--static">Addis Ababa</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <!-- Contact -->
-    <nav class="footer__col" aria-label="Contact details">
-      <h3 class="footer__heading">Contact</h3>
-      <ul class="footer__list">
-        <li>
-          <a class="footer__link" href="https://www.dinqadvisorygroup.com" target="_blank" rel="noopener noreferrer">www.dinqadvisorygroup.com</a>
-        </li>
-        <li>
-          <a class="footer__link" href="mailto:info&#64;dinqadvisorygroup.com">info&#64;dinqadvisorygroup.com</a>
-        </li>
-        <li>
-          <a class="footer__link" href="tel:+12365110000">+1 236 511 0000</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Social -->
-    <nav class="footer__col" aria-label="Social media">
-      <h3 class="footer__heading">Follow</h3>
-      <ul class="footer__social">
-        <li>
-          <a class="footer__social-link" href="#" aria-label="Dinq on LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a class="footer__social-link" href="#" aria-label="Dinq on X">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-              <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a class="footer__social-link" href="mailto:info@dinqadvisorygroup.com" aria-label="Email Dinq">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
-              <rect x="2.5" y="4.5" width="19" height="15" rx="2"/>
-              <path d="m3.5 6.5 8.5 6 8.5-6"/>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="container footer__bottom">
-    <p class="footer__copy">© {{ year }} Dinq Advisory Group. All rights reserved.</p>
-    <ul class="footer__legal">
-      <li><a class="footer__legal-link" href="#privacy">Privacy Policy</a></li>
-      <li><a class="footer__legal-link" href="#terms">Terms of Use</a></li>
-    </ul>
+    <!-- The privacy policy and terms pages still exist and are still reachable
+         at their own routes; they are just no longer advertised down here. -->
+    <div class="footer__bottom">
+      <span class="footer__copy">&copy; {{ year }} Dinq Advisory Group. All rights reserved.</span>
+      <span class="footer__credit">
+        Developed by <a class="footer__credit-link" href="tel:+251942365100">Avodah Tech</a>
+        &middot; <a class="footer__credit-link" href="tel:+251942365100">+251 942 365 100</a>
+      </span>
+    </div>
   </div>
 </footer>

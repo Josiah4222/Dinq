@@ -1,0 +1,64 @@
+<section
+  class="industries section section--tint reveal--fade"
+  [class.industries--compact]="compact"
+  [attr.id]="sectionId || null"
+  [attr.aria-labelledby]="showHeader ? (sectionId ? sectionId + '-title' : 'industries-title') : null"
+  appReveal
+>
+  <div class="container">
+    @if (showHeader) {
+      <header class="section-head section-head--center" [class.section-head--left]="!centered">
+        @if (eyebrow) {
+          <p class="eyebrow">{{ eyebrow }}</p>
+        }
+        <h2 [id]="sectionId ? sectionId + '-title' : 'industries-title'" class="section-title">{{ title }}</h2>
+        @if (lead) {
+          <p class="section-lead">{{ lead }}</p>
+        }
+      </header>
+    }
+
+    <div class="industries__grid">
+      @for (card of core; track card.title; let i = $index) {
+        <article class="industry" [style.--card-i]="i">
+          <img
+            class="industry__img"
+            [src]="card.image | imageSrc"
+            [alt]="card.alt"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="industry__overlay" aria-hidden="true"></div>
+          @if (card.link) {
+            <a class="industry__link" [routerLink]="card.link" [attr.aria-label]="'Learn more about ' + card.title"></a>
+          }
+          <div class="industry__body">
+            <span class="industry__index" aria-hidden="true">{{ card.index }}</span>
+            <h3 class="industry__title">{{ card.title }}</h3>
+            <p class="industry__text">{{ card.text }}</p>
+          </div>
+        </article>
+      }
+    </div>
+
+    <div class="industries__additional">
+      <p class="industries__additional-label">Additional Sectors We Serve</p>
+      <ul class="sector-list">
+        @for (sector of sectors; track sector.title) {
+          <li class="sector">
+            <h3 class="sector__title">
+              @if (sector.link) {
+                <a class="sector__link" [routerLink]="sector.link">{{ sector.title }}</a>
+              } @else {
+                {{ sector.title }}
+              }
+            </h3>
+            @if (sector.text) {
+              <p class="sector__text">{{ sector.text }}</p>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

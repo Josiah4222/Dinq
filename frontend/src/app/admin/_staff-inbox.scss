@@ -1,0 +1,303 @@
+﻿.staff__head {
+  max-width: 70ch;
+}
+
+.staff__title {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.008em;
+  color: var(--color-navy);
+}
+
+.staff__lede {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Inbox ---------------------------------------------------------------- */
+.inbox {
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+.inbox {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.inbox__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inbox__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  color: var(--color-navy);
+}
+
+.inbox__reload {
+  padding: 0.45rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  background: transparent;
+  border: 1px solid var(--color-mist);
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.inbox__reload:hover:not(:disabled) {
+  border-color: var(--color-navy);
+}
+
+.inbox__reload:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.inbox__note,
+.inbox__empty,
+.inbox__error {
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-ink-muted);
+}
+
+.inbox__error {
+  color: #8c2f22;
+}
+
+.inbox__list {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inbox__list--tight .entry--row {
+  padding-block: 0.7rem;
+}
+
+.entry {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-mist);
+}
+
+.entry--row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.entry__top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.entry__ref {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--color-gold-dark, #8a6d2f);
+}
+
+.entry__status {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  background: var(--color-cream);
+  border: 1px solid var(--color-mist);
+  border-radius: 2rem;
+}
+
+.entry__status[data-status='new'] {
+  color: #1f4d3a;
+  background: #e8f1ec;
+  border-color: #cfe0d7;
+}
+
+.entry__status[data-status='in_progress'] {
+  color: #6b4d10;
+  background: #f5efdd;
+  border-color: #e4d9b8;
+}
+
+.entry__status[data-status='closed'] {
+  color: var(--color-ink-muted);
+}
+
+.entry__status[data-status='spam'],
+.entry__status[data-status='inactive'] {
+  color: #8c2f22;
+  background: #f7e9e6;
+  border-color: #eccfc8;
+}
+
+.entry__status[data-status='active'] {
+  color: #1f4d3a;
+  background: #e8f1ec;
+  border-color: #cfe0d7;
+}
+
+.entry__date {
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  margin-left: auto;
+}
+
+.entry--row .entry__date {
+  margin-left: 0;
+}
+
+.entry__name {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--color-navy);
+}
+
+/* In a one-line row the name sits beside the status rather than under it, so it
+   must not carry the block spacing it needs in the running-entry layout. It is
+   also dropped to body text and size: in a list of thirty submissions a
+   display-sized heading per row is shouting over the names beside it, and the
+   thing being scanned for is a name, not a headline. */
+.entry--row .entry__name {
+  margin-top: 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* The one line of context that makes a row recognisable without opening it:
+   the reason for a consultation, the address to reply to for a quick inquiry.
+   Ellipsised so one long value cannot stretch a row across the screen. */
+.entry__summary {
+  min-width: 0;
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Opens the row in full. Styled as a small outlined action rather than body
+   link text so it reads as the row's action, not as part of the data. */
+.entry__view {
+  margin-left: auto;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  text-decoration: none;
+  border: 1px solid var(--color-mist);
+  border-radius: 2rem;
+  white-space: nowrap;
+  transition: border-color var(--transition-fast);
+}
+
+.entry__view:hover,
+.entry__view:focus-visible {
+  border-color: var(--color-navy);
+}
+
+.entry__org {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+}
+
+.entry__email {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-navy);
+}
+
+.entry__contact {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
+.entry__contact a {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.entry__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.entry__meta dt {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.entry__meta dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+}
+
+/* The submission's own words. This is the reason the detail screen exists, so
+   it is set as body copy to be read rather than as a caption: full ink, a step
+   up in size, and a heavier rule than a decorative accent would get. Anything
+   lighter and the message — the one thing the reader came for — disappears into
+   the page. */
+.entry__message {
+  margin-top: 1.1rem;
+  padding-left: 1.15rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+  border-left: 3px solid var(--color-gold);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.entry__notes {
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted);
+  background: var(--color-cream);
+  border-radius: 2px;
+}
+
+/* A missing optional field on an entry, e.g. a quick inquiry with no topics
+   ticked. Quieter than a value, because its absence is not a problem to fix. */
+.entry__note {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+}

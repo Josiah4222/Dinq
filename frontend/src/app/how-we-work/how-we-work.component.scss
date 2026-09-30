@@ -2,15 +2,18 @@
   display: block;
 }
 
-/* ---- Timeline: horizontal row ----------------------------------------- */
-.timeline {
+/* ---- Base timeline (horizontal row) ------------------------------------ */
+.hww-timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
   position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.timeline__step {
+.hww-timeline__step {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -23,81 +26,140 @@
   transition-delay: calc(var(--step-i) * 130ms);
 }
 
-.is-revealed .timeline__step {
+:host-context(.is-revealed) .hww-timeline__step,
+.is-revealed .hww-timeline__step {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* ---- Rail: node + horizontal connector --------------------------------- */
-.timeline__rail {
+.hww-timeline__rail {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
-.timeline__node {
-  width: 0.9rem;
-  height: 0.9rem;
+.hww-timeline__node {
+  width: 2.4rem;
+  height: 2.4rem;
   flex-shrink: 0;
+  display: grid;
+  place-items: center;
   border-radius: 50%;
-  background: var(--color-cream);
-  border: 2px solid var(--color-gold);
-  box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.15);
+  background: var(--color-white);
+  border: 1px solid rgba(200, 155, 60, 0.55);
+  box-shadow: 0 0 0 6px rgba(200, 155, 60, 0.1);
   position: relative;
   z-index: 1;
   transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.timeline__step:hover .timeline__node {
+.hww-timeline__node::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--color-gold);
-  box-shadow: 0 0 0 5px rgba(200, 155, 60, 0.18);
+  transition: background-color var(--transition-fast);
 }
 
-/* Line stretches from node to the right edge, hidden on last step */
-.timeline__connector {
+.hww-timeline__step:hover .hww-timeline__node {
+  background: var(--color-gold);
+  box-shadow: 0 0 0 10px rgba(200, 155, 60, 0.16);
+}
+
+.hww-timeline__step:hover .hww-timeline__node::after {
+  background: var(--color-navy);
+}
+
+.hww-timeline__connector {
   flex: 1;
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(200, 155, 60, 0.55) 0%,
-    rgba(200, 155, 60, 0.15) 100%
+    rgba(200, 155, 60, 0.6) 0%,
+    rgba(200, 155, 60, 0.12) 100%
   );
-  margin-left: 0.4rem;
+  margin-left: 0.6rem;
 }
 
 /* ---- Step content ------------------------------------------------------ */
-.timeline__body {
+.hww-timeline__body {
   padding-right: clamp(1rem, 3vw, 2rem);
 }
 
-.timeline__label {
-  font-size: 0.7rem;
+.hww-timeline__label {
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: 0.4rem;
-  opacity: 0.85;
 }
 
-.timeline__title {
+.hww-timeline__title {
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  font-size: clamp(1.05rem, 1.45vw, 1.2rem);
   font-weight: 500;
   color: var(--color-navy);
-  line-height: 1.15;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
 }
 
-.timeline__text {
-  margin-top: 0.55rem;
-  font-size: 0.92rem;
-  line-height: 1.72;
+.hww-timeline__text {
+  margin-top: 0.5rem;
+  font-size: 0.86rem;
+  line-height: 1.7;
   color: var(--color-ink-muted);
+}
+
+/* ---- Full-page treatment (larger, roomier) ----------------------------- */
+.hww-timeline--full {
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.hww-timeline--full .hww-timeline__rail {
+  margin-bottom: clamp(1.4rem, 2.4vw, 1.9rem);
+}
+
+.hww-timeline--full .hww-timeline__node {
+  width: clamp(2.1rem, 2.6vw, 2.4rem);
+  height: clamp(2.1rem, 2.6vw, 2.4rem);
+  box-shadow: 0 0 0 6px rgba(200, 155, 60, 0.1);
+}
+
+.hww-timeline--full .hww-timeline__node::after {
+  width: 7px;
+  height: 7px;
+}
+
+.hww-timeline--full .hww-timeline__connector {
+  margin-left: 0.9rem;
+}
+
+.hww-timeline--full .hww-timeline__body {
+  padding-right: clamp(1.25rem, 3.5vw, 2.75rem);
+}
+
+.hww-timeline--full .hww-timeline__label {
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.hww-timeline--full .hww-timeline__title {
+  font-size: clamp(1.15rem, 1.75vw, 1.4rem);
+  line-height: 1.16;
+}
+
+.hww-timeline--full .hww-timeline__text {
+  margin-top: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.75;
 }
 
 /* ---- Reduced motion ---------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .timeline__step {
+  .hww-timeline__step {
     opacity: 1;
     transform: none;
     transition: none;
@@ -106,23 +168,22 @@
 
 /* ---- Responsive: 2-col tablet, 1-col mobile ---------------------------- */
 @media (max-width: 860px) {
-  .timeline {
+  .hww-timeline {
     grid-template-columns: repeat(2, 1fr);
     gap: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
   }
 
-  /* On the 2-col layout the connector only makes sense on odd items */
-  .timeline__step:nth-child(even) .timeline__connector {
+  .hww-timeline__step:nth-child(even) .hww-timeline__connector {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .timeline {
+  .hww-timeline {
     grid-template-columns: 1fr;
   }
 
-  .timeline__connector {
+  .hww-timeline__connector {
     display: none;
   }
 }

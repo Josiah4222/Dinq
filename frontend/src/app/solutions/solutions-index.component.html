@@ -1,0 +1,84 @@
+<main id="main" class="sol-index">
+
+  <!-- ================================ Hero ================================ -->
+  <section class="sol-index__hero">
+    <div class="sol-index__hero-media" role="presentation">
+      <img
+        src="assets/images/hero-addis.jpg"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="sol-index__hero-img"
+      />
+      <div class="sol-index__hero-overlay" aria-hidden="true"></div>
+    </div>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container sol-index__hero-inner">
+      <p class="eyebrow">{{ eyebrow() }}</p>
+      <h1 class="sol-index__title">{{ title() }}</h1>
+      <p class="sol-index__intro">{{ intro() }}</p>
+    </div>
+  </section>
+
+  <!-- ============================ Solution list ========================== -->
+  <section class="sol-index__solutions" appReveal aria-label="Solutions">
+    <div class="container">
+      <p class="eyebrow">{{ whatWeDoEyebrow() }}</p>
+      <h2 class="sol-index__solutions-title">{{ solutionsTitle() }}</h2>
+
+      <ol class="sol-list">
+        @for (solution of solutions(); track solution.slug) {
+          <li class="sol-row">
+            <span class="sol-row__num" aria-hidden="true">{{ solution.index }}</span>
+
+            <div class="sol-row__main">
+              <h3 class="sol-row__title">
+                <a class="sol-row__link" [routerLink]="['/solutions', solution.slug]">{{ solution.title }}</a>
+              </h3>
+              <p class="sol-row__text">{{ solution.text }}</p>
+
+              @if (solution.industries.length) {
+                <ul class="pill-list sol-row__pills">
+                  @for (industry of solution.industries; track industry.slug) {
+                    <li>
+                      <a class="pill" [routerLink]="['/industries', industry.slug]">{{ industry.title }}</a>
+                    </li>
+                  }
+                  @if (solution.industriesCollapsed) {
+                    <li>
+                      <a class="pill sol-row__pill--all" routerLink="/industries">View all industries &rarr;</a>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+
+            <span class="sol-row__arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ========================== Four-step strip ============================ -->
+  <section class="sol-index__steps" appReveal>
+    <div class="container">
+      <app-how-we-work />
+    </div>
+  </section>
+
+  <!-- ============================ CTA ==================================== -->
+  <section class="sol-index__cta" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container sol-index__cta-inner">
+      <h2 class="sol-index__cta-title">{{ ctaTitle() }}</h2>
+      <p class="sol-index__cta-text">{{ ctaText() }}</p>
+      <a class="btn btn--gold" routerLink="/contact">Book a Consultation</a>
+    </div>
+  </section>
+
+</main>

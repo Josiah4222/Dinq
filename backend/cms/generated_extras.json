@@ -1,0 +1,86 @@
+{
+  "home": [
+    {
+      "key": "industries.title",
+      "kind": "text",
+      "label": "Industries — section title",
+      "value": "Core Industries",
+      "order": 0
+    },
+    {
+      "key": "industries.core",
+      "kind": "list",
+      "label": "Industries — core cards",
+      "data": [
+        {
+          "index": "01",
+          "title": "Real Estate",
+          "text": "Commercial, residential, development, and property-management opportunities for diaspora and international investors.",
+          "image": "/media/assets/images/industries-realestate.jpg",
+          "alt": "Modern high-rise building in Addis Ababa",
+          "link": "/industries/real-estate"
+        },
+        {
+          "index": "02",
+          "title": "Manufacturing",
+          "text": "Market entry, industrial-park and site strategy, investment structuring, stakeholder coordination, and operational implementation.",
+          "image": "/media/assets/images/industries-manufacturing.jpg",
+          "alt": "Industrial facility with pipes and machinery",
+          "link": "/industries/manufacturing"
+        },
+        {
+          "index": "03",
+          "title": "Mining",
+          "text": "Market-entry, concession and project strategy, stakeholder engagement, regulatory coordination, and implementation support for specialized mandates.",
+          "image": "/media/assets/images/industries-mining.jpg",
+          "alt": "Aerial view of heavy mining equipment on an open site",
+          "link": "/industries/mining"
+        }
+      ],
+      "order": 1
+    },
+    {
+      "key": "industries.sectors",
+      "kind": "list",
+      "label": "Industries — additional sectors",
+      "data": [
+        {
+          "title": "Infrastructure",
+          "text": "Advisory and implementation support for developers, investors, and institutions delivering transport, utilities, and public-facing infrastructure projects.",
+          "link": "/industries/infrastructure"
+        },
+        {
+          "title": "Energy",
+          "text": "Market-entry, stakeholder, and regulatory-navigation support for renewable and conventional energy investment.",
+          "link": "/industries/energy"
+        },
+        {
+          "title": "Agribusiness",
+          "text": "Investment structuring, partnership, processing, and export-operation support for agricultural and agribusiness opportunities.",
+          "link": "/industries/agribusiness"
+        },
+        {
+          "title": "Technology & Digital Business",
+          "text": "Entry strategy and regulatory-navigation support for technology companies and digital platforms.",
+          "link": "/industries/technology-digital-business"
+        },
+        {
+          "title": "Healthcare",
+          "text": "Advisory for investors and operators establishing healthcare facilities, services, distribution, or supply chains.",
+          "link": "/industries/healthcare"
+        },
+        {
+          "title": "Hospitality & Tourism",
+          "text": "Market-entry and development support for hotel, tourism, and hospitality investments.",
+          "link": "/industries/hospitality-tourism"
+        },
+        {
+          "title": "Financial Services",
+          "text": "Regulatory, structuring, market-entry, and stakeholder support for banks, insurers, investors, and other financial-services entrants.",
+          "link": "/industries/financial-services"
+        }
+      ],
+      "order": 2
+    }
+  ]
+}

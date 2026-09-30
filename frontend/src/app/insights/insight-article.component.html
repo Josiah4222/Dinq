@@ -1,0 +1,76 @@
+@if (article(); as a) {
+  <main id="main" class="ins-article">
+    <!-- ============================ Hero band ============================= -->
+    <section class="ins-article__hero">
+      <div class="container ins-article__hero-inner">
+        <a class="ins-article__back" routerLink="/insights">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 8H3M7 4 3 8l4 4"/>
+          </svg>
+          All insights
+        </a>
+        <p class="eyebrow">{{ a.category }}</p>
+        <h1 class="ins-article__title">{{ a.title }}</h1>
+        <div class="ins-article__byline">
+          <span class="ins-article__author">{{ a.author }}</span>
+          <span class="ins-article__dot" aria-hidden="true"></span>
+          <time class="ins-article__date" [attr.datetime]="a.date">{{ a.date | date: 'MMMM d, yyyy' }}</time>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= Featured image =========================== -->
+    @if (a.featuredImage) {
+      <figure class="ins-article__figure">
+        <img
+          class="ins-article__figure-img"
+          [src]="a.featuredImage | imageSrc"
+          [alt]="a.title"
+          decoding="async"
+        />
+      </figure>
+    }
+
+    <!-- ============================ Body copy ============================= -->
+    <section class="ins-article__body section" appReveal>
+      <div class="container">
+        <div class="ins-article__prose">
+          @for (paragraph of a.body; track paragraph) {
+            <p class="ins-article__paragraph">{{ paragraph }}</p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== Related articles module ===================== -->
+    @if (related().length) {
+      <section class="ins-article__related section section--tint" appReveal>
+        <div class="container">
+          <p class="eyebrow">Keep Reading</p>
+          <h2 class="ins-article__related-title">Related Insights</h2>
+          <div class="ins-article__related-grid">
+            @for (item of related(); track item.slug) {
+              <a class="ins-related" [routerLink]="['/insights', item.slug]">
+                <span class="ins-related__category">{{ item.category }}</span>
+                <span class="ins-related__title">{{ item.title }}</span>
+                <span class="ins-related__read">Read article &rarr;</span>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- ============================== CTA ================================= -->
+    <section class="ins-article__cta section" appReveal>
+      <div class="container ins-article__cta-inner">
+        <h2 class="ins-article__cta-title">Want to talk it through?</h2>
+        <p class="ins-article__cta-text">
+          Insight is the starting point. Tell us where you're headed, and we'll
+          map the steps to get there.
+        </p>
+        <a class="btn btn--gold" routerLink="/contact">Contact Dinq</a>
+      </div>
+    </section>
+  </main>
+}

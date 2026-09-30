@@ -1,0 +1,598 @@
+:host {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* ---- Bar ---------------------------------------------------------------- */
+.nav {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  /* overflow must NOT be hidden — the dropdown panel extends below the bar */
+  transition:
+    background-color var(--transition-med) var(--ease-out),
+    box-shadow var(--transition-med) var(--ease-out),
+    backdrop-filter var(--transition-med) var(--ease-out),
+    border-color var(--transition-med) var(--ease-out);
+}
+
+/* Dark pages: top scrim while transparent keeps links legible over imagery */
+.nav:not(.is-on-light) {
+  box-shadow: inset 0 44px 52px -32px rgba(7, 20, 39, 0.55);
+}
+
+/* Solid navy state once scrolled past the hero */
+.nav.is-scrolled {
+  background-color: var(--color-navy);
+  border-bottom-color: rgba(200, 155, 60, 0.16);
+  box-shadow:
+    0 1px 0 rgba(244, 239, 226, 0.05),
+    0 12px 34px rgba(7, 20, 39, 0.32);
+}
+
+/* Light-hero pages: solid navy bar from the very top so links are
+   readable before scrolling (matches the normal scrolled brand look). */
+.nav.is-on-light {
+  background-color: var(--color-navy);
+  border-bottom-color: rgba(200, 155, 60, 0.16);
+  box-shadow:
+    0 1px 0 rgba(244, 239, 226, 0.05),
+    0 12px 34px rgba(7, 20, 39, 0.32);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: var(--nav-height);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.nav__brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  transition: opacity var(--transition-fast);
+}
+
+.nav__brand:hover,
+.nav__brand:focus-visible {
+  opacity: 0.85;
+}
+
+/* ---- Links --------------------------------------------------------------- */
+.nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.9rem, 1.4vw, 1.4rem);
+}
+
+.nav__link {
+  position: relative;
+  padding: 0.4rem 0.15rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(244, 239, 226, 0.88);
+  white-space: nowrap;
+  /* Soft shadow keeps links readable while the bar is transparent */
+  text-shadow: 0 1px 14px rgba(7, 20, 39, 0.65);
+  transition: color var(--transition-med) var(--ease-out), text-shadow var(--transition-med) var(--ease-out);
+}
+
+.nav.is-scrolled .nav__link,
+.nav.is-on-light .nav__link {
+  text-shadow: none;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible,
+.nav__link.is-active {
+  color: var(--color-cream);
+}
+
+/* Gold underline on hover / active */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  right: 0.15rem;
+  bottom: 0;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-gold), rgba(200, 155, 60, 0.3));
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.55);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-med) var(--ease-out);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible,
+.nav__link.is-active {
+  color: var(--color-cream);
+}
+
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav__cta {
+  flex-shrink: 0;
+}
+
+/* ---- Burger toggle (mobile/tablet only) ----------------------------------- */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0.6rem;
+  border: 1px solid rgba(244, 239, 226, 0.3);
+  border-radius: var(--radius-sm);
+  background: transparent;
+}
+
+.nav__toggle:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.nav__burger,
+.nav__burger::before,
+.nav__burger::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--color-cream);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav__burger::before {
+  transform: translateY(-5px);
+}
+
+.nav__burger::after {
+  transform: translateY(3px);
+}
+
+.nav.is-open .nav__burger {
+  transform: rotate(45deg);
+}
+
+.nav.is-open .nav__burger::before {
+  transform: translateY(0) rotate(-90deg);
+}
+
+.nav.is-open .nav__burger::after {
+  opacity: 0;
+}
+
+/* ---- Off-canvas drawer ----------------------------------------------------- */
+.nav__drawer {
+  display: none;
+}
+
+/*
+   With 8 links + CTA the row only fits down to ~1024px; below that it
+   collapses into the off-canvas drawer (the spec's tablet breakpoint).
+*/
+@media (max-width: 1024px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .nav__drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    padding: calc(var(--nav-height) + 2rem) var(--container-pad) 3rem;
+    background: linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-med) var(--ease-out), transform var(--transition-med) var(--ease-out), visibility 0s linear var(--transition-med);
+  }
+
+  .nav__drawer.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity var(--transition-med) var(--ease-out), transform var(--transition-med) var(--ease-out);
+  }
+
+  .nav__drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .nav__drawer-link {
+    padding: 0.85rem 0;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--color-cream);
+    border-bottom: 1px solid rgba(244, 239, 226, 0.1);
+    transition: color var(--transition-med) var(--ease-out), transform var(--transition-med) var(--ease-out), padding-left var(--transition-med) var(--ease-out);
+  }
+
+  .nav__drawer-link:hover,
+  .nav__drawer-link:focus-visible,
+  .nav__drawer-link.is-active {
+    color: var(--color-gold);
+    padding-left: 0.5rem;
+  }
+
+  .nav__drawer-cta {
+    margin-top: 1.75rem;
+    align-self: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__drawer {
+    transition: none;
+  }
+}
+
+/* ---- Dropdown ------------------------------------------------------------ */
+
+/*
+ * Desktop dropdown: hover-open + focus-within-open panel.
+ * Pure CSS — no JS state needed for desktop.
+ */
+.nav__item {
+  position: relative;
+}
+
+.nav__item--dropdown {
+  display: flex;
+  align-items: center;
+}
+
+/* The trigger button looks identical to a plain nav__link */
+.nav__link--dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.15rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(244, 239, 226, 0.88);
+  white-space: nowrap;
+  text-shadow: 0 1px 14px rgba(7, 20, 39, 0.65);
+  transition: color var(--transition-med) var(--ease-out);
+}
+
+.nav.is-scrolled .nav__link--dropdown,
+.nav.is-on-light  .nav__link--dropdown {
+  text-shadow: none;
+}
+
+.nav__link--dropdown:hover,
+.nav__link--dropdown:focus-visible,
+.nav__link--dropdown.is-active {
+  color: var(--color-cream);
+}
+
+/* Underline — same as plain .nav__link */
+.nav__link--dropdown::after {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  right: 0.15rem;
+  bottom: 0;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-gold), rgba(200, 155, 60, 0.3));
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.55);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-med) var(--ease-out);
+}
+
+.nav__link--dropdown:hover::after,
+.nav__link--dropdown.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav__chevron {
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: transform var(--transition-med) var(--ease-out), opacity var(--transition-fast);
+}
+
+.nav__item--dropdown:hover .nav__chevron,
+.nav__item--dropdown:focus-within .nav__chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Panel */
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 17rem;
+  padding: 0.5rem 0;
+  /* The Industries menu carries 10 items plus 2 group headings, so cap the
+     height and scroll rather than letting it run past the viewport. */
+  max-height: min(78vh, 34rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Keep the wider grouped panel inside the viewport on narrow desktops. */
+  max-width: min(92vw, 42rem);
+  background: var(--color-navy);
+  border: 1px solid rgba(200, 155, 60, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 4px 6px -1px rgba(7, 20, 39, 0.25),
+    0 16px 40px -4px rgba(7, 20, 39, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-med) var(--ease-out),
+    transform var(--transition-med) var(--ease-out),
+    visibility 0s linear var(--transition-med);
+  /* Must exceed the hero's stacking context — hero sits inside a fixed
+     :host at z-index 100; the panel is a child of that same :host so it
+     inherits the stacking context. Giving it a positive z-index here
+     ensures it paints above the hero section's isolation: isolate layer. */
+  z-index: 200;
+}
+
+/* Arrow notch pointing up */
+.nav__dropdown::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 9px;
+  height: 9px;
+  background: var(--color-navy);
+  border-left: 1px solid rgba(200, 155, 60, 0.2);
+  border-top: 1px solid rgba(200, 155, 60, 0.2);
+}
+
+/* Open on hover and focus-within */
+.nav__item--dropdown:hover .nav__dropdown,
+.nav__item--dropdown:focus-within .nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition:
+    opacity var(--transition-med) var(--ease-out),
+    transform var(--transition-med) var(--ease-out);
+}
+
+/* Clicking an item folds its own panel away. The pointer is still over the
+   wrapper and the clicked link still holds focus, so :hover and :focus-within
+   would otherwise keep it open on the next page. `is-dismissed` wins on
+   specificity and is cleared by the next mouseenter/focus on the trigger. */
+.nav__item--dropdown.is-dismissed .nav__dropdown {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition:
+    opacity var(--transition-fast) var(--ease-out),
+    transform var(--transition-fast) var(--ease-out),
+    visibility 0s linear var(--transition-fast);
+}
+
+.nav__item--dropdown.is-dismissed .nav__chevron {
+  transform: rotate(0deg);
+  opacity: 0.7;
+}
+
+.nav__dropdown-item {
+  display: block;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(244, 239, 226, 0.8);
+  white-space: nowrap;
+  transition: color var(--transition-fast), background-color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.nav__dropdown-item:hover,
+.nav__dropdown-item:focus-visible {
+  color: var(--color-cream);
+  background: rgba(200, 155, 60, 0.08);
+  padding-left: 1.55rem;
+}
+
+.nav__dropdown-item.is-active {
+  color: var(--color-gold);
+}
+
+/* Non-link items (industries without a dedicated page yet) — shown as a
+   static label, visually distinct from clickable links. */
+.nav__dropdown-item--static {
+  cursor: default;
+  color: rgba(244, 239, 226, 0.45);
+  font-style: italic;
+}
+
+.nav__dropdown-item--static:hover,
+.nav__dropdown-item--static:focus-visible {
+  color: rgba(244, 239, 226, 0.45);
+  background: transparent;
+  padding-left: 1.25rem;
+}
+
+/* Multi-column variant: one column per group, so Industries sits as
+   "Core Industries" (left) beside "Additional Sectors" (right). */
+.nav__dropdown--grouped {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: start;
+  column-gap: clamp(1.5rem, 3vw, 2.75rem);
+  padding: 0.75rem 0;
+}
+
+.nav__dropdown-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Group heading inside a dropdown (e.g. Core Industries / Additional Sectors). */
+.nav__dropdown-group {
+  margin: 0 0 0.4rem;
+  padding: 0 1.25rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200, 155, 60, 0.75);
+  white-space: nowrap;
+}
+
+/* ---- Drawer dropdown children (mobile) ---------------------------------- */
+.nav__drawer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__drawer-link--parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(244, 239, 226, 0.1);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 0;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-cream);
+  transition: color var(--transition-med) var(--ease-out);
+}
+
+.nav__drawer-link--parent.is-active {
+  color: var(--color-gold);
+}
+
+.nav__drawer-chevron {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform var(--transition-med) var(--ease-out);
+}
+
+.nav__drawer-section.is-expanded .nav__drawer-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.nav__drawer-children {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-med) var(--ease-out);
+  overflow: hidden;
+}
+
+.nav__drawer-section.is-expanded .nav__drawer-children {
+  grid-template-rows: 1fr;
+}
+
+/* Inner wrapper needed for grid-template-rows animation */
+.nav__drawer-children > div {
+  overflow: hidden;
+}
+
+.nav__drawer-child {
+  display: block;
+  padding: 0.6rem 0 0.6rem 1rem;
+  font-size: 1rem;
+  color: rgba(244, 239, 226, 0.72);
+  border-bottom: 1px solid rgba(244, 239, 226, 0.06);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.nav__drawer-child:last-child {
+  border-bottom: none;
+  margin-bottom: 0.4rem;
+}
+
+.nav__drawer-child:hover,
+.nav__drawer-child:focus-visible {
+  color: var(--color-gold);
+  padding-left: 1.4rem;
+}
+
+.nav__drawer-child.is-active {
+  color: var(--color-gold);
+}
+
+/* Group heading inside the drawer (mirrors .nav__dropdown-group). */
+.nav__drawer-group {
+  margin: 0.9rem 0 0.3rem;
+  padding: 0 1rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200, 155, 60, 0.75);
+}
+
+.nav__drawer-group:first-child {
+  margin-top: 0.35rem;
+}
+
+/* Non-link drawer items — static label, no hover interaction. */
+.nav__drawer-child--static {
+  cursor: default;
+  color: rgba(244, 239, 226, 0.45);
+  font-style: italic;
+}
+
+.nav__drawer-child--static:hover,
+.nav__drawer-child--static:focus-visible {
+  color: rgba(244, 239, 226, 0.45);
+  padding-left: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__dropdown,
+  .nav__drawer-children,
+  .nav__chevron,
+  .nav__drawer-chevron {
+    transition: none;
+  }
+}

@@ -1,0 +1,131 @@
+<app-admin-shell>
+  <header class="staff__head">
+    <p class="eyebrow">Staff area</p>
+    <h1 class="staff__title">{{ title() }}</h1>
+    <p class="staff__lede">
+      The submission in full, as the public form sent it. Signed in as {{ displayName() }}
+      ({{ user()?.username }}).
+    </p>
+  </header>
+
+  <section class="inbox" aria-labelledby="detail-title">
+    <div class="inbox__head">
+      <a class="inbox__back" [routerLink]="queue().route">&larr; Back to {{ queue().label }}</a>
+    </div>
+
+    <!-- The record is tested first because `@else if (... ; as row)` is not
+         allowed: an alias only works on the primary `@if`. It is still the
+         right order — a loaded record is the only state that is neither
+         loading nor missing. -->
+    @if (submission(); as row) {
+      <div class="detail" id="detail-title">
+        <div class="detail__top">
+          <!-- No `new` pill here: you are looking at the message, so it is not
+               telling you anything. `in progress` and later still do, because
+               those report where the work got to. -->
+          @if (row.status !== 'new') {
+            <span class="entry__status" [attr.data-status]="row.status">
+              {{ statusLabel(row.status) }}
+            </span>
+          }
+          <span class="detail__queue">{{ queue().label }}</span>
+          <time class="entry__date" [attr.datetime]="row.createdAt">
+            {{ row.createdAt | date: 'medium' }}
+          </time>
+        </div>
+
+        <h3 class="detail__name">{{ row.fullName }}</h3>
+
+        <dl class="detail__grid">
+          <div>
+            <dt>Form</dt>
+            <dd>{{ row.source === 'quick_inquiry' ? 'Quick inquiry' : 'Contact & consultation' }}</dd>
+          </div>
+          @if (has(row.email)) {
+            <div>
+              <dt>Email</dt>
+              <dd><a [href]="'mailto:' + row.email">{{ row.email }}</a></dd>
+            </div>
+          }
+          @if (has(row.phone)) {
+            <div>
+              <dt>Phone</dt>
+              <dd><a [href]="'tel:' + row.phone">{{ row.phone }}</a></dd>
+            </div>
+          }
+          @if (has(row.company)) {
+            <div>
+              <dt>Company</dt>
+              <dd>{{ row.company }}</dd>
+            </div>
+          }
+          @if (has(row.clientType)) {
+            <div>
+              <dt>Client type</dt>
+              <dd>{{ row.clientType }}</dd>
+            </div>
+          }
+          @if (has(row.reasonForContact)) {
+            <div>
+              <dt>Reason</dt>
+              <dd>{{ row.reasonForContact }}</dd>
+            </div>
+          }
+          @if (has(row.country)) {
+            <div>
+              <dt>Country</dt>
+              <dd>{{ row.country }}</dd>
+            </div>
+          }
+          <div>
+            <dt>Consent to be contacted</dt>
+            <dd>{{ row.consent ? 'Yes' : 'Not recorded' }}</dd>
+          </div>
+        </dl>
+
+        <div class="detail__block">
+          <h4 class="detail__label">Interested in</h4>
+          @if (topics().length) {
+            <ul class="detail__topics">
+              @for (topic of topics(); track topic) {
+                <li>{{ topic }}</li>
+              }
+            </ul>
+          } @else {
+            <p class="detail__empty">No topics were ticked.</p>
+          }
+        </div>
+
+        @if (row.preferredDate) {
+          <div class="detail__block">
+            <h4 class="detail__label">Preferred date</h4>
+            <p class="detail__value">{{ row.preferredDate | date: 'medium' }}</p>
+          </div>
+        }
+
+        <div class="detail__block">
+          <h4 class="detail__label">Message</h4>
+          @if (has(row.message)) {
+            <p class="entry__message">{{ row.message }}</p>
+          } @else {
+            <p class="detail__empty">
+              @if (row.source === 'quick_inquiry') {
+                Nothing was written. The short form asks for a name, a way to
+                reply, and the topics ticked.
+              } @else {
+                Nothing was written.
+              }
+            </p>
+          }
+        </div>
+      </div>
+    } @else if (loading()) {
+      <p class="inbox__empty">Loading&hellip;</p>
+    } @else if (notFound()) {
+      <p class="inbox__error" role="alert">
+        That submission is not in this list. It may have been removed, or the link may have
+        been edited by hand.
+      </p>
+    }
+  </section>
+</app-admin-shell>

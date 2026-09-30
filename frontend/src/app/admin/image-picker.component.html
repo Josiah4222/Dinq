@@ -1,0 +1,92 @@
+<div class="picker">
+  <div class="picker__preview">
+    @if (hasValue()) {
+      <img class="picker__img" [src]="value() | imageSrc" [alt]="''" loading="lazy" />
+    } @else {
+      <p class="picker__none">No image set</p>
+    }
+  </div>
+
+  <div class="picker__body">
+    <label class="picker__label" [attr.for]="inputId()">Image path</label>
+    <input
+      class="picker__input"
+      type="text"
+      [id]="inputId()"
+      [value]="value()"
+      (input)="onType($any($event.target).value)"
+      placeholder="/media/uploads/... or https://..."
+      autocomplete="off"
+      spellcheck="false"
+    />
+
+    <div class="picker__actions">
+      <button
+        type="button"
+        class="picker__btn"
+        (click)="openFileDialog()"
+        [disabled]="uploading()"
+      >
+        {{ uploading() ? 'Uploading…' : 'Upload image' }}
+      </button>
+      <button
+        type="button"
+        class="picker__btn"
+        (click)="toggleLibrary()"
+        [disabled]="uploading()"
+        [attr.aria-expanded]="libraryOpen()"
+      >
+        {{ libraryOpen() ? 'Close library' : 'Choose from library' }}
+      </button>
+      @if (hasValue()) {
+        <button type="button" class="picker__btn picker__btn--quiet" (click)="clear()">Remove</button>
+      }
+    </div>
+
+    <input
+      #file
+      class="picker__file"
+      type="file"
+      [accept]="uploadAccept"
+      (change)="onFileChosen($event)"
+    />
+
+    <p class="picker__hint">
+      JPEG, PNG, WebP or AVIF, up to 12 MB. Images are stored as they are, so a large photo stays
+      large.
+    </p>
+
+    @if (uploadError(); as message) {
+      <p class="picker__error" role="alert">{{ message }}</p>
+    }
+
+    @if (libraryOpen()) {
+      <div class="picker__library">
+        @if (libraryError(); as libraryMessage) {
+          <p class="picker__error" role="alert">{{ libraryMessage }}</p>
+        } @else if (loadingLibrary()) {
+          <p class="picker__none">Loading images…</p>
+        } @else if (!library().length) {
+          <p class="picker__none">No images uploaded yet. Upload one to start the library.</p>
+        } @else {
+          <ul class="picker__grid">
+            @for (asset of library(); track asset.path) {
+              <li>
+                <button
+                  type="button"
+                  class="picker__thumb"
+                  [class.picker__thumb--current]="asset.path === value()"
+                  (click)="choose(asset)"
+                  [attr.aria-label]="'Use ' + asset.name"
+                >
+                  <img class="picker__thumb-img" [src]="asset.path | imageSrc" [alt]="''" loading="lazy" />
+                  <span class="picker__thumb-name">{{ asset.name }}</span>
+                </button>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,201 @@
+@if (detail(); as d) {
+  <main id="main" class="sol-detail">
+    <!-- ============================ Hero band ============================= -->
+    <section class="sol-detail__hero" [class.sol-detail__hero--image]="d.heroImage">
+      @if (d.heroImage) {
+        <img [src]="d.heroImage | imageSrc" [alt]="d.title" class="sol-detail__hero-bg" loading="eager" />
+        <div class="sol-detail__hero-overlay"></div>
+      }
+      <div class="container sol-detail__hero-inner">
+        <div class="sol-detail__hero-content">
+          <a class="sol-detail__back" routerLink="/solutions">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 8H3M7 4 3 8l4 4"/>
+            </svg>
+            All solutions
+          </a>
+          <p class="eyebrow">Our Solutions</p>
+          <h1 class="sol-detail__title">{{ d.title }}</h1>
+          @if (d.headline) {
+            <p class="sol-detail__headline">{{ d.headline }}</p>
+          }
+          <p class="sol-detail__summary">{{ d.summary }}</p>
+          @if (d.tagline) {
+            <p class="sol-detail__tagline">{{ d.tagline }}</p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ The Opportunity (+ lead form, PAM only) =================
+         Two branches on purpose: the @else path is the original single-.container
+         markup verbatim, so the other four solution pages get no wrapper divs
+         and no structural diff at all. -->
+    @if (d.slug === 'property-asset-management') {
+      <section class="sol-detail__opportunity section sol-detail__opportunity--paired" appReveal>
+        <div class="container sol-detail__opportunity-inner">
+          <div class="sol-detail__opportunity-form">
+            <app-property-lead-form />
+          </div>
+          <div class="sol-detail__opportunity-lead">
+            <p class="eyebrow">The Opportunity</p>
+            <p class="sol-detail__statement">{{ d.opportunity }}</p>
+          </div>
+        </div>
+      </section>
+    } @else {
+      <section class="sol-detail__opportunity section" appReveal>
+        <div class="container">
+          <p class="eyebrow">The Opportunity</p>
+          <p class="sol-detail__statement">{{ d.opportunity }}</p>
+        </div>
+      </section>
+    }
+
+    <!-- ======================== Common Challenges ========================== -->
+    <section class="sol-detail__challenges section section--tint" appReveal>
+      <div class="container sol-detail__challenges-inner">
+        <div>
+          <p class="eyebrow">What we see</p>
+          <h2 class="sol-detail__section-title">Common challenges</h2>
+        </div>
+        <ul class="sol-detail__challenge-list">
+          @for (challenge of d.challenges; track challenge; let i = $index) {
+            <li class="sol-detail__challenge">
+              <span class="sol-detail__challenge-num" aria-hidden="true">0{{ i + 1 }}</span>
+              <p class="sol-detail__challenge-text">{{ challenge }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== Approach + How We Deliver ======================= -->
+    <section class="sol-detail__approach section" appReveal>
+      <div class="container sol-detail__approach-grid">
+        <div class="sol-detail__approach-lead">
+          <p class="eyebrow">Our Approach</p>
+          <h2 class="sol-detail__section-title">How we work</h2>
+          <p class="sol-detail__approach-text">{{ d.approach }}</p>
+        </div>
+        <div class="sol-detail__delivery">
+          <h3 class="sol-detail__delivery-title">{{ d.deliveryHeading ?? 'How Dinq can help' }}</h3>
+          <ul class="sol-detail__delivery-list">
+            @for (item of d.delivery; track item; let i = $index) {
+              <li class="sol-detail__delivery-item">
+                <span class="sol-detail__delivery-num" aria-hidden="true">{{ i + 1 | number: '2.0-0' }}</span>
+                <span>{{ item }}</span>
+              </li>
+            }
+          </ul>
+          @if (d.closing) {
+            <p class="sol-detail__closing">{{ d.closing }}</p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== Private Client & Family Office (diaspora-advisory only) ====== -->
+    @if (d.slug === 'diaspora-advisory') {
+      <section class="sol-detail__private-client section" appReveal>
+        <div class="container">
+          <p class="eyebrow">Private Client &amp; Family Office Services</p>
+          <h2 class="sol-detail__section-title">Private Client &amp; Family Office Services</h2>
+          <p class="sol-detail__private-client-text">
+            For families and high-net-worth individuals with significant business, property, or
+            investment interests in Ethiopia, Dinq provides a coordinated relationship for investment
+            oversight, property and asset management, family-enterprise matters, succession
+            coordination, and trusted local representation. Legal, tax, and other regulated
+            professional matters are coordinated with qualified advisors where required.
+          </p>
+        </div>
+      </section>
+    }
+
+    <!-- ==================== How We Deliver (4-step) ========================= -->
+    <section class="sol-detail__steps section section--tint" appReveal>
+      <div class="container">
+        <p class="eyebrow">How We Deliver</p>
+        <h2 class="sol-detail__section-title">Assess. Advise. Implement. Support.</h2>
+        <app-how-we-work mode="full" />
+      </div>
+    </section>
+
+    <!-- ============================ Why Dinq =============================== -->
+    <section class="sol-detail__why section section--dark" appReveal>
+      <div class="container">
+        <p class="eyebrow">Why Dinq</p>
+        <blockquote class="sol-detail__why-quote">{{ d.whyDinq }}</blockquote>
+      </div>
+    </section>
+
+    <!-- ============================ FAQ ==================================== -->
+    @if (d.faq?.length) {
+      <section class="sol-detail__faq section section--tint" appReveal>
+        <div class="container sol-detail__faq-inner">
+          <div class="sol-detail__faq-head">
+            <p class="eyebrow">FAQ</p>
+            <h2 class="sol-detail__section-title">Questions, answered</h2>
+          </div>
+          <app-faq-accordion [items]="d.faq ?? []" />
+        </div>
+      </section>
+    }
+
+    <!-- ====================== Industries We Support ======================= -->
+    @if (industries().length) {
+      <section class="sol-detail__industries section section--tint" appReveal>
+        <div class="container">
+          <p class="eyebrow">Industries We Support</p>
+          <h2 class="sol-detail__section-title">Industries We Support</h2>
+          <ul class="pill-list sol-detail__industry-pills">
+            @for (industry of industries(); track industry.slug) {
+              <li>
+                <a class="pill" [routerLink]="['/industries', industry.slug]">{{ industry.title }}</a>
+              </li>
+            }
+            @if (industriesCollapsed()) {
+              <li>
+                <a class="pill sol-detail__industry-pill--all" routerLink="/industries">View all industries &rarr;</a>
+              </li>
+            }
+          </ul>
+        </div>
+      </section>
+    }
+
+    <!-- ========================= Related solutions ========================= -->
+    @if (d.related?.length) {
+      <section class="sol-detail__related section" appReveal>
+        <div class="container">
+          <p class="eyebrow">Related Solutions</p>
+          <h2 class="sol-detail__section-title">Explore more</h2>
+          <div class="sol-detail__related-grid">
+            @for (item of d.related; track item.slug) {
+              <a class="sol-detail__related-card" [routerLink]="['/solutions', item.slug]">
+                <span class="sol-detail__related-title">{{ item.title }}</span>
+                <span class="sol-detail__related-arrow" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                  </svg>
+                </span>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- ============================== CTA ================================== -->
+    <section class="sol-detail__cta section" appReveal>
+      <div class="container sol-detail__cta-inner">
+        <h2 class="sol-detail__cta-title">Let's talk about your goals</h2>
+        <p class="sol-detail__cta-text">
+          Every engagement starts with a conversation. Tell us where you're headed, and we'll
+          map the steps to get there.
+        </p>
+        <a class="btn btn--gold" routerLink="/contact">{{ d.ctaLabel ?? 'Contact Dinq' }}</a>
+      </div>
+    </section>
+  </main>
+}

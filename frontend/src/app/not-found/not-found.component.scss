@@ -1,0 +1,72 @@
+:host {
+  display: block;
+}
+
+.nf {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 160% at 100% 0%, rgba(200, 155, 60, 0.1) 0%, transparent 50%),
+    radial-gradient(120% 160% at 0% 100%, rgba(18, 48, 92, 0.6) 0%, transparent 50%),
+    linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+  color: var(--color-cream);
+  padding-block: clamp(5rem, 12vw, 9rem);
+}
+
+.nf__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.05;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="160" height="160" filter="url(%23n)"/%3E%3C/svg%3E');
+  pointer-events: none;
+}
+
+.nf__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.nf__code {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 22vw, 12rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: transparent;
+  background: linear-gradient(180deg, var(--color-gold) 0%, rgba(200, 155, 60, 0.2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.nf__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+  color: var(--color-cream);
+}
+
+.nf__text {
+  max-width: 38ch;
+  margin-top: 0.5rem;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: rgba(244, 239, 226, 0.72);
+}
+
+.nf__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}

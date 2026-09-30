@@ -1,0 +1,55 @@
+<main id="main" class="sp">
+
+  <!-- ================================ Hero ================================ -->
+  <section class="sp-hero">
+    <div class="sp-hero__media" role="presentation">
+      <img
+        [src]="heroImage() | imageSrc"
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+        class="sp-hero__img"
+      />
+      <div class="sp-hero__overlay" aria-hidden="true"></div>
+    </div>
+    <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M -50 420 Q 300 200 620 300 T 1250 140" fill="none" stroke="rgba(200,155,60,0.22)" stroke-width="1.1" stroke-dasharray="2 8" stroke-linecap="round"/>
+      <circle cx="620" cy="300" r="4" fill="#C89B3C"/>
+    </svg>
+    <span class="sp-hero__orb" aria-hidden="true"></span>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container sp-hero__inner">
+      <p class="eyebrow">{{ heroEyebrow() }}</p>
+      <h1 class="sp-hero__title">{{ heroTitle() }}</h1>
+    </div>
+  </section>
+
+  <!-- ====================== Alliance body (dark) ========================== -->
+  <section id="alliance" class="sp-section sp-section--vm" appReveal>
+    <span class="grain" aria-hidden="true"></span>
+    <div class="container">
+      <div class="alliance">
+        <div class="alliance__lockup">
+          <img [src]="allianceLogo() | imageSrc" alt="Kairos Law" class="alliance__logo" />
+          <span class="alliance__label">{{ allianceLabel() }}</span>
+        </div>
+        <header class="sp-head">
+          <p class="eyebrow">{{ allianceEyebrow() }}</p>
+          <h2 class="sp-title sp-title--on-dark">{{ allianceHeading() }}</h2>
+        </header>
+        @for (p of allianceParagraphs(); track p) {
+          <p class="alliance__text">{{ p }}</p>
+        }
+        <div class="alliance__benefits">
+          <h3 class="alliance__benefits-heading">{{ allianceBenefitsHeading() }}</h3>
+          <ul class="alliance__list" aria-label="Client benefits">
+            @for (benefit of allianceBenefits(); track benefit) {
+              <li class="alliance__item">{{ benefit }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

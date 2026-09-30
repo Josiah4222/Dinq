@@ -1,0 +1,189 @@
+<main id="main" class="sp">
+  <!-- ============================ Hero band ============================= -->
+  @if (hero().image) {
+    <section class="sp-hero">
+      <div class="sp-hero__media" role="presentation">
+        <img
+          [src]="hero().image | imageSrc"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          class="sp-hero__img"
+        />
+        <div class="sp-hero__overlay" aria-hidden="true"></div>
+      </div>
+      <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M -50 420 Q 300 200 620 300 T 1250 140" fill="none" stroke="rgba(200,155,60,0.22)" stroke-width="1.1" stroke-dasharray="2 8" stroke-linecap="round"/>
+        <circle cx="620" cy="300" r="4" fill="#C89B3C"/>
+      </svg>
+      <span class="sp-hero__orb" aria-hidden="true"></span>
+      <span class="grain" aria-hidden="true"></span>
+      <div class="container sp-hero__inner">
+        @if (hero().eyebrow) {
+          <p class="eyebrow">{{ hero().eyebrow }}</p>
+        }
+        <h1 class="sp-hero__title">{{ hero().title }}</h1>
+      </div>
+    </section>
+  } @else {
+    <section class="sp-hero sp-hero--gradient">
+      <div class="container sp-hero__inner">
+        @if (hero().eyebrow) {
+          <p class="eyebrow sp-hero__eyebrow">{{ hero().eyebrow }}</p>
+        }
+        <h1 class="sp-hero__title">{{ hero().title }}</h1>
+        @if (hero().lead) {
+          <p class="sp-hero__lead">{{ hero().lead }}</p>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- ===================== Sticky in-page anchor nav ===================== -->
+  @if (anchorLayout) {
+    <nav class="sp-anchor" aria-label="Sections on this page">
+      <div class="container sp-anchor__inner">
+        <ol class="sp-anchor__list">
+          @for (item of navItems(); track item.id) {
+            <li class="sp-anchor__item">
+              <a
+                class="sp-anchor__link"
+                [class.is-active]="activeSection() === item.id"
+                [attr.aria-current]="activeSection() === item.id ? 'true' : null"
+                [href]="'#' + item.id"
+                [appScrollTo]="item.id"
+              >{{ item.label }}</a>
+            </li>
+          }
+        </ol>
+      </div>
+    </nav>
+  }
+
+  <!-- ========================= Stacked sections ======================== -->
+  @for (section of sections(); track section) {
+    <section
+      [id]="section.id"
+      class="sp-section sp-section--{{ section.tone ?? 'light' }} {{ section.align ? 'sp-section--' + section.align : '' }}"
+      appReveal
+    >
+      <div class="container">
+        @switch (section.kind) {
+          @case ('values') {
+            <header class="sp-head">
+              @if (section.eyebrow) {
+                <p class="eyebrow">{{ section.eyebrow }}</p>
+              }
+              @if (section.heading) {
+                <h2 class="sp-title">{{ section.heading }}</h2>
+              }
+            </header>
+            <ul class="sp-values">
+              @for (item of section.items; track item) {
+                <li class="sp-value">
+                  <h3 class="sp-value__title">{{ item.title }}</h3>
+                  <p class="sp-value__text">{{ item.text }}</p>
+                </li>
+              }
+            </ul>
+          }
+          @case ('cards') {
+            <header class="sp-head">
+              @if (section.eyebrow) {
+                <p class="eyebrow">{{ section.eyebrow }}</p>
+              }
+              @if (section.heading) {
+                <h2 class="sp-title">{{ section.heading }}</h2>
+              }
+            </header>
+            @if (section.text) {
+              <p class="sp-cards__intro">{{ section.text }}</p>
+            }
+            <ol class="sp-cards">
+              @for (item of section.items; track item; let i = $index) {
+                <li class="sp-card">
+                  <span class="sp-card__num" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+                  <div class="sp-card__body">
+                    @if (item.tag) {
+                      <span class="sp-card__tag">{{ item.tag }}</span>
+                    }
+                    @if (item.situation || item.role) {
+                      <h3 class="sp-card__title">{{ item.title }}</h3>
+                      <div class="sp-card__fields">
+                        <div class="sp-card__field">
+                          <span class="sp-card__label">Situation</span>
+                          <p class="sp-card__fieldtext">{{ item.situation }}</p>
+                        </div>
+                        <div class="sp-card__field">
+                          <span class="sp-card__label">Dinq Role</span>
+                          <p class="sp-card__fieldtext">{{ item.role }}</p>
+                        </div>
+                      </div>
+                    } @else {
+                      <p class="sp-card__text">{{ item.text }}</p>
+                    }
+                  </div>
+                </li>
+              }
+            </ol>
+          }
+          @case ('quote') {
+            <blockquote class="sp-quote">
+              <span class="sp-quote__mark" aria-hidden="true">&ldquo;</span>
+              <p class="sp-quote__text">{{ section.text }}</p>
+            </blockquote>
+          }
+          @case ('statement') {
+            <div class="sp-statement">
+              @if (section.amharic) {
+                <span class="sp-statement__glyph" aria-hidden="true">{{ section.amharic }}</span>
+              }
+              @if (section.eyebrow) {
+                <p class="eyebrow sp-statement__eyebrow">{{ section.eyebrow }}</p>
+              }
+              @if (section.heading) {
+                <h2 class="sp-title sp-statement__title">{{ section.heading }}</h2>
+              }
+              @for (paragraph of section.paragraphs; track paragraph) {
+                <p class="sp-statement__text">{{ paragraph }}</p>
+              }
+            </div>
+          }
+          @default {
+            <div class="sp-prose">
+              <header class="sp-head">
+                @if (section.eyebrow) {
+                  <p class="eyebrow">{{ section.eyebrow }}</p>
+                }
+                @if (section.heading) {
+                  <h2 class="sp-title">{{ section.heading }}</h2>
+                }
+              </header>
+              @for (paragraph of section.paragraphs; track paragraph) {
+                <p class="sp-prose__text">{{ paragraph }}</p>
+              }
+              @if (section.link) {
+                <p class="sp-prose__link">
+                  @if (section.link.href) {
+                    <a
+                      class="text-link"
+                      [href]="section.link.href"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >{{ section.link.label }} &rarr;</a>
+                  } @else {
+                    <a
+                      class="text-link"
+                      [routerLink]="section.link.route"
+                      [fragment]="section.link.fragment"
+                    >{{ section.link.label }} &rarr;</a>
+                  }
+                </p>
+              }
+            </div>
+          }
+        }
+      </div>
+    </section>
+  }
+</main>

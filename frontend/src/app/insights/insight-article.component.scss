@@ -1,0 +1,212 @@
+:host {
+  display: block;
+}
+
+/* ============================== Hero band =============================== */
+.ins-article__hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 90% at 15% 0%, rgba(200, 155, 60, 0.14) 0%, transparent 55%),
+    linear-gradient(180deg, var(--color-cream-light) 0%, var(--color-cream) 100%);
+  padding-block: clamp(4.5rem, 9vw, 7rem) clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.ins-article__hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 56rem;
+  text-align: center;
+}
+
+.ins-article__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  transition: color var(--transition-fast);
+}
+
+.ins-article__back:hover,
+.ins-article__back:focus-visible {
+  color: var(--color-gold);
+}
+
+.ins-article__title {
+  margin-top: 1.1rem;
+  font-size: clamp(2.1rem, 5vw, 3.3rem);
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+  color: var(--color-navy);
+}
+
+.ins-article__byline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+  color: var(--color-ink-muted);
+}
+
+.ins-article__author {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.ins-article__dot {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+/* ========================== Featured image =============================== */
+.ins-article__figure {
+  margin: 0;
+  padding-inline: var(--container-pad);
+}
+
+.ins-article__figure-img {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================== Body copy ================================ */
+.ins-article__body {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.ins-article__prose {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.ins-article__paragraph {
+  margin-top: 1.5rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.12rem);
+  line-height: 1.85;
+  color: var(--color-ink);
+}
+
+.ins-article__paragraph:first-of-type {
+  margin-top: 0;
+}
+
+.ins-article__paragraph:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 2.8em;
+  line-height: 0.85;
+  float: left;
+  margin: 0.06em 0.14em 0 0;
+  color: var(--color-gold);
+}
+
+/* ========================== Related articles ============================= */
+.ins-article__related-title {
+  margin-top: 1rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  line-height: 1.1;
+  color: var(--color-navy);
+}
+
+.ins-article__related-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.ins-related {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.6rem 1.75rem;
+  border: 1px solid var(--color-mist);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+}
+
+.ins-related:hover,
+.ins-related:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(200, 155, 60, 0.5);
+}
+
+.ins-related__category {
+  padding: 0.22rem 0.7rem;
+  border: 1px solid rgba(200, 155, 60, 0.55);
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  background: rgba(200, 155, 60, 0.08);
+}
+
+.ins-related__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  line-height: 1.3;
+  color: var(--color-navy);
+}
+
+.ins-related__read {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+/* ================================= CTA =================================== */
+.ins-article__cta {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.ins-article__cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ins-article__cta-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: var(--color-navy);
+}
+
+.ins-article__cta-text {
+  max-width: 46ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Responsive ----------------------------------------------------------- */
+@media (max-width: 720px) {
+  .ins-article__related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ins-article__paragraph:first-of-type::first-letter {
+    float: none;
+  }
+}

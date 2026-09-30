@@ -1,0 +1,131 @@
+/* One submission in full. The list, the shell, and the shared entry chrome come
+   from StaffDashboardComponent and AdminShellComponent, so this file only adds
+   what is specific to a single record: the back link and the labelled blocks.
+
+   The blocks are a definition list rather than the list screen's running entry,
+   because here each field is read once and in no particular hurry. */
+@use 'staff-head';
+@use 'staff-inbox';
+
+.inbox__back {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.inbox__back:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.detail {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-mist);
+}
+
+.detail__top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.detail__name {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+/* Which queue this came from, quiet, in place of the row reference that used to
+   sit there. */
+.detail__queue {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.detail__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.detail__grid dt {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.detail__grid dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.95rem;
+  color: var(--color-navy);
+  overflow-wrap: anywhere;
+}
+
+.detail__grid a {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.detail__block {
+  margin-top: 1.75rem;
+}
+
+/* The topics are chips rather than a list because they are a small closed set of
+   names, and what matters here is scanning them, not their order. */
+.detail__label {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.detail__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail__topics li {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  color: var(--color-navy);
+  background: var(--color-cream);
+  border: 1px solid var(--color-mist);
+  border-radius: 2rem;
+}
+
+.detail__value {
+  margin: 0.7rem 0 0;
+  font-size: 0.95rem;
+  color: var(--color-navy);
+}
+
+/* Stated in full ink, not the muted grey: "there is nothing here" is still
+   information the reader was owed, and it was the muted tone that made absent
+   fields read as broken rather than as absent. */
+.detail__empty {
+  margin: 0.7rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+}

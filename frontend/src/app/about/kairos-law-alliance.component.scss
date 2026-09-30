@@ -1,0 +1,217 @@
+:host {
+  display: block;
+}
+
+/* ---- Grain overlay ----------------------------------------------------- */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- Hero band --------------------------------------------------------- */
+.sp-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-cream);
+  background: var(--color-navy-deep);
+  padding-block: calc(var(--nav-height) + clamp(3.5rem, 8vw, 6.5rem)) clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.sp-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sp-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(0.85) contrast(1.04);
+}
+
+.sp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 20, 39, 0.78) 0%,
+      rgba(7, 20, 39, 0.55) 30%,
+      rgba(7, 20, 39, 0.5) 55%,
+      rgba(7, 20, 39, 0.9) 100%
+    );
+}
+
+.sp-hero__routes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.sp-hero__orb {
+  position: absolute;
+  z-index: 0;
+  width: 36vw;
+  height: 36vw;
+  max-width: 560px;
+  max-height: 560px;
+  border-radius: 50%;
+  filter: blur(90px);
+  top: -10%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.22) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.sp-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  max-width: 44rem;
+}
+
+.sp-hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.3rem, 5.6vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.008em;
+  max-width: 19ch;
+}
+
+/* ---- Sections ---------------------------------------------------------- */
+.sp-section {
+  padding-block: var(--section-pad);
+  position: relative;
+  isolation: isolate;
+}
+
+.sp-section--vm {
+  background:
+    radial-gradient(120% 140% at 85% 0%, rgba(200, 155, 60, 0.08) 0%, transparent 48%),
+    linear-gradient(180deg, var(--color-navy-deep) 0%, var(--color-navy) 100%);
+  color: var(--color-cream);
+}
+
+.sp-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.sp-head {
+  max-width: 44rem;
+}
+
+.sp-title {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: 1.14;
+  letter-spacing: -0.008em;
+  color: var(--color-navy);
+}
+
+.sp-title--on-dark {
+  color: var(--color-cream);
+}
+
+/* ---- Alliance ---------------------------------------------------------- */
+.alliance {
+  max-width: 52rem;
+}
+
+.alliance__lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(200, 155, 60, 0.4);
+}
+
+.alliance__logo {
+  height: 2.4rem;
+  width: auto;
+}
+
+.alliance__label {
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 226, 0.6);
+}
+
+.alliance__text {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.85;
+  color: rgba(244, 239, 226, 0.82);
+}
+
+.alliance__benefits {
+  margin-top: 2.25rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  border-radius: var(--radius-md);
+  background: rgba(200, 155, 60, 0.05);
+}
+
+.alliance__benefits-heading {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-gold);
+  margin-bottom: 1.1rem;
+}
+
+.alliance__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.alliance__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: rgba(244, 239, 226, 0.82);
+}
+
+.alliance__item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 0.5em;
+}
+
+/* ---- Caveat (does not imply Dinq provides regulated legal services) ---- */
+.alliance__caveat {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(244, 239, 226, 0.12);
+  max-width: 62ch;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: rgba(244, 239, 226, 0.6);
+}

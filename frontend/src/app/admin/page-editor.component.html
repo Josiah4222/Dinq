@@ -1,0 +1,200 @@
+<app-admin-shell>
+  @if (loadError()) {
+    <header class="staff__head">
+      <p class="eyebrow">Page content</p>
+      <h1 class="staff__title">Page unavailable</h1>
+    </header>
+    <p class="editor__error" role="alert">{{ loadError() }}</p>
+    <p class="editor__back">
+      <a routerLink="/admin/pages">← All pages</a>
+    </p>
+  } @else {
+    <header class="staff__head">
+      <p class="eyebrow">
+        <a class="editor__crumb" routerLink="/admin/pages">Page content</a>
+        @if (page(); as p) {
+          <span class="editor__crumb-sep">/</span>{{ p.category }}
+        }
+      </p>
+      <h1 class="staff__title">{{ page()?.title ?? '…' }}</h1>
+      @if (page(); as p) {
+        <p class="staff__lede">
+          Route <code class="editor__route">{{ p.route === '/' ? '/' : p.route }}</code>.
+          Changes here are live as soon as they are saved.
+        </p>
+      }
+    </header>
+
+    @if (loading()) {
+      <p class="editor__empty">Loading page content…</p>
+    } @else {
+      <div class="editor__bar">
+        <p class="editor__status">
+          @if (isDirty()) {
+            <span class="editor__dirty">{{ dirtyCount() }} unsaved</span>
+          } @else if (savedAt()) {
+            <span class="editor__saved">Saved</span>
+          } @else {
+            {{ blocks().length }} {{ blocks().length === 1 ? 'field' : 'fields' }}
+          }
+        </p>
+        <div class="editor__actions">
+          @if (page(); as p) {
+            <a class="editor__view" [href]="p.route" target="_blank" rel="noopener">View page ↗</a>
+          }
+          @if (isDirty()) {
+            <button type="button" class="editor__btn" (click)="discard()" [disabled]="saving()">
+              Discard
+            </button>
+          }
+          <button type="button" class="editor__btn editor__btn--primary" (click)="save()" [disabled]="saving() || !isDirty()">
+            {{ saveLabel() }}
+          </button>
+        </div>
+      </div>
+
+      @if (saveError()) {
+        <p class="editor__error" role="alert">{{ saveError() }}</p>
+      }
+
+      @if (updatedElsewhere()) {
+        <div class="editor__notice editor__notice--warn" role="status">
+          <p class="editor__notice-title">Someone else changed this page.</p>
+          <p>
+            Your changes are still here and have not been sent. Reload to take the saved copy and
+            start from that, or keep editing and save to overwrite.
+          </p>
+          <button type="button" class="row__add" (click)="reloadFromServer()">Reload from server</button>
+        </div>
+      }
+
+      @if (notMigrated()) {
+        <div class="editor__notice">
+          <p class="editor__notice-title">This page has not been migrated yet.</p>
+          <p>
+            Its text still lives in the site's code, so there is nothing to edit here and saving
+            would not change the live page. Once its copy is moved into the database it will appear
+            here as a set of fields.
+          </p>
+        </div>
+      } @else {
+        <div class="fields">
+          @for (block of blocks(); track block.key; let i = $index) {
+            <section class="field" [class.field--failed]="isFailed(block.key)">
+              <div class="field__head">
+                <label class="field__label" [attr.for]="'f-' + block.key">{{ block.label }}</label>
+                <code class="field__key">{{ block.key }}</code>
+              </div>
+
+              @switch (block.kind) {
+                @case ('text') {
+                  <input
+                    class="field__input"
+                    type="text"
+                    [id]="'f-' + block.key"
+                    [value]="block.text"
+                    (input)="setText(i, $any($event.target).value)"
+                  />
+                }
+                @case ('image') {
+                  <app-image-picker
+                    [value]="block.text"
+                    [inputId]="'f-' + block.key"
+                    (valueChange)="setText(i, $event)"
+                  />
+                }
+                @case ('textarea') {
+                  <textarea
+                    class="field__textarea"
+                    rows="4"
+                    [id]="'f-' + block.key"
+                    [value]="block.text"
+                    (input)="setText(i, $any($event.target).value)"
+                  ></textarea>
+                }
+                @case ('list') {
+                  <ul class="rows">
+                    @for (item of block.items; track item.uid; let r = $index) {
+                      <li class="row">
+                        <div class="row__head">
+                          <span class="row__num">{{ r + 1 }}</span>
+                          <div class="row__tools">
+                            <button
+                              type="button"
+                              class="row__tool"
+                              (click)="moveItem(i, item.uid, -1)"
+                              [disabled]="r === 0"
+                              [attr.aria-label]="'Move item ' + (r + 1) + ' up'"
+                            >
+                              ↑
+                            </button>
+                            <button
+                              type="button"
+                              class="row__tool"
+                              (click)="moveItem(i, item.uid, 1)"
+                              [disabled]="r === block.items.length - 1"
+                              [attr.aria-label]="'Move item ' + (r + 1) + ' down'"
+                            >
+                              ↓
+                            </button>
+                            <button
+                              type="button"
+                              class="row__tool row__tool--danger"
+                              (click)="removeItem(i, item.uid)"
+                              [attr.aria-label]="'Remove item ' + (r + 1)"
+                            >
+                              ✕
+                            </button>
+                          </div>
+                        </div>
+
+                        @if (item.isText) {
+                          <textarea
+                            class="field__textarea"
+                            rows="2"
+                            [value]="item.text"
+                            (input)="setItemText(i, item.uid, $any($event.target).value)"
+                          ></textarea>
+                        } @else {
+                          @for (name of block.fieldOrder; track name) {
+                            <div class="row__field">
+                              <span class="row__field-label">
+                                {{ labelFor(name) }}
+                                @if (fieldHints[name]; as hint) {
+                                  <span class="row__hint">{{ hint }}</span>
+                                }
+                              </span>
+                              @if (isImageField(name)) {
+                                <app-image-picker
+                                  [value]="fieldValue(item, name)"
+                                  [inputId]="'f-' + block.key + '-' + item.uid + '-' + name"
+                                  (valueChange)="setItemField(i, item.uid, name, $event)"
+                                />
+                              } @else {
+                                <textarea
+                                  class="field__textarea field__textarea--tight"
+                                  rows="2"
+                                  [value]="fieldValue(item, name)"
+                                  (input)="setItemField(i, item.uid, name, $any($event.target).value)"
+                                ></textarea>
+                              }
+                            </div>
+                          }
+                        }
+                      </li>
+                    }
+                  </ul>
+                  <button type="button" class="row__add" (click)="addItem(i)">+ Add item</button>
+                }
+              }
+
+              @if (block.error) {
+                <p class="field__error">{{ block.error }}</p>
+              }
+            </section>
+          }
+        </div>
+      }
+    }
+  }
+</app-admin-shell>

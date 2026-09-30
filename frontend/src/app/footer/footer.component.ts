@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { BrandLogoComponent } from '../brand-logo/brand-logo.component';
+import { RouterLink } from '@angular/router';
 
 /**
- * Footer — navy band with brand lockup, tagline, contact channels, legal
- * placeholder links and social icons.
+ * Footer — navy band with brand lockup, tagline, company/resources/contact
+ * columns, and legal links.
  */
 @Component({
   selector: 'app-footer',
-  imports: [BrandLogoComponent],
+  imports: [RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

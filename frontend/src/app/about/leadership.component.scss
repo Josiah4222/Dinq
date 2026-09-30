@@ -1,0 +1,610 @@
+:host {
+  display: block;
+}
+
+/* ---- Grain overlay ----------------------------------------------------- */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =========================================================================
+   Hero
+   ========================================================================= */
+.sp-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-cream);
+  background: var(--color-navy-deep);
+  padding-block: calc(var(--nav-height) + clamp(3.5rem, 8vw, 6.5rem)) clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.sp-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sp-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(0.85) contrast(1.04);
+}
+
+.sp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 20, 39, 0.78) 0%,
+    rgba(7, 20, 39, 0.55) 30%,
+    rgba(7, 20, 39, 0.5) 55%,
+    rgba(7, 20, 39, 0.9) 100%
+  );
+}
+
+.sp-hero__routes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.sp-hero__orb {
+  position: absolute;
+  z-index: 0;
+  width: 36vw;
+  height: 36vw;
+  max-width: 560px;
+  max-height: 560px;
+  border-radius: 50%;
+  filter: blur(90px);
+  top: -10%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.22) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.sp-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  max-width: 44rem;
+}
+
+.sp-hero__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.3rem, 5.6vw, 3.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.008em;
+  max-width: 19ch;
+}
+
+.sp-hero__tagline {
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.45;
+  color: var(--color-gold-light);
+}
+
+/* ---- Quick-jump chips -------------------------------------------------- */
+.sp-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.sp-jump__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(200, 155, 60, 0.38);
+  background: rgba(244, 239, 226, 0.06);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  text-decoration: none;
+  transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out;
+}
+
+.sp-jump__chip:hover,
+.sp-jump__chip:focus-visible {
+  background: rgba(200, 155, 60, 0.16);
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+}
+
+/* =========================================================================
+   Sections
+   ========================================================================= */
+.sp-section {
+  padding-block: var(--section-pad);
+  position: relative;
+  isolation: isolate;
+}
+
+.sp-section--tint  { background: var(--color-cream); }
+.sp-section--light { background: var(--color-white); }
+.sp-section--dark {
+  background: linear-gradient(160deg, var(--color-navy-deep) 0%, var(--color-navy) 100%);
+  color: var(--color-cream);
+}
+
+.sp-section .container { position: relative; z-index: 2; }
+
+/* ---- Section headings -------------------------------------------------- */
+.sp-head {
+  max-width: 44rem;
+  margin-bottom: clamp(2.75rem, 5.5vw, 4rem);
+}
+
+.sp-head--ruled .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.sp-head--ruled .eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(200, 155, 60, 0.28);
+}
+
+.sp-head--split {
+  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.9rem 2rem;
+}
+
+.sp-head--split .eyebrow::after {
+  flex: none;
+  width: 3.5rem;
+}
+
+.sp-head__meta {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+
+.sp-title {
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: 1.14;
+  letter-spacing: -0.008em;
+  color: var(--color-navy);
+}
+
+.sp-title--light { color: var(--color-cream); }
+
+/* ---- Prose ------------------------------------------------------------- */
+.sp-prose__text {
+  max-width: 64ch;
+  margin-top: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.85;
+  color: var(--color-ink-muted);
+}
+
+.sp-prose__text:first-of-type { margin-top: 0; }
+.sp-prose__text--light { color: rgba(244, 239, 226, 0.78); }
+
+.sp-eyebrow--light { color: var(--color-gold); }
+
+/* =========================================================================
+   Leadership rows  —  side-by-side, alternating
+   ========================================================================= */
+.lead-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 6rem);
+}
+
+/* Thin gold divider between entries */
+.lead-list > li + li {
+  padding-top: clamp(4rem, 8vw, 6rem);
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
+  margin-top: calc(-1 * clamp(4rem, 8vw, 6rem));
+}
+
+/* ---- Each row is a two-column split at ≥ 860 px ----------------------- */
+.lead-row {
+  display: grid;
+  grid-template-columns: 1fr;          /* mobile: stacked */
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+  position: relative;
+}
+
+@media (min-width: 860px) {
+  .lead-row {
+    grid-template-columns: 420px 1fr;  /* portrait fixed width, text fills rest */
+    align-items: stretch;              /* both columns grow to the tallest side */
+  }
+
+  /* Odd-indexed entries flip portrait to the right */
+  .lead-row--flip {
+    grid-template-columns: 1fr 420px;
+  }
+
+  .lead-row--flip .lead-row__portrait {
+    order: 2;
+  }
+
+  .lead-row--flip .lead-row__text {
+    order: 1;
+  }
+}
+
+@media (min-width: 1060px) {
+  .lead-row { grid-template-columns: 460px 1fr; }
+  .lead-row--flip { grid-template-columns: 1fr 460px; }
+}
+
+/* =========================================================================
+   Portrait column
+   ========================================================================= */
+/* The portrait and the links beneath it are one grid cell, so the icons stay
+   under the photo instead of drifting to the far side of the entry. */
+.lead-row__portrait {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+.lead-row__figure {
+  margin: 0;
+  position: relative;
+  /* Stretch to fill the grid row so the frame can grow with the text */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Outer shell fills the full column height; aspect-ratio only applies on mobile */
+.lead-row__frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-mist);
+  box-shadow: var(--shadow-lg);
+  /* Fill whatever height the text column reaches */
+  height: 100%;
+  min-height: 480px;
+}
+
+/* On mobile where there's no adjacent text column, fall back to a portrait ratio */
+@media (max-width: 859px) {
+  .lead-row__frame {
+    height: auto;
+    aspect-ratio: 3 / 4;
+    min-height: unset;
+  }
+}
+
+.lead-row__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.lead-row__frame:hover .lead-row__img {
+  transform: scale(1.05);
+}
+
+/* Bottom gradient scrim so the plate sits on the photo */
+.lead-row__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(7, 20, 39, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* Practice plate — lives INSIDE the frame on top of the scrim */
+.lead-row__plate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.lead-row__plate-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.lead-row__plate-value {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-cream);
+  line-height: 1.35;
+}
+
+/* Frame fills the figure, which already stretches to the grid row */
+.lead-row__figure > .lead-row__frame {
+  flex: 1;
+}
+.lead-row__figure::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, transparent, var(--color-gold) 40%, var(--color-gold) 60%, transparent);
+  right: -1.5rem;
+  opacity: 0.55;
+}
+
+.lead-row--flip .lead-row__figure::after {
+  right: auto;
+  left: -1.5rem;
+}
+
+/* ---- Monogram placeholder (no portrait) -------------------------------- */
+.lead-row__figure--mono {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Remove the gold bar on mono since there's no frame pseudo */
+.lead-row__figure--mono::after { display: none; }
+
+.lead-row__mono-initial {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 8rem);
+  font-weight: 500;
+  color: rgba(200, 155, 60, 0.45);
+  line-height: 1;
+  user-select: none;
+}
+
+.lead-row__mono-org {
+  color: rgba(244, 239, 226, 0.6);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* =========================================================================
+   Text column
+   ========================================================================= */
+.lead-row__text {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding-inline: clamp(0rem, 2vw, 1.25rem);
+}
+
+/* ---- Identity ---- */
+.lead-row__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.lead-row__role {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.3rem 0.72rem;
+  border-radius: 3px;
+  background: rgba(200, 155, 60, 0.12);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+
+.lead-row__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--color-navy);
+  margin: 0;
+}
+
+/* Underline rule beneath the name */
+.lead-row__name::after {
+  content: '';
+  display: block;
+  width: 2.8rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+/* ---- Bio text ---- */
+.lead-row__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lead-row__para {
+  font-size: clamp(0.95rem, 1.35vw, 1.02rem);
+  line-height: 1.82;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Expand toggle ---- */
+.lead-row__toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  cursor: pointer;
+  transition: color 200ms ease-out;
+}
+
+.lead-row__toggle:hover { color: var(--color-navy); }
+
+.lead-row__toggle-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+  transition: transform 300ms var(--ease-out);
+}
+
+.lead-row__toggle--open .lead-row__toggle-icon {
+  transform: rotate(90deg);
+}
+
+/* ---- Areas of focus ---- */
+.lead-row__focus {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--color-mist);
+}
+
+.lead-row__focus-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+
+/* Pill styling now lives in the global stylesheet as `.pill` / `.pill-list`. */
+
+/* ---- Contact links -------------------------------------------------------- */
+/* Set directly beneath the portrait. Shown only for the links staff have
+   actually filled in, so a leader with none is not given a dead button. */
+.lead-row__links {
+  display: flex;
+  gap: 0.55rem;
+  justify-content: center;
+}
+
+.lead-row__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-navy);
+  border: 1px solid var(--color-mist);
+  border-radius: 50%;
+  transition: color var(--transition-fast), background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.lead-row__link svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+}
+
+/* Filled on hover so the target is unmistakable, and the same on focus so a
+   keyboard user sees where they are — an icon-only control has no other cue. */
+.lead-row__link:hover,
+.lead-row__link:focus-visible {
+  color: var(--color-cream);
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.lead-row__link:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* =========================================================================
+   Responsive — collapse to portrait-on-top stack below 860 px
+   ========================================================================= */
+@media (max-width: 859px) {
+  /* The wrapper centres, so the icons line up under the photo rather than
+     under the full column width. */
+  .lead-row__portrait {
+    max-width: 380px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .lead-row__figure {
+    width: 100%;
+  }
+
+  /* Hide the gold accent bar on mobile — no adjacent column to bridge */
+  .lead-row__figure::after { display: none; }
+
+  .lead-row__text { padding-inline: 0; }
+}
+
+@media (max-width: 560px) {
+  .lead-row__portrait { max-width: 100%; }
+}
+
+/* =========================================================================
+   Reduced motion
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .lead-row__img,
+  .lead-row__frame:hover .lead-row__img {
+    transition: none;
+    transform: none;
+  }
+}
