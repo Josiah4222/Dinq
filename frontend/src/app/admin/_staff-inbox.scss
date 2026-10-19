@@ -79,6 +79,46 @@
   color: #8c2f22;
 }
 
+/* Search row above every list. The count beside the box tells the reader how
+   much of the list the query is showing, so a narrow result is not mistaken
+   for a short queue. */
+.inbox__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.inbox__search {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0.55rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-navy);
+  background: var(--color-white);
+  border: 1px solid var(--color-mist);
+  border-radius: 2rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.inbox__search::placeholder {
+  color: var(--color-ink-muted);
+}
+
+.inbox__search:focus {
+  border-color: var(--color-gold);
+}
+
+.inbox__count {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}
+
 .inbox__list {
   margin: 1.25rem 0 0;
   padding: 0;
@@ -199,26 +239,43 @@
   white-space: nowrap;
 }
 
-/* Opens the row in full. Styled as a small outlined action rather than body
-   link text so it reads as the row's action, not as part of the data. */
+/* Opens the row in full. A solid gold pill so it reads as the row's action at a
+   glance, distinct from the outlined status pills and the link text around it. */
 .entry__view {
   margin-left: auto;
-  padding: 0.3rem 0.8rem;
+  padding: 0.3rem 0.9rem;
+  font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-navy);
+  color: var(--color-navy-deep);
+  background: var(--color-gold);
   text-decoration: none;
-  border: 1px solid var(--color-mist);
+  border: 1px solid var(--color-gold);
   border-radius: 2rem;
   white-space: nowrap;
-  transition: border-color var(--transition-fast);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .entry__view:hover,
 .entry__view:focus-visible {
-  border-color: var(--color-navy);
+  background: var(--color-gold-dark, #8a6d2f);
+  border-color: var(--color-gold-dark, #8a6d2f);
+  color: var(--color-cream);
+}
+
+/* The details revealed in place by a property lead's View button. It breaks
+   onto its own full-width line beneath the row so the compact list layout is
+   kept while the message and internal notes are still readable. */
+.entry__detail {
+  flex-basis: 100%;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-mist);
 }
 
 .entry__org {

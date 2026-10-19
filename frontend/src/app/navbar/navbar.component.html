@@ -104,6 +104,29 @@
 
   <!-- =================== Off-canvas drawer (mobile/tablet) =============== -->
   <div id="mobile-menu" class="nav__drawer" [class.is-open]="menuOpen()">
+    <div class="nav__drawer-top">
+      <a
+        href="#home"
+        appScrollTo="top"
+        class="nav__drawer-brand"
+        aria-label="Dinq Advisory Group — back to top"
+        (click)="selectLink()"
+      >
+        <app-brand-logo size="sm" />
+      </a>
+
+      <button
+        class="nav__drawer-close"
+        type="button"
+        (click)="closeMenu()"
+        aria-label="Close menu"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
     <nav class="nav__drawer-links" aria-label="Primary mobile">
       @for (link of links; track link.id) {
 

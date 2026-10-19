@@ -90,6 +90,13 @@ export class LoginComponent {
     }
 
     if (err.status === 403) {
+      // The CSRF failure page is HTML with no `detail`, and calling it a
+      // permissions problem would be a lie - the account may be perfectly
+      // entitled. Django's CSRF page always names itself in the reason line.
+      const raw = typeof err.error === 'string' ? err.error : '';
+      if (raw.includes('CSRF')) {
+        return 'Security check failed. Refresh the page and try again.';
+      }
       return 'This account does not have access to the staff area.';
     }
 

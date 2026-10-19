@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, firstValueFrom } from 'rxjs';
 import { AuthService } from '../core/auth.service';
 import { CountKey, SubmissionCountStore } from '../core/submission-count.store';
 
@@ -32,7 +32,9 @@ const SUBMISSION_ITEMS: SubmissionItem[] = [
   { id: 'contacts', label: 'Contact & Consultation', route: '/admin/contact', icon: 'envelope', countKey: 'contacts' },
   { id: 'quickInquiries', label: 'Quick Inquiries', route: '/admin/quick-inquiries', icon: 'bolt', countKey: 'quickInquiries' },
   { id: 'leads', label: 'Property Leads', route: '/admin/property-leads', icon: 'building', countKey: 'propertyLeads' },
-  { id: 'subscribers', label: 'Newsletter', route: '/admin/newsletter', icon: 'mail', countKey: 'newsletter' },
+  // The subscriber email list. Called "Subscribers" rather than "Newsletter" so
+  // it cannot be confused with the Newsletters authoring screen under Content.
+  { id: 'subscribers', label: 'Subscribers', route: '/admin/newsletter', icon: 'mail', countKey: 'newsletter' },
 ];
 
 /**
@@ -58,10 +60,13 @@ export class AdminShellComponent implements OnInit, OnDestroy {
   private readonly countStore = inject(SubmissionCountStore);
 
   readonly user = this.auth.user;
-  readonly displayName = signal('');
+  // Computed rather than copied into a signal in the constructor: renaming
+  // yourself on /admin/account updates this chip without leaving the screen.
+  readonly displayName = computed(() => this.auth.displayName());
   readonly signingOut = signal(false);
 
   readonly submissionItems = computed(() => SUBMISSION_ITEMS);
+  readonly navOpen = signal(false);
 
   /** The count poll, released on destroy so leaving the admin stops it. */
   private watch?: Subscription;
@@ -77,20 +82,29 @@ export class AdminShellComponent implements OnInit, OnDestroy {
     return letters.join('') || name.slice(0, 2).toUpperCase();
   });
 
-  constructor() {
-    this.displayName.set(this.auth.displayName());
-  }
+  private escapeListener = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      this.closeNav();
+    }
+  };
 
   ngOnInit(): void {
-    // Watch rather than fetch once: the rail is on every staff screen, so this
-    // is what keeps a badge honest while somebody is working on a page editor
-    // and a submission lands at the same time. The store is refcounted and
-    // shared, so this costs nothing beyond the list screen's own watch.
     this.watch = this.countStore.watch().subscribe();
+    this.watch.add(this.router.events.subscribe(() => this.closeNav()));
+    document.addEventListener('keydown', this.escapeListener);
   }
 
   ngOnDestroy(): void {
     this.watch?.unsubscribe();
+    document.removeEventListener('keydown', this.escapeListener);
+  }
+
+  toggleNav(): void {
+    this.navOpen.update((v) => !v);
+  }
+
+  closeNav(): void {
+    this.navOpen.set(false);
   }
 
   /**
@@ -110,8 +124,16 @@ export class AdminShellComponent implements OnInit, OnDestroy {
       return;
     }
     this.signingOut.set(true);
-    await this.auth.logout();
-    this.signingOut.set(false);
-    this.router.navigate(['/login']);
+    // logout() is an Observable, so awaiting the object itself would resolve
+    // without ever sending the request — firstValueFrom subscribes and turns
+    // the response into the promise this method is waiting on. The service
+    // clears local state on failure too, so the finally clause lands on the
+    // sign-in screen either way instead of leaving the button stuck.
+    try {
+      await firstValueFrom(this.auth.logout());
+    } finally {
+      this.signingOut.set(false);
+      this.router.navigate(['/login']);
+    }
   }
 }

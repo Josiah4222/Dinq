@@ -31,6 +31,9 @@ PAGES: list[dict] = [
     {'slug': 'our-approach', 'title': 'Our Approach', 'route': '/about/our-approach', 'category': 'About', 'order': 20},
     {'slug': 'leadership', 'title': 'Leadership', 'route': '/about/leadership', 'category': 'About', 'order': 30},
     {'slug': 'kairos-law-alliance', 'title': 'Kairos Law Alliance', 'route': '/about/kairos-law-alliance', 'category': 'About', 'order': 40},
+    {'slug': 'vcard-abel-giratta', 'title': 'Contact Card — Abel Giratta', 'route': '/vcard/abel-giratta', 'category': 'About', 'order': 50},
+    {'slug': 'vcard-ida-edo', 'title': 'Contact Card — Ida Edo', 'route': '/vcard/ida-edo', 'category': 'About', 'order': 60},
+    {'slug': 'vcard-habtamu-bazezew', 'title': 'Contact Card — Habtamu Bazezew', 'route': '/vcard/habtamu-bazezew', 'category': 'About', 'order': 70},
 
     # Solutions --------------------------------------------------------------
     {'slug': 'solutions', 'title': 'Solutions Overview', 'route': '/solutions', 'category': 'Solutions', 'order': 0},
@@ -54,9 +57,6 @@ PAGES: list[dict] = [
 
     # Insights ---------------------------------------------------------------
     {'slug': 'insights', 'title': 'Insights', 'route': '/insights', 'category': 'Insights', 'order': 0},
-    {'slug': 'insight-5-mistakes-foreign-investors-making-entering-ethiopia', 'title': '5 Mistakes Foreign Investors Make Entering Ethiopia', 'route': '/insights/5-mistakes-foreign-investors-making-entering-ethiopia', 'category': 'Insights', 'order': 10},
-    {'slug': 'insight-a-diaspora-guide-to-investing-back-home', 'title': 'A Diaspora Guide to Investing Back Home', 'route': '/insights/a-diaspora-guide-to-investing-back-home', 'category': 'Insights', 'order': 20},
-    {'slug': 'insight-manufacturing-opportunities-in-ethiopia', 'title': 'Manufacturing Opportunities in Ethiopia', 'route': '/insights/manufacturing-opportunities-in-ethiopia', 'category': 'Insights', 'order': 30},
 
     # Our Work ---------------------------------------------------------------
     {'slug': 'why-ethiopia', 'title': 'Why Ethiopia', 'route': '/why-ethiopia', 'category': 'Our Work', 'order': 0},

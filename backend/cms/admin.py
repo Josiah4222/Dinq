@@ -8,7 +8,7 @@ quick without leaving the list.
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import ContentBlock, InquiryTopic, Page
+from .models import Article, ContentBlock, InquiryTopic, Page
 
 
 class ContentBlockInline(admin.TabularInline):
@@ -41,6 +41,29 @@ class PageAdmin(admin.ModelAdmin):
     def block_count(self, obj) -> str:
         total = obj.blocks.count()
         return format_html('<strong>{}</strong>', total)
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    """
+    Newsletter / insight articles.
+
+    The Angular screen under /admin/newsletters is the intended editing surface,
+    but the same rows are manageable here — useful for a quick delete or a
+    bulk category tidy-up without opening the editor for each one.
+    """
+
+    list_display = ['title', 'category', 'author', 'created_at', 'updated_at']
+    list_filter = ['category']
+    search_fields = ['title', 'slug', 'author', 'summary']
+    prepopulated_fields = {'slug': ('title',)}
+    ordering = ['-created_at']
+    readonly_fields = ['created_at', 'updated_at']
+    fieldsets = (
+        (None, {'fields': ('title', 'slug', 'author', 'category', 'summary')}),
+        ('Content', {'fields': ('body', 'featured_image', 'related')}),
+        ('Timestamps', {'fields': ('created_at', 'updated_at')}),
+    )
 
 
 @admin.register(InquiryTopic)

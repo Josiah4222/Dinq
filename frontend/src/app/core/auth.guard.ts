@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { map, take } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService, AuthUser } from './auth.service';
 
 /**
  * Protects staff-only routes.
@@ -40,4 +40,25 @@ export const guestGuard: CanActivateFn = () => {
     return router.createUrlTree(['/admin']);
   }
   return true;
+};
+
+/**
+ * Protects superuser-only staff routes (currently /admin/team).
+ *
+ * A signed-in non-superuser is turned back to the dashboard rather than the
+ * login page: they are legitimately signed in, they just cannot manage staff.
+ * The server enforces the same rule, so this only keeps the UI honest.
+ */
+export const superuserGuard: CanActivateFn = () => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
+
+  const decide = (user: AuthUser | null) =>
+    user?.isSuperuser ? true : router.createUrlTree(['/admin']);
+
+  if (auth.isSignedIn()) {
+    return decide(auth.user());
+  }
+
+  return auth.refreshSession().pipe(take(1), map(decide));
 };

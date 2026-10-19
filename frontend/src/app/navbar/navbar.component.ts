@@ -134,10 +134,7 @@ export class NavbarComponent {
       .subscribe(() => {
         this.syncHeroTone();
         // Close drawer on navigation
-        if (this.menuOpen()) {
-          this.menuOpen.set(false);
-          document.body.style.overflow = '';
-        }
+        this.closeMenu();
       });
     this.syncHeroTone();
   }
@@ -171,12 +168,18 @@ export class NavbarComponent {
     }
   }
 
-  selectLink(): void {
-    if (this.menuOpen()) {
-      this.menuOpen.set(false);
-      this.drawerExpanded.set(null);
-      document.body.style.overflow = '';
+  /** Close the mobile drawer and release the body scroll lock. */
+  closeMenu(): void {
+    if (!this.menuOpen()) {
+      return;
     }
+    this.menuOpen.set(false);
+    this.drawerExpanded.set(null);
+    document.body.style.overflow = '';
+  }
+
+  selectLink(): void {
+    this.closeMenu();
   }
 
   /** Routed-link click: close the drawer; scroll home to top when already there. */

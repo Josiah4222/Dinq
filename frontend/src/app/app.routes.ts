@@ -8,6 +8,7 @@ import { LeadershipComponent } from './about/leadership.component';
 import { OurApproachComponent } from './about/our-approach.component';
 import { KairosLawAllianceComponent } from './about/kairos-law-alliance.component';
 import { StandardPageComponent } from './standard-page/standard-page.component';
+import { VcardComponent } from './vcard/vcard.component';
 import { SolutionsIndexComponent } from './solutions/solutions-index.component';
 import { SolutionDetailComponent } from './solutions/solution-detail.component';
 import { IndustryDetailComponent } from './industries/industry-detail.component';
@@ -19,7 +20,11 @@ import { StaffDashboardComponent } from './admin/staff-dashboard.component';
 import { StaffSubmissionDetailComponent } from './admin/staff-submission-detail.component';
 import { PagesListComponent } from './admin/pages-list.component';
 import { PageEditorComponent } from './admin/page-editor.component';
-import { guestGuard, staffGuard } from './core/auth.guard';
+import { AccountComponent } from './admin/account.component';
+import { TeamComponent } from './admin/team.component';
+import { NewslettersListComponent } from './admin/newsletters-list.component';
+import { ArticleEditorComponent } from './admin/article-editor.component';
+import { guestGuard, staffGuard, superuserGuard } from './core/auth.guard';
 
 /**
  * App routes. The homepage is the full landing page; contact owns the unified
@@ -95,11 +100,49 @@ export const routes: Routes = [
     component: PageEditorComponent,
     canActivate: [staffGuard],
   },
+  {
+    // The signed-in user's own credentials: rename the account, change the
+    // password. Linked from the rail's account block.
+    path: 'admin/account',
+    component: AccountComponent,
+    canActivate: [staffGuard],
+  },
+  {
+    // Staff accounts: a superuser adds another administrator. Guarded a level
+    // above the rest of the staff area, and the server checks the same rule.
+    path: 'admin/team',
+    component: TeamComponent,
+    canActivate: [superuserGuard],
+  },
+  {
+    // Newsletter / insight articles: the list, then the editor. `new` is
+    // declared before `:slug` so the literal path wins over the parameter.
+    path: 'admin/newsletters',
+    component: NewslettersListComponent,
+    canActivate: [staffGuard],
+  },
+  {
+    path: 'admin/newsletters/new',
+    component: ArticleEditorComponent,
+    canActivate: [staffGuard],
+  },
+  {
+    path: 'admin/newsletters/:slug',
+    component: ArticleEditorComponent,
+    canActivate: [staffGuard],
+  },
   { path: 'about', component: AboutComponent },
   { path: 'about/who-we-are', component: WhoWeAreComponent },
   { path: 'about/our-approach', component: OurApproachComponent },
   { path: 'about/kairos-law-alliance', component: KairosLawAllianceComponent },
   { path: 'about/leadership', component: LeadershipComponent },
+  // A contact card built to be forwarded. One route per person rather than a
+  // slug-driven page, because there is no index to look a person up from and the
+  // URL is the artefact being shared: /vcard/ida-edo is what gets sent. Every
+  // route runs the same component; the `person` data says which card it draws.
+  { path: 'vcard/abel-giratta', component: VcardComponent, data: { person: 'abel-giratta' } },
+  { path: 'vcard/ida-edo', component: VcardComponent, data: { person: 'ida-edo' } },
+  { path: 'vcard/habtamu-bazezew', component: VcardComponent, data: { person: 'habtamu-bazezew' } },
   {
     path: 'solutions',
     component: SolutionsIndexComponent,

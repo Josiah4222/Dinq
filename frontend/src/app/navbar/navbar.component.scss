@@ -208,11 +208,23 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    inset: 0;
+    /* Sized against the viewport explicitly, not with inset: 0. The parent
+       .nav carries a backdrop-filter, which becomes the containing block for
+       fixed descendants — so inset: 0 sized the drawer to the 76px bar instead
+       of the screen. Viewport units ignore that containing block. */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
     z-index: 99;
-    padding: calc(var(--nav-height) + 2rem) var(--container-pad) 3rem;
+    padding: 1.25rem var(--container-pad) 3rem;
     background: linear-gradient(180deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
-    overflow: hidden;
+    /* Scrollable: with the drawer sections expanded the list is taller than a
+       phone viewport, and clipping it left the lower links unreachable. */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -226,16 +238,61 @@
     transition: opacity var(--transition-med) var(--ease-out), transform var(--transition-med) var(--ease-out);
   }
 
+  /* Top row: brand lockup on the left, close control on the right. */
+  .nav__drawer-top {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav__drawer-brand {
+    display: inline-flex;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* Close control. The burger in the bar is covered by the full-screen drawer,
+     so this is the tap-to-close. */
+  .nav__drawer-close {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0;
+    color: var(--color-cream);
+    background: transparent;
+    border: 1px solid rgba(244, 239, 226, 0.3);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav__drawer-close:hover,
+  .nav__drawer-close:focus-visible {
+    color: var(--color-gold);
+    border-color: rgba(200, 155, 60, 0.6);
+  }
+
+  .nav__drawer-close:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
   .nav__drawer-links {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    margin-top: 1.75rem;
   }
 
   .nav__drawer-link {
     padding: 0.85rem 0;
     font-family: var(--font-display);
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     color: var(--color-cream);
     border-bottom: 1px solid rgba(244, 239, 226, 0.1);
     transition: color var(--transition-med) var(--ease-out), transform var(--transition-med) var(--ease-out), padding-left var(--transition-med) var(--ease-out);
@@ -500,7 +557,7 @@
   text-align: left;
   padding: 0.85rem 0;
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: var(--color-cream);
   transition: color var(--transition-med) var(--ease-out);
 }
@@ -539,7 +596,7 @@
 .nav__drawer-child {
   display: block;
   padding: 0.6rem 0 0.6rem 1rem;
-  font-size: 1rem;
+  font-size: 0.92rem;
   color: rgba(244, 239, 226, 0.72);
   border-bottom: 1px solid rgba(244, 239, 226, 0.06);
   transition: color var(--transition-fast), padding-left var(--transition-fast);

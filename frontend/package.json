@@ -11,7 +11,8 @@
     "verify:cms:merge": "node tools/verify-cms-merge.mjs",
     "verify:cms:keys": "node tools/verify-cms-keys.mjs",
     "verify:topics": "node tools/verify-inquiry-topics.mjs",
-    "verify:images": "node tools/verify-image-paths.mjs"
+    "verify:images": "node tools/verify-image-paths.mjs",
+    "verify:vcard": "node tools/verify-vcard.mjs"
   },
   "private": true,
   "dependencies": {

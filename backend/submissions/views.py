@@ -33,6 +33,7 @@ from .forms import (
     QuickInquiryForm,
 )
 from .models import ContactSubmission, NewsletterSubscriber, PropertyLeadSubmission
+from .notifications import notify_new_contact
 
 from cms.models import InquiryTopic
 
@@ -94,6 +95,9 @@ def submit_contact(request):
         message=data['message'],
         consent=data['consent'],
     )
+
+    # Best-effort: the row is stored, so a mail failure must not fail the form.
+    notify_new_contact(record)
 
     return JsonResponse(
         {

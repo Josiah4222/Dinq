@@ -222,68 +222,183 @@
   cursor: not-allowed;
 }
 
-/* Below the two-column threshold the rail becomes a top bar with a scrollable
-   nav, so it stays reachable on a phone without squeezing the list beside it. */
+/* ---- Mobile: top bar + slide-in drawer (< 860px) ------------------------
+   Below the two-column threshold the rail leaves the grid entirely and becomes
+   an off-canvas drawer. A slim fixed top bar carries the toggle so the nav is
+   always one tap away without a floating pill sitting on top of the content. */
+.rail__toggle {
+  display: none;
+}
+
+.rail__backdrop {
+  display: none;
+}
+
+.rail__close {
+  display: none;
+}
+
 @media (max-width: 860px) {
   .staff {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .rail {
-    position: static;
-    height: auto;
-    flex-direction: row;
+  /* Fixed top bar: hamburger on the left, brand beside it. Sits above the
+     content so nothing overlaps, and the drawer slides in over it. */
+  .rail__toggle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.85rem 1rem;
+    gap: 0.7rem;
+    height: 3.25rem;
+    padding: 0 1rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-cream);
+    background: var(--color-navy-deep);
+    border: 0;
+    border-bottom: 1px solid rgba(244, 239, 226, 0.12);
+    box-shadow: 0 2px 14px rgba(5, 16, 32, 0.28);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rail__toggle:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: -2px;
+  }
+
+  .rail__toggle-label {
+    flex: 1 1 auto;
+    text-align: left;
+  }
+
+  /* Dimmed backdrop behind the drawer. No backdrop-filter: it composites a
+     blur over the whole viewport even at opacity 0 on some mobile browsers,
+     which reads as a faint gradient across long lists. */
+  .rail__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(5, 16, 32, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .rail__backdrop.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* The drawer itself: full-height panel sliding in from the left. The shadow
+     only applies while open — a resting translateX(-100%) would still paint it
+     onto the viewport edge as a permanent gradient. */
+  .rail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    width: min(84vw, 320px);
+    height: 100dvh;
+    padding: 1.25rem 1rem 1.5rem;
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rail.is-open {
+    transform: translateX(0);
+    box-shadow: 18px 0 48px rgba(5, 16, 32, 0.45);
+  }
+
+  /* Close (X) button pinned to the drawer's top-right corner. */
+  .rail__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    color: var(--color-cream);
+    background: rgba(244, 239, 226, 0.08);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rail__close:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
   }
 
   .rail__brand {
-    padding: 0;
-    flex: 0 0 auto;
+    padding: 0 2.5rem 1.25rem 0.6rem;
   }
 
   .rail__label {
-    display: none;
+    display: block;
   }
 
   .rail__nav {
-    flex-direction: row;
-    gap: 0.35rem;
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-x: auto;
+    flex-direction: column;
+    gap: 0.15rem;
   }
 
+  /* Bigger touch targets for thumbs. */
   .rail__link {
-    flex: 0 0 auto;
-    border-left: 0;
-    border-bottom: 2px solid transparent;
-    padding: 0.5rem 0.55rem;
-    white-space: nowrap;
+    padding: 0.85rem 0.7rem;
+    border-left: 2px solid transparent;
+    border-radius: 6px;
   }
 
   .rail__link.is-active {
-    border-bottom-color: var(--color-gold);
+    border-left-color: var(--color-gold);
   }
 
   .rail__foot {
-    margin-top: 0;
-    padding-top: 0;
-    margin-left: auto;
-    border-top: 0;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(244, 239, 226, 0.18);
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
   }
 
   .rail__user {
-    display: none;
+    display: flex;
   }
 
   .rail__signout {
-    width: auto;
+    width: 100%;
     white-space: nowrap;
   }
+
+  /* Clear the fixed top bar so page content starts below it. */
+  .staff__main {
+    padding-top: calc(3.25rem + 1.25rem);
+  }
+
+  /* Lock background scroll while the drawer is open. */
+  :host-context(body:has(.staff.nav-open)) {
+    overflow: hidden;
+  }
 }
+

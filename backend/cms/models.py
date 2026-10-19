@@ -342,3 +342,110 @@ class ImageAsset(models.Model):
             'uploadedAt': self.created_at.isoformat(),
         }
 
+
+class Article(models.Model):
+    """
+    One newsletter / insight article, authored on /admin/newsletters and shown
+    publicly on /insights.
+
+    This is a structured record rather than a `Page` + `ContentBlock` pair
+    because an article is not page copy: it has a fixed set of fields (byline,
+    date, body paragraphs, related links) and it needs to be listed, filtered,
+    and ordered as a collection. Bending it into the key/value block system
+    would mean every consumer had to re-derive a shape the database could just
+    hold directly.
+
+    `body` and `related` are JSON arrays: paragraphs and slugs respectively. The
+    article page renders each body entry as its own paragraph, so storing the
+    split keeps the reader and the writer agreeing on where paragraphs end
+    without the frontend having to guess at blank lines in a blob of text.
+    """
+
+    slug = models.SlugField(
+        max_length=140,
+        unique=True,
+        help_text='URL id, e.g. market-outlook-2026. Auto-generated from the title when blank.',
+    )
+
+    title = models.CharField(max_length=200)
+
+    author = models.CharField(
+        max_length=120,
+        blank=True,
+        default='',
+        help_text='Byline shown on the article. Blank falls back to the site name.',
+    )
+
+    category = models.CharField(
+        max_length=80,
+        blank=True,
+        default='',
+        db_index=True,
+        help_text='Short label used for the index filter chip, e.g. "Market Insight".',
+    )
+
+    summary = models.TextField(
+        blank=True,
+        default='',
+        help_text='One-line summary shown on the index card.',
+    )
+
+    body = models.JSONField(
+        default=list,
+        blank=True,
+        help_text='Array of paragraph strings, rendered in order.',
+    )
+
+    featured_image = models.CharField(
+        max_length=500,
+        blank=True,
+        default='',
+        help_text='Root-absolute image path, e.g. /media/uploads/... Blank shows a placeholder.',
+    )
+
+    related = models.JSONField(
+        default=list,
+        blank=True,
+        help_text='Slugs of other articles to surface in the related-articles module.',
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Article'
+        verbose_name_plural = 'Articles'
+
+    def __str__(self) -> str:
+        return self.title
+
+    def _body_list(self) -> list:
+        return self.body if isinstance(self.body, list) else []
+
+    def _related_list(self) -> list:
+        return self.related if isinstance(self.related, list) else []
+
+    def as_public_dict(self) -> dict:
+        """The shape the public /insights screens read. camelCase, like the API."""
+        return {
+            'slug': self.slug,
+            'title': self.title,
+            'author': self.author,
+            # The public templates date-parse this, so it stays an ISO date.
+            'date': self.created_at.date().isoformat(),
+            'category': self.category,
+            'summary': self.summary,
+            'body': self._body_list(),
+            'featuredImage': self.featured_image,
+            'relatedSlugs': self._related_list(),
+        }
+
+    def as_staff_dict(self) -> dict:
+        """The public shape plus the timestamps the staff list shows."""
+        return {
+            **self.as_public_dict(),
+            'createdAt': self.created_at.isoformat(),
+            'updatedAt': self.updated_at.isoformat(),
+        }
+

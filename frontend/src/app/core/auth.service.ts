@@ -88,6 +88,32 @@ export class AuthService {
       );
   }
 
+  /**
+   * Change the signed-in user's username. The response carries the fresh user
+   * payload, which becomes the new local state so the rail and any other
+   * chrome update without a second round trip.
+   */
+  updateUsername(username: string): Observable<AuthUser> {
+    return this.http
+      .post<{ user: AuthUser }>('/api/auth/profile/', { username })
+      .pipe(
+        map(res => res.user),
+        tap(user => this.currentUser.set(user)),
+      );
+  }
+
+  /**
+   * Change the signed-in user's password. The current password is required
+   * even though the session is already authenticated, and the session itself
+   * is preserved by the backend so this succeeds without a forced re-login.
+   */
+  changePassword(currentPassword: string, newPassword: string): Observable<{ detail: string }> {
+    return this.http.post<{ detail: string }>('/api/auth/password/', {
+      currentPassword,
+      newPassword,
+    });
+  }
+
   clear(): void {
     this.currentUser.set(null);
   }

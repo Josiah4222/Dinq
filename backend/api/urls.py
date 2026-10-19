@@ -2,8 +2,9 @@
 JSON API routes for the Angular frontend.
 
 Mounted at /api/ from config/urls.py. The auth endpoints are namespaced as
-`api:login`, `api:logout`, `api:me` and `api:csrf`; submission endpoints live
-under `submissions`/`staff` prefixes and are named for the forms they serve.
+`api:login`, `api:logout`, `api:me`, `api:profile`, `api:change-password` and
+`api:csrf`; submission endpoints live under `submissions`/`staff` prefixes and
+are named for the forms they serve.
 """
 from django.urls import path
 
@@ -18,6 +19,12 @@ urlpatterns = [
     path('auth/login/', views.api_login, name='login'),
     path('auth/logout/', views.api_logout, name='logout'),
     path('auth/me/', views.me, name='me'),
+    # The signed-in user edits their own sign-in details on /admin/account.
+    path('auth/profile/', views.update_profile, name='profile'),
+    path('auth/password/', views.change_password, name='change-password'),
+
+    # Staff accounts: list and create, superuser-only, for /admin/team.
+    path('staff/users/', views.staff_users, name='staff-users'),
 
     # Public form writes (anonymous, CSRF-protected).
     path('submissions/contact/', submission_views.submit_contact, name='submit-contact'),
@@ -49,4 +56,14 @@ urlpatterns = [
     # dev proxy because they sit under /api/.
     path('staff/uploads/', cms_views.staff_image_upload, name='staff-image-upload'),
     path('staff/images/', cms_views.staff_image_library, name='staff-image-library'),
+
+    # Newsletter / insight articles: staff author them on /admin/newsletters,
+    # the public /insights screens read them anonymously.
+    path('staff/articles/', cms_views.staff_article_list, name='staff-article-list'),
+    path('staff/articles/create/', cms_views.staff_article_create, name='staff-article-create'),
+    path('staff/articles/<slug:slug>/', cms_views.staff_article_detail, name='staff-article-detail'),
+    path('staff/articles/<slug:slug>/update/', cms_views.staff_article_update, name='staff-article-update'),
+    path('staff/articles/<slug:slug>/delete/', cms_views.staff_article_delete, name='staff-article-delete'),
+    path('articles/', cms_views.public_article_list, name='public-article-list'),
+    path('articles/<slug:slug>/', cms_views.public_article_detail, name='public-article-detail'),
 ]

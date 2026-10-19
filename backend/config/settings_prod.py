@@ -18,7 +18,10 @@ nginx terminates TLS and serves three things on one origin:
     /            the built Angular app (frontend/dist/dinq/browser)
     /static/     collected Django static, from STATIC_ROOT
     /media/      uploaded images, straight off disk
-    /api/ /admin/ /login/   proxied to gunicorn
+    /api/ /django-admin/    proxied to gunicorn
+
+Everything else — the staff panel at /admin/... and the sign-in page at
+/login — is part of the Angular app and falls through to its index.html.
 
 The single origin matters. The frontend calls the API with root-relative paths
 (`/api/...`) and there is no environment.ts or API base URL anywhere in the
@@ -82,7 +85,7 @@ ALLOWED_HOSTS = [h.strip() for h in env('DJANGO_ALLOWED_HOSTS').split(',') if h.
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # nginx also carries the original Host and port, which Django needs to build
-# correct absolute URLs in the Django-rendered login and admin pages.
+# correct absolute URLs in the Django-rendered admin pages and in redirects.
 USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
 
@@ -104,14 +107,19 @@ SECURE_REFERRER_POLICY = 'same-origin'
 # -----------------------------------------------------------------------------
 # Cookies
 # -----------------------------------------------------------------------------
-# Staff sign-in is a session cookie, so it must not travel over plain HTTP. The
-# CSRF cookie is not readable by JavaScript because nothing on the frontend needs
-# to read it - the Angular app relies on the Django-provided helper endpoint
-# instead - and HTTPOnly takes it out of reach of any XSS on the page.
+# The session cookie is not readable by JavaScript and must never travel over
+# plain HTTP. The CSRF cookie is deliberately the opposite on the HttpOnly
+# point: Angular's withXsrfConfiguration (app.config.ts) reads `csrftoken` from
+# document.cookie and echoes it back as X-CSRFToken, and that header is how
+# every write authenticates itself - staff sign-in, mark-as-seen, and the public
+# contact forms alike. Marking it HttpOnly made the cookie invisible to the
+# frontend, so those POSTs arrived with no token and Django answered 403 to all
+# of them (silently, on any browser that had not kept an older readable cookie).
+# False is also Django's own default.
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_HTTPONLY = True
 
 # SameSite=Lax is Django's default and is correct here: the API is same-origin,
@@ -165,6 +173,39 @@ DATABASES = {
 # A brief wait on the database lock keeps a form POST from failing outright when
 # an admin is saving the CMS at the same moment.
 DATABASES['default']['OPTIONS'] = {'timeout': 20}
+
+
+# -----------------------------------------------------------------------------
+# Email
+# -----------------------------------------------------------------------------
+# Alerts for new public form submissions. SMTP rather than a local mail daemon:
+# the server has no MTA, and a relay with SPF/DKIM is what keeps the mail out of
+# spam. Every value is optional -- with no host configured, `send_mail` is not
+# called and the notification is simply skipped, while the submission is still
+# stored and shows up in the staff panel.
+
+EMAIL_BACKEND = os.environ.get(
+    'DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend'
+)
+EMAIL_HOST = os.environ.get('DJANGO_EMAIL_HOST', '')
+EMAIL_PORT = int(os.environ.get('DJANGO_EMAIL_PORT', '587'))
+EMAIL_HOST_USER = os.environ.get('DJANGO_EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_HOST_PASSWORD', '')
+# 587 (STARTTLS) is the common relay port; 465 wants EMAIL_USE_SSL instead. The
+# two are mutually exclusive and Django raises if both are on.
+EMAIL_USE_TLS = env_bool('DJANGO_EMAIL_USE_TLS', 'true')
+EMAIL_USE_SSL = env_bool('DJANGO_EMAIL_USE_SSL', 'false')
+# A bounded timeout so a slow relay cannot hold a gunicorn worker indefinitely.
+EMAIL_TIMEOUT = int(os.environ.get('DJANGO_EMAIL_TIMEOUT', '10'))
+DEFAULT_FROM_EMAIL = os.environ.get(
+    'DJANGO_DEFAULT_FROM_EMAIL', 'Dinq Advisory Group <no-reply@dinqadvisory.com>'
+)
+# Who a new /contact submission is announced to. Comma separated.
+CONTACT_NOTIFICATION_EMAILS = [
+    e.strip()
+    for e in os.environ.get('DJANGO_CONTACT_NOTIFICATION_EMAILS', '').split(',')
+    if e.strip()
+]
 
 
 # -----------------------------------------------------------------------------

@@ -31,7 +31,13 @@ urlpatterns = [
     path('api/', include('api.urls')),
 
     path('', views.home, name='home'),
-    path('admin/', admin.site.urls),
+
+    # The stock admin is deliberately out of the way at /django-admin/ so
+    # /admin/... stays with the Angular staff panel (frontend/src/app/app.routes.ts),
+    # which is the screen staff actually sign in to. reverse() names do not
+    # change with the mount point, so LOGIN_REDIRECT_URL = 'admin:index' and
+    # every other reverse('admin:...') follow it on their own.
+    path('django-admin/', admin.site.urls),
 ]
 
 # Uploaded images, served straight off disk in development only. In production

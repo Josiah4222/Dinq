@@ -1,0 +1,281 @@
+:host {
+  display: block;
+}
+
+/* ---- Section ----------------------------------------------------------- */
+/* The top padding carries the fixed navbar's clearance, which on every other page
+   comes from the hero band this page does not have. Without it the card starts
+   underneath the bar. */
+.vc-section {
+  position: relative;
+  isolation: isolate;
+  padding-block: calc(var(--nav-height) + clamp(1.8rem, 5vw, 3rem)) var(--section-pad);
+  background:
+    radial-gradient(120% 140% at 88% 0%, rgba(200, 155, 60, 0.09) 0%, transparent 46%),
+    linear-gradient(180deg, var(--color-navy-deep) 0%, var(--color-navy) 100%);
+}
+
+.vc-section .container {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+}
+
+/* ---- The card ---------------------------------------------------------- */
+.card {
+  padding: clamp(1.4rem, 4.5vw, 2.4rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(200, 155, 60, 0.28);
+  background: var(--color-white);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---- Identity ---------------------------------------------------------- */
+.card__head {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3.5vw, 1.5rem);
+}
+
+/* Square on a phone, where a taller portrait would push the name out of the
+   first screenful; 4:5 from tablet up, which is the site's portrait ratio. */
+.card__portrait {
+  flex-shrink: 0;
+  width: clamp(5.5rem, 22vw, 8.5rem);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(200, 155, 60, 0.4);
+  background: linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+  display: grid;
+  place-items: center;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.card__initial {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 3rem);
+  color: var(--color-gold);
+}
+
+.card__role {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+
+.card__name {
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 6vw, 2.15rem);
+  line-height: 1.12;
+  color: var(--color-navy);
+}
+
+.card__org {
+  margin-top: 0.3rem;
+  font-size: 0.98rem;
+  color: var(--color-ink-muted);
+}
+
+.card__location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-ink-muted);
+}
+
+.card__location-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: var(--color-gold-dark);
+  flex-shrink: 0;
+}
+
+/* ---- Tappable rows ----------------------------------------------------- */
+/* Numbers and the email are links rather than text: the whole row is the tap
+   target, which is the difference between a card that works and a card that
+   asks someone to read digits off a screen and type them. */
+.card__numbers,
+.card__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: clamp(1.2rem, 3.5vw, 1.6rem);
+}
+
+/* The rule between the identity and the numbers it replaced, so the card still
+   reads as two parts rather than one undifferentiated list. */
+.card__numbers {
+  padding-top: clamp(1.2rem, 3.5vw, 1.6rem);
+  border-top: 1px solid rgba(11, 30, 59, 0.1);
+}
+
+.card__links {
+  margin-top: 0.55rem;
+}
+
+.number,
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  /* 3.5rem keeps the row a comfortable thumb target without making two
+     numbers look like a list of links. */
+  min-height: 3.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(11, 30, 59, 0.12);
+  border-radius: var(--radius-md);
+  background: var(--color-cream-light);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.number:hover,
+.link-row:hover {
+  border-color: rgba(200, 155, 60, 0.6);
+  background: var(--color-white);
+}
+
+.number:active,
+.link-row:active {
+  transform: scale(0.995);
+}
+
+.number__icon,
+.link-row__icon {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: rgba(200, 155, 60, 0.16);
+  flex-shrink: 0;
+}
+
+.number__icon svg,
+.link-row__icon svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--color-gold-dark);
+}
+
+.number__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.number__label {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+
+.number__value,
+.link-row__value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  /* A long address wraps rather than pushing the action off the row. */
+  overflow-wrap: anywhere;
+}
+
+.number__action,
+.link-row__action {
+  margin-left: auto;
+  padding-left: 0.75rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  flex-shrink: 0;
+}
+
+/* Below the smallest phones there is no room for the number and the action
+   side by side, so the action drops under the value. */
+@media (max-width: 26rem) {
+  .number__action,
+  .link-row__action {
+    display: none;
+  }
+}
+
+/* ---- Save -------------------------------------------------------------- */
+.card__save {
+  margin-top: clamp(1.4rem, 4vw, 1.8rem);
+}
+
+.save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 3.4rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(120deg, var(--color-gold-light), #C89B3C 60%, var(--color-gold-muted));
+  color: var(--color-navy-deep);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 34px rgba(200, 155, 60, 0.32);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.save:hover,
+.save:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(200, 155, 60, 0.4);
+}
+
+.save:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+.save__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: currentColor;
+}
+
+.card__hint {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+
+/* Reserved rather than absent when empty: the confirmation appears after the
+   save, and the card must not jump under the finger that just tapped it. */
+.card__saved {
+  min-height: 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-success);
+}
+
+.card__foot {
+  margin-top: clamp(1.6rem, 4vw, 2.2rem);
+  max-width: 34rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: rgba(244, 239, 226, 0.6);
+}

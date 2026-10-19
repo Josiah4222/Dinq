@@ -126,6 +126,36 @@
   gap: 1.25rem;
 }
 
+/* No articles published yet — spans the full grid so the column rules don't
+   show through an empty list. */
+.ins-index__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--color-mist);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.ins-index__empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.ins-index__empty-text {
+  max-width: 34rem;
+  color: var(--color-ink-muted);
+}
+
+.ins-index__empty-link {
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
 .ins-card__link {
   display: flex;
   flex-direction: column;

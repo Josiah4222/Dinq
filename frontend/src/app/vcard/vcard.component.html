@@ -1,0 +1,125 @@
+<main id="main" class="vc">
+
+  <!-- ================================ Card ================================ -->
+  <!-- No hero band: this page is one card, and a hero would only push the card
+       itself down. The name on the card is the page heading. -->
+  <section class="vc-section" aria-label="Contact card">
+    <div class="container">
+      <article class="card" appReveal>
+
+        <!-- ---- Identity ---- -->
+        <header class="card__head">
+          <div class="card__portrait">
+            @if (portrait()) {
+              <img
+                [src]="portrait() | imageSrc"
+                [alt]="name()"
+                width="480"
+                height="600"
+                fetchpriority="high"
+                decoding="async"
+                class="card__img"
+              />
+            } @else {
+              <!-- No portrait set: the monogram keeps the card the same shape
+                   rather than leaving a hole where the photo should be. -->
+              <span class="card__initial" aria-hidden="true">{{ initial() }}</span>
+            }
+          </div>
+
+          <div class="card__identity">
+            <p class="card__role">{{ role() }}</p>
+            <h1 class="card__name">{{ name() }}</h1>
+            <p class="card__org">{{ org() }}</p>
+            @if (location()) {
+              <p class="card__location">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="card__location-icon">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/>
+                </svg>
+                {{ location() }}
+              </p>
+            }
+          </div>
+        </header>
+
+        <!-- ---- Numbers ----
+             Each number is a call link rather than plain text: on a phone the
+             whole row is the tap target, which is the only reason this kind of
+             card is worth having. -->
+        <div class="card__numbers">
+          @for (phone of phones(); track phone.href) {
+            <a class="number" [href]="phone.href">
+              <span class="number__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.7.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.7.1.4 0 .7-.2 1l-2.3 2.1Z"/>
+                </svg>
+              </span>
+              <span class="number__text">
+                @if (phone.label) {
+                  <span class="number__label">{{ phone.label }}</span>
+                }
+                <span class="number__value">{{ phone.display }}</span>
+              </span>
+              <span class="number__action">{{ callLabel() }}</span>
+            </a>
+          }
+        </div>
+
+        <!-- ---- Email & LinkedIn ---- -->
+        <div class="card__links">
+          @if (emailHref(); as mail) {
+            <a class="link-row" [href]="mail">
+              <span class="link-row__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+                </svg>
+              </span>
+              <span class="link-row__value">{{ email() }}</span>
+              <span class="link-row__action">{{ emailLabel() }}</span>
+            </a>
+          }
+
+          @if (linkedinHref(); as profile) {
+            <a class="link-row" [href]="profile" target="_blank" rel="noopener noreferrer">
+              <span class="link-row__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/>
+                </svg>
+              </span>
+              <span class="link-row__value">LinkedIn</span>
+            </a>
+          }
+        </div>
+
+        <!-- ---- Save ----
+             The point of the page, so it is a real button and the widest thing
+             on the card. Everything above it is optional. -->
+        <footer class="card__save">
+          <button type="button" class="save" (click)="saveContact()">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="save__icon">
+              <path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-4-4Zm-5 16a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm3-10H5V5h10v4Z"/>
+            </svg>
+            <span>{{ saveLabel() }}</span>
+          </button>
+          <p class="card__hint">{{ saveHint() }}</p>
+          <!-- Announces the save without moving anything on screen. -->
+          <p class="card__saved" role="status">
+            @if (saved()) {
+              {{ savedLabel }}
+            }
+          </p>
+        </footer>
+      </article>
+
+      <!-- What the file carries, so the page and the saved contact cannot
+           quietly disagree about what was included. -->
+      <p class="card__foot">
+        Saves as a contact file (.vcf). Opening it on a phone adds
+        {{ person.firstName }} to your contacts; on a computer it offers to save
+        the file, which most desktop mail and calendar apps will then offer to
+        import.
+      </p>
+    </div>
+  </section>
+
+</main>

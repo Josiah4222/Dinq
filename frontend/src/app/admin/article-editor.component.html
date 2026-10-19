@@ -1,0 +1,206 @@
+<app-admin-shell>
+  @if (loadError()) {
+    <header class="staff__head">
+      <p class="eyebrow">
+        <a class="editor__crumb" routerLink="/admin/newsletters">Newsletters</a>
+      </p>
+      <h1 class="staff__title">Article unavailable</h1>
+    </header>
+    <p class="editor__error" role="alert">{{ loadError() }}</p>
+    <p class="editor__back">
+      <a routerLink="/admin/newsletters">&larr; All articles</a>
+    </p>
+  } @else {
+    <header class="staff__head">
+      <p class="eyebrow">
+        <a class="editor__crumb" routerLink="/admin/newsletters">Newsletters</a>
+        @if (!isCreate()) {
+          <span class="editor__crumb-sep">/</span>{{ article()?.category || 'Article' }}
+        }
+      </p>
+      <h1 class="staff__title">
+        {{ isCreate() ? 'New article' : (article()?.title ?? '…') }}
+      </h1>
+      <p class="staff__lede">
+        @if (isCreate()) {
+          Write a newsletter article. It appears on /insights as soon as you save.
+        } @else {
+          Editing &ldquo;{{ article()?.title }}&rdquo;. Changes are live as soon as they are saved.
+        }
+      </p>
+    </header>
+
+    @if (loading()) {
+      <p class="editor__empty">Loading article…</p>
+    } @else {
+      <div class="editor__bar">
+        <p class="editor__status">
+          @if (saved()) {
+            <span class="editor__saved">Saved</span>
+          } @else {
+            {{ paragraphCount() }} {{ paragraphCount() === 1 ? 'paragraph' : 'paragraphs' }}
+          }
+        </p>
+        <div class="editor__actions">
+          @if (!isCreate()) {
+            <a
+              class="editor__view"
+              [href]="'/insights/' + (article()?.slug ?? '')"
+              target="_blank"
+              rel="noopener"
+            >View on site &#8599;</a>
+            <button type="button" class="editor__btn editor__btn--danger" (click)="remove()" [disabled]="deleting()">
+              {{ deleting() ? 'Deleting…' : 'Delete' }}
+            </button>
+          }
+          <button type="button" class="editor__btn editor__btn--primary" (click)="save()" [disabled]="saving()">
+            {{ saving() ? 'Saving…' : (isCreate() ? 'Publish article' : 'Save changes') }}
+          </button>
+        </div>
+      </div>
+
+      @if (saveError()) {
+        <p class="editor__error" role="alert">{{ saveError() }}</p>
+      }
+      @if (deleteError()) {
+        <p class="editor__error" role="alert">{{ deleteError() }}</p>
+      }
+
+      <form class="afields" (ngSubmit)="save()" novalidate>
+        <section class="afield" [class.afield--failed]="fieldInvalid('title')">
+          <label class="afield__label" for="art-title">Title</label>
+          <input
+            id="art-title"
+            class="afield__input"
+            type="text"
+            required
+            [ngModel]="title()"
+            (ngModelChange)="title.set($event)"
+            name="title"
+            [class.afield__input--invalid]="fieldInvalid('title')"
+            [attr.aria-invalid]="fieldInvalid('title')"
+          />
+          @if (fieldError('title'); as message) {
+            <p class="afield__error">{{ message }}</p>
+          }
+        </section>
+
+        <div class="afields__row">
+          <section class="afield" [class.afield--failed]="fieldInvalid('slug')">
+            <label class="afield__label" for="art-slug">Slug</label>
+            <input
+              id="art-slug"
+              class="afield__input"
+              type="text"
+              autocapitalize="none"
+              spellcheck="false"
+              [ngModel]="slug()"
+              (ngModelChange)="slug.set($event)"
+              name="slug"
+              [class.afield__input--invalid]="fieldInvalid('slug')"
+              [attr.aria-invalid]="fieldInvalid('slug')"
+            />
+            <p class="afield__hint">
+              @if (isCreate()) {
+                Leave blank to generate one from the title.
+              } @else {
+                The public URL: /insights/{{ slug() || article()?.slug }}
+              }
+            </p>
+            @if (fieldError('slug'); as message) {
+              <p class="afield__error">{{ message }}</p>
+            }
+          </section>
+
+          <section class="afield">
+            <label class="afield__label" for="art-author">Author</label>
+            <input
+              id="art-author"
+              class="afield__input"
+              type="text"
+              [ngModel]="author()"
+              (ngModelChange)="author.set($event)"
+              name="author"
+            />
+          </section>
+
+          <section class="afield">
+            <label class="afield__label" for="art-category">Category</label>
+            <input
+              id="art-category"
+              class="afield__input"
+              type="text"
+              placeholder="e.g. Market Insight"
+              [ngModel]="category()"
+              (ngModelChange)="category.set($event)"
+              name="category"
+            />
+          </section>
+        </div>
+
+        <section class="afield">
+          <label class="afield__label" for="art-summary">Summary</label>
+          <textarea
+            id="art-summary"
+            class="afield__textarea afield__textarea--tight"
+            rows="2"
+            [ngModel]="summary()"
+            (ngModelChange)="summary.set($event)"
+            name="summary"
+            placeholder="One line shown on the index card."
+          ></textarea>
+        </section>
+
+        <section class="afield" [class.afield--failed]="fieldInvalid('body')">
+          <label class="afield__label" for="art-body">Body</label>
+          <textarea
+            id="art-body"
+            class="afield__textarea"
+            rows="14"
+            [ngModel]="bodyText()"
+            (ngModelChange)="bodyText.set($event)"
+            name="body"
+            placeholder="Write each paragraph. Separate them with a blank line."
+          ></textarea>
+          <p class="afield__hint">
+            Separate paragraphs with a blank line. {{ paragraphCount() }}
+            {{ paragraphCount() === 1 ? 'paragraph' : 'paragraphs' }} so far.
+          </p>
+          @if (fieldError('body'); as message) {
+            <p class="afield__error">{{ message }}</p>
+          }
+        </section>
+
+        <section class="afield">
+          <span class="afield__label">Featured image</span>
+          <app-image-picker
+            [value]="featuredImage()"
+            (valueChange)="featuredImage.set($event)"
+            inputId="art-image"
+          />
+        </section>
+
+        @if (relatedChoices().length) {
+          <section class="afield">
+            <span class="afield__label">Related articles</span>
+            <p class="afield__hint">Shown in the “Related Insights” module on this article’s page.</p>
+            <ul class="arelated">
+              @for (option of relatedChoices(); track option.slug) {
+                <li class="arelated__item">
+                  <label class="arelated__label">
+                    <input
+                      type="checkbox"
+                      [checked]="relatedSelected().includes(option.slug)"
+                      (change)="toggleRelated(option.slug)"
+                    />
+                    <span class="arelated__title">{{ option.title }}</span>
+                  </label>
+                </li>
+              }
+            </ul>
+          </section>
+        }
+      </form>
+    }
+  }
+</app-admin-shell>

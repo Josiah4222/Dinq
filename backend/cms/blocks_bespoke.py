@@ -1365,4 +1365,373 @@ BESPOKE_BLOCKS: dict[str, list[dict]] = {
             'order': 32,
         },
     ],
+
+    # =======================================================================
+    # /vcard/abel-giratta
+    #
+    # The shareable contact card. Every field the vCard file is assembled from
+    # lives here, so a corrected number or a changed email is an edit in the CMS
+    # rather than a redeploy -- and the file a visitor downloads can never drift
+    # from what the page shows, because both are rendered from these same values.
+    #
+    # The phone labels are seeded empty on purpose. Two numbers with a guessed
+    # label ("Office" for a number that is a personal mobile) is worse than two
+    # unlabelled numbers: the component omits an empty label and staff fill in
+    # what each number actually is when they know.
+    # =======================================================================
+    'vcard-abel-giratta': [
+        # Card -----------------------------------------------------------------
+        {
+            'key': 'card.name',
+            'kind': 'text',
+            'label': 'Card — name',
+            'value': 'Abel M. Giratta',
+            'order': 10,
+        },
+        {
+            'key': 'card.role',
+            'kind': 'text',
+            'label': 'Card — role',
+            'value': 'Founder & Managing Director',
+            'order': 11,
+        },
+        {
+            'key': 'card.org',
+            'kind': 'text',
+            'label': 'Card — organisation',
+            'value': 'Dinq Advisory Group',
+            'order': 12,
+        },
+        {
+            'key': 'card.image',
+            'kind': 'image',
+            'label': 'Card — portrait',
+            'value': '/media/assets/images/Abel.jpg',
+            'order': 13,
+        },
+        {
+            'key': 'card.location',
+            'kind': 'text',
+            'label': 'Card — location',
+            'value': 'Addis Ababa, Ethiopia',
+            'order': 15,
+        },
+
+        # Contact details, in the order the card lists them ------------------
+        {
+            'key': 'contact.phonePrimary',
+            'kind': 'text',
+            'label': 'Contact — primary phone (international format, e.g. +251979893117)',
+            'value': '+251979893117',
+            'order': 20,
+        },
+        {
+            'key': 'contact.phonePrimaryLabel',
+            'kind': 'text',
+            'label': 'Contact — primary phone label',
+            'value': '',
+            'order': 21,
+        },
+        {
+            'key': 'contact.phoneSecondary',
+            'kind': 'text',
+            'label': 'Contact — second phone',
+            'value': '',
+            'order': 22,
+        },
+        {
+            'key': 'contact.phoneSecondaryLabel',
+            'kind': 'text',
+            'label': 'Contact — second phone label',
+            'value': '',
+            'order': 23,
+        },
+        {
+            'key': 'contact.email',
+            'kind': 'text',
+            'label': 'Contact — email',
+            'value': 'abel@dinqadvisory.com',
+            'order': 24,
+        },
+        {
+            'key': 'contact.linkedin',
+            'kind': 'text',
+            'label': 'Contact — LinkedIn URL',
+            'value': '',
+            'order': 25,
+        },
+
+        # Buttons -------------------------------------------------------------
+        {
+            'key': 'action.saveLabel',
+            'kind': 'text',
+            'label': 'Button — save contact',
+            'value': 'Save Contact',
+            'order': 30,
+        },
+        {
+            'key': 'action.callLabel',
+            'kind': 'text',
+            'label': 'Button — call',
+            'value': 'Call',
+            'order': 31,
+        },
+        {
+            'key': 'action.emailLabel',
+            'kind': 'text',
+            'label': 'Button — email',
+            'value': 'Email',
+            'order': 32,
+        },
+        {
+            'key': 'action.saveHint',
+            'kind': 'textarea',
+            'label': 'Note under the save button',
+            'value': (
+                'Saves to your phone\'s contacts, with the number and the email '
+                'address, so you can reach Abel without this page open.'
+            ),
+            'order': 33,
+        },
+    ],
+
+    # =======================================================================
+    # /vcard/ida-edo
+    # =======================================================================
+    'vcard-ida-edo': [
+        # Card -----------------------------------------------------------------
+        {
+            'key': 'card.name',
+            'kind': 'text',
+            'label': 'Card — name',
+            'value': 'Ida Edo',
+            'order': 10,
+        },
+        {
+            'key': 'card.role',
+            'kind': 'text',
+            'label': 'Card — role',
+            'value': 'Director, Workforce & Organizational Advisory',
+            'order': 11,
+        },
+        {
+            'key': 'card.org',
+            'kind': 'text',
+            'label': 'Card — organisation',
+            'value': 'Dinq Advisory Group',
+            'order': 12,
+        },
+        # Empty on purpose: Ida has no portrait yet, so the card draws her
+        # monogram. The field is seeded so an editor can add one later.
+        {
+            'key': 'card.image',
+            'kind': 'image',
+            'label': 'Card — portrait',
+            'value': '',
+            'order': 13,
+        },
+        {
+            'key': 'card.location',
+            'kind': 'text',
+            'label': 'Card — location',
+            'value': 'Addis Ababa, Ethiopia',
+            'order': 15,
+        },
+
+        # Contact details, in the order the card lists them ------------------
+        {
+            'key': 'contact.phonePrimary',
+            'kind': 'text',
+            'label': 'Contact — primary phone (international format, e.g. +251979893117)',
+            'value': '+251979890688',
+            'order': 20,
+        },
+        {
+            'key': 'contact.phonePrimaryLabel',
+            'kind': 'text',
+            'label': 'Contact — primary phone label',
+            'value': '',
+            'order': 21,
+        },
+        {
+            'key': 'contact.phoneSecondary',
+            'kind': 'text',
+            'label': 'Contact — second phone',
+            'value': '',
+            'order': 22,
+        },
+        {
+            'key': 'contact.phoneSecondaryLabel',
+            'kind': 'text',
+            'label': 'Contact — second phone label',
+            'value': '',
+            'order': 23,
+        },
+        {
+            'key': 'contact.email',
+            'kind': 'text',
+            'label': 'Contact — email',
+            'value': 'ida@dinqadvisory.com',
+            'order': 24,
+        },
+        {
+            'key': 'contact.linkedin',
+            'kind': 'text',
+            'label': 'Contact — LinkedIn URL',
+            'value': '',
+            'order': 25,
+        },
+
+        # Buttons -------------------------------------------------------------
+        {
+            'key': 'action.saveLabel',
+            'kind': 'text',
+            'label': 'Button — save contact',
+            'value': 'Save Contact',
+            'order': 30,
+        },
+        {
+            'key': 'action.callLabel',
+            'kind': 'text',
+            'label': 'Button — call',
+            'value': 'Call',
+            'order': 31,
+        },
+        {
+            'key': 'action.emailLabel',
+            'kind': 'text',
+            'label': 'Button — email',
+            'value': 'Email',
+            'order': 32,
+        },
+        {
+            'key': 'action.saveHint',
+            'kind': 'textarea',
+            'label': 'Note under the save button',
+            'value': (
+                'Saves to your phone\'s contacts, with the number and the email '
+                'address, so you can reach Ida without this page open.'
+            ),
+            'order': 33,
+        },
+    ],
+
+    # =======================================================================
+    # /vcard/habtamu-bazezew
+    # =======================================================================
+    'vcard-habtamu-bazezew': [
+        # Card -----------------------------------------------------------------
+        {
+            'key': 'card.name',
+            'kind': 'text',
+            'label': 'Card — name',
+            'value': 'Habtamu Bazezew',
+            'order': 10,
+        },
+        {
+            'key': 'card.role',
+            'kind': 'text',
+            'label': 'Card — role',
+            'value': 'Partner & Legal Strategy Advisor',
+            'order': 11,
+        },
+        {
+            'key': 'card.org',
+            'kind': 'text',
+            'label': 'Card — organisation',
+            'value': 'Dinq Advisory Group',
+            'order': 12,
+        },
+        {
+            'key': 'card.image',
+            'kind': 'image',
+            'label': 'Card — portrait',
+            'value': '/media/assets/images/habtamu.jpg',
+            'order': 13,
+        },
+        {
+            'key': 'card.location',
+            'kind': 'text',
+            'label': 'Card — location',
+            'value': 'Addis Ababa, Ethiopia',
+            'order': 15,
+        },
+
+        # Contact details, in the order the card lists them ------------------
+        {
+            'key': 'contact.phonePrimary',
+            'kind': 'text',
+            'label': 'Contact — primary phone (international format, e.g. +251979893117)',
+            'value': '+251911485407',
+            'order': 20,
+        },
+        {
+            'key': 'contact.phonePrimaryLabel',
+            'kind': 'text',
+            'label': 'Contact — primary phone label',
+            'value': '',
+            'order': 21,
+        },
+        {
+            'key': 'contact.phoneSecondary',
+            'kind': 'text',
+            'label': 'Contact — second phone',
+            'value': '',
+            'order': 22,
+        },
+        {
+            'key': 'contact.phoneSecondaryLabel',
+            'kind': 'text',
+            'label': 'Contact — second phone label',
+            'value': '',
+            'order': 23,
+        },
+        {
+            'key': 'contact.email',
+            'kind': 'text',
+            'label': 'Contact — email',
+            'value': 'habtamu@dinqadvisory.com',
+            'order': 24,
+        },
+        {
+            'key': 'contact.linkedin',
+            'kind': 'text',
+            'label': 'Contact — LinkedIn URL',
+            'value': '',
+            'order': 25,
+        },
+
+        # Buttons -------------------------------------------------------------
+        {
+            'key': 'action.saveLabel',
+            'kind': 'text',
+            'label': 'Button — save contact',
+            'value': 'Save Contact',
+            'order': 30,
+        },
+        {
+            'key': 'action.callLabel',
+            'kind': 'text',
+            'label': 'Button — call',
+            'value': 'Call',
+            'order': 31,
+        },
+        {
+            'key': 'action.emailLabel',
+            'kind': 'text',
+            'label': 'Button — email',
+            'value': 'Email',
+            'order': 32,
+        },
+        {
+            'key': 'action.saveHint',
+            'kind': 'textarea',
+            'label': 'Note under the save button',
+            'value': (
+                'Saves to your phone\'s contacts, with the number and the email '
+                'address, so you can reach Habtamu without this page open.'
+            ),
+            'order': 33,
+        },
+    ],
 }

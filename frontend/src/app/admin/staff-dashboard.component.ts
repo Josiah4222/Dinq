@@ -37,7 +37,7 @@ const TAB_LABELS: Record<StaffTab, string> = {
   contacts: 'Contact & Consultation',
   quickInquiries: 'Quick Inquiries',
   leads: 'Property Leads',
-  subscribers: 'Newsletter',
+  subscribers: 'Subscribers',
 };
 
 /** Empty wording for a queue with nothing in it, per tab. */
@@ -112,6 +112,10 @@ export class StaffDashboardComponent implements OnInit, OnDestroy {
 
   readonly loading = signal(false);
   readonly loadError = signal<string | null>(null);
+  /** The property-lead row whose details are expanded inline, if any. */
+  readonly expandedLead = signal<number | null>(null);
+  /** Free-text search box, applied to whichever list is on screen. */
+  readonly search = signal('');
 
   /** Which list is already in memory, so re-entering one does not re-request. */
   private loaded = new Set<StaffTab>();
@@ -132,6 +136,51 @@ export class StaffDashboardComponent implements OnInit, OnDestroy {
   readonly quickInquiryCount = computed(() => this.quickInquiries().length);
   readonly leadCount = computed(() => this.leads().length);
   readonly subscriberCount = computed(() => this.subscribers().length);
+
+  /** Case-insensitive match of the search box against a row's haystack. */
+  private matches(row: Record<string, unknown>, fields: string[]): boolean {
+    const q = this.search().trim().toLowerCase();
+    if (!q) {
+      return true;
+    }
+    return fields.some((f) => String(row[f] ?? '').toLowerCase().includes(q));
+  }
+
+  /** The lists rendered by the template, filtered by the search box. */
+  readonly filteredContacts = computed(() =>
+    this.contacts().filter((r) =>
+      this.matches(r as unknown as Record<string, unknown>, ['fullName', 'company', 'clientType', 'reasonForContact', 'email', 'phone']),
+    ),
+  );
+  readonly filteredQuickInquiries = computed(() =>
+    this.quickInquiries().filter((r) =>
+      this.matches(r as unknown as Record<string, unknown>, ['fullName', 'email', 'phone']),
+    ),
+  );
+  readonly filteredLeads = computed(() =>
+    this.leads().filter((r) =>
+      this.matches(r as unknown as Record<string, unknown>, ['fullName', 'email', 'phone', 'location', 'propertyInterest', 'reference', 'message']),
+    ),
+  );
+  readonly filteredSubscribers = computed(() =>
+    this.subscribers().filter((r) =>
+      this.matches(r as unknown as Record<string, unknown>, ['email']),
+    ),
+  );
+
+  /** How many rows the search box hides, across the list on screen. */
+  readonly filteredCount = computed(() => {
+    switch (this.activeTab()) {
+      case 'contacts':
+        return this.filteredContacts().length;
+      case 'quickInquiries':
+        return this.filteredQuickInquiries().length;
+      case 'leads':
+        return this.filteredLeads().length;
+      case 'subscribers':
+        return this.filteredSubscribers().length;
+    }
+  });
 
   /** Heading for the content pane, matching the selected sidebar item. */
   readonly activeLabel = computed(() => TAB_LABELS[this.activeTab()]);
@@ -175,6 +224,11 @@ export class StaffDashboardComponent implements OnInit, OnDestroy {
    */
   has(value: string | null | undefined): boolean {
     return !!value && value.trim().length > 0;
+  }
+
+  /** Expand or collapse a property lead's inline details. */
+  toggleLead(id: number): void {
+    this.expandedLead.update((current) => (current === id ? null : id));
   }
 
   /**

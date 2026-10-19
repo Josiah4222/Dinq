@@ -73,4 +73,19 @@
       </div>
     </section>
   </main>
+} @else if (loading()) {
+  <main id="main" class="ins-article">
+    <section class="ins-article__hero">
+      <div class="container ins-article__hero-inner">
+        <a class="ins-article__back" routerLink="/insights">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 8H3M7 4 3 8l4 4"/>
+          </svg>
+          All insights
+        </a>
+        <p class="eyebrow">Loading</p>
+        <h1 class="ins-article__title">Loading…</h1>
+      </div>
+    </section>
+  </main>
 }

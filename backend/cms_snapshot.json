@@ -1505,169 +1505,6 @@
     },
     "kind_of_page": "page"
   },
-  "insight-5-mistakes-foreign-investors-making-entering-ethiopia": {
-    "blocks": {
-      "author": {
-        "kind": "text",
-        "label": "Author",
-        "order": 1,
-        "value": "Dinq Advisory Group"
-      },
-      "body": {
-        "data": [
-          "Entering a new market is as much about what you avoid as what you do. In our work with international investors in Ethiopia, a handful of mistakes recur often enough to be predictable.",
-          "First, underestimating lead time. Registration, licensing, and operational setup almost always take longer than first estimates, so planning for the real timeline protects budgets and investor confidence.",
-          "Second, skipping local due diligence. Assumptions that work in home markets — about land, counterparties, and regulatory practice — need to be re-validated on the ground in Ethiopia.",
-          "Third, ignoring the sequencing of approvals. Some permits must precede others, and getting the order wrong can delay an entire project by months.",
-          "Fourth, treating compliance as an afterthought. Tax, reporting, and corporate obligations accumulate quickly; addressing them early avoids penalties and distractions later.",
-          "Fifth, working without a coordinated local partner. Fragmented advice across multiple disconnected advisors creates exactly the kind of risk that a single integrated relationship is designed to prevent.",
-          "The pattern behind these mistakes is consistent: distance amplifies small errors. A structured entry plan, coordinated through one trusted partner, is the most reliable countermeasure."
-        ],
-        "kind": "list",
-        "label": "Body paragraphs",
-        "order": 6
-      },
-      "category": {
-        "kind": "text",
-        "label": "Category",
-        "order": 3,
-        "value": "Investor Guide"
-      },
-      "date": {
-        "kind": "text",
-        "label": "Date",
-        "order": 2,
-        "value": "2026-07-01"
-      },
-      "featuredImage": {
-        "kind": "image",
-        "label": "Featured image",
-        "order": 4,
-        "value": "/media/assets/images/hero-addis.jpg"
-      },
-      "summary": {
-        "kind": "textarea",
-        "label": "Summary",
-        "order": 5,
-        "value": "Common pitfalls we see when international investors enter the Ethiopian market — and how to avoid them."
-      },
-      "title": {
-        "kind": "text",
-        "label": "Title",
-        "order": 0,
-        "value": "5 Mistakes Foreign Investors Make Entering Ethiopia"
-      }
-    },
-    "kind_of_page": "page"
-  },
-  "insight-a-diaspora-guide-to-investing-back-home": {
-    "blocks": {
-      "author": {
-        "kind": "text",
-        "label": "Author",
-        "order": 1,
-        "value": "Dinq Advisory Group"
-      },
-      "body": {
-        "data": [
-          "For Ethiopians abroad, investing back home is as much an emotional decision as a financial one. Done well, it creates family security and lasting value; done hastily, it can create friction and regret.",
-          "The first decision is structural: whether to invest as a non-resident directly, through a local entity, or in partnership with family already in Ethiopia. Each option has different implications for ownership, tax, and management.",
-          "Land and property deserve special care. Understanding lease structures, title verification, and the due-diligence that should precede any acquisition will protect the investment from disputes later.",
-          "Repatriation matters too. Returns need to flow home again, so the tax treatment of dividends and proceeds, and the practical mechanics of moving money, should be settled before capital is committed.",
-          "Finally, stewardship. Many diaspora investors cannot be physically present, which makes trusted local management the difference between an asset that is protected and one that slowly erodes.",
-          "A coordinated approach — combining commercial advisory with legal support — gives diaspora families a single relationship that covers investment, operation, and long-term protection of what matters most."
-        ],
-        "kind": "list",
-        "label": "Body paragraphs",
-        "order": 6
-      },
-      "category": {
-        "kind": "text",
-        "label": "Category",
-        "order": 3,
-        "value": "Diaspora"
-      },
-      "date": {
-        "kind": "text",
-        "label": "Date",
-        "order": 2,
-        "value": "2026-06-12"
-      },
-      "featuredImage": {
-        "kind": "image",
-        "label": "Featured image",
-        "order": 4,
-        "value": "/media/assets/images/industries-realestate.jpg"
-      },
-      "summary": {
-        "kind": "textarea",
-        "label": "Summary",
-        "order": 5,
-        "value": "Practical guidance for Ethiopians abroad investing, relocating, or protecting family assets back home."
-      },
-      "title": {
-        "kind": "text",
-        "label": "Title",
-        "order": 0,
-        "value": "A Diaspora Guide to Investing Back Home"
-      }
-    },
-    "kind_of_page": "page"
-  },
-  "insight-manufacturing-opportunities-in-ethiopia": {
-    "blocks": {
-      "author": {
-        "kind": "text",
-        "label": "Author",
-        "order": 1,
-        "value": "Dinq Advisory Group"
-      },
-      "body": {
-        "data": [
-          "Ethiopia’s manufacturing sector sits at the centre of its industrial strategy, anchored by a network of industrial parks and a policy framework designed to attract export-oriented production.",
-          "Industrial parks offer investors built infrastructure and streamlined administration, including utility connections, customs services, and incentives administered through a single point of contact.",
-          "Sector focus areas include textiles and apparel, leather and footwear, agro-processing, and a growing set of light-manufacturing and assembly industries. Export orientation is a recurring theme in incentive eligibility.",
-          "The practical questions investors face are familiar: land allocation within parks, workforce availability and training, logistics to ports, and the sequencing of construction and commissioning against incentive timelines.",
-          "Import/export structuring matters as much as factory operations. Duty regimes, raw-material import rules, and the documentation required to stay compliant all shape the unit economics of a manufacturing investment.",
-          "For manufacturers, the winning approach is to plan the operational chain — from incentive application through construction to first export — as one integrated programme, coordinated by a partner who understands the whole picture."
-        ],
-        "kind": "list",
-        "label": "Body paragraphs",
-        "order": 6
-      },
-      "category": {
-        "kind": "text",
-        "label": "Category",
-        "order": 3,
-        "value": "Sector Guide"
-      },
-      "date": {
-        "kind": "text",
-        "label": "Date",
-        "order": 2,
-        "value": "2026-05-20"
-      },
-      "featuredImage": {
-        "kind": "image",
-        "label": "Featured image",
-        "order": 4,
-        "value": "/media/assets/images/industries-manufacturing.jpg"
-      },
-      "summary": {
-        "kind": "textarea",
-        "label": "Summary",
-        "order": 5,
-        "value": "What foreign manufacturers need to know about industrial parks, incentives, and operating in Ethiopia."
-      },
-      "title": {
-        "kind": "text",
-        "label": "Title",
-        "order": 0,
-        "value": "Manufacturing Opportunities in Ethiopia: What Investors Should Know"
-      }
-    },
-    "kind_of_page": "page"
-  },
   "insights": {
     "blocks": {
       "articles": {
@@ -2923,6 +2760,291 @@
         "kind": "list",
         "label": "use — paragraphs",
         "order": 11
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "vcard-abel-giratta": {
+    "blocks": {
+      "action.callLabel": {
+        "kind": "text",
+        "label": "Button — call",
+        "order": 31,
+        "value": "Call"
+      },
+      "action.emailLabel": {
+        "kind": "text",
+        "label": "Button — email",
+        "order": 32,
+        "value": "Email"
+      },
+      "action.saveHint": {
+        "kind": "textarea",
+        "label": "Note under the save button",
+        "order": 33,
+        "value": "Saves to your phone's contacts, with the number and the email address, so you can reach Abel without this page open."
+      },
+      "action.saveLabel": {
+        "kind": "text",
+        "label": "Button — save contact",
+        "order": 30,
+        "value": "Save Contact"
+      },
+      "card.image": {
+        "kind": "image",
+        "label": "Card — portrait",
+        "order": 13,
+        "value": "/media/assets/images/Abel.jpg"
+      },
+      "card.location": {
+        "kind": "text",
+        "label": "Card — location",
+        "order": 15,
+        "value": "Addis Ababa, Ethiopia"
+      },
+      "card.name": {
+        "kind": "text",
+        "label": "Card — name",
+        "order": 10,
+        "value": "Abel M. Giratta"
+      },
+      "card.org": {
+        "kind": "text",
+        "label": "Card — organisation",
+        "order": 12,
+        "value": "Dinq Advisory Group"
+      },
+      "card.role": {
+        "kind": "text",
+        "label": "Card — role",
+        "order": 11,
+        "value": "Founder & Managing Director"
+      },
+      "contact.email": {
+        "kind": "text",
+        "label": "Contact — email",
+        "order": 24,
+        "value": "abel@dinqadvisory.com"
+      },
+      "contact.linkedin": {
+        "kind": "text",
+        "label": "Contact — LinkedIn URL",
+        "order": 25,
+        "value": ""
+      },
+      "contact.phonePrimary": {
+        "kind": "text",
+        "label": "Contact — primary phone (international format, e.g. +251979893117)",
+        "order": 20,
+        "value": "+251979893117"
+      },
+      "contact.phonePrimaryLabel": {
+        "kind": "text",
+        "label": "Contact — primary phone label",
+        "order": 21,
+        "value": ""
+      },
+      "contact.phoneSecondary": {
+        "kind": "text",
+        "label": "Contact — second phone",
+        "order": 22,
+        "value": ""
+      },
+      "contact.phoneSecondaryLabel": {
+        "kind": "text",
+        "label": "Contact — second phone label",
+        "order": 23,
+        "value": ""
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "vcard-habtamu-bazezew": {
+    "blocks": {
+      "action.callLabel": {
+        "kind": "text",
+        "label": "Button — call",
+        "order": 31,
+        "value": "Call"
+      },
+      "action.emailLabel": {
+        "kind": "text",
+        "label": "Button — email",
+        "order": 32,
+        "value": "Email"
+      },
+      "action.saveHint": {
+        "kind": "textarea",
+        "label": "Note under the save button",
+        "order": 33,
+        "value": "Saves to your phone's contacts, with the number and the email address, so you can reach Habtamu without this page open."
+      },
+      "action.saveLabel": {
+        "kind": "text",
+        "label": "Button — save contact",
+        "order": 30,
+        "value": "Save Contact"
+      },
+      "card.image": {
+        "kind": "image",
+        "label": "Card — portrait",
+        "order": 13,
+        "value": "/media/assets/images/habtamu.jpg"
+      },
+      "card.location": {
+        "kind": "text",
+        "label": "Card — location",
+        "order": 15,
+        "value": "Addis Ababa, Ethiopia"
+      },
+      "card.name": {
+        "kind": "text",
+        "label": "Card — name",
+        "order": 10,
+        "value": "Habtamu Bazezew"
+      },
+      "card.org": {
+        "kind": "text",
+        "label": "Card — organisation",
+        "order": 12,
+        "value": "Dinq Advisory Group"
+      },
+      "card.role": {
+        "kind": "text",
+        "label": "Card — role",
+        "order": 11,
+        "value": "Partner & Legal Strategy Advisor"
+      },
+      "contact.email": {
+        "kind": "text",
+        "label": "Contact — email",
+        "order": 24,
+        "value": "habtamu@dinqadvisory.com"
+      },
+      "contact.linkedin": {
+        "kind": "text",
+        "label": "Contact — LinkedIn URL",
+        "order": 25,
+        "value": ""
+      },
+      "contact.phonePrimary": {
+        "kind": "text",
+        "label": "Contact — primary phone (international format, e.g. +251979893117)",
+        "order": 20,
+        "value": "+251911485407"
+      },
+      "contact.phonePrimaryLabel": {
+        "kind": "text",
+        "label": "Contact — primary phone label",
+        "order": 21,
+        "value": ""
+      },
+      "contact.phoneSecondary": {
+        "kind": "text",
+        "label": "Contact — second phone",
+        "order": 22,
+        "value": ""
+      },
+      "contact.phoneSecondaryLabel": {
+        "kind": "text",
+        "label": "Contact — second phone label",
+        "order": 23,
+        "value": ""
+      }
+    },
+    "kind_of_page": "page"
+  },
+  "vcard-ida-edo": {
+    "blocks": {
+      "action.callLabel": {
+        "kind": "text",
+        "label": "Button — call",
+        "order": 31,
+        "value": "Call"
+      },
+      "action.emailLabel": {
+        "kind": "text",
+        "label": "Button — email",
+        "order": 32,
+        "value": "Email"
+      },
+      "action.saveHint": {
+        "kind": "textarea",
+        "label": "Note under the save button",
+        "order": 33,
+        "value": "Saves to your phone's contacts, with the number and the email address, so you can reach Ida without this page open."
+      },
+      "action.saveLabel": {
+        "kind": "text",
+        "label": "Button — save contact",
+        "order": 30,
+        "value": "Save Contact"
+      },
+      "card.image": {
+        "kind": "image",
+        "label": "Card — portrait",
+        "order": 13,
+        "value": ""
+      },
+      "card.location": {
+        "kind": "text",
+        "label": "Card — location",
+        "order": 15,
+        "value": "Addis Ababa, Ethiopia"
+      },
+      "card.name": {
+        "kind": "text",
+        "label": "Card — name",
+        "order": 10,
+        "value": "Ida Edo"
+      },
+      "card.org": {
+        "kind": "text",
+        "label": "Card — organisation",
+        "order": 12,
+        "value": "Dinq Advisory Group"
+      },
+      "card.role": {
+        "kind": "text",
+        "label": "Card — role",
+        "order": 11,
+        "value": "Director, Workforce & Organizational Advisory"
+      },
+      "contact.email": {
+        "kind": "text",
+        "label": "Contact — email",
+        "order": 24,
+        "value": "ida@dinqadvisory.com"
+      },
+      "contact.linkedin": {
+        "kind": "text",
+        "label": "Contact — LinkedIn URL",
+        "order": 25,
+        "value": ""
+      },
+      "contact.phonePrimary": {
+        "kind": "text",
+        "label": "Contact — primary phone (international format, e.g. +251979893117)",
+        "order": 20,
+        "value": "+251979890688"
+      },
+      "contact.phonePrimaryLabel": {
+        "kind": "text",
+        "label": "Contact — primary phone label",
+        "order": 21,
+        "value": ""
+      },
+      "contact.phoneSecondary": {
+        "kind": "text",
+        "label": "Contact — second phone",
+        "order": 22,
+        "value": ""
+      },
+      "contact.phoneSecondaryLabel": {
+        "kind": "text",
+        "label": "Contact — second phone label",
+        "order": 23,
+        "value": ""
       }
     },
     "kind_of_page": "page"

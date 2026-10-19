@@ -140,6 +140,21 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+# Email
+# -----------------------------------------------------------------------------
+# Development prints mail to the console so a form submission can be exercised
+# without a real relay. Production overrides these from the environment; see
+# settings_prod.py and deploy/dinq.env.example.
+#
+# CONTACT_NOTIFICATION_EMAILS is the list a new /contact submission is announced
+# to. Empty means no alert is sent (the submission is still stored).
+# -----------------------------------------------------------------------------
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Dinq Advisory Group <no-reply@dinqadvisory.com>'
+CONTACT_NOTIFICATION_EMAILS: list[str] = []
+
 # The existing hero and portrait images are 4-5 MB each, so the 2.5 MB Django
 # default would reject the very files already on the site. 12 MB is comfortably
 # above that and still small enough that a bad upload is obvious rather than a

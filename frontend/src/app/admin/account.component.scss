@@ -1,0 +1,152 @@
+/* /admin/account — the two cards for renaming yourself and changing your
+   password. The field styling follows the sign-in screen's (same borders,
+   same focus ring) because they are two ends of the same credential: a form
+   that looks different here than at login would read as a different system. */
+@use 'staff-head';
+
+.acct {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  max-width: 52rem;
+}
+
+.acct__card {
+  align-self: start;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  background: var(--color-white);
+  border: 1px solid var(--color-mist);
+  border-radius: 6px;
+}
+
+.acct__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: -0.004em;
+  color: var(--color-navy);
+}
+
+.acct__hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+
+/* ---- Alerts --------------------------------------------------------------- */
+.acct__alert {
+  margin: 1rem 0 0;
+  padding: 0.7rem 0.85rem;
+  background: #fdf0ee;
+  border-left: 3px solid #b3402f;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #8d2f22;
+}
+
+.acct__alert--ok {
+  background: #f2f6ec;
+  border-left-color: #4e7a2e;
+  color: #3c5e24;
+}
+
+/* ---- Form ----------------------------------------------------------------- */
+.acct__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.35rem;
+}
+
+.acct__field {
+  margin-bottom: 1.1rem;
+}
+
+.acct__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.acct__label-row label,
+.acct__field > label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.acct__reveal {
+  margin-bottom: 0.4rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  cursor: pointer;
+}
+
+.acct__reveal:hover {
+  color: var(--color-navy);
+}
+
+.acct__field input {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-navy);
+  background: #fbfcfd;
+  border: 1px solid var(--color-mist);
+  border-radius: 4px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.acct__field input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.18);
+}
+
+.acct__field input.acct__input--invalid {
+  border-color: #b3402f;
+}
+
+/* ---- Submit --------------------------------------------------------------- */
+.acct__submit {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.9rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-navy);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.acct__submit:hover:not(:disabled),
+.acct__submit:focus-visible {
+  background: var(--color-gold-dark);
+}
+
+.acct__submit:disabled {
+  background: #7d8b9c;
+  cursor: not-allowed;
+}

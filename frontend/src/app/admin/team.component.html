@@ -1,0 +1,169 @@
+<app-admin-shell>
+  <header class="staff__head">
+    <p class="eyebrow">Staff area</p>
+    <h1 class="staff__title">Team</h1>
+    <p class="staff__lede">
+      Everyone who can sign in to the staff area. Add a colleague here and they
+      get their own account; they change their own password under My account.
+    </p>
+  </header>
+
+  <div class="team">
+    <!-- ---- Add an administrator ---------------------------------------- -->
+    <section class="team__card" aria-labelledby="team-add-title">
+      <h2 class="team__title" id="team-add-title">Add an administrator</h2>
+      <p class="team__hint">
+        Superusers can manage staff and settings; regular staff can only use the
+        site tools.
+      </p>
+
+      @if (formError(); as message) {
+        <p class="team__alert" role="alert">{{ message }}</p>
+      }
+      @if (success(); as message) {
+        <p class="team__alert team__alert--ok" role="status">{{ message }}</p>
+      }
+
+      <form class="team__form" (ngSubmit)="create()" novalidate>
+        <div class="team__field">
+          <label for="team-username">Username</label>
+          <input
+            id="team-username"
+            name="username"
+            type="text"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            required
+            [ngModel]="username()"
+            (ngModelChange)="username.set($event)"
+            [class.team__input--invalid]="invalidFields()['username']"
+            [attr.aria-invalid]="invalidFields()['username'] || null"
+          />
+          @if (fieldError('username'); as message) {
+            <p class="team__field-error">{{ message }}</p>
+          }
+        </div>
+
+        <div class="team__row">
+          <div class="team__field">
+            <label for="team-first">First name</label>
+            <input
+              id="team-first"
+              name="firstName"
+              type="text"
+              autocomplete="off"
+              [ngModel]="firstName()"
+              (ngModelChange)="firstName.set($event)"
+            />
+          </div>
+
+          <div class="team__field">
+            <label for="team-last">Last name</label>
+            <input
+              id="team-last"
+              name="lastName"
+              type="text"
+              autocomplete="off"
+              [ngModel]="lastName()"
+              (ngModelChange)="lastName.set($event)"
+            />
+          </div>
+        </div>
+
+        <div class="team__field">
+          <label for="team-email">Email</label>
+          <input
+            id="team-email"
+            name="email"
+            type="email"
+            autocomplete="off"
+            [ngModel]="email()"
+            (ngModelChange)="email.set($event)"
+            [class.team__input--invalid]="invalidFields()['email']"
+            [attr.aria-invalid]="invalidFields()['email'] || null"
+          />
+          @if (fieldError('email'); as message) {
+            <p class="team__field-error">{{ message }}</p>
+          }
+        </div>
+
+        <div class="team__field">
+          <div class="team__label-row">
+            <label for="team-password">Password</label>
+            <button
+              type="button"
+              class="team__reveal"
+              (click)="togglePassword()"
+              [attr.aria-pressed]="showPassword()"
+            >
+              {{ showPassword() ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+          <input
+            id="team-password"
+            name="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            autocomplete="new-password"
+            required
+            [ngModel]="password()"
+            (ngModelChange)="password.set($event)"
+            [class.team__input--invalid]="invalidFields()['password']"
+            [attr.aria-invalid]="invalidFields()['password'] || null"
+          />
+          @if (fieldError('password'); as message) {
+            <p class="team__field-error">{{ message }}</p>
+          }
+        </div>
+
+        <label class="team__check">
+          <input
+            type="checkbox"
+            name="isSuperuser"
+            [ngModel]="isSuperuser()"
+            (ngModelChange)="isSuperuser.set($event)"
+          />
+          <span>Grant superuser access</span>
+        </label>
+
+        <button type="submit" class="team__submit" [disabled]="saving()">
+          {{ saving() ? 'Creating…' : 'Create account' }}
+        </button>
+      </form>
+    </section>
+
+    <!-- ---- Current staff ----------------------------------------------- -->
+    <section class="team__card" aria-labelledby="team-list-title">
+      <h2 class="team__title" id="team-list-title">Current staff</h2>
+      <p class="team__hint">
+        {{ users().length }}
+        {{ users().length === 1 ? 'account' : 'accounts' }}
+      </p>
+
+      @if (loadError(); as message) {
+        <p class="team__alert" role="alert">{{ message }}</p>
+      } @else if (loading()) {
+        <p class="team__hint">Loading…</p>
+      } @else {
+        <ul class="team__list">
+          @for (user of users(); track user.id) {
+            <li class="team__item">
+              <div class="team__who">
+                <span class="team__name">{{ displayName(user) }}</span>
+                <span class="team__meta">
+                  {{ user.username }}@if (user.email) { · {{ user.email }} }
+                </span>
+              </div>
+              <span
+                class="team__badge"
+                [class.team__badge--super]="user.isSuperuser"
+              >
+                {{ roleLabel(user) }}
+              </span>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  </div>
+</app-admin-shell>

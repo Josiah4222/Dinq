@@ -14,8 +14,13 @@ The shape of it:
 nginx  ──┬── /                      static, the built Angular app
          ├── /static/               collected Django static
          ├── /media/                uploaded images
-         └── /api/ /admin/ /login/  gunicorn → Django
+         └── /api/ /django-admin/   gunicorn → Django
 ```
+
+The staff panel (`/admin/...`) and the sign-in page (`/login`) are part of the
+Angular app, not proxied — a hard refresh of `/admin/contact` is answered by the
+SPA fallback like any other deep link. The stock Django admin was moved out of
+the way to `/django-admin/` so the panel keeps the address it was built on.
 
 One origin, deliberately. The frontend calls the API with root-relative paths
 and has no configurable base URL, and staff sign-in is a session cookie with
@@ -132,6 +137,30 @@ python -c "from django.core.management.utils import get_random_secret_key as k; 
 `settings_prod.py` raises at startup if `DJANGO_SECRET_KEY` or
 `DJANGO_ALLOWED_HOSTS` is missing. That is on purpose — a production process
 that starts with a published secret key is worse than one that refuses to start.
+
+### Contact-form email notifications
+
+A new `/contact` submission emails `DJANGO_CONTACT_NOTIFICATION_EMAILS` through
+the SMTP relay in the same env file (see `deploy/dinq.env.example`). The values
+are optional: with `DJANGO_EMAIL_HOST` blank nothing is sent, and submissions
+are still stored and listed in the staff panel. Sending is best-effort — a mail
+failure is logged and never fails the visitor's form.
+
+To use a Gmail/Google Workspace account as the sender, turn on 2-Step
+Verification, create an App Password, and set:
+
+```
+DJANGO_EMAIL_HOST=smtp.gmail.com
+DJANGO_EMAIL_PORT=587
+DJANGO_EMAIL_HOST_USER=you@yourdomain.com
+DJANGO_EMAIL_HOST_PASSWORD=the-16-character-app-password
+DJANGO_DEFAULT_FROM_EMAIL=Dinq Advisory Group <you@yourdomain.com>
+DJANGO_CONTACT_NOTIFICATION_EMAILS=eyosialex12@gmail.com
+```
+
+`DJANGO_DEFAULT_FROM_EMAIL` must be an address the relay is allowed to send as.
+Restart the service after editing the file, then submit the contact form and
+check the recipient's inbox (and spam).
 
 ---
 
@@ -281,14 +310,15 @@ curl -I https://www.dinqadvisory.com/
 curl -I https://dinqadvisory.com/          # expect a 301 to www
 curl -I http://2.25.106.23/               # expect a 301 to https www
 curl -s https://www.dinqadvisory.com/api/content/pages/home/version/ | head -c 200
-curl -I https://www.dinqadvisory.com/login/
-curl -I https://www.dinqadvisory.com/admin/login/
+curl -I https://www.dinqadvisory.com/login/           # 301 → /login, the Angular sign-in
+curl -I https://www.dinqadvisory.com/admin/contact    # 200, the staff panel (guards client-side)
+curl -I https://www.dinqadvisory.com/django-admin/login/  # the stock admin
 ```
 
-Then in a browser: load the site, sign in at `/login/`, open a staff page, and
-submit the contact and quick-inquiry forms. Those exercise the session cookie
-and the CSRF origin check, which are the two things most likely to be wrong and
-the least obvious from a `curl`.
+Then in a browser: load the site, sign in at `/login`, land on the staff panel
+at `/admin/contact`, and submit the contact and quick-inquiry forms. Those
+exercise the session cookie and the CSRF origin check, which are the two things
+most likely to be wrong and the least obvious from a `curl`.
 
 Also worth clicking: a deep link like `/industries/real-estate` on a hard
 refresh. If that 404s, the SPA `try_files` fallback in the nginx config is not

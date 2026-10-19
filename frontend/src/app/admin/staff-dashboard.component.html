@@ -26,11 +26,19 @@
           @if (contactCount() === 0) {
             <p class="inbox__empty">{{ emptyMessage() }}</p>
           } @else {
-            <p class="inbox__note">
-              {{ rowLimitNote }} Select a row to read the request in full.
-            </p>
+            <div class="inbox__toolbar">
+              <input
+                class="inbox__search"
+                type="search"
+                placeholder="Search contacts…"
+                [value]="search()"
+                (input)="search.set($any($event.target).value)"
+                aria-label="Search contacts"
+              />
+              <span class="inbox__count">{{ filteredContacts().length }} of {{ contactCount() }}</span>
+            </div>
             <ul class="inbox__list inbox__list--tight">
-              @for (row of contacts(); track row.id) {
+              @for (row of filteredContacts(); track row.id) {
                 <li class="entry entry--row">
                   @if (isUnread(row)) {
                     <span class="entry__status" data-status="new">new</span>
@@ -49,6 +57,8 @@
                   </time>
                   <a class="entry__view" [routerLink]="['/admin/contact', row.id]">View</a>
                 </li>
+              } @empty {
+                <li class="inbox__empty">No contacts match “{{ search() }}”.</li>
               }
             </ul>
           }
@@ -57,12 +67,19 @@
           @if (quickInquiryCount() === 0) {
             <p class="inbox__empty">{{ emptyMessage() }}</p>
           } @else {
-            <p class="inbox__note">
-              {{ rowLimitNote }} A quick inquiry is a name, a way to reply, and the topics
-              ticked. Select a row to read it in full.
-            </p>
+            <div class="inbox__toolbar">
+              <input
+                class="inbox__search"
+                type="search"
+                placeholder="Search quick inquiries…"
+                [value]="search()"
+                (input)="search.set($any($event.target).value)"
+                aria-label="Search quick inquiries"
+              />
+              <span class="inbox__count">{{ filteredQuickInquiries().length }} of {{ quickInquiryCount() }}</span>
+            </div>
             <ul class="inbox__list inbox__list--tight">
-              @for (row of quickInquiries(); track row.id) {
+              @for (row of filteredQuickInquiries(); track row.id) {
                 <li class="entry entry--row">
                   @if (isUnread(row)) {
                     <span class="entry__status" data-status="new">new</span>
@@ -76,6 +93,8 @@
                   </time>
                   <a class="entry__view" [routerLink]="['/admin/quick-inquiries', row.id]">View</a>
                 </li>
+              } @empty {
+                <li class="inbox__empty">No quick inquiries match “{{ search() }}”.</li>
               }
             </ul>
           }
@@ -84,36 +103,54 @@
           @if (leadCount() === 0) {
             <p class="inbox__empty">{{ emptyMessage() }}</p>
           } @else {
-            <p class="inbox__note">{{ rowLimitNote }}</p>
-            <ul class="inbox__list">
-              @for (row of leads(); track row.id) {
-                <li class="entry">
-                  <div class="entry__top">
-                    <span class="entry__ref">{{ row.reference }}</span>
-                    <span class="entry__status" [attr.data-status]="row.status">{{ statusLabel(row.status) }}</span>
-                    <time class="entry__date" [attr.datetime]="row.createdAt">{{ row.createdAt | date: 'medium' }}</time>
-                  </div>
-                  <h3 class="entry__name">{{ row.fullName }}</h3>
-                  <p class="entry__contact">
-                    <a [href]="'mailto:' + row.email">{{ row.email }}</a>
-                    @if (row.phone) {
-                      <span> · <a [href]="'tel:' + row.phone">{{ row.phone }}</a></span>
-                    }
-                    <span> · {{ row.location }}</span>
-                  </p>
-                  <dl class="entry__meta">
-                    <div>
-                      <dt>Interest</dt>
-                      <dd>{{ row.propertyInterest }}</dd>
+            <div class="inbox__toolbar">
+              <input
+                class="inbox__search"
+                type="search"
+                placeholder="Search property leads…"
+                [value]="search()"
+                (input)="search.set($any($event.target).value)"
+                aria-label="Search property leads"
+              />
+              <span class="inbox__count">{{ filteredLeads().length }} of {{ leadCount() }}</span>
+            </div>
+            <ul class="inbox__list inbox__list--tight">
+              @for (row of filteredLeads(); track row.id) {
+                <li class="entry entry--row">
+                  <span class="entry__ref">{{ row.reference }}</span>
+                  <span class="entry__status" [attr.data-status]="row.status">{{ statusLabel(row.status) }}</span>
+                  <span class="entry__name">{{ row.fullName }}</span>
+                  <span class="entry__summary">{{ row.propertyInterest }}</span>
+                  <time class="entry__date" [attr.datetime]="row.createdAt">{{ row.createdAt | date: 'mediumDate' }}</time>
+                  <button
+                    type="button"
+                    class="entry__view"
+                    (click)="toggleLead(row.id)"
+                    [attr.aria-expanded]="expandedLead() === row.id"
+                  >
+                    {{ expandedLead() === row.id ? 'Hide' : 'View' }}
+                  </button>
+
+                  @if (expandedLead() === row.id) {
+                    <div class="entry__detail">
+                      <p class="entry__contact">
+                        <a [href]="'mailto:' + row.email">{{ row.email }}</a>
+                        @if (row.phone) {
+                          <span> · <a [href]="'tel:' + row.phone">{{ row.phone }}</a></span>
+                        }
+                        <span> · {{ row.location }}</span>
+                      </p>
+                      @if (row.message) {
+                        <p class="entry__message">{{ row.message }}</p>
+                      }
+                      @if (row.notes) {
+                        <p class="entry__notes"><strong>Internal:</strong> {{ row.notes }}</p>
+                      }
                     </div>
-                  </dl>
-                  @if (row.message) {
-                    <p class="entry__message">{{ row.message }}</p>
-                  }
-                  @if (row.notes) {
-                    <p class="entry__notes"><strong>Internal:</strong> {{ row.notes }}</p>
                   }
                 </li>
+              } @empty {
+                <li class="inbox__empty">No property leads match “{{ search() }}”.</li>
               }
             </ul>
           }
@@ -122,11 +159,19 @@
           @if (subscriberCount() === 0) {
             <p class="inbox__empty">{{ emptyMessage() }}</p>
           } @else {
-            <p class="inbox__note">
-              {{ activeSubscriberCount() }} active of {{ subscriberCount() }} shown.
-            </p>
+            <div class="inbox__toolbar">
+              <input
+                class="inbox__search"
+                type="search"
+                placeholder="Search subscribers…"
+                [value]="search()"
+                (input)="search.set($any($event.target).value)"
+                aria-label="Search subscribers"
+              />
+              <span class="inbox__count">{{ filteredSubscribers().length }} of {{ subscriberCount() }}</span>
+            </div>
             <ul class="inbox__list inbox__list--tight">
-              @for (row of subscribers(); track row.id) {
+              @for (row of filteredSubscribers(); track row.id) {
                 <li class="entry entry--row">
                   <a class="entry__email" [href]="'mailto:' + row.email">{{ row.email }}</a>
                   <span class="entry__status" [attr.data-status]="row.isActive ? 'active' : 'inactive'">
@@ -139,6 +184,8 @@
                     </time>
                   }
                 </li>
+              } @empty {
+                <li class="inbox__empty">No subscribers match “{{ search() }}”.</li>
               }
             </ul>
           }

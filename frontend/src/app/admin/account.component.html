@@ -1,0 +1,122 @@
+<app-admin-shell>
+  <header class="staff__head">
+    <p class="eyebrow">Staff area</p>
+    <h1 class="staff__title">My account</h1>
+    <p class="staff__lede">
+      Your sign-in details. Changing them here applies to the staff area and
+      the Django admin alike — it is one account behind both.
+    </p>
+  </header>
+
+  <div class="acct">
+    <!-- ---- Username ---------------------------------------------------- -->
+    <section class="acct__card" aria-labelledby="acct-username-title">
+      <h2 class="acct__title" id="acct-username-title">Username</h2>
+      <p class="acct__hint">This is what you sign in with.</p>
+
+      @if (usernameError(); as message) {
+        <p class="acct__alert" role="alert">{{ message }}</p>
+      }
+      @if (usernameSuccess(); as message) {
+        <p class="acct__alert acct__alert--ok" role="status">{{ message }}</p>
+      }
+
+      <form class="acct__form" (ngSubmit)="saveUsername()" novalidate>
+        <div class="acct__field">
+          <label for="acct-username">Username</label>
+          <input
+            id="acct-username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            autocapitalize="none"
+            spellcheck="false"
+            required
+            [ngModel]="username()"
+            (ngModelChange)="username.set($event)"
+            [class.acct__input--invalid]="usernameInvalid()"
+            [attr.aria-invalid]="usernameInvalid()"
+          />
+        </div>
+
+        <button type="submit" class="acct__submit" [disabled]="savingUsername()">
+          {{ savingUsername() ? 'Saving…' : 'Save username' }}
+        </button>
+      </form>
+    </section>
+
+    <!-- ---- Password ---------------------------------------------------- -->
+    <section class="acct__card" aria-labelledby="acct-password-title">
+      <h2 class="acct__title" id="acct-password-title">Password</h2>
+      <p class="acct__hint">You stay signed in after changing it.</p>
+
+      @if (passwordError(); as message) {
+        <p class="acct__alert" role="alert">{{ message }}</p>
+      }
+      @if (passwordSuccess(); as message) {
+        <p class="acct__alert acct__alert--ok" role="status">{{ message }}</p>
+      }
+
+      <form class="acct__form" (ngSubmit)="savePassword()" novalidate>
+        <div class="acct__field">
+          <label for="acct-current">Current password</label>
+          <input
+            id="acct-current"
+            name="currentPassword"
+            type="password"
+            autocomplete="current-password"
+            required
+            [ngModel]="currentPassword()"
+            (ngModelChange)="currentPassword.set($event)"
+            [class.acct__input--invalid]="currentInvalid()"
+            [attr.aria-invalid]="currentInvalid()"
+          />
+        </div>
+
+        <div class="acct__field">
+          <div class="acct__label-row">
+            <label for="acct-new">New password</label>
+            <button
+              type="button"
+              class="acct__reveal"
+              (click)="togglePassword()"
+              [attr.aria-pressed]="showPassword()"
+            >
+              {{ showPassword() ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+          <input
+            id="acct-new"
+            name="newPassword"
+            [type]="showPassword() ? 'text' : 'password'"
+            autocomplete="new-password"
+            required
+            [ngModel]="newPassword()"
+            (ngModelChange)="newPassword.set($event)"
+            [class.acct__input--invalid]="newInvalid()"
+            [attr.aria-invalid]="newInvalid()"
+          />
+        </div>
+
+        <div class="acct__field">
+          <label for="acct-confirm">Confirm new password</label>
+          <input
+            id="acct-confirm"
+            name="confirmPassword"
+            [type]="showPassword() ? 'text' : 'password'"
+            autocomplete="new-password"
+            required
+            [ngModel]="confirmPassword()"
+            (ngModelChange)="confirmPassword.set($event)"
+            [class.acct__input--invalid]="confirmInvalid()"
+            [attr.aria-invalid]="confirmInvalid()"
+          />
+        </div>
+
+        <button type="submit" class="acct__submit" [disabled]="savingPassword()">
+          {{ savingPassword() ? 'Updating…' : 'Update password' }}
+        </button>
+      </form>
+    </section>
+  </div>
+</app-admin-shell>

@@ -4,13 +4,20 @@ Page content endpoints.
 Public (anonymous, read-only):
     GET api/cms/inquiry-topics/      the topic list for the quick-inquiry form
     GET api/content/pages/<slug>/   one page's blocks, for the page to render
+    GET api/articles/                newsletter/insight articles, for /insights
+    GET api/articles/<slug>/         one article plus its related articles
 
 Staff-only (session cookie, is_staff):
-    GET   api/staff/pages/            the card grid, grouped by category
-    GET   api/staff/pages/<slug>/     one page's blocks, with labels and order
-    PATCH api/staff/pages/<slug>/     save changed block values
-    POST  api/staff/uploads/          store an uploaded image, return its path
-    GET   api/staff/images/           images already uploaded, for the picker
+    GET    api/staff/pages/            the card grid, grouped by category
+    GET    api/staff/pages/<slug>/     one page's blocks, with labels and order
+    PATCH  api/staff/pages/<slug>/     save changed block values
+    POST   api/staff/uploads/          store an uploaded image, return its path
+    GET    api/staff/images/           images already uploaded, for the picker
+    GET    api/staff/articles/         the article list, newest first
+    POST   api/staff/articles/create/  create an article
+    GET    api/staff/articles/<slug>/  one article, for the editor
+    PATCH  api/staff/articles/<slug>/update/  save changed fields
+    DELETE api/staff/articles/<slug>/delete/  remove an article
 
 The public read deliberately returns the same values the staff editor writes,
 which is what makes an edit appear on the live page. The public read omits
@@ -23,15 +30,20 @@ import json
 from django.conf import settings
 from django.core.exceptions import SuspiciousFileOperation
 from django.http import JsonResponse
+from django.utils.text import slugify
 from django.views.decorators.http import require_http_methods
 
 from .categories import sort_key
 from .image_upload import UploadRejected, store_upload
-from .models import ContentBlock, ImageAsset, InquiryTopic, Page
+from .models import Article, ContentBlock, ImageAsset, InquiryTopic, Page
 
 # A single page's block set is small (the home page has ~30), so there is no
 # need to cap it the way the submissions lists are capped.
 MAX_BLOCKS_PER_PAGE = 500
+
+# The staff article list, capped like the submission lists so a large archive
+# cannot slow the admin screen to a crawl.
+MAX_STAFF_ARTICLES = 200
 
 
 def _payload(request) -> dict:
@@ -330,4 +342,192 @@ def staff_image_upload(request):
         return JsonResponse({'detail': f'That upload could not be read: {exc}'}, status=400)
 
     return JsonResponse(result.asset.as_dict(), status=201)
+
+
+# ---------------------------------------------------------------------------
+# Articles (the newsletter / insights authoring screen)
+# ---------------------------------------------------------------------------
+
+
+def _clean_article_input(data: dict, *, require_all: bool) -> tuple[dict, dict]:
+    """
+    Validate the writable article fields from a JSON body.
+
+    Returns (cleaned, errors). A field absent from `data` is left out of
+    `cleaned` unless `require_all` is set, which is what lets one helper serve
+    both create (every field present, title and slug required) and update (only
+    the fields the editor actually touched).
+    """
+    cleaned: dict = {}
+    errors: dict = {}
+
+    def text(key: str) -> str:
+        return str(data.get(key) or '').strip()
+
+    # Title: required on create; optional on update but never accepted empty.
+    if require_all or 'title' in data:
+        title = text('title')
+        if not title:
+            errors['title'] = ['Enter a title.']
+        else:
+            cleaned['title'] = title
+
+    # Slug: required on create, generated from the title when left blank.
+    if require_all or 'slug' in data:
+        slug = text('slug')
+        if not slug and cleaned.get('title'):
+            slug = slugify(cleaned['title'])[:140]
+        if not slug:
+            errors['slug'] = ['Enter a slug, or a title to generate one from.']
+        else:
+            cleaned['slug'] = slug
+
+    for key in ('author', 'category', 'summary', 'featuredImage'):
+        if require_all or key in data:
+            cleaned[key] = text(key)
+
+    # Body: an array of paragraph strings, rendered one <p> per entry.
+    if require_all or 'body' in data:
+        body = data.get('body') or []
+        if not isinstance(body, list) or not all(isinstance(p, str) for p in body):
+            errors['body'] = ['The body must be a list of paragraphs.']
+        else:
+            cleaned['body'] = [p.strip() for p in body if p.strip()]
+
+    # Related: an array of other articles' slugs.
+    if require_all or 'relatedSlugs' in data:
+        related = data.get('relatedSlugs') or []
+        if not isinstance(related, list) or not all(isinstance(s, str) for s in related):
+            errors['relatedSlugs'] = ['Related articles must be a list of slugs.']
+        else:
+            cleaned['relatedSlugs'] = [s.strip() for s in related if s.strip()]
+
+    return cleaned, errors
+
+
+@_staff_required
+@require_http_methods(['GET'])
+def staff_article_list(request):
+    """Every article, newest first, for the /admin/newsletters list."""
+    articles = list(Article.objects.all()[:MAX_STAFF_ARTICLES])
+    return JsonResponse({
+        'count': Article.objects.count(),
+        'results': [article.as_staff_dict() for article in articles],
+    })
+
+
+@_staff_required
+@require_http_methods(['POST'])
+def staff_article_create(request):
+    """Create one article. The slug is generated from the title when blank."""
+    data = _payload(request)
+    cleaned, errors = _clean_article_input(data, require_all=True)
+
+    slug = cleaned.get('slug')
+    if slug and Article.objects.filter(slug=slug).exists():
+        errors['slug'] = ['That slug is already in use.']
+
+    if errors:
+        return JsonResponse({'detail': 'Check the highlighted fields.', 'errors': errors}, status=400)
+
+    article = Article.objects.create(
+        slug=cleaned['slug'],
+        title=cleaned['title'],
+        author=cleaned.get('author', ''),
+        category=cleaned.get('category', ''),
+        summary=cleaned.get('summary', ''),
+        body=cleaned.get('body', []),
+        featured_image=cleaned.get('featuredImage', ''),
+        related=cleaned.get('relatedSlugs', []),
+    )
+    return JsonResponse({'article': article.as_staff_dict()}, status=201)
+
+
+@_staff_required
+@require_http_methods(['GET'])
+def staff_article_detail(request, slug: str):
+    """One article, for the editor to load."""
+    article = Article.objects.filter(slug=slug).first()
+    if article is None:
+        return JsonResponse({'detail': 'Unknown article.'}, status=404)
+    return JsonResponse({'article': article.as_staff_dict()})
+
+
+@_staff_required
+@require_http_methods(['PATCH'])
+def staff_article_update(request, slug: str):
+    """
+    Save the fields the editor touched. Only keys present in the body are
+    written, so an editor can send a partial payload without clearing the rest.
+    """
+    article = Article.objects.filter(slug=slug).first()
+    if article is None:
+        return JsonResponse({'detail': 'Unknown article.'}, status=404)
+
+    data = _payload(request)
+    cleaned, errors = _clean_article_input(data, require_all=False)
+
+    new_slug = cleaned.get('slug')
+    if new_slug and new_slug != article.slug and Article.objects.filter(slug=new_slug).exists():
+        errors['slug'] = ['That slug is already in use.']
+
+    if errors:
+        return JsonResponse({'detail': 'Check the highlighted fields.', 'errors': errors}, status=400)
+
+    field_map = {
+        'title': 'title',
+        'slug': 'slug',
+        'author': 'author',
+        'category': 'category',
+        'summary': 'summary',
+        'body': 'body',
+        'featuredImage': 'featured_image',
+        'relatedSlugs': 'related',
+    }
+    changed = []
+    for wire, attr in field_map.items():
+        if wire in cleaned:
+            setattr(article, attr, cleaned[wire])
+            changed.append(wire)
+
+    if changed:
+        article.save()
+
+    return JsonResponse({'article': article.as_staff_dict(), 'changed': changed})
+
+
+@_staff_required
+@require_http_methods(['DELETE'])
+def staff_article_delete(request, slug: str):
+    """Remove an article. The public URL stops working immediately."""
+    article = Article.objects.filter(slug=slug).first()
+    if article is None:
+        return JsonResponse({'detail': 'Unknown article.'}, status=404)
+    article.delete()
+    return JsonResponse({'detail': 'Article deleted.'})
+
+
+@require_http_methods(['GET'])
+def public_article_list(request):
+    """Every article, newest first — the /insights index grid."""
+    articles = Article.objects.all()
+    return JsonResponse({
+        'count': articles.count(),
+        'results': [article.as_public_dict() for article in articles],
+    })
+
+
+@require_http_methods(['GET'])
+def public_article_detail(request, slug: str):
+    """One article plus a few related ones, for the article page."""
+    article = Article.objects.filter(slug=slug).first()
+    if article is None:
+        return JsonResponse({'detail': 'Unknown article.'}, status=404)
+
+    related_slugs = article.related if isinstance(article.related, list) else []
+    related = [
+        item.as_public_dict()
+        for item in Article.objects.filter(slug__in=related_slugs).exclude(pk=article.pk)[:3]
+    ]
+    return JsonResponse({'article': article.as_public_dict(), 'related': related})
 

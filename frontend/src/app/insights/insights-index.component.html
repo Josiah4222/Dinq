@@ -62,6 +62,21 @@
                 </span>
               </a>
             </li>
+          } @empty {
+            @if (loading()) {
+              <li class="ins-index__empty">
+                <span class="ins-index__empty-text">Loading articles…</span>
+              </li>
+            } @else {
+              <li class="ins-index__empty">
+                <span class="ins-index__empty-title">No articles published yet</span>
+                <span class="ins-index__empty-text">
+                  We are writing our first insights. Get in touch in the meantime and we will share
+                  what we know directly.
+                </span>
+                <a class="ins-index__empty-link" routerLink="/contact">Talk to us &rarr;</a>
+              </li>
+            }
           }
         </ol>
       </div>
