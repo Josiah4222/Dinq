@@ -11,15 +11,29 @@
         <header class="card__head">
           <div class="card__portrait">
             @if (portrait()) {
-              <img
-                [src]="portrait() | imageSrc"
-                [alt]="name()"
-                width="480"
-                height="600"
-                fetchpriority="high"
-                decoding="async"
-                class="card__img"
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  [srcset]="portrait() | imageSrcset:[460, 920]:'avif'"
+                  sizes="(min-width: 480px) 136px, 34vw"
+                />
+                <source
+                  type="image/webp"
+                  [srcset]="portrait() | imageSrcset:[460, 920]:'webp'"
+                  sizes="(min-width: 480px) 136px, 34vw"
+                />
+                <img
+                  [src]="portrait() | imageSrc"
+                  [srcset]="portrait() | imageSrcset:[460, 920]:'jpg'"
+                  sizes="(min-width: 480px) 136px, 34vw"
+                  [alt]="name()"
+                  width="480"
+                  height="600"
+                  fetchpriority="high"
+                  decoding="async"
+                  class="card__img"
+                />
+              </picture>
             } @else {
               <!-- No portrait set: the monogram keeps the card the same shape
                    rather than leaving a hole where the photo should be. -->

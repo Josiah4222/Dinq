@@ -1,9 +1,12 @@
-<img
-  class="logo"
-  [class.logo--sm]="size === 'sm'"
-  [class.logo--lg]="size === 'lg'"
-  [src]="src"
-  [alt]="size === 'sm' ? 'Dinq' : 'Dinq Advisory Group'"
-  width="150"
-  height="60"
-/>
+<picture>
+  <source type="image/webp" [srcset]="src | imageWebp" />
+  <img
+    class="logo"
+    [class.logo--sm]="size === 'sm'"
+    [class.logo--lg]="size === 'lg'"
+    [src]="src"
+    [alt]="size === 'sm' ? 'Dinq' : 'Dinq Advisory Group'"
+    width="150"
+    height="60"
+  />
+</picture>

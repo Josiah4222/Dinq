@@ -3,13 +3,29 @@
   <!-- ================================ Hero ================================ -->
   <section class="sp-hero">
     <div class="sp-hero__media" role="presentation">
-      <img
-        [src]="heroImage() | imageSrc"
-        alt=""
-        fetchpriority="high"
-        decoding="async"
-        class="sp-hero__img"
-      />
+      <picture>
+        <source
+          type="image/avif"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'avif'"
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'webp'"
+          sizes="100vw"
+        />
+        <img
+          [src]="heroImage() | imageSrc"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'jpg'"
+          sizes="100vw"
+          width="2560"
+          height="1707"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          class="sp-hero__img"
+        />
+      </picture>
       <div class="sp-hero__overlay" aria-hidden="true"></div>
     </div>
     <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -68,15 +84,29 @@
               @if (leader.image) {
                 <figure class="lead-row__figure">
                   <div class="lead-row__frame">
-                    <img
-                      [src]="leader.image | imageSrc"
-                      [alt]="leader.name"
-                      width="560"
-                      height="700"
-                      loading="lazy"
-                      decoding="async"
-                      class="lead-row__img"
-                    />
+                    <picture>
+                      <source
+                        type="image/avif"
+                        [srcset]="leader.image | imageSrcset:[460, 920]:'avif'"
+                        sizes="(min-width: 860px) 460px, 371px"
+                      />
+                      <source
+                        type="image/webp"
+                        [srcset]="leader.image | imageSrcset:[460, 920]:'webp'"
+                        sizes="(min-width: 860px) 460px, 371px"
+                      />
+                      <img
+                        [src]="leader.image | imageSrc"
+                        [srcset]="leader.image | imageSrcset:[460, 920]:'jpg'"
+                        sizes="(min-width: 860px) 460px, 371px"
+                        [alt]="leader.name"
+                        width="560"
+                        height="700"
+                        loading="lazy"
+                        decoding="async"
+                        class="lead-row__img"
+                      />
+                    </picture>
                     <span class="lead-row__scrim" aria-hidden="true"></span>
                   </div>
                   <figcaption class="lead-row__plate">

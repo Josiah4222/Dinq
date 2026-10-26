@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { RevealDirective } from '../reveal.directive';
 import { IndustryCard, IndustrySector } from './industries-data';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 
 /**
  * Shared "Industries" block Ã¢â‚¬â€ the tiered photo-card grid plus additional-sector
@@ -12,7 +13,7 @@ import { ImageSrcPipe } from '../core/image-src.pipe';
  */
 @Component({
   selector: 'app-industries-section',
-  imports: [RouterLink, RevealDirective, ImageSrcPipe],
+  imports: [RouterLink, RevealDirective, ImageSrcPipe, ImageSrcsetPipe],
   templateUrl: './industries-section.component.html',
   styleUrl: './industries-section.component.scss',
 })

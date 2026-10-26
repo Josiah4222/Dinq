@@ -3,7 +3,30 @@
     <!-- ============================ Hero band ============================= -->
     <section class="sol-detail__hero" [class.sol-detail__hero--image]="d.heroImage">
       @if (d.heroImage) {
-        <img [src]="d.heroImage | imageSrc" [alt]="d.title" class="sol-detail__hero-bg" loading="eager" />
+        <picture>
+          <source
+            type="image/avif"
+            [srcset]="d.heroImage | imageSrcset:[640, 1024, 1600, 2560]:'avif'"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            [srcset]="d.heroImage | imageSrcset:[640, 1024, 1600, 2560]:'webp'"
+            sizes="100vw"
+          />
+          <img
+            [src]="d.heroImage | imageSrc"
+            [srcset]="d.heroImage | imageSrcset:[640, 1024, 1600, 2560]:'jpg'"
+            sizes="100vw"
+            [alt]="d.title"
+            class="sol-detail__hero-bg"
+            width="1600"
+            height="900"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="sol-detail__hero-overlay"></div>
       }
       <div class="container sol-detail__hero-inner">

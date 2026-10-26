@@ -25,6 +25,9 @@ node_modules/
 frontend/dist/
 .angular/
 
+# Original image masters, kept outside the served directories
+image-originals-backup/
+
 # Editors / OS
 .vscode/
 .idea/

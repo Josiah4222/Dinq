@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { RevealDirective } from '../reveal.directive';
 import { CmsPage } from '../core/cms-page';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 
 /** One of the approach pillars. */
 interface Pillar {
@@ -25,7 +26,7 @@ interface Pillar {
  */
 @Component({
   selector: 'app-our-approach',
-  imports: [RouterLink, RevealDirective, ImageSrcPipe],
+  imports: [RouterLink, RevealDirective, ImageSrcPipe, ImageSrcsetPipe],
   templateUrl: './our-approach.component.html',
   styleUrl: './our-approach.component.scss',
 })

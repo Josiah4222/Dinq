@@ -1,7 +1,14 @@
 <div class="picker">
   <div class="picker__preview">
     @if (hasValue()) {
-      <img class="picker__img" [src]="value() | imageSrc" [alt]="''" loading="lazy" />
+      <img
+        class="picker__img"
+        [src]="value() | imageSrc"
+        [alt]="''"
+        width="1600"
+        height="900"
+        loading="lazy"
+      />
     } @else {
       <p class="picker__none">No image set</p>
     }
@@ -79,7 +86,14 @@
                   (click)="choose(asset)"
                   [attr.aria-label]="'Use ' + asset.name"
                 >
-                  <img class="picker__thumb-img" [src]="asset.path | imageSrc" [alt]="''" loading="lazy" />
+                  <img
+                    class="picker__thumb-img"
+                    [src]="asset.path | imageSrc"
+                    [alt]="''"
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                  />
                   <span class="picker__thumb-name">{{ asset.name }}</span>
                 </button>
               </li>

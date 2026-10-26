@@ -4,6 +4,7 @@ import { RevealDirective } from '../reveal.directive';
 import { CmsPage } from '../core/cms-page';
 import { overlayHero, overlaySections } from './standard-page-merge';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 import { ScrollToDirective } from '../scroll-to.directive';
 
 /**
@@ -108,7 +109,7 @@ export interface StandardPageNavItem {
  */
 @Component({
   selector: 'app-standard-page',
-  imports: [RouterLink, RevealDirective, ImageSrcPipe, ScrollToDirective],
+  imports: [RouterLink, RevealDirective, ImageSrcPipe, ImageSrcsetPipe, ScrollToDirective],
   templateUrl: './standard-page.component.html',
   styleUrl: './standard-page.component.scss',
 })

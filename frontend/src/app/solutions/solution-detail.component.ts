@@ -10,6 +10,7 @@ import { getIndustryPills, IndustryLink } from '../industry-links';
 import { CmsPage } from '../core/cms-page';
 import { FieldMap, overlay } from '../core/cms-merge';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 
 /**
  * Which fields of a solution are editable, and the CMS key that overrides each.
@@ -44,7 +45,16 @@ const EDITABLE: FieldMap<keyof SolutionDetail & string>[] = [
  */
 @Component({
   selector: 'app-solution-detail',
-  imports: [RouterLink, DecimalPipe, FaqAccordionComponent, HowWeWorkComponent, PropertyLeadFormComponent, RevealDirective, ImageSrcPipe],
+  imports: [
+    RouterLink,
+    DecimalPipe,
+    FaqAccordionComponent,
+    HowWeWorkComponent,
+    PropertyLeadFormComponent,
+    RevealDirective,
+    ImageSrcPipe,
+    ImageSrcsetPipe,
+  ],
   templateUrl: './solution-detail.component.html',
   styleUrl: './solution-detail.component.scss',
 })

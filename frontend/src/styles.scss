@@ -121,6 +121,10 @@ img {
   height: auto;
 }
 
+picture {
+  display: contents;
+}
+
 button {
   font-family: inherit;
   cursor: pointer;

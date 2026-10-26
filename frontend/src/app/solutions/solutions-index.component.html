@@ -3,13 +3,44 @@
   <!-- ================================ Hero ================================ -->
   <section class="sol-index__hero">
     <div class="sol-index__hero-media" role="presentation">
-      <img
-        src="assets/images/hero-addis.jpg"
-        alt=""
-        fetchpriority="high"
-        decoding="async"
-        class="sol-index__hero-img"
-      />
+      <picture>
+        <source
+          type="image/avif"
+          srcset="
+            /assets/images/hero-addis-640.avif   640w,
+            /assets/images/hero-addis-1024.avif 1024w,
+            /assets/images/hero-addis-1600.avif 1600w,
+            /assets/images/hero-addis-2560.avif 2560w
+          "
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          srcset="
+            /assets/images/hero-addis-640.webp   640w,
+            /assets/images/hero-addis-1024.webp 1024w,
+            /assets/images/hero-addis-1600.webp 1600w,
+            /assets/images/hero-addis-2560.webp 2560w
+          "
+          sizes="100vw"
+        />
+        <img
+          src="assets/images/hero-addis.jpg"
+          srcset="
+            /assets/images/hero-addis-640.jpg   640w,
+            /assets/images/hero-addis-1024.jpg 1024w,
+            /assets/images/hero-addis-1600.jpg 1600w,
+            /assets/images/hero-addis-2560.jpg 2560w
+          "
+          sizes="100vw"
+          width="2560"
+          height="1707"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          class="sol-index__hero-img"
+        />
+      </picture>
       <div class="sol-index__hero-overlay" aria-hidden="true"></div>
     </div>
     <span class="grain" aria-hidden="true"></span>

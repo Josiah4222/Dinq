@@ -120,9 +120,9 @@
 
 /* Load-in animation */
 .anim-rise {
-  opacity: 0;
-  animation: rise-in 0.85s var(--ease-out) forwards;
-  animation-delay: var(--rise-delay, 0ms);
+  opacity: 1;
+  animation: rise-in 0.15s var(--ease-out) forwards;
+  animation-delay: 0ms;
 }
 
 .hero__title {

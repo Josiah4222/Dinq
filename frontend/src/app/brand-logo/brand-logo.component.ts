@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ImageWebpPipe } from '../core/image-variants.pipe';
 
 /**
  * Dinq brand logo — the official gold lockup (`public/dinq_gold_premium.png`),
@@ -6,7 +7,7 @@ import { Component, Input } from '@angular/core';
  */
 @Component({
   selector: 'app-brand-logo',
-  imports: [],
+  imports: [ImageWebpPipe],
   templateUrl: './brand-logo.component.html',
   styleUrl: './brand-logo.component.scss',
 })

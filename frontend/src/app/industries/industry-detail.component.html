@@ -3,7 +3,30 @@
     <!-- ============================ Hero band ============================= -->
     <section class="ind-detail__hero" [class.ind-detail__hero--image]="d.heroImage">
       @if (d.heroImage) {
-        <img [src]="d.heroImage | imageSrc" [alt]="d.title" class="ind-detail__hero-bg" loading="eager" />
+        <picture>
+          <source
+            type="image/avif"
+            [srcset]="d.heroImage | imageSrcset:[480, 768, 1200, 1600]:'avif'"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            [srcset]="d.heroImage | imageSrcset:[480, 768, 1200, 1600]:'webp'"
+            sizes="100vw"
+          />
+          <img
+            [src]="d.heroImage | imageSrc"
+            [srcset]="d.heroImage | imageSrcset:[480, 768, 1200, 1600]:'jpg'"
+            sizes="100vw"
+            [alt]="d.title"
+            class="ind-detail__hero-bg"
+            width="1600"
+            height="1066"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="ind-detail__hero-overlay"></div>
       }
       <div class="container ind-detail__hero-inner">

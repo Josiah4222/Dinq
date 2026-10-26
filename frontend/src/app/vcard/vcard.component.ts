@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RevealDirective } from '../reveal.directive';
 import { CmsPage } from '../core/cms-page';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 import { VCardContact, VCardPhone, mailHref, saveVCard, telHref } from '../core/vcard';
 import { PHONE_KEYS, VCARD_PEOPLE, VcardPerson } from './vcard-person';
 
@@ -41,7 +42,7 @@ interface CardPhone {
  */
 @Component({
   selector: 'app-vcard',
-  imports: [RevealDirective, ImageSrcPipe],
+  imports: [RevealDirective, ImageSrcPipe, ImageSrcsetPipe],
   templateUrl: './vcard.component.html',
   styleUrl: './vcard.component.scss',
 })

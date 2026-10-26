@@ -2,6 +2,7 @@ import { Component, OnInit, computed } from '@angular/core';
 import { RevealDirective } from '../reveal.directive';
 import { CmsPage } from '../core/cms-page';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe, ImageWebpPipe } from '../core/image-variants.pipe';
 
 /**
  * /about/kairos-law-alliance ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â the alliance page on its own: hero, the two
@@ -15,7 +16,7 @@ import { ImageSrcPipe } from '../core/image-src.pipe';
  */
 @Component({
   selector: 'app-kairos-law-alliance',
-  imports: [RevealDirective, ImageSrcPipe],
+  imports: [RevealDirective, ImageSrcPipe, ImageSrcsetPipe, ImageWebpPipe],
   templateUrl: './kairos-law-alliance.component.html',
   styleUrl: './kairos-law-alliance.component.scss',
 })

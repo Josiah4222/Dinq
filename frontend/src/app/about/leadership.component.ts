@@ -3,6 +3,7 @@ import { RevealDirective } from '../reveal.directive';
 import { ScrollToDirective } from '../scroll-to.directive';
 import { CmsPage } from '../core/cms-page';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 
 /**
  * One executive, as the CMS holds them: flat editable fields, so a bio is a
@@ -118,7 +119,7 @@ function mailHref(value: string): string | null {
  */
 @Component({
   selector: 'app-leadership',
-  imports: [RevealDirective, ScrollToDirective, ImageSrcPipe],
+  imports: [RevealDirective, ScrollToDirective, ImageSrcPipe, ImageSrcsetPipe],
   templateUrl: './leadership.component.html',
   styleUrl: './leadership.component.scss',
 })

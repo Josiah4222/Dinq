@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { RevealDirective } from '../reveal.directive';
 import { CmsPage } from '../core/cms-page';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe, ImageWebpPipe } from '../core/image-variants.pipe';
 
 /** A two-field card: the value/step cards and the approach pillars. */
 interface TitledCard {
@@ -29,7 +30,7 @@ interface TitledCard {
  */
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, RevealDirective, ImageSrcPipe],
+  imports: [RouterLink, RevealDirective, ImageSrcPipe, ImageSrcsetPipe, ImageWebpPipe],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })

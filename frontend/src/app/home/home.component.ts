@@ -7,6 +7,7 @@ import { IndustriesSectionComponent } from '../industries/industries-section.com
 import { ALL_SECTORS, CORE_INDUSTRIES, IndustryCard, IndustrySector } from '../industries/industries-data';
 import { ListItem, PageContentService, PageValues } from '../core/page-content.service';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe, ImageWebpPipe } from '../core/image-variants.pipe';
 
 interface PartnerCard {
   title: string;
@@ -48,7 +49,15 @@ interface StepCard {
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, RevealDirective, ScrollToDirective, IndustriesSectionComponent, ImageSrcPipe],
+  imports: [
+    RouterLink,
+    RevealDirective,
+    ScrollToDirective,
+    IndustriesSectionComponent,
+    ImageSrcPipe,
+    ImageSrcsetPipe,
+    ImageWebpPipe,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -63,6 +72,11 @@ export class HomeComponent implements OnInit, OnDestroy {
    * this page ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â without it the timer would outlive the component.
    */
   private watch?: Subscription;
+
+  constructor() {
+    // Start loading page content early without blocking navigation/render
+    this.watch = this.content.watch('home').subscribe((v) => this.values.set(v));
+  }
 
   /* ---- Hero ----------------------------------------------------------------- */
   readonly heroTitle = computed(() => this.content.text(this.values(), 'hero.title', 'Global Perspective.'));
@@ -184,7 +198,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   );
 
   ngOnInit(): void {
-    this.watch = this.content.watch('home').subscribe(values => this.values.set(values));
+    // Content already started in constructor
   }
 
   ngOnDestroy(): void {

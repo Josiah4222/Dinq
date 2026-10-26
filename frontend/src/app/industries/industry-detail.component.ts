@@ -5,6 +5,7 @@ import { INDUSTRY_DETAILS, IndustryDetail } from './industries-data';
 import { CmsPage } from '../core/cms-page';
 import { FieldMap, overlay } from '../core/cms-merge';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 
 /**
  * Which fields of a sector page are editable, and the CMS key for each.
@@ -35,7 +36,7 @@ const EDITABLE: FieldMap<keyof IndustryDetail & string>[] = [
  */
 @Component({
   selector: 'app-industry-detail',
-  imports: [RouterLink, RevealDirective, ImageSrcPipe],
+  imports: [RouterLink, RevealDirective, ImageSrcPipe, ImageSrcsetPipe],
   templateUrl: './industry-detail.component.html',
   styleUrl: './industry-detail.component.scss',
 })

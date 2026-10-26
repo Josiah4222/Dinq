@@ -3,13 +3,29 @@
   @if (hero().image) {
     <section class="sp-hero">
       <div class="sp-hero__media" role="presentation">
-        <img
-          [src]="hero().image | imageSrc"
-          alt=""
-          fetchpriority="high"
-          decoding="async"
-          class="sp-hero__img"
-        />
+        <picture>
+          <source
+            type="image/avif"
+            [srcset]="hero().image | imageSrcset:[640, 1024, 1600, 2560]:'avif'"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            [srcset]="hero().image | imageSrcset:[640, 1024, 1600, 2560]:'webp'"
+            sizes="100vw"
+          />
+          <img
+            [src]="hero().image | imageSrc"
+            [srcset]="hero().image | imageSrcset:[640, 1024, 1600, 2560]:'jpg'"
+            sizes="100vw"
+            width="2560"
+            height="1707"
+            alt=""
+            fetchpriority="high"
+            decoding="async"
+            class="sp-hero__img"
+          />
+        </picture>
         <div class="sp-hero__overlay" aria-hidden="true"></div>
       </div>
       <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">

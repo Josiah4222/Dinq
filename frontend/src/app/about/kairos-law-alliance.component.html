@@ -3,13 +3,29 @@
   <!-- ================================ Hero ================================ -->
   <section class="sp-hero">
     <div class="sp-hero__media" role="presentation">
-      <img
-        [src]="heroImage() | imageSrc"
-        alt=""
-        fetchpriority="high"
-        decoding="async"
-        class="sp-hero__img"
-      />
+      <picture>
+        <source
+          type="image/avif"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'avif'"
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'webp'"
+          sizes="100vw"
+        />
+        <img
+          [src]="heroImage() | imageSrc"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'jpg'"
+          sizes="100vw"
+          width="2560"
+          height="1707"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          class="sp-hero__img"
+        />
+      </picture>
       <div class="sp-hero__overlay" aria-hidden="true"></div>
     </div>
     <svg class="sp-hero__routes" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -30,7 +46,18 @@
     <div class="container">
       <div class="alliance">
         <div class="alliance__lockup">
-          <img [src]="allianceLogo() | imageSrc" alt="Kairos Law" class="alliance__logo" />
+          <picture>
+            <source type="image/webp" [srcset]="allianceLogo() | imageWebp" />
+            <img
+              [src]="allianceLogo() | imageSrc"
+              alt="Kairos Law"
+              class="alliance__logo"
+              width="512"
+              height="137"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           <span class="alliance__label">{{ allianceLabel() }}</span>
         </div>
         <header class="sp-head">

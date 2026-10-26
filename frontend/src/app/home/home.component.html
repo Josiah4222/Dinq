@@ -2,13 +2,29 @@
   <!-- ================================ Hero ================================ -->
   <section class="hero" id="home" aria-labelledby="hero-title">
     <div class="hero__media" role="presentation">
-      <img
-        [src]="heroImage() | imageSrc"
-        alt=""
-        fetchpriority="high"
-        decoding="async"
-        class="hero__img"
-      />
+      <picture>
+        <source
+          type="image/avif"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'avif'"
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'webp'"
+          sizes="100vw"
+        />
+        <img
+          [src]="heroImage() | imageSrc"
+          [srcset]="heroImage() | imageSrcset:[640, 1024, 1600, 2560]:'jpg'"
+          sizes="100vw"
+          width="2560"
+          height="1707"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+          class="hero__img"
+        />
+      </picture>
       <div class="hero__overlay" aria-hidden="true"></div>
     </div>
 
@@ -31,26 +47,26 @@
     <span class="hero__orb hero__orb--navy" aria-hidden="true"></span>
 
     <div class="container hero__content">
-      <h1 id="hero-title" class="hero__title anim-rise" style="--rise-delay: 0ms">
+      <h1 id="hero-title" class="hero__title">
         {{ heroTitle() }}<br />
         <span class="hero__title-accent">{{ heroTitleAccent() }}</span>
       </h1>
 
-      <p class="hero__subhead anim-rise" style="--rise-delay: 120ms">
+      <p class="hero__subhead">
         {{ heroSubhead() }}
       </p>
 
-      <p class="hero__proof anim-rise" style="--rise-delay: 180ms">
+      <p class="hero__proof">
         {{ heroProof() }}
       </p>
 
-      <div class="hero__actions anim-rise" style="--rise-delay: 240ms">
+      <div class="hero__actions">
         <a routerLink="/contact" class="btn btn--gold">{{ heroCtaPrimary() }}</a>
         <a href="#solutions" appScrollTo="solutions" class="btn btn--ghost">{{ heroCtaSecondary() }}</a>
       </div>
     </div>
 
-    <div class="hero__scroll-cue anim-rise" style="--rise-delay: 400ms" aria-hidden="true">
+    <div class="hero__scroll-cue" aria-hidden="true">
       <span class="hero__scroll-line"></span>
     </div>
   </section>
@@ -206,7 +222,29 @@
   <!-- ============================ Kairos Alliance ========================== -->
   <section class="kairos" id="kairos" appReveal aria-labelledby="kairos-title">
     <div class="kairos__media" role="presentation">
-      <img class="kairos__img" [src]="kairosImage() | imageSrc" alt="" loading="lazy" decoding="async" />
+      <picture>
+        <source
+          type="image/avif"
+          [srcset]="kairosImage() | imageSrcset:[640, 1024, 1600, 1920]:'avif'"
+          sizes="100vw"
+        />
+        <source
+          type="image/webp"
+          [srcset]="kairosImage() | imageSrcset:[640, 1024, 1600, 1920]:'webp'"
+          sizes="100vw"
+        />
+        <img
+          class="kairos__img"
+          [src]="kairosImage() | imageSrc"
+          [srcset]="kairosImage() | imageSrcset:[640, 1024, 1600, 1920]:'jpg'"
+          sizes="100vw"
+          width="1920"
+          height="2560"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div class="kairos__overlay" aria-hidden="true"></div>
     </div>
 
@@ -220,13 +258,18 @@
     <div class="container kairos__content">
       <div class="kairos__inner">
         <div class="kairos__lockup">
-          <img
-            class="kairos__logo"
-            [src]="kairosLogo() | imageSrc"
-            alt="Kairos Law"
-            width="1814"
-            height="486"
-          />
+          <picture>
+            <source type="image/webp" [srcset]="kairosLogo() | imageWebp" />
+            <img
+              class="kairos__logo"
+              [src]="kairosLogo() | imageSrc"
+              alt="Kairos Law"
+              width="512"
+              height="137"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </div>
 
         <h2 id="kairos-title" class="kairos__title">{{ kairosTitle() }}</h2>

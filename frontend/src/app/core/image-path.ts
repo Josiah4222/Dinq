@@ -105,3 +105,63 @@ export function imageName(value: string | null | undefined): string {
   const segments = withoutQuery.split('/').filter(Boolean);
   return segments.length ? segments[segments.length - 1] : text;
 }
+
+/** Formats for which the build generates width-specific siblings. */
+export type ImageVariantFormat = 'avif' | 'webp' | 'jpg';
+
+const RASTER_EXTENSION = /\.(jpe?g|png)$/i;
+
+/**
+ * A local raster path that has generated siblings next to it.
+ *
+ * CMS uploads live under `/media/uploads/` and have no generated variants, so
+ * they are left alone and continue to use their original `src` only.
+ */
+function optimisableLocalPath(value: string | null | undefined): string | null {
+  const path = imageSrc(value);
+  if (!path.startsWith('/') || !RASTER_EXTENSION.test(path)) {
+    return null;
+  }
+  if (path.startsWith('/media/uploads/')) {
+    return null;
+  }
+  return path;
+}
+
+/** The same-size WebP sibling, or an empty string when there is none. */
+export function imageWebp(value: string | null | undefined): string {
+  const path = optimisableLocalPath(value);
+  return path ? encodeURI(path.replace(RASTER_EXTENSION, '.webp')) : '';
+}
+
+/** One generated width-specific sibling, or an empty string when unavailable. */
+export function imageVariant(
+  value: string | null | undefined,
+  width: number,
+  format: ImageVariantFormat = 'webp',
+): string {
+  const path = optimisableLocalPath(value);
+  if (!path) {
+    return '';
+  }
+  if (!path.startsWith('/assets/images/') && !path.startsWith('/media/assets/images/')) {
+    return '';
+  }
+  const stem = path.replace(RASTER_EXTENSION, '');
+  return encodeURI(`${stem}-${width}.${format}`);
+}
+
+/** A comma-separated `srcset` for the generated widths. */
+export function imageSrcset(
+  value: string | null | undefined,
+  widths: readonly number[],
+  format: ImageVariantFormat = 'webp',
+): string {
+  return widths
+    .map(width => {
+      const url = imageVariant(value, width, format);
+      return url ? `${url} ${width}w` : '';
+    })
+    .filter(Boolean)
+    .join(', ');
+}

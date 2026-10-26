@@ -4,6 +4,7 @@ import { RevealDirective } from '../reveal.directive';
 import { HowWeWorkComponent } from '../how-we-work/how-we-work.component';
 import { CmsPage } from '../core/cms-page';
 import { ImageSrcPipe } from '../core/image-src.pipe';
+import { ImageSrcsetPipe } from '../core/image-variants.pipe';
 
 /** A two-field card: the value cards. */
 interface TitledCard {
@@ -30,7 +31,7 @@ interface TitledCard {
  */
 @Component({
   selector: 'app-who-we-are',
-  imports: [RouterLink, RevealDirective, HowWeWorkComponent, ImageSrcPipe],
+  imports: [RouterLink, RevealDirective, HowWeWorkComponent, ImageSrcPipe, ImageSrcsetPipe],
   templateUrl: './who-we-are.component.html',
   styleUrl: './who-we-are.component.scss',
 })
