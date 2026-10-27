@@ -20,9 +20,313 @@
   <!-- Fonts: Fraunces (editorial serif display) + Inter (highly legible sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeA.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/fraunces/v38/6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChjeveQ.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/l/font?kit=6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K9C1Bbfe7gMeNkBue__tT-ohxM7o&amp;skey=2eca4ab215eafb9c&amp;v=v38" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/l/font?kit=6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChTeOWb57mpvhmY8_5Q5JV2MrQ&amp;skey=a711426ad14db1be&amp;v=v38" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/l/font?kit=UcC73FwrK3iLTeHuS_nVMrMxCp50SjIq14DaUWocsZZW_DGUXssW7Nfj_4qyHlnkcusnQQlPwVtdDIBPdll5&amp;skey=c491285d6722e4fa&amp;v=v20" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+
+  <script>
+    if (location.pathname === '/') {
+      document.documentElement.classList.add('has-home-hero');
+    }
+  </script>
+  <style id="home-hero-shell-styles">
+    @font-face {
+      font-family: 'Fraunces Hero';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: block;
+      src: url('https://fonts.gstatic.com/l/font?kit=6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K9C1Bbfe7gMeNkBue__tT-ohxM7o&skey=2eca4ab215eafb9c&v=v38') format('woff2');
+      unicode-range: U+20, U+2e, U+47, U+50, U+61-63, U+65, U+69, U+6c, U+6f-70, U+72-74, U+76;
+    }
+    @font-face {
+      font-family: 'Fraunces Hero';
+      font-style: italic;
+      font-weight: 300 700;
+      font-display: block;
+      src: url('https://fonts.gstatic.com/l/font?kit=6NU58FyLNQOQZAnv9ZwNjucMHVn85Ni7emAe9lKqZTnbB-gzTK0K1ChTeOWb57mpvhmY8_5Q5JV2MrQ&skey=a711426ad14db1be&v=v38') format('woff2');
+      unicode-range: U+20, U+2e, U+45, U+4c, U+61, U+63, U+65, U+69, U+6c, U+6e-6f, U+74-75, U+78;
+    }
+    @font-face {
+      font-family: 'Inter Hero';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: block;
+      src: url('https://fonts.gstatic.com/l/font?kit=UcC73FwrK3iLTeHuS_nVMrMxCp50SjIq14DaUWocsZZW_DGUXssW7Nfj_4qyHlnkcusnQQlPwVtdDIBPdll5&skey=c491285d6722e4fa&v=v20') format('woff2');
+      unicode-range: U+20, U+2c-2e, U+42-45, U+48, U+4f, U+53, U+57, U+61-69, U+6b-79;
+    }
+    .home-hero-shell { display: none; }
+    .has-home-hero .home-hero-shell { display: block; }
+    .home-hero-shell { margin: 0; }
+    .home-hero-shell .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-cream, #F4EFE2);
+      overflow: hidden;
+      background: var(--color-navy-deep, #09182f);
+      isolation: isolate;
+    }
+    .home-hero-shell .hero__media { position: absolute; inset: 0; z-index: 0; }
+    .home-hero-shell picture { display: contents; }
+    .home-hero-shell img { display: block; max-width: 100%; }
+    .home-hero-shell .hero__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: saturate(0.85) contrast(1.04);
+      transform: scale(1.08);
+      animation: home-hero-zoom 16s var(--ease-in-out, cubic-bezier(0.65, 0, 0.35, 1)) forwards;
+    }
+    .home-hero-shell .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 20, 39, 0.78) 0%, rgba(7, 20, 39, 0.55) 30%, rgba(7, 20, 39, 0.5) 55%, rgba(7, 20, 39, 0.9) 100%);
+    }
+    @keyframes home-hero-zoom {
+      from { transform: scale(1.08); }
+      to { transform: scale(1.02); }
+    }
+    .home-hero-shell .hero__routes {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .home-hero-shell .grain {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.055;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .home-hero-shell .hero__orb {
+      position: absolute;
+      z-index: 1;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+    }
+    .home-hero-shell .hero__orb--gold {
+      width: 38vw;
+      height: 38vw;
+      max-width: 640px;
+      max-height: 640px;
+      top: 6%;
+      right: -7%;
+      background: radial-gradient(circle, rgba(200, 155, 60, 0.2) 0%, transparent 62%);
+    }
+    .home-hero-shell .hero__orb--navy {
+      width: 46vw;
+      height: 46vw;
+      max-width: 760px;
+      max-height: 760px;
+      bottom: -14%;
+      left: -10%;
+      background: radial-gradient(circle, rgba(18, 48, 92, 0.6) 0%, transparent 60%);
+    }
+    .home-hero-shell .container {
+      width: 100%;
+      max-width: var(--max-width, 1180px);
+      margin-inline: auto;
+      padding-inline: var(--container-pad, clamp(1.25rem, 5vw, 2.5rem));
+    }
+    .home-hero-shell .hero__content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-block: calc(var(--nav-height, 76px) + 5rem) 6.5rem;
+      max-width: 58rem;
+    }
+    .home-hero-shell .hero__title {
+      margin: 0;
+      font-family: 'Fraunces Hero', var(--font-display, 'Fraunces', Georgia, 'Times New Roman', serif);
+      font-size: clamp(3rem, 7.5vw, 6rem);
+      font-weight: 500;
+      letter-spacing: -0.012em;
+      line-height: 1.02;
+      color: inherit;
+    }
+    .home-hero-shell .hero__title-accent {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-gold, #C89B3C);
+      background: linear-gradient(115deg, var(--color-gold-light, #d6b06a) 0%, #C89B3C 42%, var(--color-gold-muted, #dcc18c) 70%, #C89B3C 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation: home-hero-shimmer 7s var(--ease-in-out, cubic-bezier(0.65, 0, 0.35, 1)) infinite;
+    }
+    @keyframes home-hero-shimmer {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+    }
+    .home-hero-shell .hero__subhead {
+      margin: 2rem 0 0;
+      max-width: 38rem;
+      font-family: 'Inter Hero', var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+      font-size: clamp(1.1rem, 1.9vw, 1.3rem);
+      font-weight: 300;
+      letter-spacing: 0.008em;
+      line-height: 1.7;
+      color: rgba(244, 239, 226, 0.92);
+    }
+    .home-hero-shell .hero__proof {
+      margin: 1.25rem 0 0;
+      max-width: 40rem;
+      font-family: 'Inter Hero', var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      font-weight: 300;
+      letter-spacing: 0.005em;
+      line-height: 1.7;
+      color: rgba(244, 239, 226, 0.72);
+    }
+    .home-hero-shell .hero__actions {
+      margin-top: 2.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .home-hero-shell .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.9rem;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      font-family: 'Inter Hero', var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      transition: transform var(--transition-fast, 200ms ease-out), box-shadow var(--transition-fast, 200ms ease-out), background-color var(--transition-fast, 200ms ease-out), color var(--transition-fast, 200ms ease-out), border-color var(--transition-fast, 200ms ease-out);
+    }
+    .home-hero-shell .btn--gold {
+      background: linear-gradient(120deg, var(--color-gold-light, #d6b06a), #C89B3C 60%, var(--color-gold-muted, #dcc18c));
+      color: var(--color-navy-deep, #09182f);
+      box-shadow: 0 14px 34px rgba(200, 155, 60, 0.32);
+    }
+    .home-hero-shell .btn--ghost {
+      background: transparent;
+      border-color: rgba(244, 239, 226, 0.55);
+      color: var(--color-cream, #F4EFE2);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .home-hero-shell .hero__scroll-cue {
+      position: absolute;
+      z-index: 2;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 2.75rem;
+    }
+    .home-hero-shell .hero__scroll-line {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(200, 155, 60, 0.95), rgba(200, 155, 60, 0));
+      animation: home-hero-scroll 2.4s var(--ease-in-out, cubic-bezier(0.65, 0, 0.35, 1)) infinite;
+    }
+    @keyframes home-hero-scroll {
+      0%, 100% { transform: scaleY(0.4); opacity: 0.5; transform-origin: top; }
+      50% { transform: scaleY(1); opacity: 1; transform-origin: top; }
+    }
+    @media (max-width: 640px) {
+      .home-hero-shell .hero__content {
+        padding-top: calc(var(--nav-height, 76px) + 3rem);
+        padding-bottom: 5rem;
+      }
+      .home-hero-shell .hero__actions .btn { width: 100%; }
+    }
+    @media (max-width: 459px) {
+      #hero-title { min-height: 3.06em; }
+    }
+    @media (max-width: 389px) {
+      #hero-title { min-height: 4.08em; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .home-hero-shell .hero__img,
+      .home-hero-shell .hero__title-accent,
+      .home-hero-shell .hero__scroll-line { animation: none; }
+    }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <main class="home-hero-shell">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero__media" role="presentation">
+          <picture>
+            <source type="image/avif" srcset="/media/assets/images/hero-addis-640.avif 640w, /media/assets/images/hero-addis-1024.avif 1024w, /media/assets/images/hero-addis-1600.avif 1600w, /media/assets/images/hero-addis-2560.avif 2560w" sizes="100vw" />
+            <img src="/media/assets/images/hero-addis.jpg" srcset="/media/assets/images/hero-addis-640.jpg 640w, /media/assets/images/hero-addis-1024.jpg 1024w, /media/assets/images/hero-addis-1600.jpg 1600w, /media/assets/images/hero-addis-2560.jpg 2560w" sizes="100vw" width="2560" height="1707" alt="" fetchpriority="high" decoding="async" class="hero__img" />
+          </picture>
+          <div class="hero__overlay" aria-hidden="true"></div>
+        </div>
+
+        <svg class="hero__routes" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="home-hero-glow-gold" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#C89B3C" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#C89B3C" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <path d="M 180 620 Q 480 300 640 430 T 1040 220" fill="none" stroke="rgba(200,155,60,0.28)" stroke-width="1.2" stroke-dasharray="2 8" stroke-linecap="round"/>
+          <circle cx="180" cy="620" r="4" fill="#C89B3C"/>
+          <circle cx="640" cy="430" r="4" fill="#C89B3C"/>
+          <circle cx="1040" cy="220" r="4" fill="#C89B3C"/>
+          <circle cx="640" cy="430" r="90" fill="url(#home-hero-glow-gold)"/>
+        </svg>
+
+        <span class="grain" aria-hidden="true"></span>
+        <span class="hero__orb hero__orb--gold" aria-hidden="true"></span>
+        <span class="hero__orb hero__orb--navy" aria-hidden="true"></span>
+
+        <div class="container hero__content">
+          <h1 id="hero-title" class="hero__title" elementtiming="home-hero-shell-h1">
+            Global Perspective.<br />
+            <span class="hero__title-accent">Local Execution.</span>
+          </h1>
+          <p class="hero__subhead">
+            Helping international businesses, investors, institutions, and members of the Ethiopian diaspora establish, grow, manage, and protect their interests in Ethiopia.
+          </p>
+          <p class="hero__proof">
+            Whether entering a new market, establishing a business, managing investments, or safeguarding family assets, Dinq provides integrated advisory, implementation support, coordinated legal services, and long-term stewardship through one trusted relationship.
+          </p>
+          <div class="hero__actions">
+            <a href="/contact" class="btn btn--gold">Book a Consultation</a>
+            <a href="#solutions" class="btn btn--ghost">Explore Our Solutions</a>
+          </div>
+        </div>
+
+        <div class="hero__scroll-cue" aria-hidden="true">
+          <span class="hero__scroll-line"></span>
+        </div>
+      </section>
+    </main>
+  </app-root>
 </body>
 </html>
