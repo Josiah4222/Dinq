@@ -1,29 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
-import { QuickInquiryComponent } from './quick-inquiry/quick-inquiry.component';
-import { AboutComponent } from './about/about.component';
-import { WhoWeAreComponent } from './about/who-we-are.component';
-import { LeadershipComponent } from './about/leadership.component';
-import { OurApproachComponent } from './about/our-approach.component';
-import { KairosLawAllianceComponent } from './about/kairos-law-alliance.component';
-import { StandardPageComponent } from './standard-page/standard-page.component';
-import { VcardComponent } from './vcard/vcard.component';
-import { SolutionsIndexComponent } from './solutions/solutions-index.component';
-import { SolutionDetailComponent } from './solutions/solution-detail.component';
-import { IndustryDetailComponent } from './industries/industry-detail.component';
-import { InsightsIndexComponent } from './insights/insights-index.component';
-import { InsightArticleComponent } from './insights/insight-article.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
-import { StaffDashboardComponent } from './admin/staff-dashboard.component';
-import { StaffSubmissionDetailComponent } from './admin/staff-submission-detail.component';
-import { PagesListComponent } from './admin/pages-list.component';
-import { PageEditorComponent } from './admin/page-editor.component';
-import { AccountComponent } from './admin/account.component';
-import { TeamComponent } from './admin/team.component';
-import { NewslettersListComponent } from './admin/newsletters-list.component';
-import { ArticleEditorComponent } from './admin/article-editor.component';
 import { guestGuard, staffGuard, superuserGuard } from './core/auth.guard';
 
 /**
@@ -35,14 +11,14 @@ import { guestGuard, staffGuard, superuserGuard } from './core/auth.guard';
  */
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent) },
   {
     path: 'quick-inquiry',
-    component: QuickInquiryComponent,
+    loadComponent: () => import('./quick-inquiry/quick-inquiry.component').then(m => m.QuickInquiryComponent),
   },
   // Staff sign-in, served by the site rather than the Django admin so the
   // backend session is established through the same origin as the frontend.
-  { path: 'login', component: LoginComponent, canActivate: [guestGuard] },
+  { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent), canActivate: [guestGuard] },
   // Staff-only landing page. The guard re-checks the session with the backend
   // on a cold load, then bounces anyone unsigned to /login.
   // /admin is a redirect rather than a screen: the submission queues are
@@ -52,14 +28,14 @@ export const routes: Routes = [
   { path: 'admin', redirectTo: 'admin/contact', pathMatch: 'full' },
   {
     path: 'admin/contact',
-    component: StaffDashboardComponent,
+    loadComponent: () => import('./admin/staff-dashboard.component').then(m => m.StaffDashboardComponent),
     canActivate: [staffGuard],
     data: { tab: 'contacts' },
   },
   {
     // One consultation request in full, opened from its row in the list.
     path: 'admin/contact/:id',
-    component: StaffSubmissionDetailComponent,
+    loadComponent: () => import('./admin/staff-submission-detail.component').then(m => m.StaffSubmissionDetailComponent),
     canActivate: [staffGuard],
     data: { source: 'contact' },
   },
@@ -67,89 +43,89 @@ export const routes: Routes = [
     // The short-form messages, listed apart from the consultation requests.
     // Same screen, same records, different `source` on the request.
     path: 'admin/quick-inquiries',
-    component: StaffDashboardComponent,
+    loadComponent: () => import('./admin/staff-dashboard.component').then(m => m.StaffDashboardComponent),
     canActivate: [staffGuard],
     data: { tab: 'quickInquiries' },
   },
   {
     path: 'admin/quick-inquiries/:id',
-    component: StaffSubmissionDetailComponent,
+    loadComponent: () => import('./admin/staff-submission-detail.component').then(m => m.StaffSubmissionDetailComponent),
     canActivate: [staffGuard],
     data: { source: 'quick_inquiry' },
   },
   {
     path: 'admin/property-leads',
-    component: StaffDashboardComponent,
+    loadComponent: () => import('./admin/staff-dashboard.component').then(m => m.StaffDashboardComponent),
     canActivate: [staffGuard],
     data: { tab: 'leads' },
   },
   {
     path: 'admin/newsletter',
-    component: StaffDashboardComponent,
+    loadComponent: () => import('./admin/staff-dashboard.component').then(m => m.StaffDashboardComponent),
     canActivate: [staffGuard],
     data: { tab: 'subscribers' },
   },
   {
     // Page content: the card grid of every page, and the editor for one page.
     path: 'admin/pages',
-    component: PagesListComponent,
+    loadComponent: () => import('./admin/pages-list.component').then(m => m.PagesListComponent),
     canActivate: [staffGuard],
   },
   {
     path: 'admin/pages/:slug',
-    component: PageEditorComponent,
+    loadComponent: () => import('./admin/page-editor.component').then(m => m.PageEditorComponent),
     canActivate: [staffGuard],
   },
   {
     // The signed-in user's own credentials: rename the account, change the
     // password. Linked from the rail's account block.
     path: 'admin/account',
-    component: AccountComponent,
+    loadComponent: () => import('./admin/account.component').then(m => m.AccountComponent),
     canActivate: [staffGuard],
   },
   {
     // Staff accounts: a superuser adds another administrator. Guarded a level
     // above the rest of the staff area, and the server checks the same rule.
     path: 'admin/team',
-    component: TeamComponent,
+    loadComponent: () => import('./admin/team.component').then(m => m.TeamComponent),
     canActivate: [superuserGuard],
   },
   {
     // Newsletter / insight articles: the list, then the editor. `new` is
     // declared before `:slug` so the literal path wins over the parameter.
     path: 'admin/newsletters',
-    component: NewslettersListComponent,
+    loadComponent: () => import('./admin/newsletters-list.component').then(m => m.NewslettersListComponent),
     canActivate: [staffGuard],
   },
   {
     path: 'admin/newsletters/new',
-    component: ArticleEditorComponent,
+    loadComponent: () => import('./admin/article-editor.component').then(m => m.ArticleEditorComponent),
     canActivate: [staffGuard],
   },
   {
     path: 'admin/newsletters/:slug',
-    component: ArticleEditorComponent,
+    loadComponent: () => import('./admin/article-editor.component').then(m => m.ArticleEditorComponent),
     canActivate: [staffGuard],
   },
-  { path: 'about', component: AboutComponent },
-  { path: 'about/who-we-are', component: WhoWeAreComponent },
-  { path: 'about/our-approach', component: OurApproachComponent },
-  { path: 'about/kairos-law-alliance', component: KairosLawAllianceComponent },
-  { path: 'about/leadership', component: LeadershipComponent },
+  { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
+  { path: 'about/who-we-are', loadComponent: () => import('./about/who-we-are.component').then(m => m.WhoWeAreComponent) },
+  { path: 'about/our-approach', loadComponent: () => import('./about/our-approach.component').then(m => m.OurApproachComponent) },
+  { path: 'about/kairos-law-alliance', loadComponent: () => import('./about/kairos-law-alliance.component').then(m => m.KairosLawAllianceComponent) },
+  { path: 'about/leadership', loadComponent: () => import('./about/leadership.component').then(m => m.LeadershipComponent) },
   // A contact card built to be forwarded. One route per person rather than a
   // slug-driven page, because there is no index to look a person up from and the
   // URL is the artefact being shared: /vcard/ida-edo is what gets sent. Every
   // route runs the same component; the `person` data says which card it draws.
-  { path: 'vcard/abel-giratta', component: VcardComponent, data: { person: 'abel-giratta' } },
-  { path: 'vcard/ida-edo', component: VcardComponent, data: { person: 'ida-edo' } },
-  { path: 'vcard/habtamu-bazezew', component: VcardComponent, data: { person: 'habtamu-bazezew' } },
+  { path: 'vcard/abel-giratta', loadComponent: () => import('./vcard/vcard.component').then(m => m.VcardComponent), data: { person: 'abel-giratta' } },
+  { path: 'vcard/ida-edo', loadComponent: () => import('./vcard/vcard.component').then(m => m.VcardComponent), data: { person: 'ida-edo' } },
+  { path: 'vcard/habtamu-bazezew', loadComponent: () => import('./vcard/vcard.component').then(m => m.VcardComponent), data: { person: 'habtamu-bazezew' } },
   {
     path: 'solutions',
-    component: SolutionsIndexComponent,
+    loadComponent: () => import('./solutions/solutions-index.component').then(m => m.SolutionsIndexComponent),
   },
   {
     path: 'solutions/:slug',
-    component: SolutionDetailComponent,
+    loadComponent: () => import('./solutions/solution-detail.component').then(m => m.SolutionDetailComponent),
   },
   // The /industries index page was removed; its per-sector detail pages below
   // stay. The bare path redirects home so old links and bookmarks still land
@@ -161,11 +137,11 @@ export const routes: Routes = [
   },
   {
     path: 'industries/:slug',
-    component: IndustryDetailComponent,
+    loadComponent: () => import('./industries/industry-detail.component').then(m => m.IndustryDetailComponent),
   },
   {
     path: 'why-ethiopia',
-    component: StandardPageComponent,
+    loadComponent: () => import('./standard-page/standard-page.component').then(m => m.StandardPageComponent),
     data: {
       layout: 'anchors',
       hero: {
@@ -284,7 +260,7 @@ export const routes: Routes = [
   },
   {
     path: 'representative-matters',
-    component: StandardPageComponent,
+    loadComponent: () => import('./standard-page/standard-page.component').then(m => m.StandardPageComponent),
     data: {
       hero: {
         eyebrow: 'Our Work',
@@ -333,15 +309,15 @@ export const routes: Routes = [
   },
   {
     path: 'insights',
-    component: InsightsIndexComponent,
+    loadComponent: () => import('./insights/insights-index.component').then(m => m.InsightsIndexComponent),
   },
   {
     path: 'insights/:slug',
-    component: InsightArticleComponent,
+    loadComponent: () => import('./insights/insight-article.component').then(m => m.InsightArticleComponent),
   },
   {
     path: 'privacy-policy',
-    component: StandardPageComponent,
+    loadComponent: () => import('./standard-page/standard-page.component').then(m => m.StandardPageComponent),
     // LEGAL REVIEW FLAG (master doc Section 12): placeholder boilerplate only —
     // legal copy to be drafted and reviewed before launch.
     data: {
@@ -428,7 +404,7 @@ export const routes: Routes = [
   },
   {
     path: 'terms-of-use',
-    component: StandardPageComponent,
+    loadComponent: () => import('./standard-page/standard-page.component').then(m => m.StandardPageComponent),
     // LEGAL REVIEW FLAG (master doc Section 12): placeholder boilerplate only —
     // terms to be drafted and reviewed by counsel before launch.
     data: {
@@ -500,5 +476,5 @@ export const routes: Routes = [
       ],
     },
   },
-  { path: '**', component: NotFoundComponent },
+  { path: '**', loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent) },
 ];

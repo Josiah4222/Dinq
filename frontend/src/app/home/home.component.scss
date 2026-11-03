@@ -43,8 +43,7 @@
   object-fit: cover;
   object-position: center 30%;
   filter: saturate(0.85) contrast(1.04);
-  transform: scale(1.08);
-  animation: hero-zoom 16s var(--ease-in-out) forwards;
+  transform: scale(1.02);
 }
 
 /* Vignette: heaviest at top + bottom so the type stays legible */
@@ -62,8 +61,6 @@
 }
 
 @keyframes hero-zoom {
-  from { transform: scale(1.08); }
-  to   { transform: scale(1.02); }
 }
 
 /* SVG route lines overlaid on the hero image */
@@ -137,18 +134,14 @@
   font-style: italic;
   font-weight: 400;
   color: var(--color-gold);
-  background: linear-gradient(115deg, var(--color-gold-light) 0%, #C89B3C 42%, var(--color-gold-muted) 70%, #C89B3C 100%);
-  background-size: 200% auto;
+  background: linear-gradient(115deg, var(--color-gold-light) 0%, #C89B3C 55%, var(--color-gold-muted) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shimmer 7s var(--ease-in-out) infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% { background-position: 0% center; }
-  50%      { background-position: 100% center; }
 }
 
 .hero__subhead {
